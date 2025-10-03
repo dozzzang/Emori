@@ -27,3 +27,10 @@ date = extract_line_value("REPORT_DAY", raw)
 step1_emotion_color = extract_emotion(r"STEP1_EMOTION_COLOR\s*:\s*(.*)", raw)  # step2
 step2_fill_rate = extract_emotion(r"STEP2_FILL_RATE\s*:\s*(.*)", raw)  # step3
 step3_fill_rate = extract_emotion(r"STEP3_FILL_RATE\s*:\s*(.*)", raw)  # step4
+
+# ---------- STEP.<State> & 뇌파 수치 추출 ----------
+step_blocks = re.findall(
+    r"-{5,}STEP\.([A-Za-z0-9_]+)-{5,}\s*(.*?)(?=(?:-{5,}STEP\.[A-Za-z0-9_]+-{5,})|$)",
+    raw,
+    flags=re.DOTALL,
+)
