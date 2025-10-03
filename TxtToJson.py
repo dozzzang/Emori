@@ -86,7 +86,6 @@ for state, body in step_blocks:
         pm_by_state.setdefault(state, []).append(vals)
 
 
-# 상태별 평균 → metrics
 def metrics_of_state(state_name, fallback=None):
     arr = pm_by_state.get(state_name, [])
     if not arr:
