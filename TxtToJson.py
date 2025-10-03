@@ -102,3 +102,28 @@ def metrics_of_state(state_name, fallback=None):
 m_step2 = metrics_of_state("Step1")
 m_step3 = metrics_of_state("Step2")
 m_step4 = metrics_of_state("Step3")
+
+# ---------- JSON 구성 ----------
+result_data = {
+    f"participant_{name or 'unknown'}": {
+        "basic_info": {"age": age, "gender": gender, "date": date},
+        "steps": {
+            "step2": {
+                "emotion_color": step1_emotion_color,
+                **m_step2,
+            },
+            "step3": {
+                "fill_rate": step2_fill_rate,
+                **m_step3,
+            },
+            "step4": {
+                "fill_rate": step3_fill_rate,
+                **m_step4,
+            },
+        },
+    }
+}
+
+# ---------- Json Data 생성 ----------
+with open("Report_Data.json", "w", encoding="utf-8") as f:
+    json.dump(result_data, f, indent=4, ensure_ascii=False)
