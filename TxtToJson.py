@@ -11,6 +11,10 @@ def extract_line_value(label, text):
     else:
         # 라벨 자체를 찾지 못했으면 'NULL' 반환
         return "NULL"
+# ---------- 감정 추출 ----------
+def extract_emotion(pattern, text, flags=0):
+    m = re.search(pattern, text, flags)
+    return m.group(1).strip() if m else "NULL"
 # ---------- UserInfo ----------
 name = extract_line_value("NAME", raw)
 age = extract_line_value("AGE", raw)
@@ -18,3 +22,8 @@ gender = extract_line_value("GENDER", raw)
 
 # ---------- OwnerInfo ----------
 date = extract_line_value("REPORT_DAY", raw)
+
+# ---------- GameData ----------
+step1_emotion_color = extract_emotion(r"STEP1_EMOTION_COLOR\s*:\s*(.*)", raw)  # step2
+step2_fill_rate = extract_emotion(r"STEP2_FILL_RATE\s*:\s*(.*)", raw)  # step3
+step3_fill_rate = extract_emotion(r"STEP3_FILL_RATE\s*:\s*(.*)", raw)  # step4
