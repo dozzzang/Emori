@@ -15,6 +15,10 @@ def extract_line_value(label, text):
 def extract_emotion(pattern, text, flags=0):
     m = re.search(pattern, text, flags)
     return m.group(1).strip() if m else "NULL"
+# ---------- 파일 로드 ----------
+with open("VR_Data.txt", "r", encoding="utf-8") as f:
+    raw = f.read()
+
 # ---------- UserInfo ----------
 name = extract_line_value("NAME", raw)
 age = extract_line_value("AGE", raw)
