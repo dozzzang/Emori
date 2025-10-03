@@ -1,6 +1,5 @@
 import json
 import re
-from statistics import mean
 
 
 # ---------- 값 추출 by 정규표현식(라벨 : 값) ----------
