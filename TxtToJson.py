@@ -4,15 +4,15 @@ from statistics import mean
 
 
 # ---------- 값 추출 by 정규표현식(라벨 : 값) ----------
-def extract_line_value(label, text):
-    m = re.search(rf"^{re.escape(label)}\s*:\s*([^\n])$", text, flags=re.MULTILINE)
-    if m:
-        extracted_value = m.group(1).strip()
-        # 값이 공백이거나 비어있으면 'NULL' 반환
-        return extracted_value if extracted_value else "NULL"
-    else:
-        # 라벨 자체를 찾지 못했으면 'NULL' 반환
-        return "NULL"
+def extract_line_value(label: str, text: str, null_value="NULL") -> str:
+    lab = label.strip()
+    for line in text.splitlines():
+        # 라벨 앞뒤 공백 허용, 콜론 앞뒤 공백 허용
+        m = re.match(rf"^\s*{re.escape(lab)}\b\s*:\s*(.*)\s*$", line)
+        if m:
+            val = m.group(1).strip()
+            return val if val else null_value
+    return null_value
 
 
 # ---------- 감정 추출 ----------
