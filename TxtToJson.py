@@ -15,6 +15,18 @@ def extract_line_value(label, text):
 def extract_emotion(pattern, text, flags=0):
     m = re.search(pattern, text, flags)
     return m.group(1).strip() if m else "NULL"
+# ---------- 뇌파 데이터 딕셔너리로 반환 ----------
+def make_metrics(stress, engage, relax, excite, interest, focus):
+    return {
+        "stress": stress,
+        "engage": engage,
+        "relax": relax,
+        "excite": excite,
+        "interest": interest,
+        "focus": focus,
+    }
+
+
 # ---------- 파일 로드 ----------
 with open("VR_Data.txt", "r", encoding="utf-8") as f:
     raw = f.read()
@@ -68,3 +80,25 @@ for state, body in step_blocks:
 
     if vals:
         pm_by_state.setdefault(state, []).append(vals)
+# 상태별 평균 → metrics
+def metrics_of_state(state_name, fallback=None):
+    arr = pm_by_state.get(state_name, [])
+    if not arr:
+        return fallback if fallback is not None else make_metrics(0, 0, 0, 0, 0)
+
+    x = arr[0]
+    s = x.get("PM_Stress", 0.0)
+    eg = x.get("PM_Engage", 0.0)
+    r = x.get("PM_Relax", 0.0)
+    ex = x.get("PM_Excite", 0.0)
+    i = x.get("PM_Interest", 0.0)
+    f = x.get("PM_Focus", 0.0)
+
+    return make_metrics(s, eg, r, ex, i, f)
+
+
+# ---------- 매핑 규칙 ----------
+# 파일의 Step1 == JSON.step2, 파일의 Step2 == JSON.step3, 파일의 Step3 == JSON.step4
+m_step2 = metrics_of_state("Step1")
+m_step3 = metrics_of_state("Step2")
+m_step4 = metrics_of_state("Step3")
