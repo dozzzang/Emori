@@ -38,3 +38,33 @@ step_blocks = re.findall(
     raw,
     flags=re.DOTALL,
 )
+
+# Step별 PM 수치 누적
+pm_by_state = {}
+for state, body in step_blocks:
+    if (
+        state == "Breathe"
+        or state == "Crosshair"
+        or state == "PreStep1"
+        or state == "PreStep2"
+        or state == "PreStep3"
+    ):
+        continue
+
+    print(body)
+
+    vals = {}
+    for key in [
+        "PM_Stress",
+        "PM_Engage",
+        "PM_Relax",
+        "PM_Excite",
+        "PM_Interest",
+        "PM_Focus",
+    ]:
+        m = re.search(rf"{key}\s*:\s*([0-9]*\.?[0-9]+)", body)
+        if m:
+            vals[key] = float(m.group(1))
+
+    if vals:
+        pm_by_state.setdefault(state, []).append(vals)
