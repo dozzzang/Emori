@@ -1,6 +1,8 @@
 import json
 import re
 from statistics import mean
+
+
 # ---------- 값 추출 by 정규표현식(라벨 : 값) ----------
 def extract_line_value(label, text):
     m = re.search(rf"^{re.escape(label)}\s*:\s*([^\n])$", text, flags=re.MULTILINE)
@@ -11,10 +13,14 @@ def extract_line_value(label, text):
     else:
         # 라벨 자체를 찾지 못했으면 'NULL' 반환
         return "NULL"
+
+
 # ---------- 감정 추출 ----------
 def extract_emotion(pattern, text, flags=0):
     m = re.search(pattern, text, flags)
     return m.group(1).strip() if m else "NULL"
+
+
 # ---------- 뇌파 데이터 딕셔너리로 반환 ----------
 def make_metrics(stress, engage, relax, excite, interest, focus):
     return {
@@ -63,8 +69,6 @@ for state, body in step_blocks:
     ):
         continue
 
-    print(body)
-
     vals = {}
     for key in [
         "PM_Stress",
@@ -80,6 +84,8 @@ for state, body in step_blocks:
 
     if vals:
         pm_by_state.setdefault(state, []).append(vals)
+
+
 # 상태별 평균 → metrics
 def metrics_of_state(state_name, fallback=None):
     arr = pm_by_state.get(state_name, [])
