@@ -89,7 +89,7 @@ for state, body in step_blocks:
 def metrics_of_state(state_name, fallback=None):
     arr = pm_by_state.get(state_name, [])
     if not arr:
-        return fallback if fallback is not None else make_metrics(0, 0, 0, 0, 0)
+        return fallback if fallback is not None else make_metrics(0, 0, 0, 0, 0, 0)
 
     x = arr[0]
     s = x.get("PM_Stress", 0.0)
