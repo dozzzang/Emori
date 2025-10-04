@@ -205,3 +205,30 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+# ============================================
+# 프로젝트 특화 설정 (VR Interview Analysis)
+# ============================================
+
+# 데이터 파일 (개인정보 보호)
+data/hwp_files/*.hwp
+data/txt_files/*.txt
+
+# 하지만 폴더 구조는 유지 (.gitkeep 파일은 제외하지 않음)
+!data/hwp_files/.gitkeep
+!data/txt_files/.gitkeep
+!output/.gitkeep
+
+# 출력 파일
+output/*
+!output/.gitkeep
+
+# 임시 파일
+*.tmp
+*.temp
+
+# Mac 특화
+.DS_Store
+.AppleDouble
+.LSOverride
