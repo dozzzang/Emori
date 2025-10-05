@@ -185,3 +185,98 @@ if all_step_indices:
     plt.savefig(BAR_OUT_PATH, dpi=160, bbox_inches="tight")
     print(f"\n막대 그래프가 저장되었습니다: {BAR_OUT_PATH.resolve()}")
 
+# ====== Radar Chart (Step4) ======
+STEP_TO_PLOT_SINGLE = "step4"
+radar_indices = all_step_indices.get(STEP_TO_PLOT_SINGLE)
+
+if radar_indices:
+
+    # # step4값 확인 코드 (주석 처리된 원본 코드 유지)
+    # print(
+    #     f"\n\n=== {participant_key}: {STEP_TO_PLOT_SINGLE} 계산된 5가지 지표 값 (0-100 기준) ==="
+    # )
+    # for k, v in radar_indices.items():
+    #     print(f"- {k}: {v * 100:.2f}")
+    # print("====================================================================")
+
+    labels = list(radar_indices.keys())
+    values = [radar_indices[k] * 100 for k in labels]
+
+    N = len(labels)
+    angles = np.linspace(0, 2 * np.pi, N, endpoint=False).tolist()
+    angles_closed = angles + [angles[0]]
+    values_closed = values + [values[0]]
+
+    # 차트 설정
+    plt.figure(figsize=(8, 8))
+    ax = plt.subplot(111, polar=True)
+
+    ax.plot(
+        angles_closed,
+        values_closed,
+        linewidth=3,
+        linestyle="solid",
+        color=RADAR_COLOR,
+        label=f"{STEP_TO_PLOT_SINGLE} 점수",
+    )
+    ax.fill(angles_closed, values_closed, color=RADAR_COLOR, alpha=0.3)
+
+    # 기본 축 레이블 제거
+    ax.set_xticks(angles)
+    ax.set_xticklabels([""] * N)  # 빈 문자열로 기본 레이블을 제거
+
+    # Y축 눈금 및 범위 변경
+    y_ticks = np.arange(20, 101, 20)
+    ax.set_yticks(y_ticks)
+    ax.set_yticklabels([f"{int(y)}" for y in y_ticks], color="gray", size=10)
+    ax.set_ylim(0, 100)
+
+    # 텍스트 위치를 조정하기 위한 오프셋 (축 밖으로 밀어내기)
+    DATA_LABEL_OFFSET = 5
+
+    # 데이터 포인트 값 표시
+    for angle, value in zip(angles, values):
+        text_y = value + DATA_LABEL_OFFSET
+        ax.text(
+            angle,
+            text_y,
+            f"{int(round(value))}",  # 반올림하여 정수로 표시
+            ha="center",
+            va="center",
+            fontsize=12,
+            fontweight="bold",
+            color="black",
+        )
+
+    # 지표 레이블 표시
+    TEXT_OFFSET = 12
+    for angle, label in zip(angles, labels):
+        # 각도에 따라 정렬 기준(ha) 설정
+        ha_align = "center"
+
+        if angle == np.pi:  # 9시 방향
+            ha_align = "right"
+
+        # 모든 레이블을 100 + TEXT_OFFSET 위치에 배치
+        ax.text(
+            angle,
+            100 + TEXT_OFFSET,
+            label,
+            ha=ha_align,
+            va="center",
+            fontsize=12,
+        )
+
+    title = f"{participant_key}"
+    ax.set_title(title, y=1.08, loc="left", fontsize=14)
+
+    plt.tight_layout()
+
+    # 출력 디렉토리가 없으면 생성
+    RADAR_OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    plt.savefig(RADAR_OUT_PATH, dpi=160, bbox_inches="tight")
+    print(f"방사형 차트가 저장되었습니다: {RADAR_OUT_PATH.resolve()}")
+else:
+    print(
+        f"\n경고: {STEP_TO_PLOT_SINGLE} 데이터가 없거나 유효하지 않아 방사형 차트 및 계산 수치를 생성하지 못했습니다."
+    )
