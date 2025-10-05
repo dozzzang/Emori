@@ -240,3 +240,16 @@ def augment_data(base_data: Dict[str, Any], index: int) -> Tuple[str, Dict[str, 
     return participant_id, participant_data
 
 
+# ===== 최종 JSON 정리 함수 =====
+def replace_none_with_null_string(data):
+    """딕셔너리 내의 모든 None 값을 "NULL" 문자열로 재귀적으로 대체"""
+    if isinstance(data, dict):
+        return {k: replace_none_with_null_string(v) for k, v in data.items()}
+    elif isinstance(data, list):
+        return [replace_none_with_null_string(i) for i in data]
+    elif data is None:
+        return "NULL"
+    else:
+        return data
+
+
