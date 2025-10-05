@@ -147,3 +147,96 @@ def get_constrained_value(base_val, noise_factor=PM_CORRELATION_NOISE):
     return round(random.uniform(min_val, max_val), 7)
 
 
+# ===== 데이터 증강 =====
+def augment_data(base_data: Dict[str, Any], index: int) -> Tuple[str, Dict[str, Any]]:
+    """기본 데이터를 기반으로 값을 무작위로 변경하여 새로운 참가자 데이터를 생성"""
+
+    new_data = json.loads(json.dumps(base_data))
+
+    # 식별 정보 변경
+    base_file_id = os.path.basename(BASE_INPUT_FILE).replace(".txt", "")
+    participant_id = f"participant_{base_file_id}_AUG{index+1:03d}"
+
+    # GameData 무작위 변경
+    new_data["STEP1_EMOTION_COLOR"] = random.choice(EMOTION_CHOICES)
+    new_data["STEP2_FILL_RATE"] = random.choice(FILL_RATE_CHOICES_STEP2)
+    new_data["STEP3_FILL_RATE"] = random.choice(FILL_RATE_CHOICES_STEP3)
+
+    # --- PM 값 무작위 조절 ---
+    for step_key in ["PM_Step1", "PM_Step2", "PM_Step3"]:
+
+        if index >= 9:
+            # 1. 정서 기반 (Relax/Stress 관계 정의)
+            # Relax Base는 0.1~0.9 범위에서 생성하여 극단적인 0/1 상태를 약간 피함
+            relax_base = random.uniform(0.1, 0.9)
+
+            # Stress Base는 Relax의 반대 (1 - Relax)
+            stress_base = 1.0 - relax_base
+
+            # 2. 인지 기반 (Engage, Interest, Focus 관계 정의)
+            # Cognitive Base는 0.001~1.0 사이에서 생성
+            cognitive_base = random.uniform(0.001, 1.0)
+
+        pm_block = new_data[step_key]
+
+        for key in pm_block.keys():
+
+            if index < 9:
+                # AUG001 ~ AUG009 : 원본의 로직 유지
+                original_value = pm_block.get(key, 0.5)
+
+                # 노이즈 범위 설정
+                noise_min = max(0.0, original_value * (1 - PM_AUGMENT_RANGE))
+                noise_max = min(1.0, original_value * (1 + PM_AUGMENT_RANGE))
+
+                # 0에 가까운 값 처리
+                if original_value < PM_NEAR_ZERO_THRESHOLD:
+                    new_value = round(random.uniform(0.001, PM_NEAR_ZERO_MAX), 7)
+                else:
+                    new_value = round(random.uniform(noise_min, noise_max), 7)
+
+            else:
+                # AUG010 이상 (index 9 ~ 끝): 제약 조건 기반 랜덤 값 적용
+                if key == "relax":
+                    new_value = get_constrained_value(relax_base)
+                elif key == "stress":
+                    # Relax 기반 값 주변에서 변동
+                    new_value = get_constrained_value(stress_base)
+                elif key in ["engage", "interest", "focus"]:
+                    # Cognitive 기반 값 주변에서 변동
+                    new_value = get_constrained_value(cognitive_base)
+                elif key == "excite":
+                    # Excite는 독립적인 랜덤 값을 유지 (각성 다양성 부여)
+                    new_value = round(random.uniform(0.001, 1.0), 7)
+                else:
+                    # 안전을 위한 기본값
+                    new_value = round(random.uniform(0.001, 1.0), 7)
+
+            pm_block[key] = new_value
+
+    # 최종 JSON 구조에 맞춰 데이터 구성
+    participant_data = {
+        "basic_info": {
+            "age": new_data.get("AGE"),
+            "gender": new_data.get("GENDER"),
+            "date": new_data.get("REPORT_DAY"),
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": new_data["STEP1_EMOTION_COLOR"],
+                **new_data["PM_Step1"],
+            },
+            "step3": {
+                "fill_rate": new_data["STEP2_FILL_RATE"],
+                **new_data["PM_Step2"],
+            },
+            "step4": {
+                "fill_rate": new_data["STEP3_FILL_RATE"],
+                **new_data["PM_Step3"],
+            },
+        },
+    }
+
+    return participant_id, participant_data
+
+
