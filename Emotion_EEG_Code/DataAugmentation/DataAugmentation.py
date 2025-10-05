@@ -23,3 +23,16 @@ BASE_INPUT_FILE = constants.BASE_INPUT_FILE
 
 
 ### 서술형 요약 기능 구현을 위한 ai 학습용 데이터 마련을 위한 증강 코드 ###
+
+
+# ===== 상수 설정 및 파일 경로 정의 =====
+# index 9까지의 데이터는 원본 데이터의 흐름 유지
+EMOTION_CHOICES = ["Happy", "Fear", "Sad", "Surprise", "Angry", "Disgust"]
+FILL_RATE_CHOICES_STEP2 = ["Full", "High", "Half", "Low"]
+FILL_RATE_CHOICES_STEP3 = ["Full", "High", "Half", "Low", "Minimal"]
+PM_AUGMENT_RANGE = 0.2  # PM 값 변동 범위: +/- 20% (index < 9 에서 사용)
+PM_CORRELATION_NOISE = 0.2  # 상관관계 기반 값의 변동 폭 (index >= 9 에서 사용)
+PM_NEAR_ZERO_THRESHOLD = 0.05  # 이 값보다 작으면 0 근처에서 변동 (index < 9 에서 사용)
+PM_NEAR_ZERO_MAX = 0.1  # (index < 9 에서 사용)
+
+
