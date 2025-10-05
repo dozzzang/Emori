@@ -139,3 +139,11 @@ def extract_base_data(raw_content: str) -> Dict[str, Any]:
     return data
 
 
+# --- 제약 조건을 적용한 노이즈 생성 ---
+def get_constrained_value(base_val, noise_factor=PM_CORRELATION_NOISE):
+    """기반 값 주변에 노이즈를 적용하고 0.001~1.0 범위를 유지"""
+    min_val = max(0.001, base_val * (1 - noise_factor))
+    max_val = min(1.0, base_val * (1 + noise_factor))
+    return round(random.uniform(min_val, max_val), 7)
+
+
