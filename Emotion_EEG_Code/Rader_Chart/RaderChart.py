@@ -122,3 +122,66 @@ for step_name in STEPS_TO_PLOT:
         print(f"경고: {step_name} 데이터가 JSON 파일에 없습니다. 건너뜁니다.")
 
 
+# ====== Bar Chart ======
+if all_step_indices:
+    # 데이터프레임으로 변환
+    # 첫 번째 유효한 단계의 지표 이름을 사용하여 컬럼 순서 지정
+    first_step_indices = next(iter(all_step_indices.values()))
+    index_names = list(first_step_indices.keys())
+
+    df = pd.DataFrame(all_step_indices).T
+    df = df[index_names]
+
+    # 플롯 준비
+    fig, ax = plt.subplots(figsize=(12, 6))
+
+    x = np.arange(len(index_names))
+    n_steps = len(STEPS_TO_PLOT)
+
+    # 막대 위치 조정
+    start_x = x - (BAR_WIDTH * (n_steps - 1) / 2)
+
+    # 각 단계별로 막대 플롯
+    for i, step_name in enumerate(STEPS_TO_PLOT):
+        if step_name not in df.index:
+            continue
+
+        bar_x = start_x + (i * BAR_WIDTH)
+
+        values_100 = df.loc[step_name].values * 100
+
+        rects = ax.bar(
+            bar_x, values_100, BAR_WIDTH, label=step_name, color=BAR_COLORS[i]
+        )
+
+        for rect in rects:
+            height = rect.get_height()
+            ax.annotate(
+                f"{height:.0f}",
+                xy=(rect.get_x() + rect.get_width() / 2, height),
+                xytext=(0, 3),
+                textcoords="offset points",
+                ha="center",
+                va="bottom",
+                fontsize=10,
+            )
+
+    # 차트 설정
+    ax.set_ylabel("지표 점수", fontsize=12)
+    ax.set_title(f"{participant_key} 단계별 지표 비교", fontsize=16)
+    ax.set_xticks(x)
+    ax.set_xticklabels(index_names, fontsize=12)
+
+    ax.set_yticks(np.arange(0, 101, 20))
+    ax.set_ylim(0, 110)
+    ax.grid(axis="y", linestyle="--", alpha=0.7)
+
+    ax.legend(loc="upper right", title="단계")
+
+    plt.tight_layout()
+
+    # 출력 디렉토리가 없으면 생성
+    BAR_OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    plt.savefig(BAR_OUT_PATH, dpi=160, bbox_inches="tight")
+    print(f"\n막대 그래프가 저장되었습니다: {BAR_OUT_PATH.resolve()}")
+
