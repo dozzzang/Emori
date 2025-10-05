@@ -253,3 +253,58 @@ def replace_none_with_null_string(data):
         return data
 
 
+# ===== 파일 읽기 및 증강 =====
+def main_augmentation_conversion(num_samples: int):
+    # 중복 실행 방지
+    if os.path.exists(OUTPUT_JSON_FILE):
+        print(f"'{OUTPUT_JSON_FILE}' 파일이 이미 존재합니다. 데이터 증강은 건너뜁니다.")
+        print("만약 데이터를 다시 증강하고 싶다면 파일을 삭제 후 실행하세요.")
+        return
+
+    random.seed(42)  # 재현성을 위해 시드 고정
+
+    # 파일 읽기
+    try:
+        with open(BASE_INPUT_FILE, "r", encoding="utf-8") as f:
+            original_txt_content = f.read()
+        print(f"'{BASE_INPUT_FILE}' 파일 내용을 성공적으로 읽었습니다.")
+    except FileNotFoundError:
+        print(
+            f"오류: 증강에 사용할 원본 파일 '{BASE_INPUT_FILE}'을(를) 찾을 수 없습니다."
+        )
+        return
+    except Exception as e:
+        print(f"파일 읽기 중 오류 발생: {e}")
+        return
+
+    # 원본 데이터의 기본값 추출
+    base_data = extract_base_data(original_txt_content)
+
+    if not base_data:
+        print(
+            "원본 TXT 내용에서 필요한 기본 데이터를 추출하지 못했습니다. (NAME이나 STEP 정보 확인 필요)"
+        )
+        return
+
+    consolidated_data = {}
+    print(f"총 {num_samples}개의 증강 데이터를 생성합니다...")
+
+    # 데이터 증강 및 JSON 구조로 변환
+    for i in range(num_samples):
+        pid, data = augment_data(base_data, i)
+        consolidated_data[pid] = data
+
+    # 통합된 데이터를 JSON 파일로 저장
+    final_data = replace_none_with_null_string(consolidated_data)
+
+    with open(OUTPUT_JSON_FILE, "w", encoding="utf-8") as f:
+        json.dump(final_data, f, indent=4, ensure_ascii=False)
+
+    print(
+        f"증강 완료! 총 {num_samples}개의 데이터 세트가 '{OUTPUT_JSON_FILE}'로 생성되었습니다."
+    )
+
+
+if __name__ == "__main__":
+    # 50개의 증강 데이터 생성
+    main_augmentation_conversion(num_samples=50)
