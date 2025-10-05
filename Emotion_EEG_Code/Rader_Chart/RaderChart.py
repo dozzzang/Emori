@@ -22,6 +22,29 @@ STEPS_TO_PLOT = ["step2", "step3", "step4"]
 BAR_COLORS = ["#6BAED6", "#74C476", "#FD8D3C"]
 RADAR_COLOR = "darkorange"
 BAR_WIDTH = 0.25
+
+
+# ====== Matplotlib 폰트 설정 (한글 깨짐 방지) ======
+def set_korean_font():
+    """시스템에 설치된 한글 폰트 설정"""
+    font_names = ["Malgun Gothic", "AppleGothic", "NanumGothic", "Noto Sans CJK JP"]
+    font_path = None
+    for name in font_names:
+        try:
+            font_path = fm.findfont(fm.FontProperties(family=name))
+            if font_path:
+                plt.rcParams["font.family"] = name
+                break
+        except Exception:
+            continue
+    if not font_path:
+        print("경고: 적절한 한글 폰트를 찾지 못했습니다. 기본 폰트로 출력됩니다.")
+
+
+set_korean_font()
+plt.rcParams["axes.unicode_minus"] = False
+
+
 # ====== JSON 로드 ======
 try:
     print(f"JSON 파일 로드 시도: {JSON_PATH.resolve()}")
@@ -45,6 +68,8 @@ try:
 except (StopIteration, KeyError):
     print("오류: JSON 파일에 참가자 데이터 또는 'steps' 데이터가 없습니다.")
     exit()
+
+
 # ====== 5가지 지표 계산 ======
 def clamp01(x):
     """값을 0.0과 1.0 사이로 제한합니다."""
