@@ -35,3 +35,28 @@ bnb_config = BitsAndBytesConfig(
     bnb_4bit_use_double_quant=True,
 )
 
+
+# ===================================================================
+# 2. 테스트 데이터 준비 (하나의 새로운 입력)
+# ===================================================================
+
+# 이 형식은 훈련 데이터셋의 'user' 프롬프트와 동일해야 합니다.
+NEW_EEG_DATA = """
+다음 정보를 바탕으로 2~3문장 한국어 보고서 톤으로 요약하세요.
+- step2.emotion_color: Happy
+- step3.fill_rate: Half
+- step4.fill_rate: Low
+- EEG(final=step4): stress=0.15, engage=0.85, relax=0.70, excite=0.90, interest=0.95, focus=0.92
+- EEG(trend = step4 - step2): d_stress=-0.05, d_engage=+0.05, d_relax=+0.60, d_excite=+0.10, d_interest=+0.15, d_focus=+0.08
+요건: 2~3문장, 보고서형 어체(…로 해석됩니다/보입니다), 핵심 요소(감정·신체감각·최종 EEG·변화·복합지표)를 반드시 포함.
+"""
+
+# Llama 3.1 Instruct 모델 형식에 맞게 프롬프트 구성
+messages = [
+    {
+        "role": "system",
+        "content": "너는 VR 감정/EEG 데이터를 2~3문장으로 요약하는 한국어 보고서 작성 도우미다. 반드시 보고서형 어체를 사용하고, 과장·추측을 피하며, 입력된 지표(최종값과 변화)를 반영한다. 인지/몰입·각성/관여·조절/안정 각 그룹에서 1개씩 대표 지표를 선택해 기술하고, 전반적인 상태를 포함하라.",
+    },
+    {"role": "user", "content": NEW_EEG_DATA},
+]
+
