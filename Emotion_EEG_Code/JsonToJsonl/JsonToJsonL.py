@@ -17,3 +17,16 @@ LABEL_CSV = constants.ASSISTANT_LABELS
 OUT = constants.TRAIN_JSONL_FILE
 
 
+# ===== 보조 함수 =====
+def delta(a, b):
+    """변화량 Δ = a - b (None 안전 처리)"""
+    a = 0.0 if a is None else float(a)
+    b = 0.0 if b is None else float(b)
+    return a - b
+
+
+def sign_fmt(x, prec=2):
+    """부호 포함 포맷 +0.12 / -0.07"""
+    return f"{x:+.{prec}f}"
+
+
