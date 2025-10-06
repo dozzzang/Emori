@@ -84,3 +84,45 @@ model = get_peft_model(model, peft_config)
 print("Model successfully converted to PEFT (LoRA) model.")
 
 
+# ===================================================================
+# 3. 데이터 로드 및 포매팅
+# ===================================================================
+
+# 3.1 데이터셋 로드
+print(f"Loading dataset from {JSONL_FILE}...")
+try:
+    # JSONL 파일을 로드합니다.
+    dataset = load_dataset("json", data_files=JSONL_FILE, split="train")
+except Exception as e:
+    print(
+        f"데이터셋 로드 오류: {e}. 'datasets' 라이브러리가 설치되어 있는지 확인하세요."
+    )
+    exit()
+
+
+# 3.2 Llama 3.1 Chat Template 포맷 함수 정의
+def apply_chat_template_to_text(example):
+    """
+    'messages' 컬럼의 내용을 Llama 3.1의 채팅 템플릿 문자열로 변환하여 'text' 컬럼에 저장합니다.
+    """
+    text = tokenizer.apply_chat_template(
+        example["messages"],
+        tokenize=False,
+        add_generation_prompt=False,
+    )
+    return {"text": text}
+
+
+# 3.3 데이터셋에 포매팅 적용
+dataset = dataset.map(
+    apply_chat_template_to_text,
+    remove_columns=dataset.column_names,
+    desc="Applying chat template and creating 'text' column",
+)
+
+# # 데이터셋의 첫 번째 샘플 확인 (테스트)
+# print("\n--- Formatted Dataset Example (First 100 characters) ---")
+# print(dataset[0]["text"][:100] + "...")
+# print("---------------------------------------------------------")
+
+
