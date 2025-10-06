@@ -81,3 +81,24 @@ def build_base_record(pid: str, participant: dict):
     }
 
 
+def load_manual_labels(csv_file_path: str) -> dict:
+    """CSV 파일에서 수동 작성된 정답지(Assistant)를 로드하여 딕셔너리로 그룹화"""
+    try:
+        # CSV 파일 로드
+        df = pd.read_csv(csv_file_path)
+    except FileNotFoundError:
+        print(f"Error: 정답 파일 '{csv_file_path}'을 찾을 수 없습니다.")
+        return {}
+    except Exception as e:
+        print(f"Error reading CSV file: {e}")
+        return {}
+
+    # 참가자 ID(pid)별로 정답(assistant_content)을 리스트로 그룹화
+    label_map = {}
+    for pid, group in df.groupby("participant_id"):
+        # 'summary_ko' 열의 값만 리스트로 변환하여 저장
+        label_map[pid] = group["summary_ko"].tolist()
+
+    return label_map
+
+
