@@ -68,3 +68,19 @@ if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 model.config.pad_token_id = tokenizer.pad_token_id
 
+# ===================================================================
+# 2. PEFT (LoRA) 설정 및 모델 변환
+# ===================================================================
+# LoRA 설정
+peft_config = LoraConfig(
+    r=32,
+    lora_alpha=16,
+    lora_dropout=0.1,
+    bias="none",
+    task_type="CAUSAL_LM",
+)
+
+model = get_peft_model(model, peft_config)
+print("Model successfully converted to PEFT (LoRA) model.")
+
+
