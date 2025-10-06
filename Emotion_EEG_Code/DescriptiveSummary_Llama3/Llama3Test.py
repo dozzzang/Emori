@@ -60,3 +60,43 @@ messages = [
     {"role": "user", "content": NEW_EEG_DATA},
 ]
 
+# ===================================================================
+# 3. 텍스트 생성
+# ===================================================================
+
+# 3.1 토크나이징 및 GPU 이동
+input_ids = tokenizer.apply_chat_template(
+    messages, add_generation_prompt=True, return_tensors="pt"
+).to(model.device)
+
+
+# 3.2 텍스트 생성
+print("\n--- Generating Report ---")
+outputs = model.generate(
+    input_ids,
+    max_new_tokens=256,
+    do_sample=True,
+    temperature=0.7,
+    top_k=50,
+    top_p=0.95,
+    eos_token_id=tokenizer.eos_token_id,
+)
+
+# 3.3 결과 디코딩 및 추출
+generated_text = tokenizer.decode(outputs[0], skip_special_tokens=False)
+
+# 응답 텍스트 추출
+ASSISTANT_HEADER = "<|start_header_id|>assistant<|end_header_id|>\n"
+if ASSISTANT_HEADER in generated_text:
+    response = generated_text.split(ASSISTANT_HEADER)[1]
+    response = response.split("<|eot_id|>")[0].strip()
+    response = response.split("<|end_of_text|>")[0].strip()
+else:
+    response = "응답 추출 실패: 예상된 'assistant' 헤더를 찾을 수 없습니다."
+
+
+print(f"**[NEW EEG DATA INPUT]**\n{NEW_EEG_DATA.strip()}")
+print("\n**[GENERATED REPORT]**")
+print("--------------------------------------------------")
+print(response)
+print("--------------------------------------------------")
