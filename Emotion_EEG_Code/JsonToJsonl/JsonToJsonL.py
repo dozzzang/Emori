@@ -102,3 +102,61 @@ def load_manual_labels(csv_file_path: str) -> dict:
     return label_map
 
 
+def main():
+    # 1. 수동 작성된 정답 목록 로드 (CSV 파일 사용)
+    manual_labels_map = load_manual_labels(LABEL_CSV)
+    if not manual_labels_map:
+        print("정답 데이터가 없으므로 JSONL 생성을 중단합니다.")
+        return
+
+    # 2. 입력 JSON 파일 로드
+    with open(SRC, "r", encoding="utf-8") as f:
+        src_json = json.load(f)
+
+    jsonl_records = []
+    missing_labels_count = 0
+
+    # 3. 통합된 JSON 파일의 모든 참가자 데이터를 순회
+    for pid, participant_data in src_json.items():
+        # 해당 참가자에 대한 수동 정답 목록을 로드
+        assistant_answers = manual_labels_map.get(pid)
+
+        if not assistant_answers or len(assistant_answers) < 4:
+            # 4개 미만의 정답이 있을 경우 경고 및 건너뛰기
+            missing_labels_count += 1
+            continue
+
+        # 4. 입력(user) 및 시스템(system)의 뼈대를 먼저 생성
+        base_record = build_base_record(pid, participant_data)
+
+        # 5. N개의 정답 목록을 반복하면서 레코드를 생성하고 추가
+        for idx, answer in enumerate(assistant_answers):
+            record = {
+                "messages": [
+                    {"role": "system", "content": base_record["system_content"]},
+                    {"role": "user", "content": base_record["user_content"]},
+                    {
+                        "role": "assistant",
+                        "content": answer,
+                    },  # CSV에서 로드된 정답 삽입
+                ],
+                "meta": {
+                    "participant_id": pid,
+                    "policy": f"final+trend_ver{idx+1}",
+                },
+            }
+            jsonl_records.append(record)
+
+    # 6. JSONL 파일로 출력
+    with open(OUT, "w", encoding="utf-8") as f:
+        for r in jsonl_records:
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+
+    print(
+        f"총 {len(src_json)}명의 참가자 중 {missing_labels_count}명이 레이블링 부족으로 제외되었습니다."
+    )
+    print(f"총 {len(jsonl_records)}개의 학습 레코드가 '{OUT}'으로 생성되었습니다.")
+
+
+if __name__ == "__main__":
+    main()
