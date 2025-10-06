@@ -159,3 +159,47 @@ trainer = SFTTrainer(
     processing_class=tokenizer,
 )
 
+# ===================================================================
+# 5. 훈련 실행
+# ===================================================================
+print("Starting training...")
+trainer.train()
+
+# 학습 종류 후 pc 끊김 문제 해결 부분
+print("Moving adapter to CPU and saving (adapter-only, safetensors)...")
+
+model.eval()
+model.to("cpu")  # CPU로 옮겨 저장 과정의 VRAM 압박 완화
+import torch
+
+torch.cuda.empty_cache()  # 남은 VRAM 비우기
+
+# PEFT(PeftModel)라면 어댑터만 저장
+model.save_pretrained(OUTPUT_DIR, safe_serialization=True)
+tokenizer.save_pretrained(OUTPUT_DIR)
+
+print(f"Adapter & tokenizer saved to {OUTPUT_DIR}")
+
+# ===================================================================
+# 6. 프로그램 종료 및 CUDA 컨텍스트 해제 (최종 안정화)
+# ===================================================================
+
+# Python 프로세스가 완전히 종료되도록 명시적인 명령어 추가
+try:
+    # Python에게 메모리 정리를 요청합니다.
+    import gc
+
+    gc.collect()
+
+    # CUDA 메모리를 마지막으로 한 번 더 비웁니다.
+    torch.cuda.empty_cache()
+
+    print("CUDA context cleanup initiated. Script will now terminate.")
+
+except Exception as e:
+    print(f"Final cleanup error: {e}")
+
+
+import sys
+
+sys.exit(0)  # 정상 종료 코드 반환
