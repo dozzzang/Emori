@@ -41,3 +41,30 @@ LOGGING_FREQUENCY = 5
 ACCUMULATION_STEPS = 8
 GROUP_BY_LENGTH_FLAG = False
 
+# ===================================================================
+# 1. 모델 및 토크나이저 설정
+# ===================================================================
+
+# 4-bit 양자화 설정 (GPU 메모리 절약)
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_compute_dtype=torch.bfloat16,
+    bnb_4bit_use_double_quant=True,
+)
+
+# 모델 로드
+model = AutoModelForCausalLM.from_pretrained(
+    MODEL_ID,
+    quantization_config=bnb_config,
+    device_map="auto",
+    torch_dtype=torch.bfloat16,
+    trust_remote_code=True,
+)
+
+# 토크나이저 로드
+tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
+if tokenizer.pad_token is None:
+    tokenizer.pad_token = tokenizer.eos_token
+model.config.pad_token_id = tokenizer.pad_token_id
+
