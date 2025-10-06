@@ -30,3 +30,54 @@ def sign_fmt(x, prec=2):
     return f"{x:+.{prec}f}"
 
 
+# ===== JSON → JSONL 생성 함수 =====
+def build_base_record(pid: str, participant: dict):
+    """JSON 데이터를 읽어 user와 system 필드만 포함된 JSONL 뼈대를 반환"""
+    steps = participant.get("steps", {})
+    s2, s3, s4 = steps.get("step2", {}), steps.get("step3", {}), steps.get("step4", {})
+
+    base_color = s2.get("emotion_color")
+    step3_fill = s3.get("fill_rate")
+    step4_fill = s4.get("fill_rate")
+
+    # 최종(step4) 값
+    final = {
+        "stress": float(s4.get("stress", s2.get("stress", 0.0))),
+        "engage": float(s4.get("engage", s2.get("engage", 0.0))),
+        "relax": float(s4.get("relax", s2.get("relax", 0.0))),
+        "excite": float(s4.get("excite", s2.get("excite", 0.0))),
+        "interest": float(s4.get("interest", s2.get("interest", 0.0))),
+        "focus": float(s4.get("focus", s2.get("focus", 0.0))),
+    }
+    # 트렌드(step4 - step2)
+    trend = {k: delta(final[k], float(s2.get(k, 0.0))) for k in final.keys()}
+
+    # ===== 입력(user) =====
+    user = (
+        "다음 정보를 바탕으로 2~3문장 한국어 보고서 톤으로 요약하세요.\n"
+        f"- step2.emotion_color: {base_color}\n"
+        f"- step3.fill_rate: {step3_fill}\n"
+        f"- step4.fill_rate: {step4_fill}\n"
+        f"- EEG(final=step4): stress={final['stress']:.2f}, engage={final['engage']:.2f}, relax={final['relax']:.2f}, "
+        f"excite={final['excite']:.2f}, interest={final['interest']:.2f}, focus={final['focus']:.2f}\n"
+        f"- EEG(trend = step4 - step2): "
+        f"d_stress={sign_fmt(trend['stress'])}, d_engage={sign_fmt(trend['engage'])}, d_relax={sign_fmt(trend['relax'])}, "
+        f"d_excite={sign_fmt(trend['excite'])}, d_interest={sign_fmt(trend['interest'])}, d_focus={sign_fmt(trend['focus'])}\n"
+        "요건: 2~3문장, 보고서형 어체(…로 해석됩니다/보입니다), 핵심 요소(감정·신체감각·최종 EEG·변화·복합지표)를 반드시 포함."
+    )
+
+    # ===== 시스템(system) =====
+    system = (
+        "너는 VR 감정/EEG 데이터를 2~3문장으로 요약하는 한국어 보고서 작성 도우미다. "
+        "반드시 보고서형 어체를 사용하고, 과장·추측을 피하며, 입력된 지표(최종값과 변화)를 반영한다. "
+        "인지/몰입·각성/관여·조절/안정 각 그룹에서 1개씩 대표 지표를 선택해 기술하고, 전반적인 상태를 포함하라."
+    )
+
+    # 이 뼈대 딕셔너리를 반환
+    return {
+        "user_content": user,
+        "system_content": system,
+        "pid": pid,
+    }
+
+
