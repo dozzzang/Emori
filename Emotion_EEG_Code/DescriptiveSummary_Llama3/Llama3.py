@@ -126,3 +126,36 @@ dataset = dataset.map(
 # print("---------------------------------------------------------")
 
 
+# ===================================================================
+# 4. TrainingArguments 및 SFTTrainer 설정
+# ===================================================================
+
+# TrainingArguments 설정
+training_args = TrainingArguments(
+    output_dir=OUTPUT_DIR,
+    num_train_epochs=OPTIMAL_EPOCHS,
+    per_device_train_batch_size=OPTIMAL_BATCH_SIZE,
+    gradient_accumulation_steps=ACCUMULATION_STEPS,
+    optim="paged_adamw_8bit",
+    save_strategy="no",
+    eval_strategy="no",
+    logging_steps=LOGGING_FREQUENCY,
+    save_total_limit=0,
+    learning_rate=3e-4,
+    fp16=False,
+    bf16=True,
+    max_grad_norm=0.3,
+    warmup_ratio=0.03,
+    lr_scheduler_type="cosine",
+    group_by_length=GROUP_BY_LENGTH_FLAG,
+    report_to="none",
+)
+
+# SFTTrainer 설정
+trainer = SFTTrainer(
+    model=model,
+    args=training_args,
+    train_dataset=dataset,
+    processing_class=tokenizer,
+)
+
