@@ -31,3 +31,36 @@ TE_HIGH, TE_LOW = 0.70, 0.40
 STEP_WEIGHTS = {"step2": 0.2, "step3": 0.3, "step4": 0.5}
 
 
+def emotion_tag_from_step2_step3(step2: dict, step3: dict) -> str:
+    base = (step2.get("emotion_color") or "").strip()
+    fr = (step3.get("fill_rate") or "").strip()
+    label = EMOTION_INTENSITY.get(base, {}).get(fr)
+    if not label:
+        label = base if base else "미정"
+    return f"#감정_{label}"
+
+
+def valence_tag(value: float) -> str:
+    if value >= VALENCE_HIGH:
+        return "#정서_긍정"
+    if value <= VALENCE_LOW:
+        return "#정서_부정"
+    return "#정서_평온"
+
+
+def arousal_tag(value: float) -> str:
+    if value >= AROUSAL_HIGH:
+        return "#활성_높음"
+    if value <= AROUSAL_LOW:
+        return "#활성_낮음"
+    return "#활성_보통"
+
+
+def te_tag(value: float) -> str:
+    if value >= TE_HIGH:
+        return "#몰입집중_강함"
+    if value <= TE_LOW:
+        return "#몰입집중_약함"
+    return "#몰입집중_보통"
+
+
