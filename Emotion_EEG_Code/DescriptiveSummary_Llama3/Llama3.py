@@ -28,7 +28,7 @@ import constants
 # 0. 설정 변수 / Llama-3.1-8B-Instruct 모델 사용 (접근권한 및 토큰 필요)
 # ===================================================================
 MODEL_ID = "meta-llama/Meta-Llama-3.1-8B-Instruct"
-JSONL_FILE = constants.INPUT_JSONL_FILE
+JSONL_FILE = constants.TRAIN_JSONL_FILE
 OUTPUT_DIR = constants.LLAMA3_ADAPTER
 
 if not os.path.exists(OUTPUT_DIR):
