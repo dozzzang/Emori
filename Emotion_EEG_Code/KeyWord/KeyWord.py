@@ -22,3 +22,12 @@ EMOTION_INTENSITY = {
     },
 }
 
+# -------- 임계값(절대 기준) --------
+VALENCE_HIGH, VALENCE_LOW = 0.60, 0.40
+AROUSAL_HIGH, AROUSAL_LOW = 0.65, 0.35
+TE_HIGH, TE_LOW = 0.70, 0.40
+
+# -------- step별 가중치 설정(후반의 데이터에 더 높은 가중치 부여) --------
+STEP_WEIGHTS = {"step2": 0.2, "step3": 0.3, "step4": 0.5}
+
+
