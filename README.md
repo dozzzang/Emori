@@ -27,3 +27,5 @@ GitHub 상태: <br>
 환경 설정: <br>
 * 가상환경(venv) 생성 완료 <br>
 * 필요 라이브러리: olefile 설치 완료 <br>
+
+
