@@ -48,3 +48,5 @@ GitHub 상태 : <br>
 환경설정 : <br>
 * python-mecab-ko 설치 (Mac 환경 자동 경로 감지 지원) <br>
 * 필요 라이브러리 : json, collections, re <br>
+
+# 3단계 : 감정 분석 ✅ (완료) <br>
