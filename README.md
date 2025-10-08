@@ -30,8 +30,6 @@ GitHub 상태: <br>
 * 필요 라이브러리: olefile 설치 완료 <br>
 
 
-<<<<<<< HEAD
-=======
 # 2단계 : 형태소 분석 (Mecab) ✅ (완료) <br>
 작업 내용: <br>
 * Mecab 형태소 분석기 적용 <br>
@@ -50,9 +48,3 @@ GitHub 상태 : <br>
 환경설정 : <br>
 * python-mecab-ko 설치 (Mac 환경 자동 경로 감지 지원) <br>
 * 필요 라이브러리 : json, collections, re <br>
-
-
-
-
-
->>>>>>> 64918e9069f089c8442177fbcd4613606d85579c
