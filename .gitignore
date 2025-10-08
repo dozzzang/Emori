@@ -232,3 +232,12 @@ output/*
 .DS_Store
 .AppleDouble
 .LSOverride
+
+
+# step2
+# 분석 결과 파일
+output/morpheme/*.json
+!output/morpheme/.gitkeep
+
+# 하지만 .gitkeep은 유지
+!output/morpheme/.gitkeep
