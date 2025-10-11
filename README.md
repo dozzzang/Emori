@@ -2,7 +2,7 @@
 1단계 : HWP → TXT 변환 ✅ <br>
 2단계 : 형태소 분석 (명사/동사/형용사 추출) ✅ <br>
 3단계 : 감정 분석 (BERT 모델) ✅ <br>
-4단계 : 키워드 추출 (TF-IDF, TextRank) <br>
+4단계 : 키워드 추출 (TF-IDF, TextRank) ✅ <br>
 5단계 : 감정 단어 우선 정렬 <br>
 6단계 : 시각화 (워드클라우드, 네트워크) <br>
 7단계 : 패턴 분석 및 인사이트 도출 <br>
@@ -154,5 +154,153 @@ GitHub 상태 : <br>
 
         # 2. 분석 모드 선택 (1: 단일, 2: 전체 파일)
         선택: 2
+
+# 4단계 : 키워드 추출 (TF-IDF & TextRank) ✅ (완료) <br>
+* 목적 
+    * 인터뷰 텍스트에서 핵심 키워드 자동 추출
+    * 3가지 알고리즘으로 다각적 분석 수행
+        * 빈도 기반 (Frequency) - 가장 직관적
+        * TF-IDF (Term Frequency-Inverse Document Frequency) - 문서별 중요도 고려
+        * TextRank (그래프 기반) - 단어 간 관계 고려
+
+* 기술 스택
+    * 핵심 라이브러리
+        * scikit-learn (sklearn)
+            * TfidfVectorizer: TF-IDF 벡터화 및 가중치 계산
+            * 최대 1000개 단어 추출
+            * min_df=1 (최소 1개 문서), max_df=0.8 (80% 이상 문서 제외)
+        * NetworkX (nx)
+            * 그래프 기반 TextRank 구현
+            * 노드: 단어들
+            * 엣지: 동시 등장 관계 (가중치: 동시 등장 횟수)
+            * PageRank 알고리즘 적용
+        * NumPy (np)
+            * 수치 연산 지원
+
+* 데이터 처리
+    * collections.Counter: 단어 빈도 계산
+    * json: 결과 저장/로드
+    * pathlib.Path: 파일 경로 처리
+    * os: 폴더/파일 관리
+
+* 알고리즘 상세 설명
+    1. 빈도 기반 (Frequency)
+        방식: 단어가 얼마나 많이 등장하는가?
+        예시: "불안" 10회, "개선" 8회, "기분" 6회
+        장점: 빠르고 직관적
+        단점: 맥락을 고려하지 않음
+
+    2. TF-IDF (Term Frequency-Inverse Document Frequency)
+        개념: 특정 문서에서 특별한 단어를 찾는다
+        공식: TF-IDF = (단어 빈도) × log(전체문서 수 / 단어포함문서 수)
+
+        예시 (3개 문서):
+        - 문서1: "상담", "효과적", "개선" 등
+        - 문서2: "상담", "효과적", "변화" 등
+        - 문서3: "상담", "효과적", "만족" 등
+
+        "상담" = 높은 TF, 낮은 IDF → 낮은 TF-IDF (공통단어)
+        "개선" = 중간 TF, 높은 IDF → 높은 TF-IDF (구분 가능)
+
+        처리 과정:
+        1. 토큰화 (각 문서의 단어들을 수치 벡터로 변환)
+        2. TF 계산 (각 단어의 빈도)
+        3. IDF 계산 (문서 전체에서의 희소성)
+        4. TF-IDF 스코어링 (상품-합산)
+
+    3. TextRank (그래프 기반)
+        개념: 단어들 사이의 관계를 그래프로 모델링하고 중요도 계산
+        알고리즘: PageRank (구글 검색의 페이지 순위 알고리즘)
+
+        처리 단계:
+        1. 그래프 생성
+        - 노드(Node): 추출된 명사들
+        - 엣지(Edge): 윈도우 크기 내 동시 등장
+        
+        2. 가중치 할당
+        - 같이 자주 등장하는 단어 쌍: 가중치↑
+        - 예: "VR" ↔ "체험" (자주 함께 등장)
+        
+        3. PageRank 계산
+        - 중요한 단어: 다른 중요 단어와 연결
+        - "VR"이 중요하면 "VR"과 연결된 단어도 중요성↑
+
+        장점: 단어 간 관계와 맥락을 함께 고려
+
+* 입력 데이터
+    * 출처: output/morpheme/ 폴더의 형태소 분석 JSON 파일
+    * 필수 필드: all_noun : 추출된 명사 리스트 (키워드 추출에 사용)
+
+* 출력 데이터
+    * 개별 파일 결과
+        * 파일: output/keywords/{파일명}_keywords.json
+            {
+                "filename": "EG_001.txt",
+                "total_nouns": 245,
+                "frequency_keywords": [
+                    ["불안", 10],
+                    ["개선", 8],
+                    ["기분", 6]
+                ],
+                "tfidf_keywords": [
+                    ["효과", 0.4521],
+                    ["변화", 0.3847],
+                    ["만족", 0.3214]
+                ],
+                "textrank_keywords": [
+                    ["VR", 0.0854],
+                    ["체험", 0.0721],
+                    ["상담", 0.0698]
+                ]
+            }
+
+    * 전체 요약 결과
+        * 파일: output/keywords/keywords_summary.json
+            {
+                "total_files": 50,
+                "overall_top_keywords": [
+                    ["상담", 450],
+                    ["개선", 380],
+                    ["만족", 320],
+                    ["불안", 290]
+                ]
+            }
+
+* 코드 구조
+    * 주요 클래스 : keywordExtractor
+        * 매서드 1 : extract_frequency_keywords()
+            * 단어 빈도 기반 추출
+            * 속도: 가장 빠름 (O(n))
+            * 정확도: 기본 수준
+
+        * 메서드 2: extract_tfidf_keywords()
+            * TF-IDF 기반 추출
+            * 최소 2개 이상 문서 필요
+            * 문서별 고유한 특성 단어 발견 우수
+            * 벡터 크기: 최대 1000개 단어
+
+        * 메서드 3: extract_textrank_keywords()
+            * TextRank(PageRank) 기반 추출
+            * 최소 5개 이상 단어 필요
+            * 윈도우 크기(기본값: 5) 내 동시 등장 관계 분석
+            * 그래프 가중치로 반복 업데이트
+
+        * 메서드 4: analyze_single_file()
+            * 단일 파일 분석
+            * 3가지 알고리즘 모두 적용
+            * 명사만 사용 (top_n=10)
+
+        * 매서드 5: analyze_all_files()
+            * 모든 파일 일괄 분석
+            * 개별 파일 결과 저장
+            * TF-IDF 전체 문서 대상 계산
+            * 전체 통계 요약 생성
+
+* 실행방법
+    * 필수 라이브러리 설치
+        pip install scikit-learn networkx numpy
+    
+    * 스크립트 실행
+        python step4_keyword_extraction.py
 
     
