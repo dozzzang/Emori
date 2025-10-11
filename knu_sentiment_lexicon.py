@@ -14,7 +14,7 @@ def download_knu_lexicon():
     os.makedirs(output_dir, exist_ok=True)
     
     output_path = os.path.join(output_dir, "SentiWord_Dict.txt")
-    
+
     if os.path.exists(output_path):
         print(f"✅ 감정사전이 이미 존재합니다: {output_path}")
         return output_path
