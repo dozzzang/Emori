@@ -1,6 +1,7 @@
 """
-3단계: 감정 분석
-KNU 감정사전 기반 감정 분석
+3단계: 감정 분석 (통합 버전)
+- 방법 1: KNU 감정사전 기반 (빠름, 규칙 기반)
+- 방법 2: BERT 딥러닝 모델 (느림, 정확)
 """
 
 import os
@@ -8,20 +9,28 @@ import json
 from pathlib import Path
 from collections import Counter
 import urllib.request
+import warnings
+warnings.filterwarnings('ignore')
 
 
 class SentimentAnalyzer:
-    """감정 분석기 - KNU 감정사전 기반"""
+    """감정 분석기 - 사전 기반 + BERT"""
     
-    def __init__(self, morpheme_folder="output/morpheme", output_folder="output/sentiment"):
+    def __init__(self, morpheme_folder="output/morpheme", output_folder="output/sentiment", use_bert=False):
         self.morpheme_folder = morpheme_folder
         self.output_folder = output_folder
+        self.use_bert = use_bert
         os.makedirs(output_folder, exist_ok=True)
         
         print("감정 분석기 초기화 중...")
         
-        # 감정사전 로드
+        # 1. 감정사전 로드
         self.sentiment_dict = self._load_sentiment_lexicon()
+        
+        # 2. BERT 모델 로드 (옵션)
+        self.bert_analyzer = None
+        if use_bert:
+            self.bert_analyzer = self._load_bert_model()
         
         print("✅ 초기화 완료!\n")
     
@@ -37,7 +46,7 @@ class SentimentAnalyzer:
         if os.path.exists(lexicon_path):
             return lexicon_path
         
-        print("📥 감정사전 다운로드 중...")
+        print("📥 KNU 감정사전 다운로드 중...")
         try:
             urllib.request.urlretrieve(url, lexicon_path)
             print(f"✅ 다운로드 완료")
@@ -51,7 +60,7 @@ class SentimentAnalyzer:
         lexicon_path = self._download_lexicon()
         
         if not lexicon_path:
-            print("⚠️  감정사전 없이 진행 (기본 감정단어 사용)")
+            print("⚠️  기본 감정단어 사용")
             return self._get_basic_sentiment_dict()
         
         sentiment_dict = {}
@@ -79,22 +88,58 @@ class SentimentAnalyzer:
     def _get_basic_sentiment_dict(self):
         """기본 감정 단어 사전"""
         return {
-            # 긍정 (+1)
+            # 긍정
             '좋다': 1.0, '행복하다': 1.0, '편안하다': 1.0, '즐겁다': 1.0,
             '기쁘다': 1.0, '만족스럽다': 1.0, '편하다': 1.0, '재미있다': 1.0,
+            '훌륭하다': 1.0, '멋지다': 1.0, '감사하다': 1.0,
             
-            # 부정 (-1)
+            # 부정
             '나쁘다': -1.0, '불안하다': -1.0, '슬프다': -1.0, '힘들다': -1.0,
-            '우울하다': -1.0, '스트레스': -1.0, '불편하다': -1.0, '답답하다': -1.0
+            '우울하다': -1.0, '스트레스': -1.0, '불편하다': -1.0, '답답하다': -1.0,
+            '무섭다': -1.0, '걱정되다': -1.0, '짜증나다': -1.0
         }
     
-    def analyze_text(self, words):
-        """단어 리스트에서 감정 분석"""
+    def _load_bert_model(self):
+        """BERT 모델 로드"""
+        print("\n🤖 BERT 모델 로딩 중... (최초 실행 시 다운로드)")
+        
+        try:
+            from transformers import pipeline
+            
+            # 한국어 감정 분석 모델들
+            models = [
+                "matthewburke/korean_sentiment",  # 추천
+                "snunlp/KR-ELECTRA-discriminator",
+                "beomi/kcbert-base"
+            ]
+            
+            for model_name in models:
+                try:
+                    analyzer = pipeline(
+                        "sentiment-analysis",
+                        model=model_name,
+                        tokenizer=model_name
+                    )
+                    print(f"✅ BERT 모델 로드 성공: {model_name}")
+                    return analyzer
+                except Exception as e:
+                    print(f"⚠️  {model_name} 실패: {e}")
+                    continue
+            
+            print("❌ 모든 BERT 모델 로드 실패. 사전 기반만 사용합니다.")
+            return None
+            
+        except ImportError:
+            print("❌ transformers 라이브러리가 설치되지 않았습니다.")
+            print("   설치: pip install transformers torch")
+            return None
+    
+    def analyze_lexicon_based(self, words):
+        """사전 기반 감정 분석"""
         
         scores = []
         positive_words = []
         negative_words = []
-        neutral_words = []
         
         for word in words:
             if word in self.sentiment_dict:
@@ -105,10 +150,7 @@ class SentimentAnalyzer:
                     positive_words.append((word, score))
                 elif score < 0:
                     negative_words.append((word, score))
-                else:
-                    neutral_words.append(word)
         
-        # 전체 감정 점수
         if scores:
             avg_score = sum(scores) / len(scores)
             total_score = sum(scores)
@@ -125,17 +167,53 @@ class SentimentAnalyzer:
             sentiment = "중립"
         
         return {
+            'method': 'lexicon',
             'sentiment': sentiment,
             'avg_score': round(avg_score, 3),
             'total_score': round(total_score, 3),
             'positive_words': sorted(positive_words, key=lambda x: x[1], reverse=True),
             'negative_words': sorted(negative_words, key=lambda x: x[1]),
-            'neutral_words': neutral_words,
             'emotion_word_count': len(scores)
         }
     
+    def analyze_bert_based(self, text):
+        """BERT 기반 감정 분석"""
+        
+        if not self.bert_analyzer:
+            return None
+        
+        try:
+            # 텍스트가 너무 길면 잘라냄 (BERT는 512 토큰 제한)
+            if len(text) > 500:
+                text = text[:500]
+            
+            result = self.bert_analyzer(text)[0]
+            
+            # label을 한글로 변환
+            label_map = {
+                'POSITIVE': '긍정',
+                'NEGATIVE': '부정',
+                'NEUTRAL': '중립',
+                'positive': '긍정',
+                'negative': '부정',
+                'neutral': '중립'
+            }
+            
+            sentiment = label_map.get(result['label'], result['label'])
+            confidence = result['score']
+            
+            return {
+                'method': 'bert',
+                'sentiment': sentiment,
+                'confidence': round(confidence, 3)
+            }
+        
+        except Exception as e:
+            print(f"   ⚠️  BERT 분석 실패: {e}")
+            return None
+    
     def analyze_single_file(self, morpheme_filename):
-        """단일 형태소 분석 결과 파일에서 감정 분석"""
+        """단일 파일 감정 분석"""
         
         morpheme_path = os.path.join(self.morpheme_folder, morpheme_filename)
         
@@ -155,7 +233,16 @@ class SentimentAnalyzer:
             print(f"❌ 파일 읽기 실패: {e}")
             return None
         
-        # 모든 단어 수집 (명사, 동사, 형용사)
+        # 원본 텍스트 경로 추정
+        txt_filename = morpheme_data.get('filename', '')
+        txt_path = os.path.join('data/txt_files', txt_filename)
+        
+        original_text = ""
+        if os.path.exists(txt_path):
+            with open(txt_path, 'r', encoding='utf-8') as f:
+                original_text = f.read()
+        
+        # 모든 단어 수집
         all_words = []
         all_words.extend(morpheme_data.get('all_nouns', []))
         all_words.extend(morpheme_data.get('all_verbs', []))
@@ -163,34 +250,39 @@ class SentimentAnalyzer:
         
         print(f"   분석할 단어 수: {len(all_words)}개")
         
-        # 감정 분석
-        result = self.analyze_text(all_words)
+        # 1. 사전 기반 분석
+        print(f"\n   📖 사전 기반 분석 중...")
+        lexicon_result = self.analyze_lexicon_based(all_words)
         
-        print(f"\n   📊 감정 분석 결과:")
-        print(f"      감정: {result['sentiment']}")
-        print(f"      평균 점수: {result['avg_score']}")
-        print(f"      총점: {result['total_score']}")
-        print(f"      감정 단어: {result['emotion_word_count']}개")
+        print(f"      감정: {lexicon_result['sentiment']}")
+        print(f"      평균 점수: {lexicon_result['avg_score']}")
+        print(f"      감정 단어: {lexicon_result['emotion_word_count']}개")
         
-        if result['positive_words']:
-            print(f"\n   😊 긍정 단어 (Top 5):")
-            for word, score in result['positive_words'][:5]:
-                print(f"      {word}: +{score}")
+        if lexicon_result['positive_words']:
+            print(f"\n      😊 긍정 단어 (Top 5):")
+            for word, score in lexicon_result['positive_words'][:5]:
+                print(f"         {word}: +{score}")
         
-        if result['negative_words']:
-            print(f"\n   😢 부정 단어 (Top 5):")
-            for word, score in result['negative_words'][:5]:
-                print(f"      {word}: {score}")
+        if lexicon_result['negative_words']:
+            print(f"\n      😢 부정 단어 (Top 5):")
+            for word, score in lexicon_result['negative_words'][:5]:
+                print(f"         {word}: {score}")
+        
+        # 2. BERT 기반 분석 (옵션)
+        bert_result = None
+        if self.use_bert and original_text:
+            print(f"\n   🤖 BERT 분석 중...")
+            bert_result = self.analyze_bert_based(original_text)
+            
+            if bert_result:
+                print(f"      감정: {bert_result['sentiment']}")
+                print(f"      신뢰도: {bert_result['confidence']}")
         
         # 결과 저장
         output_data = {
-            'filename': morpheme_data.get('filename', ''),
-            'sentiment': result['sentiment'],
-            'avg_score': result['avg_score'],
-            'total_score': result['total_score'],
-            'emotion_word_count': result['emotion_word_count'],
-            'positive_words': result['positive_words'],
-            'negative_words': result['negative_words'],
+            'filename': txt_filename,
+            'lexicon_based': lexicon_result,
+            'bert_based': bert_result,
             'text_length': morpheme_data.get('text_length', 0)
         }
         
@@ -205,7 +297,7 @@ class SentimentAnalyzer:
         return output_data
     
     def analyze_all_files(self):
-        """모든 형태소 분석 파일 처리"""
+        """모든 파일 감정 분석"""
         
         morpheme_files = sorted([
             f for f in os.listdir(self.morpheme_folder) 
@@ -218,6 +310,7 @@ class SentimentAnalyzer:
             return []
         
         print(f"\n📚 총 {len(morpheme_files)}개 파일 감정 분석 시작")
+        print(f"   방법: {'사전 + BERT' if self.use_bert else '사전 기반'}")
         
         results = []
         for i, filename in enumerate(morpheme_files, 1):
@@ -232,29 +325,46 @@ class SentimentAnalyzer:
             print(f"📊 전체 통계")
             print('='*60)
             
-            sentiments = [r['sentiment'] for r in results]
-            sentiment_counts = Counter(sentiments)
+            # 사전 기반 통계
+            lexicon_sentiments = [r['lexicon_based']['sentiment'] for r in results]
+            lexicon_counts = Counter(lexicon_sentiments)
             
-            print(f"\n   감정 분포:")
-            for sentiment, count in sentiment_counts.items():
+            print(f"\n   [사전 기반] 감정 분포:")
+            for sentiment, count in lexicon_counts.items():
                 percentage = (count / len(results)) * 100
                 print(f"      {sentiment}: {count}개 ({percentage:.1f}%)")
             
-            avg_scores = [r['avg_score'] for r in results]
+            avg_scores = [r['lexicon_based']['avg_score'] for r in results]
             overall_avg = sum(avg_scores) / len(avg_scores)
-            
             print(f"\n   전체 평균 감정 점수: {overall_avg:.3f}")
             
-            # 전체 요약 저장
+            # BERT 통계
+            if self.use_bert:
+                bert_sentiments = [
+                    r['bert_based']['sentiment'] 
+                    for r in results 
+                    if r['bert_based']
+                ]
+                if bert_sentiments:
+                    bert_counts = Counter(bert_sentiments)
+                    print(f"\n   [BERT 기반] 감정 분포:")
+                    for sentiment, count in bert_counts.items():
+                        percentage = (count / len(bert_sentiments)) * 100
+                        print(f"      {sentiment}: {count}개 ({percentage:.1f}%)")
+            
+            # 요약 저장
             summary = {
                 'total_files': len(results),
-                'sentiment_distribution': dict(sentiment_counts),
+                'method': 'lexicon + bert' if self.use_bert else 'lexicon',
+                'lexicon_distribution': dict(lexicon_counts),
                 'overall_avg_score': round(overall_avg, 3),
                 'files': [
                     {
                         'filename': r['filename'],
-                        'sentiment': r['sentiment'],
-                        'score': r['avg_score']
+                        'lexicon_sentiment': r['lexicon_based']['sentiment'],
+                        'lexicon_score': r['lexicon_based']['avg_score'],
+                        'bert_sentiment': r['bert_based']['sentiment'] if r['bert_based'] else None,
+                        'bert_confidence': r['bert_based']['confidence'] if r['bert_based'] else None
                     }
                     for r in results
                 ]
@@ -274,12 +384,20 @@ class SentimentAnalyzer:
 
 
 def main():
-    print("\n😊 3단계: 감정 분석")
+    print("\n😊 3단계: 감정 분석 (통합)")
+    
+    print("\n분석 방법 선택:")
+    print("1. 사전 기반만 (빠름)")
+    print("2. 사전 + BERT (느림, 정확)")
+    
+    method_choice = input("\n선택 (1-2): ").strip()
+    use_bert = (method_choice == '2')
     
     try:
-        analyzer = SentimentAnalyzer()
+        analyzer = SentimentAnalyzer(use_bert=use_bert)
         
-        print("\n1. 단일 파일 분석")
+        print("\n분석 모드 선택:")
+        print("1. 단일 파일 분석")
         print("2. 전체 파일 분석")
         
         choice = input("\n선택 (1-2): ").strip()
