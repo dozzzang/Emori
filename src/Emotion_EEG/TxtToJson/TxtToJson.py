@@ -1,5 +1,7 @@
 import json
 import re
+import glob
+import os
 
 
 # ---------- 값 추출 by 정규표현식(라벨 : 값) ----------
@@ -32,9 +34,29 @@ def make_metrics(stress, engage, relax, excite, interest, focus):
     }
 
 
+DIR_PATH = "data/Emotion_EEG/VR_Result_Data"
+
+file_pattern = os.path.join(DIR_PATH, "RECORD*.txt")
+file_list = glob.glob(file_pattern)
+
+INPUT_FILE_NAME = "data/Emotion_EEG/VR_Result_Data"
 # ---------- 파일 로드 ----------
-with open("RECORD_20250515__1.txt", "r", encoding="utf-8") as f:
-    raw = f.read()
+if not file_list:
+    print(f"경로 '{DIR_PATH}'에서 'RECORD'로 시작하는 .txt 파일을 찾을 수 없습니다.")
+else:
+    # 2. 찾은 파일 목록 중 첫 번째 파일을 선택 (혹은 원하는 파일을 선택)
+    INPUT_FILE_NAME = file_list[0]
+
+    # 3. 파일 로드
+    try:
+        with open(INPUT_FILE_NAME, "r", encoding="utf-8") as f:
+            raw = f.read()
+            print(f"성공적으로 파일을 로드했습니다: {INPUT_FILE_NAME}")
+            # print(raw[:200]) # 파일 내용 일부 확인
+    except FileNotFoundError:
+        print(f"오류: 파일을 찾을 수 없습니다 - {INPUT_FILE_NAME}")
+    except Exception as e:
+        print(f"파일을 읽는 중 오류가 발생했습니다: {e}")
 
 # ---------- UserInfo ----------
 name = extract_line_value("NAME", raw)
@@ -128,6 +150,7 @@ result_data = {
     }
 }
 
+OUTPUT_FILE_NAME = "output/Emotion_EEG/Report_Json_Data/Report_Data.json"
 # ---------- Json Data 생성 ----------
-with open("Report_Data.json", "w", encoding="utf-8") as f:
+with open(OUTPUT_FILE_NAME, "w", encoding="utf-8") as f:
     json.dump(result_data, f, indent=4, ensure_ascii=False)
