@@ -6,6 +6,21 @@
 5단계 : 감정 단어 우선 정렬 ✅ <br>
 6단계 : 시각화 (워드클라우드, 네트워크) ✅ <br>
 
+# 개선점
+* step1
+    -
+* step2
+    * 필요없는 문장 제외 인터뷰 내용에서만 단어 추출
+        * 문장 앞의 Q or A 유무로 필요 문장 파악
+* step3
+    -
+* step4
+    -
+* step5
+    -
+* step6
+    -
+
 
 # 1단계 : HWP → TXT 변환 자동화 ✅ (완료) <br>
 작업 내용: <br>
@@ -461,3 +476,4 @@ GitHub 상태 : <br>
 * 실행 방법
     * 필수 라이브러리 설치
         pip install matplotlib wordcloud numpy
+
