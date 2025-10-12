@@ -152,7 +152,7 @@ class KeywordExtractor:
             return None
         
         print(f"\n{'='*60}")
-        print(f"📄 키워드 추출 중: {morpheme_filename}")
+        print(f" 키워드 추출 중: {morpheme_filename}")
         print('='*60)
         
         # 형태소 분석 결과 로드
@@ -170,7 +170,7 @@ class KeywordExtractor:
             return None
         
         # 1. 빈도 기반
-        print(f"\n   📊 빈도 기반 키워드:")
+        print(f"\n    빈도 기반 키워드:")
         freq_keywords = self.extract_frequency_keywords(nouns, top_n=10)
         for word, count in freq_keywords[:5]:
             print(f"      {word}: {count}회")
@@ -196,7 +196,7 @@ class KeywordExtractor:
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, ensure_ascii=False, indent=2)
         
-        print(f"\n   💾 결과 저장: {output_path}")
+        print(f"\n    결과 저장: {output_path}")
         
         return output_data
     
@@ -236,7 +236,7 @@ class KeywordExtractor:
         # TF-IDF (전체 문서 대상)
         if len(all_documents) >= 2:
             print(f"\n\n{'='*60}")
-            print(f"📊 TF-IDF 키워드 추출 (전체 문서)")
+            print(f" TF-IDF 키워드 추출 (전체 문서)")
             print('='*60)
             
             tfidf_results = self.extract_tfidf_keywords(all_documents, top_n=10)
@@ -261,7 +261,7 @@ class KeywordExtractor:
         # 전체 통계
         if results:
             print(f"\n\n{'='*60}")
-            print(f"📊 전체 키워드 통계")
+            print(f" 전체 키워드 통계")
             print('='*60)
             
             # 모든 문서의 빈도 키워드 합산
@@ -272,7 +272,7 @@ class KeywordExtractor:
             
             overall_freq = Counter(all_keywords).most_common(20)
             
-            print(f"\n  🏆 전체 상위 키워드 (Top 20):")
+            print(f"\n   전체 상위 키워드 (Top 20):")
             for word, count in overall_freq:
                 print(f"    {word}: {count}회")
             
@@ -286,7 +286,7 @@ class KeywordExtractor:
             with open(summary_path, 'w', encoding='utf-8') as f:
                 json.dump(summary, f, ensure_ascii=False, indent=2)
             
-            print(f"\n  💾 전체 요약 저장: {summary_path}")
+            print(f"\n   전체 요약 저장: {summary_path}")
         
         print(f"\n{'='*60}")
         print(f"✅ 키워드 추출 완료!")
@@ -296,7 +296,7 @@ class KeywordExtractor:
 
 
 def main():
-    print("\n🔑 4단계: 키워드 추출")
+    print("\n 4단계: 키워드 추출")
     
     try:
         extractor = KeywordExtractor()

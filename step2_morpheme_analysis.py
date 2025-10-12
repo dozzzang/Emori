@@ -155,7 +155,7 @@ class QAMorphemeAnalyzer:
             return None
         
         print(f"\n{'='*60}")
-        print(f"📄 분석 중: {txt_filename}")
+        print(f" 분석 중: {txt_filename}")
         print(f"   모드: {'Q&A 패턴만' if mode == 'qa_only' else '전체 텍스트'}")
         print('='*60)
         
@@ -184,7 +184,7 @@ class QAMorphemeAnalyzer:
         
         result = self.extract_morphemes(analyze_text)
         
-        print(f"\n   📊 분석 결과:")
+        print(f"\n    분석 결과:")
         print(f"      명사: {len(result['nouns'])}개")
         print(f"      동사: {len(result['verbs'])}개")
         print(f"      형용사: {len(result['adjectives'])}개")
@@ -217,7 +217,7 @@ class QAMorphemeAnalyzer:
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, ensure_ascii=False, indent=2)
         
-        print(f"\n   💾 결과 저장: {output_path}")
+        print(f"\n    결과 저장: {output_path}")
         return output_data
     
     def analyze_all_files(self, mode='qa_only'):
@@ -228,7 +228,7 @@ class QAMorphemeAnalyzer:
             print(f"❌ TXT 파일 없음: {self.txt_folder}")
             return []
         
-        print(f"\n📚 총 {len(txt_files)}개 파일 분석 시작")
+        print(f"\n 총 {len(txt_files)}개 파일 분석 시작")
         print(f"   모드: {'Q&A 패턴만' if mode == 'qa_only' else '전체 텍스트'}")
         
         results = []
@@ -245,11 +245,11 @@ class QAMorphemeAnalyzer:
                 total_nouns.extend(result['all_nouns'])
             
             print(f"\n\n{'='*60}")
-            print(f"📊 전체 통계")
+            print(f" 전체 통계")
             print('='*60)
             print(f"\n   전체 명사: {len(total_nouns)}개 (고유: {len(set(total_nouns))}개)")
             
-            print(f"\n   🏆 전체 상위 명사 (Top 20):")
+            print(f"\n    전체 상위 명사 (Top 20):")
             for word, count in self.get_frequency(total_nouns, 20):
                 print(f"      {word}: {count}회")
             
@@ -266,7 +266,7 @@ class QAMorphemeAnalyzer:
             with open(summary_path, 'w', encoding='utf-8') as f:
                 json.dump(summary, f, ensure_ascii=False, indent=2)
             
-            print(f"\n   💾 전체 요약 저장: {summary_path}")
+            print(f"\n    전체 요약 저장: {summary_path}")
         
         print(f"\n{'='*60}")
         print(f"✅ 분석 완료!")

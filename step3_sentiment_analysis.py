@@ -46,7 +46,7 @@ class SentimentAnalyzer:
         if os.path.exists(lexicon_path):
             return lexicon_path
         
-        print("📥 KNU 감정사전 다운로드 중...")
+        print(" KNU 감정사전 다운로드 중...")
         try:
             urllib.request.urlretrieve(url, lexicon_path)
             print(f"✅ 다운로드 완료")
@@ -251,7 +251,7 @@ class SentimentAnalyzer:
         print(f"   분석할 단어 수: {len(all_words)}개")
         
         # 1. 사전 기반 분석
-        print(f"\n   📖 사전 기반 분석 중...")
+        print(f"\n    사전 기반 분석 중...")
         lexicon_result = self.analyze_lexicon_based(all_words)
         
         print(f"      감정: {lexicon_result['sentiment']}")
@@ -259,19 +259,19 @@ class SentimentAnalyzer:
         print(f"      감정 단어: {lexicon_result['emotion_word_count']}개")
         
         if lexicon_result['positive_words']:
-            print(f"\n      😊 긍정 단어 (Top 5):")
+            print(f"\n       긍정 단어 (Top 5):")
             for word, score in lexicon_result['positive_words'][:5]:
                 print(f"         {word}: +{score}")
         
         if lexicon_result['negative_words']:
-            print(f"\n      😢 부정 단어 (Top 5):")
+            print(f"\n       부정 단어 (Top 5):")
             for word, score in lexicon_result['negative_words'][:5]:
                 print(f"         {word}: {score}")
         
         # 2. BERT 기반 분석 (옵션)
         bert_result = None
         if self.use_bert and original_text:
-            print(f"\n   🤖 BERT 분석 중...")
+            print(f"\n    BERT 분석 중...")
             bert_result = self.analyze_bert_based(original_text)
             
             if bert_result:
@@ -292,7 +292,7 @@ class SentimentAnalyzer:
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, ensure_ascii=False, indent=2)
         
-        print(f"\n   💾 결과 저장: {output_path}")
+        print(f"\n    결과 저장: {output_path}")
         
         return output_data
     
@@ -322,7 +322,7 @@ class SentimentAnalyzer:
         # 전체 통계
         if results:
             print(f"\n\n{'='*60}")
-            print(f"📊 전체 통계")
+            print(f" 전체 통계")
             print('='*60)
             
             # 사전 기반 통계
@@ -374,7 +374,7 @@ class SentimentAnalyzer:
             with open(summary_path, 'w', encoding='utf-8') as f:
                 json.dump(summary, f, ensure_ascii=False, indent=2)
             
-            print(f"\n   💾 전체 요약 저장: {summary_path}")
+            print(f"\n    전체 요약 저장: {summary_path}")
         
         print(f"\n{'='*60}")
         print(f"✅ 감정 분석 완료!")
@@ -384,7 +384,7 @@ class SentimentAnalyzer:
 
 
 def main():
-    print("\n😊 3단계: 감정 분석 (통합)")
+    print("\n 3단계: 감정 분석 (통합)")
     
     print("\n분석 방법 선택:")
     print("1. 사전 기반만 (빠름)")

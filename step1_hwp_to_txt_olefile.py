@@ -159,7 +159,7 @@ class HWPConverter:
             return False
         
         print(f"\n{'='*60}")
-        print(f"📄 변환 중: {hwp_filename}")
+        print(f" 변환 중: {hwp_filename}")
         print('='*60)
         
         parser = HWPParser(hwp_path)
@@ -182,9 +182,9 @@ class HWPConverter:
             f.write(text)
         
         print(f"\n✅ 변환 완료!")
-        print(f"   📁 저장 위치: {txt_path}")
-        print(f"   📏 텍스트 길이: {len(text)} 문자")
-        print(f"   🇰🇷 한글 문자: {korean_count}개")
+        print(f"    저장 위치: {txt_path}")
+        print(f"    텍스트 길이: {len(text)} 문자")
+        print(f"    한글 문자: {korean_count}개")
         
         preview_lines = []
         for line in text.split('\n')[:8]:
@@ -194,7 +194,7 @@ class HWPConverter:
                     break
         
         if preview_lines:
-            print(f"\n   👀 미리보기:")
+            print(f"\n    미리보기:")
             print("   " + "-"*56)
             for line in preview_lines:
                 print(f"   {line}")
@@ -218,7 +218,7 @@ class HWPConverter:
             print(f"❌ HWP 파일을 찾을 수 없습니다: {self.input_folder}")
             return 0
         
-        print(f"\n📚 총 {len(hwp_files)}개의 HWP 파일을 찾았습니다.")
+        print(f"\n 총 {len(hwp_files)}개의 HWP 파일을 찾았습니다.")
         
         success_count = 0
         failed_files = []
@@ -231,7 +231,7 @@ class HWPConverter:
                 failed_files.append(hwp_file)
         
         print(f"\n\n{'='*60}")
-        print(f"📊 변환 결과 요약")
+        print(f" 변환 결과 요약")
         print('='*60)
         print(f"✅ 성공: {success_count}/{len(hwp_files)} 파일")
         
@@ -246,7 +246,7 @@ class HWPConverter:
 
 def main():
     print("\n" + "="*60)
-    print("🔄 HWP to TXT 변환 프로그램 (olefile)")
+    print(" HWP to TXT 변환 프로그램 (olefile)")
     print("="*60)
     
     converter = HWPConverter(

@@ -29,7 +29,7 @@ class EmotionWordRanker:
         if not os.path.exists(emotion_dict_path):
             raise FileNotFoundError(f"❌ 감정사전 파일을 찾을 수 없습니다: {emotion_dict_path}")
         
-        print(f"📖 감정사전 로드 중: {emotion_dict_path}")
+        print(f" 감정사전 로드 중: {emotion_dict_path}")
         self.emotion_dict = self.load_emotion_dict(emotion_dict_path)
         
         if not self.emotion_dict:
@@ -163,7 +163,7 @@ class EmotionWordRanker:
             return None
         
         print(f"\n{'='*70}")
-        print(f"📊 감정 단어 추출 중: {morpheme_filename}")
+        print(f" 감정 단어 추출 중: {morpheme_filename}")
         print('='*70)
         
         # 형태소 분석 결과 로드
@@ -190,19 +190,19 @@ class EmotionWordRanker:
         
         # 상위 감정 단어 출력
         if result['emotion_words']:
-            print(f"\n   🎯 추출된 감정 단어 (빈도수 기준):")
+            print(f"\n    추출된 감정 단어 (빈도수 기준):")
             for word, freq in result['emotion_words'][:15]:
                 score = self.emotion_dict[word]
-                polarity = "😊" if score > 0 else "😞"
+                polarity = ":)" if score > 0 else ":("
                 print(f"      {polarity} {word}: {freq}회")
         
         if result['positive_words']:
-            print(f"\n   😊 긍정 단어:")
+            print(f"\n    긍정 단어:")
             for word, freq, score in result['positive_words'][:8]:
                 print(f"      {word}: {freq}회")
         
         if result['negative_words']:
-            print(f"\n   😞 부정 단어:")
+            print(f"\n    부정 단어:")
             for word, freq, score in result['negative_words'][:8]:
                 print(f"      {word}: {freq}회")
         
@@ -226,7 +226,7 @@ class EmotionWordRanker:
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(save_data, f, ensure_ascii=False, indent=2)
         
-        print(f"\n   💾 결과 저장: {output_path}")
+        print(f"\n    결과 저장: {output_path}")
         
         return save_data
     
@@ -242,7 +242,7 @@ class EmotionWordRanker:
             print(f"❌ 형태소 분석 파일 없음: {self.morpheme_folder}")
             return []
         
-        print(f"\n📚 총 {len(morpheme_files)}개 파일 감정 단어 추출 시작")
+        print(f"\n 총 {len(morpheme_files)}개 파일 감정 단어 추출 시작")
         
         results = []
         all_emotion_words = Counter()
@@ -270,25 +270,25 @@ class EmotionWordRanker:
         # 전체 통계 출력 및 저장
         if results:
             print(f"\n\n{'='*70}")
-            print(f"📊 전체 감정 단어 통계")
+            print(f" 전체 감정 단어 통계")
             print('='*70)
             
             # 상위 감정 단어
-            print(f"\n   🎯 전체 추출 감정 단어 (Top 20):")
+            print(f"\n    전체 추출 감정 단어 (Top 20):")
             for word, freq in all_emotion_words.most_common(20):
                 score = self.emotion_dict[word]
-                polarity = "😊" if score > 0 else "😞"
+                polarity = ":)" if score > 0 else ":("
                 print(f"      {polarity} {word}: {freq}회")
             
             # 상위 긍정 단어
             if all_positive:
-                print(f"\n   😊 긍정 단어 통계:")
+                print(f"\n    긍정 단어 통계:")
                 for word, freq in all_positive.most_common(10):
                     print(f"      {word}: {freq}회")
             
             # 상위 부정 단어
             if all_negative:
-                print(f"\n   😞 부정 단어 통계:")
+                print(f"\n    부정 단어 통계:")
                 for word, freq in all_negative.most_common(10):
                     print(f"      {word}: {freq}회")
             
@@ -308,7 +308,7 @@ class EmotionWordRanker:
             with open(summary_path, 'w', encoding='utf-8') as f:
                 json.dump(summary, f, ensure_ascii=False, indent=2)
             
-            print(f"\n   💾 전체 요약 저장: {summary_path}")
+            print(f"\n    전체 요약 저장: {summary_path}")
         
         print(f"\n{'='*70}")
         print(f"✅ 감정 단어 추출 완료!")
@@ -318,7 +318,7 @@ class EmotionWordRanker:
 
 
 def main():
-    print("\n😊 5단계: 감정 단어 우선 정렬")
+    print("\n 5단계: 감정 단어 우선 정렬")
     
     try:
         # 감정사전 경로 자동 설정
@@ -328,7 +328,7 @@ def main():
         if not os.path.exists(default_dict_path):
             emotion_dict_path = input("\n감정사전 파일 경로 (JSON/CSV/TXT): ").strip()
         else:
-            print(f"\n📖 기본 감정사전 사용: {default_dict_path}")
+            print(f"\n 기본 감정사전 사용: {default_dict_path}")
             emotion_dict_path = default_dict_path
         
         ranker = EmotionWordRanker(emotion_dict_path=emotion_dict_path)

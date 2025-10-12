@@ -224,7 +224,7 @@ class EmotionVisualizer:
             ax1.set_yticks(range(len(pos_words)))
             ax1.set_yticklabels(pos_words)
             ax1.set_xlabel('빈도수', fontsize=11, fontweight='bold')
-            ax1.set_title('😊 긍정 단어', fontsize=13, fontweight='bold', pad=15)
+            ax1.set_title(' 긍정 단어', fontsize=13, fontweight='bold', pad=15)
             ax1.invert_yaxis()
             
             # 빈도 수치 표시
@@ -241,7 +241,7 @@ class EmotionVisualizer:
             ax2.set_yticks(range(len(neg_words)))
             ax2.set_yticklabels(neg_words)
             ax2.set_xlabel('빈도수', fontsize=11, fontweight='bold')
-            ax2.set_title('😞 부정 단어', fontsize=13, fontweight='bold', pad=15)
+            ax2.set_title(' 부정 단어', fontsize=13, fontweight='bold', pad=15)
             ax2.invert_yaxis()
             
             # 빈도 수치 표시
@@ -267,7 +267,7 @@ class EmotionVisualizer:
             return
         
         print(f"\n{'='*70}")
-        print(f"🎨 시각화 중: {emotion_ranking_filename}")
+        print(f" 시각화 중: {emotion_ranking_filename}")
         print('='*70)
         
         data = self.load_json_file(emotion_path)
@@ -316,7 +316,7 @@ class EmotionVisualizer:
             print(f"❌ 감정 단어 파일 없음: {self.emotion_ranking_folder}")
             return
         
-        print(f"\n📚 총 {len(emotion_files)}개 파일 시각화 시작")
+        print(f"\n 총 {len(emotion_files)}개 파일 시각화 시작")
         
         for i, filename in enumerate(emotion_files, 1):
             print(f"\n[{i}/{len(emotion_files)}]")
@@ -326,7 +326,7 @@ class EmotionVisualizer:
         summary_path = os.path.join(self.emotion_ranking_folder, 'emotion_ranking_summary.json')
         if os.path.exists(summary_path):
             print(f"\n{'='*70}")
-            print(f"🎨 전체 요약 시각화")
+            print(f" 전체 요약 시각화")
             print('='*70)
             
             summary = self.load_json_file(summary_path)
@@ -358,12 +358,12 @@ class EmotionVisualizer:
         
         print(f"\n{'='*70}")
         print(f"✅ 모든 시각화 완료!")
-        print(f"📁 저장 위치: {self.output_folder}")
+        print(f" 저장 위치: {self.output_folder}")
         print('='*70)
 
 
 def main():
-    print("\n🎨 6단계: 감정 단어 시각화")
+    print("\n 6단계: 감정 단어 시각화")
     
     try:
         visualizer = EmotionVisualizer()
