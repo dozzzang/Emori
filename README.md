@@ -386,9 +386,9 @@ GitHub 상태 : <br>
 
 * 실행 방법
     * 감정사전 준비
-        # KNU 감정사전 자동 다운로드 (선택)
+        // KNU 감정사전 자동 다운로드 (선택)
         python knu_sentiment_lexicon.py
-        # → data/sentiment/SentiWord_Dict.txt에 저장됨
+        // data/sentiment/SentiWord_Dict.txt에 저장됨
 
 * 상호 작용
     😊 5단계: 감정 단어 우선 정렬
