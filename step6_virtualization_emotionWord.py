@@ -11,7 +11,6 @@ import matplotlib.font_manager as fm
 from wordcloud import WordCloud
 import numpy as np
 
-
 class EmotionVisualizer:
     """감정 단어 시각화기"""
     
