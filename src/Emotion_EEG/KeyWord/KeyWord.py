@@ -7,6 +7,9 @@ import json
 from pathlib import Path
 import math
 
+INPUT_DIR = Path("output/Emotion_EEG/Report_Json_Data")
+JSON_PATH = INPUT_DIR / "Report_Data.json"
+
 # -------- 감정 세분화 사전(4단계) --------
 EMOTION_INTENSITY = {
     "Happy": {"Full": "신남", "High": "기쁨", "Half": "편안", "Low": "만족"},
@@ -121,6 +124,11 @@ def keywords_from_json(path: str) -> list[tuple[str, list[str]]]:
 
 
 if __name__ == "__main__":
-    results = keywords_from_json("Report_Data.json")
-    for pid, tags in results:
-        print(f"[{pid}] " + " ".join(tags))
+    results = keywords_from_json(JSON_PATH)
+
+    if results:
+        print("\n=== 분석 결과 ===")
+        for pid, tags in results:
+            print(f"[{pid}] " + " ".join(tags))
+    else:
+        print("분석할 유효한 참가자 데이터가 없습니다.")

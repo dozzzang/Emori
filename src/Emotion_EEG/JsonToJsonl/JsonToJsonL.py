@@ -1,20 +1,16 @@
 import json
 import pandas as pd
-import os, sys
+from pathlib import Path
 
-current_script_dir = os.path.dirname(os.path.abspath(__file__))
+INPUT_DIR = Path("output/Emotion_EEG/Augmented_Json_Data")
+JSON_FILE_NAME = "Augmented_Report_Data.json"
+SRC = INPUT_DIR / JSON_FILE_NAME
 
-# 이 경로는 실행 스크립트의 위치에 따라 조정이 필요할 수 있습니다.
-project_root = os.path.join(current_script_dir, "..")
+# 수동 작성된 정답지(CSV) 파일 경로 (LABEL_CSV)
+LABEL_CSV = Path("data/Emotion_EEG/Llama3_Assistant_Data/Manual_Assistant_Labels.csv")
 
-if project_root not in sys.path:
-    sys.path.append(project_root)
-
-import constants
-
-SRC = constants.OUTPUT_JSON_FILE
-LABEL_CSV = constants.ASSISTANT_LABELS
-OUT = constants.TRAIN_JSONL_FILE
+# 최종 LLM 학습용 JSONL 파일 경로 (OUT)
+OUT = Path("output/Emotion_EEG/Jsonl_For_Llama3/Train_Data.jsonl")
 
 
 # ===== 보조 함수 =====
@@ -110,8 +106,22 @@ def main():
         return
 
     # 2. 입력 JSON 파일 로드
-    with open(SRC, "r", encoding="utf-8") as f:
-        src_json = json.load(f)
+    try:
+        print(f"입력 JSON 파일 로드 시도: {SRC}")
+        with open(SRC, "r", encoding="utf-8") as f:
+            src_json = json.load(f)
+    except FileNotFoundError:
+        # 파일이 없을 경우
+        print(f"Error: 입력 파일 '{SRC}'을 찾을 수 없습니다. (현재 작업 디렉토리 기준)")
+        return
+    except json.JSONDecodeError as e:
+        # JSON 형식이 잘못되었을 경우
+        print(f"Error: '{SRC}' 파일의 JSON 형식이 올바르지 않습니다. 오류: {e}")
+        return
+    except Exception as e:
+        # 기타 파일 로드 오류
+        print(f"Error loading JSON file: {e}")
+        return
 
     jsonl_records = []
     missing_labels_count = 0

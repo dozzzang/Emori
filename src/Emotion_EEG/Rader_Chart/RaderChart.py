@@ -6,14 +6,10 @@ import pandas as pd
 import matplotlib.font_manager as fm
 
 # ====== Path ======
-# JSON 파일을 읽어올 상위 디렉토리 (예: Path("C:/data/input_files"))
-DATA_DIR = Path(".")
-# 차트 이미지를 저장할 상위 디렉토리 (예: Path("C:/data/output_charts"))
-OUTPUT_DIR = Path(".")
+INPUT_DIR = Path("output/Emotion_EEG/Report_Json_Data")
+OUTPUT_DIR = Path("output/Emotion_EEG/Chart_Result")
 
-# 데이터 입력 파일 경로 (DATA_DIR에 위치)
-JSON_PATH = DATA_DIR / "Report_Data.json"
-# 차트 출력 파일 경로 (OUTPUT_DIR에 위치)
+JSON_PATH = INPUT_DIR / "Report_Data.json"
 BAR_OUT_PATH = OUTPUT_DIR / "bar_chart.png"
 RADAR_OUT_PATH = OUTPUT_DIR / "radar_chart.png"
 
@@ -53,7 +49,7 @@ try:
 except FileNotFoundError:
     # 경로 설정 정보 추가 출력
     print(f"오류: {JSON_PATH.resolve()} 파일을 찾을 수 없습니다.")
-    print(f"경로: '{DATA_DIR}'와 파일명: 'Report_Data.json'을 확인하세요.")
+    print(f"경로: '{INPUT_DIR}'와 파일명: 'Report_Data.json'을 확인하세요.")
     exit()
 except json.JSONDecodeError:
     print(f"오류: {JSON_PATH} 파일의 JSON 형식이 올바르지 않습니다.")

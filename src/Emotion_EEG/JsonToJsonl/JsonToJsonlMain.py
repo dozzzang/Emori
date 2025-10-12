@@ -1,24 +1,12 @@
 import json
-import pandas as pd
-import os, sys
+from pathlib import Path
 
-current_script_dir = os.path.dirname(os.path.abspath(__file__))
+INPUT_DIR = Path("output/Emotion_EEG/Report_Json_Data")
+JSON_FILE_NAME = "Report_Data.json"
+SRC = INPUT_DIR / JSON_FILE_NAME
 
-# 이 경로는 실행 스크립트의 위치에 따라 조정이 필요할 수 있습니다.
-project_root = os.path.join(current_script_dir, "..")
-
-if project_root not in sys.path:
-    sys.path.append(project_root)
-
-import constants
-
-# ===== 파일 경로 정의 (constants.py 참조) =====
-# 입력 파일 경로: Report_Data.json (일반 JSON)
-SRC = constants.MAIN_JSON_FILE
-# 출력 파일 경로: Train_Data.jsonl (인퍼런스 입력용 JSONL로 사용)
-OUT = constants.TRAIN_JSONL_FILE
-
-# 참고: constants.ASSISTANT_LABELS 경로 및 관련 로직은 제거되었습니다.
+# 최종 LLM 학습용 JSONL 파일 경로 (OUT)
+OUT = Path("output/Emotion_EEG/Jsonl_For_Llama3/Inference_Data.jsonl")
 
 
 # ===== 보조 함수 (변경 없음) =====

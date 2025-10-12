@@ -10,26 +10,23 @@ from transformers import (
 from peft import LoraConfig, get_peft_model
 from trl import SFTTrainer
 from datasets import load_dataset
+from pathlib import Path
 
 # ===================================================================
-# 프로젝트 루트 경로 설정 및 constants 모듈 로드
+# 프로젝트 루트 경로 설정
 # ===================================================================
-current_script_dir = os.path.dirname(os.path.abspath(__file__))
+# LLM 훈련에 사용할 JSONL 파일 경로 (현재 작업 디렉토리 기준 상대 경로)
+JSONL_FILE = Path("output/Emotion_EEG/Jsonl_For_Llama3/Train_Data.jsonl")
 
-# 이 경로는 실행 스크립트의 위치에 따라 조정이 필요할 수 있습니다.
-project_root = os.path.join(current_script_dir, "..")
-
-if project_root not in sys.path:
-    sys.path.append(project_root)
-
-import constants
+# LoRA 어댑터를 저장할 출력 디렉토리 경로
+OUTPUT_DIR = Path("output/Emotion_EEG/Llama3_Result")
 
 # ===================================================================
 # 0. 설정 변수 / Llama-3.1-8B-Instruct 모델 사용 (접근권한 및 토큰 필요)
 # ===================================================================
+
+# 모델 ID (접근 권한 및 토큰 필요)
 MODEL_ID = "meta-llama/Meta-Llama-3.1-8B-Instruct"
-JSONL_FILE = constants.TRAIN_JSONL_FILE
-OUTPUT_DIR = constants.LLAMA3_ADAPTER
 
 if not os.path.exists(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -93,7 +90,7 @@ print("Model successfully converted to PEFT (LoRA) model.")
 print(f"Loading dataset from {JSONL_FILE}...")
 try:
     # JSONL 파일을 로드합니다.
-    dataset = load_dataset("json", data_files=JSONL_FILE, split="train")
+    dataset = load_dataset("json", data_files=str(JSONL_FILE), split="train")
 except Exception as e:
     print(
         f"데이터셋 로드 오류: {e}. 'datasets' 라이브러리가 설치되어 있는지 확인하세요."

@@ -1,31 +1,24 @@
 import torch
-import sys
-import os
+from pathlib import Path
 from transformers import (
-    AutoModelForCausalLM,
     AutoTokenizer,
     BitsAndBytesConfig,
 )
-from peft import PeftModel, AutoPeftModelForCausalLM
+from peft import AutoPeftModelForCausalLM
+import json
 
 # ===================================================================
-# 프로젝트 루트 경로 설정 및 constants 모듈 로드
+# 프로젝트 루트 경로 설정
 # ===================================================================
-current_script_dir = os.path.dirname(os.path.abspath(__file__))
+JSONL_FILE = Path("output/Emotion_EEG/Jsonl_For_Llama3/Inference_Data.jsonl")
 
-# 이 경로는 실행 스크립트의 위치에 따라 조정이 필요할 수 있습니다.
-project_root = os.path.join(current_script_dir, "..")
-
-if project_root not in sys.path:
-    sys.path.append(project_root)
-
-import constants
+# LoRA 어댑터 경로
+OUTPUT_DIR = Path("output/Emotion_EEG/Llama3_Result")
 
 # ===================================================================
 # 0. 설정 변수
 # ===================================================================
 MODEL_ID = "meta-llama/Meta-Llama-3.1-8B-Instruct"
-OUTPUT_DIR = constants.LLAMA3_ADAPTER
 
 # 4-bit 양자화 설정
 bnb_config = BitsAndBytesConfig(
@@ -51,28 +44,27 @@ if tokenizer.pad_token is None:
 model.config.pad_token_id = tokenizer.pad_token_id
 
 # ===================================================================
-# 2. 테스트 데이터 준비 (하나의 새로운 입력)
+# 2. 데이터 로드 (하나의 새로운 입력)
 # ===================================================================
 
-# 이 형식은 훈련 데이터셋의 'user' 프롬프트와 동일해야 합니다.
-NEW_EEG_DATA = """
-다음 정보를 바탕으로 2~3문장 한국어 보고서 톤으로 요약하세요.
-- step2.emotion_color: Happy
-- step3.fill_rate: Half
-- step4.fill_rate: Low
-- EEG(final=step4): stress=0.15, engage=0.85, relax=0.70, excite=0.90, interest=0.95, focus=0.92
-- EEG(trend = step4 - step2): d_stress=-0.05, d_engage=+0.05, d_relax=+0.60, d_excite=+0.10, d_interest=+0.15, d_focus=+0.08
-요건: 2~3문장, 보고서형 어체(…로 해석됩니다/보입니다), 핵심 요소(감정·신체감각·최종 EEG·변화·복합지표)를 반드시 포함.
-"""
+# JSONL의 첫 번째 유효 라인만 사용 (필요시 반복 처리로 확장 가능)
+with JSONL_FILE.open("r", encoding="utf-8") as f:
+    first = None
+    for line in f:
+        line = line.strip()
+        if line:
+            first = json.loads(line)
+            break
 
-# Llama 3.1 Instruct 모델 형식에 맞게 프롬프트 구성
-messages = [
-    {
-        "role": "system",
-        "content": "너는 VR 감정/EEG 데이터를 2~3문장으로 요약하는 한국어 보고서 작성 도우미다. 반드시 보고서형 어체를 사용하고, 과장·추측을 피하며, 입력된 지표(최종값과 변화)를 반영한다. 인지/몰입·각성/관여·조절/안정 각 그룹에서 1개씩 대표 지표를 선택해 기술하고, 전반적인 상태를 포함하라.",
-    },
-    {"role": "user", "content": NEW_EEG_DATA},
-]
+if first is None:
+    raise RuntimeError("JSONL에 유효한 레코드가 없습니다.")
+
+orig_messages = first.get("messages", [])
+if not orig_messages:
+    raise RuntimeError("레코드에 'messages' 필드가 없습니다.")
+
+# system + user만 사용해서 프롬프트 구성
+messages = [m for m in orig_messages if m.get("role") in ("system", "user")]
 
 # ===================================================================
 # 3. 텍스트 생성
@@ -109,7 +101,6 @@ else:
     response = "응답 추출 실패: 예상된 'assistant' 헤더를 찾을 수 없습니다."
 
 
-print(f"**[NEW EEG DATA INPUT]**\n{NEW_EEG_DATA.strip()}")
 print("\n**[GENERATED REPORT]**")
 print("--------------------------------------------------")
 print(response)
