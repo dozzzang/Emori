@@ -84,7 +84,15 @@ GitHub 상태 : <br>
             * Layer 1–4: 단어 의미
             * Layer 5–8: 구문 관계
             * Layer 9–12: 문맥/감정 이해
+        * [CLS] 토큰의 최종 벡터 (768차원)
+        * Dense Layer + Softmax
+        * 확률 분포: [긍정: 0.87, 부정: 0.10, 중립: 0.03]
         * 출력: [CLS] 벡터 (768차원) → 문장 전체 의미 표현
+        result = analyzer(text)[0]
+            {
+                'label': 'POSITIVE',      # 가장 높은 확률의 클래스
+                'score': 0.876           # 그 확률값
+            }
 
     3. Self-Attention 메커니즘 (핵심)
         * ex : “VR 체험 후 불안감이 많이 줄어들었습니다”
