@@ -176,7 +176,7 @@ class KeywordExtractor:
             print(f"      {word}: {count}회")
         
         # 2. TextRank
-        print(f"\n   🕸️  TextRank 기반 키워드:")
+        print(f"\n     TextRank 기반 키워드:")
         textrank_keywords = self.extract_textrank_keywords(nouns, top_n=10)
         if textrank_keywords:
             for word, score in textrank_keywords[:5]:
@@ -212,7 +212,7 @@ class KeywordExtractor:
             print(f"❌ 형태소 분석 파일 없음: {self.morpheme_folder}")
             return []
         
-        print(f"\n📚 총 {len(morpheme_files)}개 파일 키워드 추출 시작")
+        print(f"\n 총 {len(morpheme_files)}개 파일 키워드 추출 시작")
         
         results = []
         all_documents = []
