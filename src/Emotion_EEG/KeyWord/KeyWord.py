@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import math
 
+# ====== Path & Configuration ======
 INPUT_DIR = Path("output/Emotion_EEG/Report_Json_Data")
 JSON_PATH = INPUT_DIR / "Report_Data.json"
 
@@ -34,7 +35,13 @@ TE_HIGH, TE_LOW = 0.70, 0.40
 STEP_WEIGHTS = {"step2": 0.2, "step3": 0.3, "step4": 0.5}
 
 
+# =================================================================
+# 보조 함수
+# =================================================================
+
+
 def emotion_tag_from_step2_step3(step2: dict, step3: dict) -> str:
+    """step2의 감정 기본색과 step3의 채우기 비율을 조합하여 감정 태그 생성"""
     base = (step2.get("emotion_color") or "").strip()
     fr = (step3.get("fill_rate") or "").strip()
     label = EMOTION_INTENSITY.get(base, {}).get(fr)
@@ -44,6 +51,7 @@ def emotion_tag_from_step2_step3(step2: dict, step3: dict) -> str:
 
 
 def valence_tag(value: float) -> str:
+    """Valence(긍정/부정) 수치를 태그로 변환"""
     if value >= VALENCE_HIGH:
         return "#정서_긍정"
     if value <= VALENCE_LOW:
@@ -52,6 +60,7 @@ def valence_tag(value: float) -> str:
 
 
 def arousal_tag(value: float) -> str:
+    """Arousal(활성도) 수치를 태그로 변환"""
     if value >= AROUSAL_HIGH:
         return "#활성_높음"
     if value <= AROUSAL_LOW:
@@ -60,6 +69,7 @@ def arousal_tag(value: float) -> str:
 
 
 def te_tag(value: float) -> str:
+    """Engagement * Focus (몰입/집중) 효율성 수치를 태그로 변환"""
     if value >= TE_HIGH:
         return "#몰입집중_강함"
     if value <= TE_LOW:
@@ -73,19 +83,32 @@ def weighted_metric(steps: dict, func) -> float:
     for step_name, w in STEP_WEIGHTS.items():
         if step_name in steps:
             st = steps[step_name]
+            # 모든 뇌파 지표가 유효한지 확인하는 로직 추가 (필요시)
             total += func(st) * w
             weight_sum += w
     return total / weight_sum if weight_sum > 0 else 0.0
 
 
-def keywords_from_json(path: str) -> list[tuple[str, list[str]]]:
-    data = json.loads(Path(path).read_text(encoding="utf-8"))
+def keywords_from_json(path: Path) -> list[tuple[str, list[str]]]:
+    """
+    JSON 파일 경로를 받아 참가자별 키워드 태그 리스트를 반환하는 핵심 함수
+    """
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        print(f"KeyWord 오류: 입력 JSON 파일 '{path}'을 찾을 수 없습니다.")
+        return []
+    except json.JSONDecodeError as e:
+        print(f"KeyWord 오류: JSON 파일 디코딩 오류: {e}")
+        return []
 
     participants = []
-    # 참가자 이름이 없는 경우
+    # 참가자 데이터 구조 파악 및 목록화
     if isinstance(data, dict) and "steps" in data:
+        # 단일 참가자 구조 (이름이 key가 아닌 경우)
         participants.append(("participant_NULL", data))
     elif isinstance(data, dict):
+        # 다중 참가자 구조 (pid: data)
         for k, v in data.items():
             if isinstance(v, dict) and "steps" in v:
                 participants.append((k, v))
@@ -94,27 +117,44 @@ def keywords_from_json(path: str) -> list[tuple[str, list[str]]]:
     for pid, pobj in participants:
         steps = pobj["steps"]
 
-        # 감정: step2.base + step3.fill_rate
+        # 1. 감정 태그
         step2 = steps.get("step2", {})
         step3 = steps.get("step3", {})
         emo_tag = emotion_tag_from_step2_step3(step2, step3)
 
         # --- Valence, Arousal, TE 가중평균 계산 ---
+        # Valence (긍정성/부정성)
         def calc_valence(st):
-            return (st["excite"] + st["interest"] + st["engage"] - st["stress"]) / 4.0
+            # 긍정 요소(excite, interest, engage) - 부정 요소(stress) / 4.0
+            return (
+                st.get("excite", 0.0)
+                + st.get("interest", 0.0)
+                + st.get("engage", 0.0)
+                - st.get("stress", 0.0)
+            ) / 4.0
 
-        # 분모 3 -> excite, engage, focus의 평균에서 relax를 감점 보정 역할로 처리
+        # Arousal (활성/각성)
         def calc_arousal(st):
-            return (st["excite"] + st["engage"] + st["focus"] - st["relax"]) / 3.0
+            # excite, engage, focus 평균에서 relax를 감점 보정 역할
+            return (
+                st.get("excite", 0.0)
+                + st.get("engage", 0.0)
+                + st.get("focus", 0.0)
+                - st.get("relax", 0.0)
+            ) / 3.0
 
-        # 몰입-집중 -> 둘 중 하나라도 낮으면 효율성이 낮다고 판단
+        # 몰입-집중 (인지 효율)
         def calc_te(st):
-            return math.sqrt(max(0.0, st["engage"]) * max(0.0, st["focus"]))
+            # engage와 focus의 기하 평균 (둘 중 하나라도 낮으면 값이 낮아짐)
+            return math.sqrt(
+                max(0.0, st.get("engage", 0.0)) * max(0.0, st.get("focus", 0.0))
+            )
 
         v_value = weighted_metric(steps, calc_valence)
         a_value = weighted_metric(steps, calc_arousal)
         te_value = weighted_metric(steps, calc_te)
 
+        # 2. 태그 변환
         v_tag = valence_tag(v_value)
         a_tag = arousal_tag(a_value)
         te_tag_ = te_tag(te_value)
@@ -123,12 +163,21 @@ def keywords_from_json(path: str) -> list[tuple[str, list[str]]]:
     return outputs
 
 
-if __name__ == "__main__":
+# 실행 함수
+def run_keyword_analysis():
+    """키워드 분석을 실행하고 결과를 콘솔에 출력합니다."""
+    print("KeyWord: 분석 시작...")
     results = keywords_from_json(JSON_PATH)
 
     if results:
-        print("\n=== 분석 결과 ===")
+        print("\n=== KeyWord 분석 결과 ===")
         for pid, tags in results:
             print(f"[{pid}] " + " ".join(tags))
+        return True
     else:
-        print("분석할 유효한 참가자 데이터가 없습니다.")
+        print("KeyWord: 분석할 유효한 참가자 데이터가 없습니다.")
+        return False
+
+
+if __name__ == "__main__":
+    run_keyword_analysis()

@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
+import os  # Path 객체를 사용하여 os.makedirs를 안전하게 사용하기 위해 추가
 
+# ====== Path & Configuration ======
 INPUT_DIR = Path("output/Emotion_EEG/Report_Json_Data")
 JSON_FILE_NAME = "Report_Data.json"
 SRC = INPUT_DIR / JSON_FILE_NAME
@@ -26,7 +28,6 @@ def sign_fmt(x, prec=2):
 def build_base_record(pid: str, participant: dict):
     """JSON 데이터를 읽어 user와 system 필드만 포함된 JSONL 뼈대를 반환"""
     steps = participant.get("steps", {})
-    # step2 데이터가 없을 경우를 대비하여 기본값 {} 사용
     s2 = steps.get("step2", {})
     s3 = steps.get("step3", {})
     s4 = steps.get("step4", {})
@@ -76,21 +77,29 @@ def build_base_record(pid: str, participant: dict):
     }
 
 
-def main():
+# =================================================================
+# 실행 함수
+# =================================================================
+def run_json_to_jsonl():
+    """
+    JSON 파일을 읽어 LLM 인퍼런스용 JSONL 파일로 변환합니다.
+    """
+    print("JsonToJsonlMain: JSONL 변환 시작...")
+
     # 1. 입력 JSON 파일 로드
     try:
         with open(SRC, "r", encoding="utf-8") as f:
             src_json = json.load(f)
     except FileNotFoundError:
         print(
-            f"Error: 입력 JSON 파일 '{SRC}'을 찾을 수 없습니다. 경로를 확인해 주세요."
+            f"JsonToJsonlMain 오류: 입력 JSON 파일 '{SRC}'을 찾을 수 없습니다. (RaderChart와 KeyWord가 선행되어야 함)"
         )
-        return
+        return False
     except json.JSONDecodeError as e:
         print(
-            f"Error: JSON 파일 디코딩 오류가 발생했습니다. 파일 내용 확인 필요. 오류: {e}"
+            f"JsonToJsonlMain 오류: JSON 파일 디코딩 오류가 발생했습니다. 파일 내용 확인 필요. 오류: {e}"
         )
-        return
+        return False
 
     jsonl_records = []
     total_participants = len(src_json)
@@ -101,7 +110,7 @@ def main():
         # 3. LLM에게 전달할 system 및 user 프롬프트 생성
         base_record = build_base_record(pid, participant_data)
 
-        # 4. JSONL 인퍼런스 입력 레코드 생성 (assistant 필드 없음)
+        # 4. JSONL 인퍼런스 입력 레코드 생성
         record = {
             "messages": [
                 {"role": "system", "content": base_record["system_content"]},
@@ -115,15 +124,22 @@ def main():
         jsonl_records.append(record)
 
     # 5. JSONL 파일로 출력
-    with open(OUT, "w", encoding="utf-8") as f:
-        for r in jsonl_records:
-            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+    try:
+        # 출력 경로가 없으면 생성
+        os.makedirs(OUT.parent, exist_ok=True)
+        with open(OUT, "w", encoding="utf-8") as f:
+            for r in jsonl_records:
+                f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
-    print(f"총 {total_participants}명의 참가자 데이터를 처리했습니다.")
-    print(
-        f"총 {len(jsonl_records)}개의 인퍼런스 입력 레코드가 '{OUT}'으로 생성되었습니다."
-    )
+        print(f"JsonToJsonlMain: 총 {total_participants}명의 데이터를 처리했습니다.")
+        print(
+            f"JsonToJsonlMain: {len(jsonl_records)}개의 입력 레코드가 '{OUT}'으로 생성되었습니다."
+        )
+        return True
+    except Exception as e:
+        print(f"JsonToJsonlMain 오류: JSONL 파일 저장 중 오류 발생: {e}")
+        return False
 
 
 if __name__ == "__main__":
-    main()
+    run_json_to_jsonl()
