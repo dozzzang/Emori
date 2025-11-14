@@ -1,325 +1,192 @@
 """
-4단계: 키워드 추출
-TF-IDF와 TextRank 알고리즘을 사용한 핵심 키워드 추출
+4단계: BERT Attention Score 추출 및 랭킹
+- BERT의 Attention Score를 활용하여 각 단어의 감정 분류 기여도를 측정
+- 신뢰도 (confidence) 저장 로직 포함
 """
 
 import os
 import json
 from pathlib import Path
+import torch
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from collections import Counter
 import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
-import networkx as nx
+
+# Step 3와 동일한 모델 이름 재사용
+MODEL_NAME = "matthewburke/korean_sentiment" 
 
 
-class KeywordExtractor:
-    """키워드 추출기 - TF-IDF & TextRank"""
+class BertAttentionRanker:
+    """BERT Attention Score 기반 단어 중요도 추출기"""
     
-    def __init__(self, morpheme_folder="output/morpheme", output_folder="output/keywords"):
+    def __init__(self, morpheme_folder="output/morpheme", 
+                 sentiment_folder="output/sentiment",
+                 output_folder="output/attention"):
+        
         self.morpheme_folder = morpheme_folder
+        self.sentiment_folder = sentiment_folder
         self.output_folder = output_folder
         os.makedirs(output_folder, exist_ok=True)
         
-        print("키워드 추출기 초기화 완료!\n")
-    
-    def load_morpheme_file(self, morpheme_path):
-        """형태소 분석 결과 로드"""
+        print(f"🤖 BERT Attention 모델 ({MODEL_NAME}) 로딩 중...")
+        
+        # 🚨 디버깅 코드 추가: 현재 실행 경로 확인
+        #print(f"DEBUG: 현재 작업 디렉토리 (CWD): {os.getcwd()}")
+        #print(f"DEBUG: 찾는 Sentiment 폴더 경로: {os.path.join(os.getcwd(), sentiment_folder)}")
+
         try:
-            with open(morpheme_path, 'r', encoding='utf-8') as f:
+            self.tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+            self.model = AutoModelForSequenceClassification.from_pretrained(
+                MODEL_NAME, 
+                output_attentions=True
+            )
+            self.model.eval()
+            print("✅ BERT Attention 모델 로드 완료!")
+        except Exception as e:
+            raise Exception(f"❌ BERT 모델 로드 실패: {e}")
+
+    def load_json_file(self, file_path):
+        """파일 경로를 받아 JSON 파일을 로드"""
+        try:
+            if not os.path.exists(file_path):
+                # 파일이 존재하지 않으면 None 반환
+                return None
+            
+            with open(file_path, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except Exception as e:
-            print(f"  ❌ 파일 읽기 실패: {e}")
-            return None
-    
-    def extract_tfidf_keywords(self, documents, top_n=10):
-        """
-        TF-IDF 기반 키워드 추출
-        
-        Args:
-            documents: 문서 리스트 (각 문서는 단어들의 문자열)
-            top_n: 추출할 키워드 수
-        
-        Returns:
-            각 문서별 키워드와 점수
-        """
-        
-        if len(documents) < 2:
-            print("  ⚠️  TF-IDF는 최소 2개 이상의 문서가 필요합니다.")
+            # 파일은 있지만 JSON 형식이 잘못되었거나 권한 문제가 있을 경우
+            print(f"❌ JSON 로드 중 심각한 오류 발생 ({file_path}): {e}")
             return None
         
-        # TF-IDF 벡터라이저
-        vectorizer = TfidfVectorizer(
-            max_features=1000,  # 최대 1000개 단어
-            min_df=1,           # 최소 1개 문서에 등장
-            max_df=0.8          # 80% 이상 문서에 등장하는 단어 제외
-        )
+    def get_document_text(self, filename):
+        """원본 TXT 파일을 로드"""
+        txt_path = os.path.join('data/txt_files', filename)
+        if os.path.exists(txt_path):
+            with open(txt_path, 'r', encoding='utf-8') as f:
+                return f.read()
+        return None
+
+    def extract_and_rank(self, morpheme_filename):
+        """단일 파일 Attention Score 추출 및 랭킹"""
         
-        try:
-            tfidf_matrix = vectorizer.fit_transform(documents)
-            feature_names = vectorizer.get_feature_names_out()
-            
-            results = []
-            
-            for i in range(len(documents)):
-                scores = tfidf_matrix[i].toarray()[0]
-                
-                # 점수와 단어 매칭
-                word_scores = [
-                    (feature_names[j], float(scores[j])) 
-                    for j in range(len(scores)) if scores[j] > 0
-                ]
-                
-                # 점수 순으로 정렬
-                word_scores.sort(key=lambda x: x[1], reverse=True)
-                
-                results.append(word_scores[:top_n])
-            
-            return results
-        
-        except Exception as e:
-            print(f"  ❌ TF-IDF 추출 실패: {e}")
-            return None
-    
-    def extract_textrank_keywords(self, words, top_n=10, window=5):
-        """
-        TextRank 기반 키워드 추출
-        
-        Args:
-            words: 단어 리스트
-            top_n: 추출할 키워드 수
-            window: 동시 등장 윈도우 크기
-        
-        Returns:
-            키워드와 점수 리스트
-        """
-        
-        if len(words) < 5:
-            print("  ⚠️  TextRank는 최소 5개 이상의 단어가 필요합니다.")
+        # 1. 필수 데이터 로드
+        morpheme_data = self.load_json_file(os.path.join(self.morpheme_folder, morpheme_filename))
+        if not morpheme_data: 
+            print(f"⚠️  {morpheme_filename} 파일이 없습니다. Step 2를 먼저 실행하세요.")
             return None
         
-        # 그래프 생성
-        graph = nx.Graph()
+        # Sentiment 파일 경로 생성
+        sentiment_filename_derived = morpheme_filename.replace('_morpheme.json', '_sentiment.json')
+        sentiment_path = os.path.join(self.sentiment_folder, sentiment_filename_derived)
         
-        # 노드 추가 (단어)
-        unique_words = list(set(words))
-        graph.add_nodes_from(unique_words)
+        # 🚨 디버깅 코드 추가: 찾는 파일 경로 출력
+        #print(f"DEBUG: Sentiment 파일을 찾는 경로: {sentiment_path}") 
+
+        sentiment_data = self.load_json_file(sentiment_path)
         
-        # 엣지 추가 (동시 등장)
-        for i in range(len(words)):
-            for j in range(i + 1, min(i + window, len(words))):
-                if words[i] != words[j]:
-                    if graph.has_edge(words[i], words[j]):
-                        # 기존 엣지 가중치 증가
-                        graph[words[i]][words[j]]['weight'] += 1
-                    else:
-                        # 새 엣지 추가
-                        graph.add_edge(words[i], words[j], weight=1)
-        
-        # PageRank 알고리즘 적용
-        try:
-            scores = nx.pagerank(graph, weight='weight')
-            
-            # 점수 순으로 정렬
-            sorted_words = sorted(scores.items(), key=lambda x: x[1], reverse=True)
-            
-            return sorted_words[:top_n]
-        
-        except Exception as e:
-            print(f"  ❌ TextRank 실패: {e}")
+        if not sentiment_data: 
+            # 파일이 없거나 로드에 실패하면 여기서 종료
+            print(f"⚠️  {Path(sentiment_path).name} 파일을 찾지 못했습니다. Step 3 실행 및 경로 확인이 필요합니다.")
             return None
-    
-    def extract_frequency_keywords(self, words, top_n=10):
-        """
-        빈도 기반 키워드 추출 (기본)
-        
-        Args:
-            words: 단어 리스트
-            top_n: 추출할 키워드 수
-        
-        Returns:
-            키워드와 빈도 리스트
-        """
-        counter = Counter(words)
-        return counter.most_common(top_n)
-    
-    def analyze_single_file(self, morpheme_filename):
-        """단일 파일 키워드 추출"""
-        
-        morpheme_path = os.path.join(self.morpheme_folder, morpheme_filename)
-        
-        if not os.path.exists(morpheme_path):
-            print(f"❌ 파일 없음: {morpheme_path}")
-            return None
-        
+
+        original_text = self.get_document_text(morpheme_data['filename'])
+        if not original_text: return None
+
         print(f"\n{'='*60}")
-        print(f" 키워드 추출 중: {morpheme_filename}")
+        print(f"✨ Attention Score 추출 중: {morpheme_filename}")
         print('='*60)
+
+        # 2. 토큰화 및 Attention 추출 (모델 실행)
+        inputs = self.tokenizer(original_text, return_tensors="pt", truncation=True, padding=True)
         
-        # 형태소 분석 결과 로드
-        morpheme_data = self.load_morpheme_file(morpheme_path)
-        if not morpheme_data:
-            return None
+        with torch.no_grad():
+            outputs = self.model(**inputs)
         
-        # 명사만 사용 (키워드는 대부분 명사)
-        nouns = morpheme_data.get('all_nouns', [])
+        # 3. Attention Score 계산 
+        attentions = outputs.attentions 
+        last_layer_att = attentions[-1][0].mean(dim=0)
+        cls_attention = last_layer_att[0, :].cpu().numpy()
+
+        tokens = self.tokenizer.convert_ids_to_tokens(inputs['input_ids'][0])
         
-        print(f"   명사 개수: {len(nouns)}개")
+        # 4. 단어별 점수 매핑 및 랭킹
+        token_importance = {}
+        for i, token in enumerate(tokens[1:-1]):
+            word = token.replace('##', '')
+            score = float(cls_attention[i+1])
+            
+            if word not in token_importance:
+                token_importance[word] = []
+            token_importance[word].append(score)
+
+        # 5. 최종 랭킹
+        ranked_words = []
+        all_morphemes = morpheme_data.get('all_nouns', []) + morpheme_data.get('all_verbs', []) + morpheme_data.get('all_adjectives', []) + morpheme_data.get('all_adverbs', []) + morpheme_data.get('all_interjections', [])
         
-        if len(nouns) < 5:
-            print(f"   ⚠️  명사가 너무 적습니다.")
-            return None
+        for word, scores in token_importance.items():
+            avg_score = np.mean(scores)
+            
+            if word in all_morphemes:
+                ranked_words.append((word, avg_score))
+
+        ranked_words.sort(key=lambda x: x[1], reverse=True)
         
-        # 1. 빈도 기반
-        print(f"\n    빈도 기반 키워드:")
-        freq_keywords = self.extract_frequency_keywords(nouns, top_n=10)
-        for word, count in freq_keywords[:5]:
-            print(f"      {word}: {count}회")
+        # 6. 결과 저장
+        bert_result = sentiment_data['bert_based']
         
-        # 2. TextRank
-        print(f"\n     TextRank 기반 키워드:")
-        textrank_keywords = self.extract_textrank_keywords(nouns, top_n=10)
-        if textrank_keywords:
-            for word, score in textrank_keywords[:5]:
-                print(f"      {word}: {score:.4f}")
-        
-        # 결과 저장
         output_data = {
-            'filename': morpheme_data.get('filename', ''),
-            'total_nouns': len(nouns),
-            'frequency_keywords': freq_keywords,
-            'textrank_keywords': textrank_keywords if textrank_keywords else []
+            'filename': morpheme_data['filename'],
+            'bert_sentiment': bert_result['sentiment'],
+            'bert_confidence': bert_result['confidence'], # 신뢰도 저장
+            'top_attention_words': ranked_words[:30],
+            'total_tokens_analyzed': len(tokens)
         }
         
-        output_filename = Path(morpheme_filename).stem.replace('_morpheme', '_keywords.json')
+        output_filename = Path(morpheme_filename).stem.replace('_morpheme', '_attention_rank.json')
         output_path = os.path.join(self.output_folder, output_filename)
         
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, ensure_ascii=False, indent=2)
         
+        print(f"\n    ✅ Top 10 기여 단어:")
+        for word, score in ranked_words[:10]:
+             print(f"       {word}: {score:.4f}")
         print(f"\n    결과 저장: {output_path}")
-        
+
         return output_data
     
-    def analyze_all_files(self):
-        """모든 파일 키워드 추출"""
-        
-        morpheme_files = sorted([
-            f for f in os.listdir(self.morpheme_folder) 
-            if f.endswith('_morpheme.json')
-        ])
-        
-        if not morpheme_files:
-            print(f"❌ 형태소 분석 파일 없음: {self.morpheme_folder}")
-            return []
-        
-        print(f"\n 총 {len(morpheme_files)}개 파일 키워드 추출 시작")
+    def rank_all_files(self):
+        """전체 파일 Attention Score 추출"""
+        morpheme_files = sorted([f for f in os.listdir(self.morpheme_folder) if f.endswith('_morpheme.json')])
+        if not morpheme_files: return []
         
         results = []
-        all_documents = []
-        
-        # 개별 파일 처리
-        for i, filename in enumerate(morpheme_files, 1):
-            print(f"\n[{i}/{len(morpheme_files)}]")
-            result = self.analyze_single_file(filename)
-            
-            if result:
-                results.append(result)
-                
-                # TF-IDF를 위한 문서 준비
-                morpheme_path = os.path.join(self.morpheme_folder, filename)
-                morpheme_data = self.load_morpheme_file(morpheme_path)
-                if morpheme_data:
-                    nouns = morpheme_data.get('all_nouns', [])
-                    # 문서를 하나의 문자열로
-                    all_documents.append(' '.join(nouns))
-        
-        # TF-IDF (전체 문서 대상)
-        if len(all_documents) >= 2:
-            print(f"\n\n{'='*60}")
-            print(f" TF-IDF 키워드 추출 (전체 문서)")
-            print('='*60)
-            
-            tfidf_results = self.extract_tfidf_keywords(all_documents, top_n=10)
-            
-            if tfidf_results:
-                for i, keywords in enumerate(tfidf_results):
-                    print(f"\n  문서 {i+1} ({morpheme_files[i]}):")
-                    for word, score in keywords[:5]:
-                        print(f"    {word}: {score:.4f}")
-                
-                # TF-IDF 결과 저장
-                for i, result in enumerate(results):
-                    result['tfidf_keywords'] = tfidf_results[i] if i < len(tfidf_results) else []
-                    
-                    # 업데이트된 결과 저장
-                    output_filename = Path(morpheme_files[i]).stem.replace('_morpheme', '_keywords.json')
-                    output_path = os.path.join(self.output_folder, output_filename)
-                    
-                    with open(output_path, 'w', encoding='utf-8') as f:
-                        json.dump(result, f, ensure_ascii=False, indent=2)
-        
-        # 전체 통계
-        if results:
-            print(f"\n\n{'='*60}")
-            print(f" 전체 키워드 통계")
-            print('='*60)
-            
-            # 모든 문서의 빈도 키워드 합산
-            all_keywords = []
-            for result in results:
-                for word, count in result.get('frequency_keywords', []):
-                    all_keywords.extend([word] * count)
-            
-            overall_freq = Counter(all_keywords).most_common(20)
-            
-            print(f"\n   전체 상위 키워드 (Top 20):")
-            for word, count in overall_freq:
-                print(f"    {word}: {count}회")
-            
-            # 요약 저장
-            summary = {
-                'total_files': len(results),
-                'overall_top_keywords': overall_freq
-            }
-            
-            summary_path = os.path.join(self.output_folder, 'keywords_summary.json')
-            with open(summary_path, 'w', encoding='utf-8') as f:
-                json.dump(summary, f, ensure_ascii=False, indent=2)
-            
-            print(f"\n   전체 요약 저장: {summary_path}")
-        
-        print(f"\n{'='*60}")
-        print(f"✅ 키워드 추출 완료!")
-        print('='*60)
+        for filename in morpheme_files:
+            result = self.extract_and_rank(filename)
+            if result: results.append(result)
         
         return results
 
 
 def main():
-    print("\n 4단계: 키워드 추출")
-    
+    print("\n 4단계: BERT Attention Score 추출 및 랭킹")
     try:
-        extractor = KeywordExtractor()
+        ranker = BertAttentionRanker()
         
-        print("\n추출 모드 선택:")
-        print("1. 단일 파일 추출")
-        print("2. 전체 파일 추출")
-        
-        choice = input("\n선택 (1-2): ").strip()
+        choice = input("\n실행 모드 선택: 1. 단일 파일 분석 / 2. 전체 파일 분석 (1-2): ").strip()
         
         if choice == '1':
+            # 파일명을 입력할 때 반드시 '.json'까지 포함해야 합니다.
             filename = input("파일명 (예: EG_001_morpheme.json): ").strip()
-            extractor.analyze_single_file(filename)
+            ranker.extract_and_rank(filename)
         elif choice == '2':
-            extractor.analyze_all_files()
+            ranker.rank_all_files()
         else:
             print("❌ 잘못된 선택")
     
     except Exception as e:
         print(f"\n❌ 오류 발생: {e}")
-        import traceback
-        traceback.print_exc()
-
 
 if __name__ == "__main__":
     main()
