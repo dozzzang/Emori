@@ -1,5 +1,6 @@
 """
 KNU 한국어 감정사전 다운로드 및 로드
+data/sentiment/SentiWord_Dict.txt 에서 확인 가능
 """
 
 import urllib.request
