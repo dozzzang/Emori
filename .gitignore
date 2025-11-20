@@ -214,6 +214,7 @@ __marimo__/
 # 데이터 파일 (개인정보 보호)
 data/hwp_files/*.hwp
 data/txt_files/*.txt
+data/pdf_files/*.pdf
 
 # 하지만 폴더 구조는 유지 (.gitkeep 파일은 제외하지 않음)
 !data/hwp_files/.gitkeep
