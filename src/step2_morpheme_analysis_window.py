@@ -1,25 +1,33 @@
+"""
+2단계: 형태소 분석 (Q&A 패턴 필터링) - 부사/감탄사 포함
+Q) A) 패턴이 있는 문장만 추출해서 분석
+(Windows 호환성을 위해 Mecab -> Okt로 변경)
+"""
+
 import os
 import json
 import re
 from pathlib import Path
 from collections import Counter
-from konlpy.tag import Okt  
+from konlpy.tag import Okt  # Mecab 대신 Okt 사용
 
 class QAMorphemeAnalyzer:
+    """Q&A 패턴 필터링 형태소 분석기 (Okt 버전)"""
     
     def __init__(self, txt_folder="data/txt_files", output_folder="output/morpheme"):
         self.txt_folder = txt_folder
         self.output_folder = output_folder
         os.makedirs(output_folder, exist_ok=True)
         
-        print("Okt(Open Korean Text) 형태소 분석기 로드")
+        print("☕ Okt(Open Korean Text) 형태소 분석기 초기화 중...")
         try:
             self.okt = Okt()
+            # 워밍업 (첫 실행 시 JVM 로딩으로 느릴 수 있음)
             self.okt.pos("테스트", norm=True, stem=True)
-            print("Okt 초기화 성공")
+            print("✅ Okt 초기화 성공")
         except Exception as e:
-            print(f"Okt 초기화 실패: {e}")
-            print("환경변수(JAVA_HOME)를 확인")
+            print(f"❌ Okt 초기화 실패: {e}")
+            print("Java 환경변수(JAVA_HOME)를 확인해주세요.")
             raise e
         
         self.stopwords = {
@@ -69,6 +77,8 @@ class QAMorphemeAnalyzer:
         }
 
     def extract_morphemes(self, text):
+        """형태소 추출 (Okt 태그 사용)"""
+        # norm=True: 정규화 (되요 -> 돼요), stem=True: 어간 추출 (합니다 -> 하다)
         pos_tags = self.okt.pos(text, norm=True, stem=True)
         
         nouns = []
@@ -110,7 +120,7 @@ class QAMorphemeAnalyzer:
         txt_path = os.path.join(self.txt_folder, txt_filename)
         
         if not os.path.exists(txt_path):
-            print(f"파일 없음: {txt_path}")
+            print(f"❌ 파일 없음: {txt_path}")
             return None
         
         print(f"\n{'='*60}")
@@ -133,7 +143,7 @@ class QAMorphemeAnalyzer:
         
         output_data = {
             'filename': txt_filename,
-            'analyzer': 'okt', 
+            'analyzer': 'okt',
             'analysis_mode': mode,
             'original_text_length': len(text),
             'analyzed_text_length': len(analyze_text),
@@ -160,9 +170,68 @@ class QAMorphemeAnalyzer:
         print(f"\n    결과 저장: {output_path}")
         return output_data
 
-if __name__ == "__main__":
-    print("\n2단계: 형태소 분석 (Okt 버전)")
+    def analyze_all_files(self, mode='qa_only'):
+        """전체 파일 분석 메서드 (누락된 부분 추가)"""
+        txt_files = sorted([f for f in os.listdir(self.txt_folder) if f.endswith('.txt')])
+        if not txt_files:
+            print(f"❌ 처리할 텍스트 파일이 {self.txt_folder}에 없습니다.")
+            return []
+        
+        print(f"📂 총 {len(txt_files)}개의 파일을 분석합니다.")
+        
+        results = []
+        total_nouns = []
+        for i, txt_file in enumerate(txt_files, 1):
+            result = self.analyze_single_file(txt_file, mode=mode)
+            if result:
+                results.append(result)
+                total_nouns.extend(result['all_nouns'])
+        
+        if results:
+            summary = {
+                'total_files': len(results),
+                'analyzer': 'okt',
+                'analysis_mode': mode,
+                'total_noun_count': len(total_nouns),
+                'unique_noun_count': len(set(total_nouns)),
+                'top_nouns': self.get_frequency(total_nouns, 50)
+            }
+            summary_path = os.path.join(self.output_folder, 'morpheme_summary.json')
+            with open(summary_path, 'w', encoding='utf-8') as f:
+                json.dump(summary, f, ensure_ascii=False, indent=2)
+            print(f"\n✅ 전체 요약 저장 완료: {summary_path}")
+            
+        return results
+
+
+# 메인 실행부 (여기가 핵심입니다!)
+def main():
+    print("\n🔍 2단계: 형태소 분석 (Okt 버전)")
     try:
         analyzer = QAMorphemeAnalyzer()
+        
+        print("\n분석 모드 선택:")
+        print("1. Q&A 패턴만 분석 (권장)")
+        print("2. 전체 텍스트 분석")
+        mode_choice = input("선택 (1/2): ").strip()
+        mode = 'qa_only' if mode_choice == '1' else 'all'
+        
+        print("\n실행 모드 선택:")
+        print("1. 단일 파일 분석")
+        print("2. 전체 파일 분석")
+        choice = input("선택 (1/2): ").strip()
+        
+        if choice == '1':
+            filename = input("파일명 입력 (예: EG_001.txt): ").strip()
+            analyzer.analyze_single_file(filename, mode=mode)
+        elif choice == '2':
+            analyzer.analyze_all_files(mode=mode)
+        else:
+            print("❌ 잘못된 선택입니다.")
+            
     except Exception as e:
-        print(f"\n오류 발생: {e}")
+        print(f"\n❌ 오류 발생: {e}")
+        # import traceback; traceback.print_exc() # 디버깅용
+
+if __name__ == "__main__":
+    main()
