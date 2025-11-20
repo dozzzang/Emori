@@ -135,7 +135,6 @@ class HWPParser:
                 
                 if text and text.strip():
                     all_texts.append(text.strip())
-                    print(f"  ✓ Section{section_num}: {len(text)} 문자 추출")
             except Exception as e:
                 print(f"  ⚠️  Section{section_num} 오류: {e}")
             
