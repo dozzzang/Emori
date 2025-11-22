@@ -157,12 +157,16 @@ class EmoriAnalyzer:
         # 5. 괴리감(Discrepancy) 분석
         discrepancy_score = (1.0 - stability) * verbal
         
+        raw_analysis = self.llama_data.get("analysis_result", [])
+        sorted_keywords = sorted(raw_analysis, key=lambda x: float(x.get('intensity', 0)), reverse=True)
+        top_keywords = [item.get('target', '') for item in sorted_keywords[:3]]
+
         return {
             "core_states": core_states,
             "discrepancy": {
                 "score": discrepancy_score,
-                "stress_val": stress,      # 시각화용 (VR 스트레스)
-                "text_val": verbal         # 시각화용 (상담 긍정성)
+                "stress_val": stress,
+                "text_val": verbal
             },
             "flow_data": {
                 "steps": ["Step 2\n(안정)", "Step 3\n(활동)", "Step 4\n(결과)"],
@@ -171,7 +175,8 @@ class EmoriAnalyzer:
                     steps.get('step3', {}).get('excite', 0),
                     steps.get('step4', {}).get('excite', 0)
                 ]
-            }
+            },
+            "top_keywords": top_keywords 
         }
 
 # --- 테스트 실행용 ---
