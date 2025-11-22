@@ -1,111 +1,200 @@
+import os
 import json
 import numpy as np
+import sys
 from pathlib import Path
+from dotenv import load_dotenv
+from groq import Groq
+
+current_dir = Path(__file__).resolve().parent
+src_dir = current_dir.parent
+if str(src_dir) not in sys.path:
+    sys.path.append(str(src_dir))
 
 class EmoriAnalyzer:
-    def __init__(self, eeg_json_path, text_json_path):
+    def __init__(self, eeg_json_path, llama_json_path):
         """
-        :param eeg_json_path: EEG 결과가 담긴 Report_Data.json 경로
-        :param text_json_path: Step6에서 생성된 텍스트 분석 결과 (..._attention_rank.json) 경로
+        :param eeg_json_path: 뇌파 분석 결과 (Report_Data.json)
+        :param llama_json_path: Llama3 감정 분석 결과 (EB_001_llama_analysis.json)
         """
-        self.eeg_data = self._load_json(eeg_json_path)
-        self.text_data = self._load_json(text_json_path)
+        # 환경 변수 로드 (.env에 GROQ_API_KEY 필요)
+        load_dotenv()
+        self.api_key = os.getenv("GROQ_API_KEY")
+        self.client = Groq(api_key=self.api_key) if self.api_key else None
         
-        # 분석 결과 저장소
-        self.metrics = {} 
+        if not self.client:
+            print("⚠️ 경고: GROQ_API_KEY가 없습니다. API 기반 점수 계산이 불가능합니다.")
+
+        # 데이터 로드
+        self.eeg_data = self._load_json(eeg_json_path)
+        self.llama_data = self._load_json(llama_json_path)
 
     def _load_json(self, path):
         try:
             with open(path, 'r', encoding='utf-8') as f:
                 return json.load(f)
-        except FileNotFoundError:
-            print(f"파일을 찾을 수 없습니다: {path}")
+        except Exception as e:
+            print(f"❌ 파일 로드 실패 ({path}): {e}")
             return {}
 
-    def _normalize_text_sentiment(self):
+    def get_score_from_api(self):
         """
-        텍스트 감정(긍정/부정)과 신뢰도를 조합하여
-        0.0(완전 부정) ~ 1.0(완전 긍정) 사이의 점수로 변환
+        [핵심 기능] 
+        EB_001_llama_analysis.json의 'analysis_result' 리스트를 통째로 
+        Llama-3 API에 보내서 종합 긍정 점수(0~100)를 받아옴.
         """
-        sentiment = self.text_data.get('bert_sentiment', '중립')
-        confidence = self.text_data.get('bert_confidence', 0.0)
+        # 1. JSON에서 분석할 감정 리스트 추출
+        # 파일 구조: {"analysis_result": [...], "filename": ...}
+        analysis_data = self.llama_data.get("analysis_result", [])
         
-        # 로직: 
-        # 긍정이고 신뢰도 0.9 -> 0.9점
-        # 부정이고 신뢰도 0.9 -> 0.1점 (1 - 0.9)
-        # 중립 -> 0.5점
-        
-        if sentiment == '긍정':
-            return 0.5 + (confidence / 2) # 0.5 ~ 1.0
-        elif sentiment == '부정':
-            return 0.5 - (confidence / 2) # 0.0 ~ 0.5
-        else:
+        if not analysis_data:
+            print("ℹ️ 분석할 감정 데이터가 없습니다. (기본값 0.5)")
             return 0.5
 
-    def analyze_step4(self, participant_id="participant_1"):
+        # 리스트를 문자열로 변환하여 프롬프트에 넣음
+        data_str = json.dumps(analysis_data, ensure_ascii=False)
+
+        if not self.client:
+            return 0.5
+
+        # 2. Llama-3 프롬프트 구성 (JSON 해석 요청)
+        prompt = f"""
+        ### Role
+        You are an expert Clinical Psychologist.
+
+        ### Task
+        Below is a JSON list of emotions and intensities extracted from a student's counseling session.
+        Analyze these emotions to calculate a comprehensive "Verbal Positivity Score" (0 to 100).
+        
+        ### Input Data (JSON)
+        {data_str}
+
+        ### Scoring Guide
+        - Analyze the balance between Positive (Joy, Pride, etc.) and Negative (Anger, Sadness, etc.) emotions.
+        - Consider the 'intensity' of each emotion.
+        - Output a single integer score from 0 to 100.
+
+        ### Output Format (JSON ONLY)
+        {{
+            "score": <int>,
+            "reason": "<short explanation in Korean>"
+        }}
         """
-        Step 4 (상담 구간) 데이터를 바탕으로 5대 지표와 괴리감을 계산
-        """
-        # 1. 데이터 추출
+
+        print(f"🤖 [Llama-3.3] 감정 데이터 API 분석 요청 중...")
+
+        # 3. API 호출
         try:
-            steps = self.eeg_data[participant_id]['steps']
-            step4_eeg = steps.get('step4', {}) # 상담 구간
-        except KeyError:
-            print("EEG 데이터 구조가 올바르지 않습니다.")
+            completion = self.client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=[{"role": "user", "content": prompt}],
+                response_format={"type": "json_object"}, 
+                temperature=0.3 # 분석의 정확성을 위해 낮은 온도 설정
+            )
+            
+            result_json = json.loads(completion.choices[0].message.content)
+            
+            # 점수 추출 (혹시 모를 중첩 구조 대비)
+            if "analysis_result" in result_json:
+                score = result_json["analysis_result"].get("score", 50)
+            else:
+                score = result_json.get("score", 50)
+                
+            reason = result_json.get("reason", "분석 완료")
+            
+            # 0~100점을 0.0~1.0으로 정규화
+            normalized_score = float(score) / 100.0
+            
+            print(f" API 분석 완료: {score}점 (이유: {reason})")
+            return normalized_score
+
+        except Exception as e:
+            print(f" API 호출 중 오류 발생: {e}")
+            return 0.5 # 오류 시 중립 점수 반환
+
+    def analyze(self, participant_id="participant_1"):
+        """
+        VR EEG 데이터와 API로 분석한 텍스트 점수를 결합
+        """
+        # 1. VR 데이터 (EEG) 추출
+        try:
+            # EEG 데이터 키가 participant_1이 아닐 경우 유연하게 처리
+            if participant_id not in self.eeg_data and self.eeg_data:
+                participant_id = next(iter(self.eeg_data))
+                
+            steps = self.eeg_data.get(participant_id, {}).get('steps', {})
+            vr_final_state = steps.get('step4', {}) # VR 종료 결과
+        except Exception:
+            print("EEG 데이터 구조 오류")
             return None
 
-        # EEG Raw Values (없으면 0.0 처리)
-        stress = step4_eeg.get('stress', 0.0)
-        relax = step4_eeg.get('relax', 0.0)
-        engage = step4_eeg.get('engage', 0.0)
-        interest = step4_eeg.get('interest', 0.0)
-        excite = step4_eeg.get('excite', 0.0)
-        focus = step4_eeg.get('focus', 0.0)
+        # 2. EEG 지표 (VR 측정값)
+        stress = vr_final_state.get('stress', 0.0)
+        relax = vr_final_state.get('relax', 0.0)
+        engage = vr_final_state.get('engage', 0.0)
+        interest = vr_final_state.get('interest', 0.0)
+        excite = vr_final_state.get('excite', 0.0)
+        focus = vr_final_state.get('focus', 0.0)
 
-        # Text Value
-        text_positivity = self._normalize_text_sentiment()
+        # 3. Text 지표 (API 호출 결과)
+        verbal_positivity = self.get_score_from_api()
 
-        # 2. [상담 5대 핵심 상태] 계산 (0.0 ~ 1.0 클램핑)
-        # 심리적 안정감 (Stability): 스트레스가 낮고 이완이 높을수록 높음
-        stability = (relax + (1.0 - stress)) / 2.0
-        
-        # 대화 집중도 (Attention): 몰입과 집중 평균
-        attention = (engage + focus) / 2.0
-        
-        # 상호작용 의지 (Interaction): 흥미도
-        interaction = interest
-        
-        # 감정 에너지 (Energy): 활성도 (너무 낮으면 무기력)
-        energy = excite
-        
-        # 언어적 긍정태도 (Verbal): 텍스트 긍정 점수
-        verbal = text_positivity
+        # 4. [상담 5대 핵심 상태] 계산
+        stability = (relax + (1.0 - stress)) / 2.0  # 심리적 안정감
+        attention = (engage + focus) / 2.0          # 집중도
+        interaction = interest                      # 흥미도
+        energy = excite                             # 활력도
+        verbal = verbal_positivity                  # 언어적 긍정태도
 
-        # 결과 딕셔너리
         core_states = {
-            "심리적 안정감": np.clip(stability, 0, 1),
-            "대화 집중도": np.clip(attention, 0, 1),
-            "상호작용 의지": np.clip(interaction, 0, 1),
-            "감정 에너지": np.clip(energy, 0, 1),
-            "언어적 긍정태도": np.clip(verbal, 0, 1)
+            "심리적 안정감\n(VR진단)": np.clip(stability, 0, 1),
+            "집중도\n(VR진단)": np.clip(attention, 0, 1),
+            "흥미도\n(VR진단)": np.clip(interaction, 0, 1),
+            "활력도\n(VR진단)": np.clip(energy, 0, 1),
+            "언어적 긍정태도\n(상담대화)": np.clip(verbal, 0, 1)
         }
 
-        # 3. 괴리감(Discrepancy) 분석
-        # 몸은 스트레스(Low Stability)인데, 말은 긍정(High Verbal)인 경우
-        # Stability가 낮을수록(0.2), Verbal이 높을수록(0.9) -> 괴리감 커짐
-        # 수식: (1 - stability) * verbal
+        # 5. 괴리감(Discrepancy) 분석
         discrepancy_score = (1.0 - stability) * verbal
         
-        discrepancy_result = {
-            "score": discrepancy_score,
-            "is_masked": discrepancy_score > 0.4, # 임계값 0.4 (조절 가능)
-            "msg": "가면 우울(Masked) 의심" if discrepancy_score > 0.4 else "언행 일치"
+        return {
+            "core_states": core_states,
+            "discrepancy": {
+                "score": discrepancy_score,
+                "stress_val": stress,      # 시각화용 (VR 스트레스)
+                "text_val": verbal         # 시각화용 (상담 긍정성)
+            },
+            "flow_data": {
+                "steps": ["Step 2\n(안정)", "Step 3\n(활동)", "Step 4\n(결과)"],
+                "values": [
+                    steps.get('step2', {}).get('excite', 0),
+                    steps.get('step3', {}).get('excite', 0),
+                    steps.get('step4', {}).get('excite', 0)
+                ]
+            }
         }
 
-        self.metrics = {
-            "core_states": core_states,
-            "discrepancy": discrepancy_result,
-            "raw_scores": {"stress": stress, "text_pos": text_positivity}
-        }
+# --- 테스트 실행용 ---
+if __name__ == "__main__":
+    base_dir = Path("output") 
+    
+    # 1. 뇌파 데이터 경로
+    eeg_path = "output/Emotion_EEG/Report_Json_Data/Report_Data.json"
+    
+    # 2.  분석할 특정 JSON 파일 경로 지정 (임시)
+    llama_path = "output/llama3/EB_001_llama_analysis.json"
+    
+    print(f"📂 EEG 데이터: {eeg_path}")
+    print(f"📂 감정 분석 데이터: {llama_path}")
+
+    # 파일 존재 여부 확인
+    if os.path.exists(eeg_path) and os.path.exists(llama_path):
+        analyzer = EmoriAnalyzer(eeg_path, llama_path)
+        result = analyzer.analyze()
         
-        return self.metrics
+        if result:
+            print("\n=== 📊 최종 분석 결과 ===")
+            print(json.dumps(result['core_states'], ensure_ascii=False, indent=2))
+            print(f"\n⚠️ 괴리 점수: {result['discrepancy']['score']:.2f}")
+    else:
+        print("❌ 파일이 존재하지 않습니다. 경로를 확인해주세요.")
