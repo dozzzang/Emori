@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
+
 # Emori
 종합설계프로젝트1 초/중/고 상담을 위한 감정 분류
-=======
->>>>>>> Stashed changes

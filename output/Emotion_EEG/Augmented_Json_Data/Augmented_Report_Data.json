@@ -1,0 +1,1802 @@
+{
+    "participant_RECORD_20250515__1_AUG001": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Disgust",
+                "stress": 0.0744135,
+                "engage": 0.5330203,
+                "relax": 0.0570543,
+                "excite": 0.6690866,
+                "interest": 0.9180745,
+                "focus": 0.8607425
+            },
+            "step3": {
+                "fill_rate": "Full",
+                "stress": 0.0594588,
+                "engage": 0.4824203,
+                "relax": 0.0558319,
+                "excite": 0.7105099,
+                "interest": 0.874274,
+                "focus": 0.8656062
+            },
+            "step4": {
+                "fill_rate": "Full",
+                "stress": 0.0940017,
+                "engage": 0.7079549,
+                "relax": 0.8223563,
+                "excite": 0.7541562,
+                "interest": 0.4328953,
+                "focus": 0.9612842
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG002": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Fear",
+                "stress": 0.0285093,
+                "engage": 0.5259974,
+                "relax": 0.0736932,
+                "excite": 0.668996,
+                "interest": 0.8041133,
+                "focus": 0.8036507
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.0350516,
+                "engage": 0.537681,
+                "relax": 0.054492,
+                "excite": 0.782674,
+                "interest": 0.7235245,
+                "focus": 0.9761985
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.0719475,
+                "engage": 0.6009891,
+                "relax": 0.8863531,
+                "excite": 0.8884833,
+                "interest": 0.4487512,
+                "focus": 0.7607399
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG003": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0775338,
+                "engage": 0.7088019,
+                "relax": 0.0761418,
+                "excite": 0.9122142,
+                "interest": 0.8041761,
+                "focus": 0.8325756
+            },
+            "step3": {
+                "fill_rate": "Full",
+                "stress": 0.0835769,
+                "engage": 0.513494,
+                "relax": 0.0628072,
+                "excite": 0.849742,
+                "interest": 0.9058023,
+                "focus": 0.9030683
+            },
+            "step4": {
+                "fill_rate": "High",
+                "stress": 0.0716915,
+                "engage": 0.690567,
+                "relax": 0.8574334,
+                "excite": 0.6912183,
+                "interest": 0.4678717,
+                "focus": 0.7837441
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG004": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Disgust",
+                "stress": 0.0844423,
+                "engage": 0.659125,
+                "relax": 0.0594413,
+                "excite": 0.6466845,
+                "interest": 0.7837453,
+                "focus": 0.7757037
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.0218873,
+                "engage": 0.6987555,
+                "relax": 0.0767031,
+                "excite": 0.7366105,
+                "interest": 0.8911499,
+                "focus": 0.8148777
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.1008728,
+                "engage": 0.6444083,
+                "relax": 0.7750322,
+                "excite": 0.6917777,
+                "interest": 0.4867039,
+                "focus": 0.7816095
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG005": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Angry",
+                "stress": 0.0405407,
+                "engage": 0.5269488,
+                "relax": 0.0799343,
+                "excite": 0.798618,
+                "interest": 0.7128098,
+                "focus": 0.7081248
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.0118553,
+                "engage": 0.6238528,
+                "relax": 0.0744555,
+                "excite": 0.770815,
+                "interest": 0.7041597,
+                "focus": 0.8105855
+            },
+            "step4": {
+                "fill_rate": "Minimal",
+                "stress": 0.1036961,
+                "engage": 0.6628225,
+                "relax": 0.9911492,
+                "excite": 0.8808864,
+                "interest": 0.3822159,
+                "focus": 0.9172723
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG006": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Disgust",
+                "stress": 0.0120437,
+                "engage": 0.5781033,
+                "relax": 0.0654326,
+                "excite": 0.9400063,
+                "interest": 0.9607808,
+                "focus": 0.7743707
+            },
+            "step3": {
+                "fill_rate": "Half",
+                "stress": 0.050558,
+                "engage": 0.5172925,
+                "relax": 0.0776701,
+                "excite": 0.9134982,
+                "interest": 0.7783722,
+                "focus": 0.8894076
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.0902967,
+                "engage": 0.5642095,
+                "relax": 0.9273215,
+                "excite": 0.7819212,
+                "interest": 0.5279867,
+                "focus": 0.8608815
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG007": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0029282,
+                "engage": 0.6954763,
+                "relax": 0.0767659,
+                "excite": 0.9011338,
+                "interest": 0.7812373,
+                "focus": 0.7114356
+            },
+            "step3": {
+                "fill_rate": "Half",
+                "stress": 0.087923,
+                "engage": 0.6997147,
+                "relax": 0.0556174,
+                "excite": 0.7911281,
+                "interest": 0.7059556,
+                "focus": 0.9266707
+            },
+            "step4": {
+                "fill_rate": "Low",
+                "stress": 0.0957258,
+                "engage": 0.5578023,
+                "relax": 0.8394213,
+                "excite": 0.7851311,
+                "interest": 0.4303996,
+                "focus": 0.9622121
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG008": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Surprise",
+                "stress": 0.0757713,
+                "engage": 0.638674,
+                "relax": 0.0723453,
+                "excite": 0.7634423,
+                "interest": 0.8962829,
+                "focus": 0.8080741
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.0900618,
+                "engage": 0.5820734,
+                "relax": 0.0599442,
+                "excite": 0.6568444,
+                "interest": 0.6907356,
+                "focus": 0.8633629
+            },
+            "step4": {
+                "fill_rate": "Minimal",
+                "stress": 0.0895862,
+                "engage": 0.5260384,
+                "relax": 0.9105909,
+                "excite": 0.6339649,
+                "interest": 0.3928415,
+                "focus": 0.7130854
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG009": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.0245625,
+                "engage": 0.633714,
+                "relax": 0.0590463,
+                "excite": 0.6785753,
+                "interest": 0.9796284,
+                "focus": 0.8686074
+            },
+            "step3": {
+                "fill_rate": "Full",
+                "stress": 0.0477944,
+                "engage": 0.6611716,
+                "relax": 0.0748666,
+                "excite": 0.6970641,
+                "interest": 0.7147121,
+                "focus": 0.8257268
+            },
+            "step4": {
+                "fill_rate": "Minimal",
+                "stress": 0.0838803,
+                "engage": 0.6465502,
+                "relax": 0.9170894,
+                "excite": 0.8231778,
+                "interest": 0.5670426,
+                "focus": 0.7329336
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG010": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Surprise",
+                "stress": 0.6866646,
+                "engage": 0.1850499,
+                "relax": 0.2724457,
+                "excite": 0.2505566,
+                "interest": 0.2233594,
+                "focus": 0.1866735
+            },
+            "step3": {
+                "fill_rate": "Half",
+                "stress": 0.1730046,
+                "engage": 0.6607719,
+                "relax": 0.8951402,
+                "excite": 0.9690273,
+                "interest": 0.6447079,
+                "focus": 0.6275961
+            },
+            "step4": {
+                "fill_rate": "Full",
+                "stress": 0.6791344,
+                "engage": 0.4669116,
+                "relax": 0.1919051,
+                "excite": 0.3795941,
+                "interest": 0.5805297,
+                "focus": 0.4404964
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG011": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Surprise",
+                "stress": 0.381573,
+                "engage": 0.7780914,
+                "relax": 0.653769,
+                "excite": 0.190708,
+                "interest": 0.648256,
+                "focus": 0.6017151
+            },
+            "step3": {
+                "fill_rate": "Half",
+                "stress": 0.2881921,
+                "engage": 0.0507587,
+                "relax": 0.6821965,
+                "excite": 0.9194677,
+                "interest": 0.0626673,
+                "focus": 0.0509256
+            },
+            "step4": {
+                "fill_rate": "Low",
+                "stress": 0.4085224,
+                "engage": 0.7028594,
+                "relax": 0.579533,
+                "excite": 0.4043718,
+                "interest": 0.9813804,
+                "focus": 0.8628095
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG012": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Angry",
+                "stress": 0.8554513,
+                "engage": 0.6094052,
+                "relax": 0.1497411,
+                "excite": 0.6700562,
+                "interest": 0.6088301,
+                "focus": 0.5960522
+            },
+            "step3": {
+                "fill_rate": "Full",
+                "stress": 0.7816897,
+                "engage": 0.7566888,
+                "relax": 0.240381,
+                "excite": 0.0103061,
+                "interest": 0.6771558,
+                "focus": 0.6621292
+            },
+            "step4": {
+                "fill_rate": "Minimal",
+                "stress": 0.8219452,
+                "engage": 0.4589872,
+                "relax": 0.1691145,
+                "excite": 0.0697225,
+                "interest": 0.4830569,
+                "focus": 0.4918177
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG013": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Surprise",
+                "stress": 0.1142245,
+                "engage": 0.8614987,
+                "relax": 0.870686,
+                "excite": 0.9318243,
+                "interest": 0.6792841,
+                "focus": 0.9293965
+            },
+            "step3": {
+                "fill_rate": "Half",
+                "stress": 0.7551818,
+                "engage": 0.7566494,
+                "relax": 0.2843732,
+                "excite": 0.211419,
+                "interest": 0.8106565,
+                "focus": 0.9099549
+            },
+            "step4": {
+                "fill_rate": "Minimal",
+                "stress": 0.1960004,
+                "engage": 0.5884993,
+                "relax": 0.6417608,
+                "excite": 0.6346502,
+                "interest": 0.572551,
+                "focus": 0.4136444
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG014": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.8341404,
+                "engage": 0.4531716,
+                "relax": 0.193672,
+                "excite": 0.9451059,
+                "interest": 0.476196,
+                "focus": 0.3802912
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.8643891,
+                "engage": 0.3594595,
+                "relax": 0.1052134,
+                "excite": 0.3652869,
+                "interest": 0.4339172,
+                "focus": 0.4397029
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.902861,
+                "engage": 0.3823864,
+                "relax": 0.1241951,
+                "excite": 0.5603236,
+                "interest": 0.4121779,
+                "focus": 0.4263904
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG015": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Disgust",
+                "stress": 0.2342109,
+                "engage": 0.9740282,
+                "relax": 0.6411968,
+                "excite": 0.7368279,
+                "interest": 0.8537378,
+                "focus": 0.9848476
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.2903076,
+                "engage": 0.7737069,
+                "relax": 0.8270565,
+                "excite": 0.1089875,
+                "interest": 0.9605456,
+                "focus": 0.9563562
+            },
+            "step4": {
+                "fill_rate": "High",
+                "stress": 0.7105878,
+                "engage": 0.7531243,
+                "relax": 0.3107831,
+                "excite": 0.2283679,
+                "interest": 0.6611474,
+                "focus": 0.7165131
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG016": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.1336471,
+                "engage": 0.268616,
+                "relax": 0.9943225,
+                "excite": 0.5366795,
+                "interest": 0.3290133,
+                "focus": 0.2367879
+            },
+            "step3": {
+                "fill_rate": "Half",
+                "stress": 0.1465619,
+                "engage": 0.1625601,
+                "relax": 0.7334626,
+                "excite": 0.4351292,
+                "interest": 0.1957887,
+                "focus": 0.1660195
+            },
+            "step4": {
+                "fill_rate": "Full",
+                "stress": 0.3959738,
+                "engage": 0.5275942,
+                "relax": 0.5275754,
+                "excite": 0.7090765,
+                "interest": 0.4098756,
+                "focus": 0.5990544
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG017": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Angry",
+                "stress": 0.6483668,
+                "engage": 0.9092334,
+                "relax": 0.4741234,
+                "excite": 0.1255007,
+                "interest": 0.9759253,
+                "focus": 0.8812858
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.3953953,
+                "engage": 0.3339708,
+                "relax": 0.5554248,
+                "excite": 0.6652645,
+                "interest": 0.3110559,
+                "focus": 0.3592985
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.7321957,
+                "engage": 0.6455636,
+                "relax": 0.2204549,
+                "excite": 0.2109725,
+                "interest": 0.6346361,
+                "focus": 0.5938352
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG018": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.5404131,
+                "engage": 0.248907,
+                "relax": 0.5074537,
+                "excite": 0.1705217,
+                "interest": 0.1788652,
+                "focus": 0.2158134
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.4437859,
+                "engage": 0.3695913,
+                "relax": 0.6482627,
+                "excite": 0.225416,
+                "interest": 0.2954338,
+                "focus": 0.2719638
+            },
+            "step4": {
+                "fill_rate": "Low",
+                "stress": 0.8026297,
+                "engage": 0.3943856,
+                "relax": 0.2857482,
+                "excite": 0.6301356,
+                "interest": 0.4175231,
+                "focus": 0.5130204
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG019": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Surprise",
+                "stress": 0.904758,
+                "engage": 0.7871186,
+                "relax": 0.2516784,
+                "excite": 0.778642,
+                "interest": 0.6105672,
+                "focus": 0.7716179
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.3511529,
+                "engage": 0.542749,
+                "relax": 0.5572634,
+                "excite": 0.1342058,
+                "interest": 0.4585078,
+                "focus": 0.4708769
+            },
+            "step4": {
+                "fill_rate": "High",
+                "stress": 0.4990968,
+                "engage": 0.3106764,
+                "relax": 0.6160813,
+                "excite": 0.8921283,
+                "interest": 0.3086627,
+                "focus": 0.3697294
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG020": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Surprise",
+                "stress": 0.613347,
+                "engage": 0.685038,
+                "relax": 0.5111542,
+                "excite": 0.4851124,
+                "interest": 0.6735876,
+                "focus": 0.7339381
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.3075509,
+                "engage": 0.2722443,
+                "relax": 0.5582905,
+                "excite": 0.1516798,
+                "interest": 0.2242523,
+                "focus": 0.2025868
+            },
+            "step4": {
+                "fill_rate": "Low",
+                "stress": 0.6795337,
+                "engage": 0.4097903,
+                "relax": 0.2236835,
+                "excite": 0.8330583,
+                "interest": 0.3970862,
+                "focus": 0.460288
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG021": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Disgust",
+                "stress": 0.5603726,
+                "engage": 0.0075888,
+                "relax": 0.4614651,
+                "excite": 0.9534769,
+                "interest": 0.006667,
+                "focus": 0.0075724
+            },
+            "step3": {
+                "fill_rate": "Full",
+                "stress": 0.4113274,
+                "engage": 0.535901,
+                "relax": 0.5231258,
+                "excite": 0.0299958,
+                "interest": 0.5640812,
+                "focus": 0.6469049
+            },
+            "step4": {
+                "fill_rate": "Minimal",
+                "stress": 0.5690262,
+                "engage": 0.1411721,
+                "relax": 0.4441614,
+                "excite": 0.0279395,
+                "interest": 0.1588477,
+                "focus": 0.1701522
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG022": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.6490712,
+                "engage": 0.4398837,
+                "relax": 0.1845052,
+                "excite": 0.327519,
+                "interest": 0.5105367,
+                "focus": 0.4398878
+            },
+            "step3": {
+                "fill_rate": "Full",
+                "stress": 0.268824,
+                "engage": 0.6929353,
+                "relax": 0.5667261,
+                "excite": 0.5398796,
+                "interest": 0.9984802,
+                "focus": 0.7821536
+            },
+            "step4": {
+                "fill_rate": "Low",
+                "stress": 0.4029444,
+                "engage": 0.8609202,
+                "relax": 0.7316397,
+                "excite": 0.2001613,
+                "interest": 0.6315319,
+                "focus": 0.6727932
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG023": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Fear",
+                "stress": 0.4846342,
+                "engage": 0.2420998,
+                "relax": 0.477933,
+                "excite": 0.6076402,
+                "interest": 0.2404397,
+                "focus": 0.1850187
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.2062219,
+                "engage": 0.7776645,
+                "relax": 0.6986189,
+                "excite": 0.6776699,
+                "interest": 0.9904552,
+                "focus": 0.8623195
+            },
+            "step4": {
+                "fill_rate": "Full",
+                "stress": 0.352996,
+                "engage": 0.0808355,
+                "relax": 0.565001,
+                "excite": 0.7727084,
+                "interest": 0.0876984,
+                "focus": 0.08001
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG024": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.3921118,
+                "engage": 0.700921,
+                "relax": 0.42362,
+                "excite": 0.4206387,
+                "interest": 0.6592658,
+                "focus": 0.6442605
+            },
+            "step3": {
+                "fill_rate": "Full",
+                "stress": 0.600422,
+                "engage": 0.7572022,
+                "relax": 0.3392601,
+                "excite": 0.522225,
+                "interest": 0.8998025,
+                "focus": 0.8899
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.1619973,
+                "engage": 0.8758272,
+                "relax": 0.8649279,
+                "excite": 0.3229823,
+                "interest": 0.6959839,
+                "focus": 0.9095764
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG025": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.319776,
+                "engage": 0.5329599,
+                "relax": 0.698786,
+                "excite": 0.3256892,
+                "interest": 0.5674398,
+                "focus": 0.5371636
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.7199845,
+                "engage": 0.3230085,
+                "relax": 0.313526,
+                "excite": 0.5171106,
+                "interest": 0.2457303,
+                "focus": 0.2513715
+            },
+            "step4": {
+                "fill_rate": "High",
+                "stress": 0.5151468,
+                "engage": 0.5503078,
+                "relax": 0.4611678,
+                "excite": 0.4487264,
+                "interest": 0.4483291,
+                "focus": 0.5098902
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG026": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Surprise",
+                "stress": 0.376721,
+                "engage": 0.3465493,
+                "relax": 0.7565512,
+                "excite": 0.5508381,
+                "interest": 0.3477401,
+                "focus": 0.3628122
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.7126517,
+                "engage": 0.2142414,
+                "relax": 0.378845,
+                "excite": 0.9509267,
+                "interest": 0.248902,
+                "focus": 0.2027679
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.3201934,
+                "engage": 0.3060774,
+                "relax": 0.7176322,
+                "excite": 0.9805301,
+                "interest": 0.314108,
+                "focus": 0.2546291
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG027": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.7902361,
+                "engage": 0.6360244,
+                "relax": 0.1136946,
+                "excite": 0.69772,
+                "interest": 0.4546844,
+                "focus": 0.6133928
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.5223261,
+                "engage": 0.8399052,
+                "relax": 0.4809705,
+                "excite": 0.1851793,
+                "interest": 0.7137791,
+                "focus": 0.9822176
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.4972505,
+                "engage": 0.6822017,
+                "relax": 0.50715,
+                "excite": 0.0545555,
+                "interest": 0.7069085,
+                "focus": 0.8429626
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG028": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.8394832,
+                "engage": 0.8536084,
+                "relax": 0.173391,
+                "excite": 0.52305,
+                "interest": 0.7495428,
+                "focus": 0.747159
+            },
+            "step3": {
+                "fill_rate": "Full",
+                "stress": 0.1953733,
+                "engage": 0.9211862,
+                "relax": 0.8226948,
+                "excite": 0.7403492,
+                "interest": 0.9891005,
+                "focus": 0.835246
+            },
+            "step4": {
+                "fill_rate": "High",
+                "stress": 0.6308787,
+                "engage": 0.5745543,
+                "relax": 0.2231277,
+                "excite": 0.003673,
+                "interest": 0.6476855,
+                "focus": 0.6855627
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG029": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.7658211,
+                "engage": 0.2348185,
+                "relax": 0.2952443,
+                "excite": 0.2652901,
+                "interest": 0.3164557,
+                "focus": 0.2936155
+            },
+            "step3": {
+                "fill_rate": "Full",
+                "stress": 0.2172937,
+                "engage": 0.1767579,
+                "relax": 0.6387867,
+                "excite": 0.2663668,
+                "interest": 0.1701976,
+                "focus": 0.1636353
+            },
+            "step4": {
+                "fill_rate": "High",
+                "stress": 0.300383,
+                "engage": 0.6957685,
+                "relax": 0.7162358,
+                "excite": 0.4692293,
+                "interest": 0.5487875,
+                "focus": 0.5722285
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG030": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.8117273,
+                "engage": 0.0379197,
+                "relax": 0.1479423,
+                "excite": 0.0922356,
+                "interest": 0.0483632,
+                "focus": 0.0463066
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.5277336,
+                "engage": 0.9215666,
+                "relax": 0.5085151,
+                "excite": 0.0411914,
+                "interest": 0.9416674,
+                "focus": 0.8732741
+            },
+            "step4": {
+                "fill_rate": "Low",
+                "stress": 0.3305326,
+                "engage": 0.8892521,
+                "relax": 0.6546993,
+                "excite": 0.4922341,
+                "interest": 0.7572939,
+                "focus": 0.8258569
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG031": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.2303775,
+                "engage": 0.3024785,
+                "relax": 0.9261885,
+                "excite": 0.8137525,
+                "interest": 0.3370961,
+                "focus": 0.3245023
+            },
+            "step3": {
+                "fill_rate": "Half",
+                "stress": 0.7703308,
+                "engage": 0.3115335,
+                "relax": 0.3536666,
+                "excite": 0.9881311,
+                "interest": 0.3443802,
+                "focus": 0.3294698
+            },
+            "step4": {
+                "fill_rate": "Full",
+                "stress": 0.5379207,
+                "engage": 0.20772,
+                "relax": 0.4521984,
+                "excite": 0.7602305,
+                "interest": 0.1660557,
+                "focus": 0.1921041
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG032": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.8378226,
+                "engage": 0.831534,
+                "relax": 0.1702018,
+                "excite": 0.5512882,
+                "interest": 0.9008411,
+                "focus": 0.7991811
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.1045567,
+                "engage": 0.7620808,
+                "relax": 0.9521683,
+                "excite": 0.4988771,
+                "interest": 0.9236001,
+                "focus": 0.8675986
+            },
+            "step4": {
+                "fill_rate": "Low",
+                "stress": 0.8121287,
+                "engage": 0.7488516,
+                "relax": 0.325276,
+                "excite": 0.3842024,
+                "interest": 0.9740533,
+                "focus": 0.8366924
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG033": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Fear",
+                "stress": 0.2638068,
+                "engage": 0.9328436,
+                "relax": 0.651259,
+                "excite": 0.0035627,
+                "interest": 0.9133352,
+                "focus": 0.9485849
+            },
+            "step3": {
+                "fill_rate": "Full",
+                "stress": 0.4997717,
+                "engage": 0.6461633,
+                "relax": 0.5604065,
+                "excite": 0.3331075,
+                "interest": 0.7297087,
+                "focus": 0.6278505
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.1832797,
+                "engage": 0.7684337,
+                "relax": 0.8007153,
+                "excite": 0.856157,
+                "interest": 0.8207493,
+                "focus": 0.7925795
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG034": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Surprise",
+                "stress": 0.1159132,
+                "engage": 0.6823046,
+                "relax": 0.98989,
+                "excite": 0.12712,
+                "interest": 0.9401372,
+                "focus": 0.7393368
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.6884605,
+                "engage": 0.970997,
+                "relax": 0.1453402,
+                "excite": 0.1450113,
+                "interest": 0.9582024,
+                "focus": 0.9902707
+            },
+            "step4": {
+                "fill_rate": "Low",
+                "stress": 0.7590083,
+                "engage": 0.8202867,
+                "relax": 0.1533072,
+                "excite": 0.081235,
+                "interest": 0.7281367,
+                "focus": 0.8362649
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG035": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Angry",
+                "stress": 0.3966392,
+                "engage": 0.8669135,
+                "relax": 0.6296972,
+                "excite": 0.2355355,
+                "interest": 0.9084888,
+                "focus": 0.7933691
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.8553917,
+                "engage": 0.1007965,
+                "relax": 0.304987,
+                "excite": 0.1014067,
+                "interest": 0.0791061,
+                "focus": 0.0839663
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.7182268,
+                "engage": 0.3066477,
+                "relax": 0.1197432,
+                "excite": 0.2449532,
+                "interest": 0.3136153,
+                "focus": 0.348688
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG036": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Fear",
+                "stress": 0.8742992,
+                "engage": 0.7698006,
+                "relax": 0.19012,
+                "excite": 0.1439746,
+                "interest": 0.8366072,
+                "focus": 0.7737873
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.7805166,
+                "engage": 0.0120551,
+                "relax": 0.3258774,
+                "excite": 0.1588176,
+                "interest": 0.0101459,
+                "focus": 0.0097463
+            },
+            "step4": {
+                "fill_rate": "High",
+                "stress": 0.4169255,
+                "engage": 0.5753949,
+                "relax": 0.6487946,
+                "excite": 0.2000178,
+                "interest": 0.6098135,
+                "focus": 0.6350057
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG037": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Fear",
+                "stress": 0.6616826,
+                "engage": 0.2398639,
+                "relax": 0.4382792,
+                "excite": 0.3964099,
+                "interest": 0.2382219,
+                "focus": 0.3398847
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.3229047,
+                "engage": 0.9436584,
+                "relax": 0.8188596,
+                "excite": 0.903032,
+                "interest": 0.9504171,
+                "focus": 0.8297818
+            },
+            "step4": {
+                "fill_rate": "Minimal",
+                "stress": 0.2264197,
+                "engage": 0.1978621,
+                "relax": 0.8173545,
+                "excite": 0.7677033,
+                "interest": 0.2356853,
+                "focus": 0.1878533
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG038": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.2545646,
+                "engage": 0.0292695,
+                "relax": 0.8506453,
+                "excite": 0.3273924,
+                "interest": 0.0331708,
+                "focus": 0.0302223
+            },
+            "step3": {
+                "fill_rate": "Full",
+                "stress": 0.25626,
+                "engage": 0.8511698,
+                "relax": 0.6628601,
+                "excite": 0.1653799,
+                "interest": 0.9743236,
+                "focus": 0.9833271
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.1447745,
+                "engage": 0.3318487,
+                "relax": 0.8400346,
+                "excite": 0.0762241,
+                "interest": 0.3259222,
+                "focus": 0.263376
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG039": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Disgust",
+                "stress": 0.4892855,
+                "engage": 0.8024612,
+                "relax": 0.3855193,
+                "excite": 0.6731556,
+                "interest": 0.8454124,
+                "focus": 0.8176424
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.2041437,
+                "engage": 0.8102033,
+                "relax": 0.6139339,
+                "excite": 0.8843506,
+                "interest": 0.8913524,
+                "focus": 0.9790073
+            },
+            "step4": {
+                "fill_rate": "Minimal",
+                "stress": 0.8165531,
+                "engage": 0.0746593,
+                "relax": 0.255169,
+                "excite": 0.4088876,
+                "interest": 0.05491,
+                "focus": 0.0756056
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG040": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.7024168,
+                "engage": 0.8415008,
+                "relax": 0.1898754,
+                "excite": 0.743397,
+                "interest": 0.984327,
+                "focus": 0.8314873
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.2957604,
+                "engage": 0.1304486,
+                "relax": 0.6908587,
+                "excite": 0.4087078,
+                "interest": 0.1834292,
+                "focus": 0.1263279
+            },
+            "step4": {
+                "fill_rate": "Full",
+                "stress": 0.7123538,
+                "engage": 0.5070591,
+                "relax": 0.3328938,
+                "excite": 0.6859946,
+                "interest": 0.4518358,
+                "focus": 0.528793
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG041": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.8012991,
+                "engage": 0.9603711,
+                "relax": 0.2683242,
+                "excite": 0.2128937,
+                "interest": 0.9187384,
+                "focus": 0.9934842
+            },
+            "step3": {
+                "fill_rate": "Full",
+                "stress": 0.996508,
+                "engage": 0.3725361,
+                "relax": 0.1238997,
+                "excite": 0.829988,
+                "interest": 0.3414216,
+                "focus": 0.3457225
+            },
+            "step4": {
+                "fill_rate": "Low",
+                "stress": 0.2769459,
+                "engage": 0.2607557,
+                "relax": 0.7792539,
+                "excite": 0.2779976,
+                "interest": 0.2790253,
+                "focus": 0.2793525
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG042": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Angry",
+                "stress": 0.6924599,
+                "engage": 0.8031505,
+                "relax": 0.2096243,
+                "excite": 0.5892641,
+                "interest": 0.6981058,
+                "focus": 0.7746626
+            },
+            "step3": {
+                "fill_rate": "Half",
+                "stress": 0.6751784,
+                "engage": 0.3479486,
+                "relax": 0.1972397,
+                "excite": 0.3626769,
+                "interest": 0.4373332,
+                "focus": 0.4134469
+            },
+            "step4": {
+                "fill_rate": "High",
+                "stress": 0.7884571,
+                "engage": 0.716125,
+                "relax": 0.2948615,
+                "excite": 0.3023287,
+                "interest": 0.6507817,
+                "focus": 0.5000626
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG043": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Surprise",
+                "stress": 0.408664,
+                "engage": 0.4070499,
+                "relax": 0.5400717,
+                "excite": 0.6086891,
+                "interest": 0.405517,
+                "focus": 0.4466117
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.3660201,
+                "engage": 0.6573904,
+                "relax": 0.613874,
+                "excite": 0.4542617,
+                "interest": 0.5719517,
+                "focus": 0.4608184
+            },
+            "step4": {
+                "fill_rate": "Low",
+                "stress": 0.3590152,
+                "engage": 0.9266115,
+                "relax": 0.719851,
+                "excite": 0.215808,
+                "interest": 0.8257875,
+                "focus": 0.7549325
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG044": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.5505923,
+                "engage": 0.1023303,
+                "relax": 0.4110311,
+                "excite": 0.1534863,
+                "interest": 0.1122318,
+                "focus": 0.0793703
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.1967269,
+                "engage": 0.1031287,
+                "relax": 0.860871,
+                "excite": 0.5568144,
+                "interest": 0.0973927,
+                "focus": 0.0964559
+            },
+            "step4": {
+                "fill_rate": "Low",
+                "stress": 0.599022,
+                "engage": 0.131251,
+                "relax": 0.4001298,
+                "excite": 0.8682241,
+                "interest": 0.1339949,
+                "focus": 0.1461747
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG045": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Angry",
+                "stress": 0.7042689,
+                "engage": 0.5042867,
+                "relax": 0.2082844,
+                "excite": 0.3507639,
+                "interest": 0.5193361,
+                "focus": 0.4296644
+            },
+            "step3": {
+                "fill_rate": "Half",
+                "stress": 0.6579449,
+                "engage": 0.232467,
+                "relax": 0.3573913,
+                "excite": 0.6221021,
+                "interest": 0.2428161,
+                "focus": 0.2320834
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.4447503,
+                "engage": 0.5341612,
+                "relax": 0.5339421,
+                "excite": 0.7626471,
+                "interest": 0.7691513,
+                "focus": 0.6189524
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG046": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Fear",
+                "stress": 0.4101852,
+                "engage": 0.0838239,
+                "relax": 0.5236721,
+                "excite": 0.5309522,
+                "interest": 0.0670237,
+                "focus": 0.0692084
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.7196964,
+                "engage": 0.3674709,
+                "relax": 0.2346233,
+                "excite": 0.8834588,
+                "interest": 0.2692972,
+                "focus": 0.3441125
+            },
+            "step4": {
+                "fill_rate": "Minimal",
+                "stress": 0.8263359,
+                "engage": 0.0799924,
+                "relax": 0.1457981,
+                "excite": 0.4147696,
+                "interest": 0.0731137,
+                "focus": 0.0829074
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG047": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.6698022,
+                "engage": 0.7241881,
+                "relax": 0.267211,
+                "excite": 0.3958681,
+                "interest": 0.7057768,
+                "focus": 0.5451334
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.5632593,
+                "engage": 0.1912886,
+                "relax": 0.3176821,
+                "excite": 0.0087222,
+                "interest": 0.2329718,
+                "focus": 0.1845187
+            },
+            "step4": {
+                "fill_rate": "Full",
+                "stress": 0.5958966,
+                "engage": 0.7978358,
+                "relax": 0.4536682,
+                "excite": 0.0730034,
+                "interest": 0.8058357,
+                "focus": 0.5750858
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG048": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.2164867,
+                "engage": 0.6244673,
+                "relax": 0.7636896,
+                "excite": 0.1160582,
+                "interest": 0.4657536,
+                "focus": 0.5357971
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.2933325,
+                "engage": 0.7223594,
+                "relax": 0.6189699,
+                "excite": 0.8446399,
+                "interest": 0.5550029,
+                "focus": 0.6404941
+            },
+            "step4": {
+                "fill_rate": "Full",
+                "stress": 0.4443397,
+                "engage": 0.370926,
+                "relax": 0.4845037,
+                "excite": 0.1689646,
+                "interest": 0.398033,
+                "focus": 0.3351755
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG049": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Angry",
+                "stress": 0.6551389,
+                "engage": 0.8010811,
+                "relax": 0.3203663,
+                "excite": 0.2567123,
+                "interest": 0.8071047,
+                "focus": 0.8022901
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.3455114,
+                "engage": 0.0801818,
+                "relax": 0.6971232,
+                "excite": 0.5641717,
+                "interest": 0.0787026,
+                "focus": 0.0818045
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.2321867,
+                "engage": 0.5978533,
+                "relax": 0.9574121,
+                "excite": 0.3168228,
+                "interest": 0.6278474,
+                "focus": 0.635351
+            }
+        }
+    },
+    "participant_RECORD_20250515__1_AUG050": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Disgust",
+                "stress": 0.3541591,
+                "engage": 0.3471946,
+                "relax": 0.4671303,
+                "excite": 0.3693689,
+                "interest": 0.3225605,
+                "focus": 0.3729935
+            },
+            "step3": {
+                "fill_rate": "Half",
+                "stress": 0.1225497,
+                "engage": 0.0869918,
+                "relax": 0.8764137,
+                "excite": 0.9542772,
+                "interest": 0.0999226,
+                "focus": 0.0744616
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.1512161,
+                "engage": 0.5961139,
+                "relax": 0.8276924,
+                "excite": 0.9577646,
+                "interest": 0.560763,
+                "focus": 0.6432448
+            }
+        }
+    }
+}
