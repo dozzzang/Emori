@@ -1,6 +1,6 @@
 """
-6단계: 감정 단어 시각화 (BERT Attention 기반)
-- BERT의 Attention Score를 단어 중요도로 활용하여 시각화
+step6_visualizer.py: LLaMA 3 분석 결과를 기반으로 요청된 차트 시각화 및 폴더 정리
+- LLaMA 3의 추론 감성 및 문맥 가중치를 활용하여 시각화
 """
 
 import os
@@ -10,41 +10,28 @@ import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 from wordcloud import WordCloud
 import numpy as np
+from collections import defaultdict
+import networkx as nx 
+from collections import defaultdict
 
+# 파일 경로 설정 🚨 [수정 및 복구 지점] 🚨
+ATTENTION_DIR = 'output/attention'
+VISUAL_ROOT_DIR = 'output/visualization'
+os.makedirs(VISUAL_ROOT_DIR, exist_ok=True)
 
 class EmotionVisualizer:
-    """감정 단어 시각화기"""
     
-    def __init__(self, 
-                 attention_folder="output/attention", # Step 4 결과 (Attention)
-                 output_folder="output/visualization"):
-        self.attention_folder = attention_folder
-        self.output_folder = output_folder
-        
-        os.makedirs(output_folder, exist_ok=True)
-        
-        # 한글 폰트 설정
+    def __init__(self):
         self.font_path = self._setup_korean_font()
-        
         plt.rcParams['figure.figsize'] = (12, 8)
         plt.rcParams['font.size'] = 10
-        
-        print("감정 단어 시각화기 초기화 완료!\n")
+        print("✅ 감정 단어 시각화기 초기화 완료!\n")
     
     def _setup_korean_font(self):
-        # ... (한글 폰트 설정 로직 생략) ...
-        font_paths_mac = [
-            '/System/Library/Fonts/AppleSDGothicNeo.ttc',
-            '/Library/Fonts/NanumGothic.ttf',
-        ]
-        font_paths_linux = [
-            '/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc',
-            '/usr/share/fonts/truetype/noto/NotoSansCJKkr-Regular.otf',
-        ]
-        font_paths_windows = [
-            'C:\\Windows\\Fonts\\malgun.ttf',
-            'C:\\Windows\\Fonts\\arial.ttf',
-        ]
+        """한글 폰트 설정"""
+        font_paths_mac = ['/System/Library/Fonts/AppleSDGothicNeo.ttc']
+        font_paths_linux = ['/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc']
+        font_paths_windows = ['C:\\Windows\\Fonts\\malgun.ttf']
         
         all_paths = font_paths_mac + font_paths_linux + font_paths_windows
         
@@ -54,28 +41,69 @@ class EmotionVisualizer:
                 plt.rcParams['font.family'] = fm.FontProperties(fname=font_path).get_name()
                 return font_path
         
+        print("❌ 한글 폰트를 찾을 수 없습니다. 그래프에 한글이 깨질 수 있습니다.")
         return None
     
     def load_json_file(self, file_path: str) -> dict:
+        """JSON 파일 로드"""
         try:
+            if not os.path.exists(file_path): 
+                print(f"🛑 Error: 분석 파일 {file_path}을(를) 찾을 수 없습니다.")
+                return {}
             with open(file_path, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except Exception as e:
+            print(f"❌ 파일 로드 실패: {e}")
             return {}
 
-    def create_wordcloud_attention(self, attention_rankings: list, bert_sentiment: str, filename: str):
-        """BERT Attention Score를 크기로 반영한 워드클라우드"""
-        if not attention_rankings: return
+    def create_summary_txt(self, analysis_data: dict, output_folder: str):
+        """인터뷰 요약 내용을 TXT 파일로 생성"""
+        # ... (로직 유지) ...
+        primary_sentiment = analysis_data.get('primary_sentiment', '불명')
+        confidence = analysis_data.get('confidence', 0.0)
         
-        word_scores_dict = {word: score for word, score in attention_rankings}
+        summary_lines = [
+            "==========================================",
+            f"🎯 LLaMA 3 분석 요약: {Path(output_folder).name}",
+            "==========================================",
+            f"1. 최종 추론 감성: {primary_sentiment}",
+            f"2. 신뢰도 (BERT 기반): {confidence:.3f}",
+            "",
+            "3. [핵심 키워드 및 상황적 기여 근거]",
+            "------------------------------------------"
+        ]
+        
+        keywords = analysis_data.get('contextual_keywords', [])
+        for item in keywords:
+            word = item.get('word', 'N/A')
+            weight = item.get('contribution_weight', 0.0)
+            reason = item.get('reason', '근거 없음')
+            sentiment_label = item.get('sentiment_label', '중립')
+            
+            summary_lines.append(f"• 키워드: {word} (분류: {sentiment_label})")
+            summary_lines.append(f"  > 기여도: {weight:.4f}")
+            summary_lines.append(f"  > 분석 근거: {reason}")
+        
+        summary_path = os.path.join(output_folder, f"{Path(output_folder).name}_summary.txt")
+        
+        try:
+            with open(summary_path, 'w', encoding='utf-8') as f:
+                f.write('\n'.join(summary_lines))
+            print(f"  ✅ [4] 인터뷰 요약 TXT 저장: {Path(summary_path).name}")
+        except Exception as e:
+            print(f"❌ 요약 TXT 파일 저장 실패: {e}")
+
+
+    def create_wordcloud_chart(self, keywords: list, primary_sentiment: str, output_folder: str, filename: str):
+        """LLaMA 가중치를 크기로 반영한 워드클라우드"""
+        if not keywords: return
+        
+        word_scores_dict = {item['word']: item['contribution_weight'] for item in keywords}
+        
+        colors = {'긍정': '#4CAF50', '부정': '#F44336', '중립': '#9E9E9E', '복합': '#FFC107'}
         
         def color_func(word, font_size, position, orientation, random_state=None, **kwargs):
-            if bert_sentiment == '긍정':
-                return "hsl(120, 70%%, %d%%)" % random_state.randint(20, 50)
-            elif bert_sentiment == '부정':
-                return "hsl(0, 70%%, %d%%)" % random_state.randint(20, 50)
-            else:
-                return "hsl(0, 0%%, %d%%)" % random_state.randint(30, 60)
+            return colors.get(primary_sentiment, '#9E9E9E')
         
         wordcloud = WordCloud(
             width=1200, height=800, background_color='white', font_path=self.font_path,
@@ -85,170 +113,161 @@ class EmotionVisualizer:
         plt.figure(figsize=(14, 10))
         plt.imshow(wordcloud.recolor(color_func=color_func, random_state=3), interpolation='bilinear')
         plt.axis('off')
-        plt.title(f'BERT Attention 워드클라우드 (문서 극성: {bert_sentiment})', fontsize=16, fontweight='bold', pad=20)
+        plt.title(f'LLaMA 기반 키워드 기여도 워드클라우드 (문서 극성: {primary_sentiment})', fontsize=16, fontweight='bold', pad=20)
         
-        output_path = os.path.join(self.output_folder, f"{filename}_bert_att_wordcloud.png")
+        output_path = os.path.join(output_folder, f"{filename}_keyword_wordcloud.png")
         plt.savefig(output_path, dpi=300, bbox_inches='tight')
         plt.close()
-        
-        print(f"  ✅ 워드클라우드 저장: {output_path}")
+        print(f"  ✅ [3] 키워드 워드클라우드 저장: {Path(output_path).name}")
 
-    def create_bar_chart_attention(self, attention_rankings: list, bert_sentiment: str, filename: str, top_n: int = 15):
-        """BERT Attention Score를 막대 길이로 반영한 막대 그래프"""
-        if not attention_rankings: return
+
+    def create_contribution_bar_chart(self, keywords: list, primary_sentiment: str, output_folder: str, filename: str):
+        """
+        감성별 기여도 막대형 차트 (요청 구현: 근거 출력 및 X축 범위 조정)
+        """
+        # 1. 감성별로 키워드 분리 및 정렬
+        grouped_keywords = defaultdict(list)
+        for item in keywords:
+            sentiment = item.get('sentiment_label', '중립') 
+            # contribution_weight 필드가 없으면 0으로 처리 (오류 방지)
+            item['contribution_weight'] = item.get('contribution_weight', 0.0) 
+            grouped_keywords[sentiment].append(item)
         
-        top_words = attention_rankings[:top_n]
-        words = [word for word, score in top_words]
-        scores = [score for word, score in top_words]
-        
-        if bert_sentiment == '긍정':
-            color = '#90EE90'
-            title_ext = " (긍정 문서)"
-        elif bert_sentiment == '부정':
-            color = '#FFB6C6'
-            title_ext = " (부정 문서)"
-        else:
-            color = '#B0B0B0'
-            title_ext = " (중립 문서)"
+        for sentiment in grouped_keywords:
+            grouped_keywords[sentiment].sort(key=lambda x: x['contribution_weight'], reverse=True)
             
-        plt.figure(figsize=(14, 8))
-        bars = plt.barh(range(len(words)), scores, color=color)
-        plt.yticks(range(len(words)), words)
-        plt.xlabel('Attention Score (기여도)', fontsize=12, fontweight='bold')
-        plt.title(f'BERT 기반 단어 기여도 랭킹{title_ext}', fontsize=14, fontweight='bold', pad=20)
-        plt.gca().invert_yaxis()
+        sentiment_order = ['긍정', '복합', '중립', '부정']
+        colors = {'긍정': '#4CAF50', '부정': '#F44336', '중립': '#9E9E9E', '복합': '#FFC107'}
         
-        for i, score in enumerate(scores):
-            plt.text(score + 0.001, i, f'{score:.4f}', va='center', fontsize=10, fontweight='bold')
+        # 2. 서브플롯 생성
+        num_charts = len(grouped_keywords)
+        if num_charts == 0: return
+
+        fig, axes = plt.subplots(num_charts, 1, figsize=(12, 4.5 * num_charts))
+        if num_charts == 1: axes = [axes]
         
-        plt.tight_layout()
-        output_path = os.path.join(self.output_folder, f"{filename}_bert_att_barchart.png")
-        plt.savefig(output_path, dpi=300, bbox_inches='tight')
-        plt.close()
+        fig.suptitle(f'문서: {filename} | LLaMA 기반 상황적 키워드 기여도 분석', 
+                     fontsize=16, fontweight='bold', y=1.02)
         
-        print(f"  ✅ 막대 그래프 저장: {output_path}")
+        # 최대 가중치 기준으로 X축 범위 설정
+        max_weight = max(item['contribution_weight'] for item_list in grouped_keywords.values() for item in item_list) if grouped_keywords else 0.1
         
-    def create_pie_chart_for_single_file_bert(self, bert_sentiment: str, confidence: float, filename: str):
-        """단일 파일에 대한 BERT 기반 감정 비율 파이 차트 (신뢰도 반영)"""
-        if bert_sentiment == '긍정':
-            labels, sizes, colors = ['긍정'], [1], ['#90EE90']
-        elif bert_sentiment == '부정':
-            labels, sizes, colors = ['부정'], [1], ['#FFB6C6']
-        else:
-            labels, sizes, colors = ['중립'], [1], ['#B0C4DE']
-            
-        plt.figure(figsize=(10, 8))
-        plt.pie(
-            sizes, labels=labels, colors=colors, startangle=90,
-            # 신뢰도 0.0% 문제를 해결하기 위해 실제 신뢰도 값을 사용
-            autopct=lambda p: f'{p:.1f}%\n(신뢰도: {confidence*100:.1f}%)' if p > 0 else '',
-            textprops={'fontsize': 12, 'fontweight': 'bold', 'color': 'black'}
-        )
-        plt.title(f'BERT 기반 감정 비율 (문서 극성: {bert_sentiment})', fontsize=14, fontweight='bold', pad=20)
-        plt.tight_layout()
-        output_path = os.path.join(self.output_folder, f"{filename}_bert_pie_single.png")
-        plt.savefig(output_path, dpi=300, bbox_inches='tight')
-        plt.close()
-        
-        print(f"  ✅ 단일 파일 파이 차트 저장: {output_path}")
-
-    def create_comparison_chart_attention(self, attention_rankings: list, bert_sentiment: str, filename: str, top_n: int = 7):
-        """BERT 문서 감성 기반 긍정/부정 단어 비교 차트 (Attention Score 반영)"""
-        if not attention_rankings: return
-
-        top_words = attention_rankings[:top_n]
-        words = [word for word, score in top_words]
-        scores = [score for word, score in top_words]
-
-        # BERT 감성 결과에 따라 차트 구성
-        pos_words, neg_words, pos_scores, neg_scores = [], [], [], []
-
-        if bert_sentiment == '긍정':
-            pos_words, pos_scores = words, scores
-            pos_color = '#90EE90'; neg_color = '#FFB6C6'
-            pos_label = "긍정 기여도 Top 7"; neg_label = "부정 기여도 Top 7 (없음)"
-        elif bert_sentiment == '부정':
-            neg_words, neg_scores = words, scores
-            pos_color = '#90EE90'; neg_color = '#FFB6C6'
-            pos_label = "긍정 기여도 Top 7 (없음)"; neg_label = "부정 기여도 Top 7"
-        else:
-            pos_words, pos_scores = words, scores
-            pos_color = '#B0C4DE'; neg_color = '#B0B0B0'
-            pos_label = "중립 문서 기여도 Top 7"; neg_label = "중립 문서 기여도 (없음)"
-
-        fig, axes = plt.subplots(1, 2, figsize=(18, 9), sharex=True)
-        fig.suptitle(f'BERT 기반 단어 기여도 비교 (문서 극성: {bert_sentiment})', fontsize=16, fontweight='bold', y=1.02)
-
-        # 긍정 단어 차트
-        axes[0].barh(range(len(pos_words)), pos_scores, color=pos_color)
-        axes[0].set_yticks(range(len(pos_words)))
-        axes[0].set_yticklabels(pos_words, fontsize=11)
-        axes[0].set_xlabel('Attention Score', fontsize=12, fontweight='bold')
-        axes[0].set_title(pos_label, fontsize=13, fontweight='bold')
-        axes[0].invert_yaxis()
-        for i, score in enumerate(pos_scores):
-            axes[0].text(score + 0.001, i, f'{score:.4f}', va='center', fontsize=10, fontweight='bold')
-
-        # 부정 단어 차트
-        axes[1].barh(range(len(neg_words)), neg_scores, color=neg_color)
-        axes[1].set_yticks(range(len(neg_words)))
-        axes[1].set_yticklabels(neg_words, fontsize=11)
-        axes[1].set_xlabel('Attention Score', fontsize=12, fontweight='bold')
-        axes[1].set_title(neg_label, fontsize=13, fontweight='bold')
-        axes[1].invert_yaxis()
-        for i, score in enumerate(neg_scores):
-            axes[1].text(score + 0.001, i, f'{score:.4f}', va='center', fontsize=10, fontweight='bold')
+        plot_index = 0
+        for sentiment in sentiment_order:
+            if sentiment in grouped_keywords:
+                data = grouped_keywords[sentiment][:10]
+                words = [item['word'] for item in data]
+                weights = [item['contribution_weight'] for item in data]
+                reasons = [item.get('reason', '') for item in data]
+                
+                ax = axes[plot_index]
+                bars = ax.barh(words, weights, color=colors[sentiment])
+                ax.set_title(f'[{sentiment} 기여도] Top {len(words)} 키워드', fontsize=13)
+                ax.set_xlabel('상황적 문맥 기여도 (0.0 ~ 1.0)', fontsize=11)
+                ax.invert_yaxis()
+                
+                # 🚨 [수정 반영] X축 범위 조정 및 상세 근거(Reason) 출력
+                ax.set_xlim(right=max_weight * 1.5) # 최대 가중치의 150%로 설정
+                
+                for bar, weight, reason in zip(bars, weights, reasons):
+                    text = f'{weight:.4f}'
+                    if reason:
+                        # 긴 근거 텍스트를 랩핑하여 가독성 확보
+                        reason_wrapped = '\n'.join([reason[i:i+35] for i in range(0, len(reason), 35)])
+                        text += f'\n({reason_wrapped})'
+                    
+                    # 출력 위치를 막대의 오른쪽 끝으로 설정
+                    ax.text(bar.get_width() + 0.005, bar.get_y() + bar.get_height()/2, 
+                            text, va='center', fontsize=7, ha='left')
+                
+                plot_index += 1
 
         plt.tight_layout(rect=[0, 0, 1, 0.98])
-        output_path = os.path.join(self.output_folder, f"{filename}_bert_att_comparison.png")
+        output_path = os.path.join(output_folder, f"{filename}_contribution_barchart.png")
         plt.savefig(output_path, dpi=300, bbox_inches='tight')
         plt.close()
-        
-        print(f"  ✅ 긍정/부정 비교 차트 저장: {output_path}")
+        print(f"  ✅ [1] 감성별 기여도 막대 차트 저장: {Path(output_path).name}")
 
-    
+
+    def create_sentiment_pie_chart(self, primary_sentiment: str, confidence: float, output_folder: str, filename: str):
+        """최종 감성과 신뢰도를 보여주는 원형 차트"""
+        
+        labels_map = {'긍정': '긍정', '부정': '부정', '중립': '중립', '복합': '복합'}
+        colors_map = {'긍정': '#4CAF50', '부정': '#F44336', '중립': '#9E9E9E', '복합': '#FFC107'}
+        
+        sentiment = labels_map.get(primary_sentiment, '중립')
+        color = colors_map.get(primary_sentiment, '#9E9E9E')
+
+        plt.figure(figsize=(10, 8))
+        
+        labels = [f'{sentiment}']
+        sizes = [1] 
+        colors = [color]
+
+        plt.pie(
+            sizes, labels=labels, colors=colors, startangle=90,
+            autopct=lambda p: f'100.0%\n(신뢰도: {confidence*100:.1f}%)',
+            textprops={'fontsize': 14, 'fontweight': 'bold', 'color': 'black'}
+        )
+        plt.title(f'LLaMA 기반 최종 감성 추론 결과 ({sentiment})', fontsize=14, fontweight='bold', pad=20)
+        plt.tight_layout()
+        
+        output_path = os.path.join(output_folder, f"{filename}_sentiment_piechart.png")
+        plt.savefig(output_path, dpi=300, bbox_inches='tight')
+        plt.close()
+        print(f"  ✅ [2] 감성 비율 원형 차트 저장: {Path(output_path).name}")
+        
+
     def visualize_single_file(self, filename_prefix: str):
-        """단일 파일 시각화"""
+        """단일 파일 시각화 및 결과 폴더 정리"""
         
-        attention_path = os.path.join(self.attention_folder, f'{filename_prefix}_attention_rank.json')
-        attention_data = self.load_json_file(attention_path)
+        analysis_path = os.path.join(ATTENTION_DIR, f'{filename_prefix}_llama_analysis.json')
+        analysis_data = self.load_json_file(analysis_path)
         
-        if not attention_data:
-            print(f"❌ Attention 랭킹 파일 없음: {filename_prefix}")
-            return
+        if not analysis_data: return
+        
+        # 🚨 [Step 6 핵심] 학생별 결과 폴더 생성
+        output_folder = os.path.join(VISUAL_ROOT_DIR, filename_prefix)
+        os.makedirs(output_folder, exist_ok=True)
         
         print(f"\n{'='*70}")
         print(f" 시각화 중: {filename_prefix}")
         print('='*70)
         
-        bert_sentiment = attention_data.get('bert_sentiment', '중립')
-        bert_confidence = attention_data.get('bert_confidence', 0.0)
+        # LLaMA 기반 데이터 추출
+        primary_sentiment = analysis_data.get('primary_sentiment', '중립')
+        confidence = analysis_data.get('confidence', 0.0)
+        keywords = analysis_data.get('contextual_keywords', [])
         
-        # 1. BERT Attention 워드클라우드
-        self.create_wordcloud_attention(attention_data['top_attention_words'], bert_sentiment, filename_prefix)
+        # 1. 감성별 기여도 막대 차트 (요청 구현)
+        self.create_contribution_bar_chart(keywords, primary_sentiment, output_folder, filename_prefix)
         
-        # 2. BERT Attention 막대 그래프
-        self.create_bar_chart_attention(attention_data['top_attention_words'], bert_sentiment, filename_prefix, top_n=15)
+        # 2. 감성 비율 원형 차트 (요청 구현)
+        self.create_sentiment_pie_chart(primary_sentiment, confidence, output_folder, filename_prefix)
         
-        # 3. 긍정/부정 단어 비교 차트
-        self.create_comparison_chart_attention(attention_data['top_attention_words'], bert_sentiment, filename_prefix, top_n=7)
+        # 3. 워드클라우드 차트 (보조)
+        self.create_wordcloud_chart(keywords, primary_sentiment, output_folder, filename_prefix)
         
-        # 4. 단일 파일 파이 차트 (신뢰도 사용)
-        self.create_pie_chart_for_single_file_bert(bert_sentiment, bert_confidence, filename=filename_prefix)
+        # 4. 인터뷰 요약 TXT 생성 (요청 구현)
+        self.create_summary_txt(analysis_data, output_folder)
         
-        print(f"\n   ✅ 시각화 완료!")
+        print(f"\n   ✅ 시각화 완료! 결과 폴더: {output_folder}")
     
     def visualize_all_files(self):
         """전체 파일 시각화"""
-        attention_files = sorted([f for f in os.listdir(self.attention_folder) if f.endswith('_attention_rank.json')])
-        if not attention_files: return
+        analysis_files = sorted([f for f in os.listdir(ATTENTION_DIR) if f.endswith('_llama_analysis.json')])
+        if not analysis_files: 
+            print("🛑 분석 파일이 없습니다. Step 4를 먼저 실행하세요.")
+            return
         
-        for filename in attention_files:
-            file_prefix = Path(filename).stem.replace('_attention_rank', '')
+        print(f"\n🔄 총 {len(analysis_files)}개 파일 시각화 시작...")
+        for filename in analysis_files:
+            file_prefix = Path(filename).stem.replace('_llama_analysis', '')
             self.visualize_single_file(file_prefix)
+        print("\n✅ 전체 시각화 완료.")
 
 def main():
-    print("\n 6단계: 감정 단어 시각화 (BERT Attention 전용)")
+    print("\n 6단계: LLaMA 기반 시각화 시작")
     try:
         visualizer = EmotionVisualizer()
         
@@ -264,6 +283,8 @@ def main():
     
     except Exception as e:
         print(f"\n❌ 오류 발생: {e}")
+        import traceback
+        traceback.print_exc()
 
 if __name__ == "__main__":
     main()
