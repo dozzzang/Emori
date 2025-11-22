@@ -11,7 +11,7 @@ from sentence_transformers import SentenceTransformer
 import torch.nn.functional as F
 
 # 🚨 사용자님의 Groq API Key 적용됨
-GROQ_API_KEY = "type your key"
+GROQ_API_KEY = "TYPE YOUR KEY"
 LLAMA_MODEL_NAME = "llama-3.1-8b-instant" 
 
 # 파일 경로 설정
@@ -44,26 +44,42 @@ class LlamaSbertAnalyzer:
         
         system_prompt = (
             "당신은 아동 심리 및 행동 전문가입니다. 다음 인터뷰 전문을 분석하여, "
-            "**아동의 일상생활 속의 행동, 관계, 갈등 상황**에만 집중하세요. "
-            "추출되는 키워드 목록에는 '좋다', '화나다', '기쁘다'와 같은 순수 감정 동사나 형용사는 제외하고, "
-            "감정을 유발하거나 표현하는 **행위(예: 양보, 피구, 국어공부, 친구)**만 키워드로 추출하세요."
+            "**아동의 일상생활 속의 행동, 관계, 갈등 상황**에만 집중하세요.\n\n"
             
-            "\n\n[분석 기준]"
-            "1. **키워드 추출**: 문맥에 가장 중요하게 기여하는 **상황 키워드**를 추출하되, **총 20개**의 키워드를 긍정, 부정, 중립, 복합을 최대한 포함하여 반환하세요." # 👈 키워드 수 15개로 증가
-            "2. **가중치 부여**: 각 키워드가 전체 상황 이해에 기여하는 정도(0.0~1.0 사이의 가중치)를 추론하세요." 
-            "3. **감성 분류**: 각 단어가 기여하는 최종 감성(긍정/부정/중립/복합)을 분류하세요."
-            "4. **요약 생성**: 인터뷰 내용을 아동 심리 전문가의 시각으로 **최소 5문장 이상**으로 길고 상세하게 요약하세요." # 👈 5문장 이상 요약 강제
-            "5. **최종 감성 결정**: 최종 감성 기조는 키워드 가중치 총합이 가장 높은 극성으로 결정되어야 합니다. 수치적 우위를 명확히 설명해야 합니다."
+            "[중요: 요약 작성 방법]\n"
+            "interview_summary 필드에는 반드시 **인터뷰 내용 자체를 요약**해야 합니다.\n"
+            "- 아동이 말한 구체적인 상황과 경험을 문장으로 풀어서 작성하세요.\n"
+            "- 예시: '세진이는 친구들과 피구를 할 때 즐거움을 느낀다. 하지만 영어 공부나 쓰기 활동을 할 때는 어려움을 겪으며 화가 난다고 표현했다. "
+            "엄마는 밝은 성격이고 아빠는 착하다고 생각하며, 가족으로부터 많은 사랑을 받고 있다고 느낀다. 친구들과 놀 때는 양보를 많이 하는 편이다.'\n"
+            "- 최소 5문장 이상으로 작성하세요.\n"
+            "- 분석적 해석이 아닌, 인터뷰에서 언급된 실제 내용을 자연스러운 문장으로 요약하세요.\n"
+            "- '~이는', '~라고 말했다', '~느낀다' 등의 표현을 사용하여 아동의 경험을 서술하세요.\n\n"
             
-            "\n\n결과를 반드시 다음 JSON 형식으로만 반환하세요. 'confidence'와 'contribution_weight'는 0.00부터 1.00 사이여야 합니다."
-            "\n\nJSON 형식: {'primary_sentiment': '감성결과', 'confidence': 0.XX, "
-            "'interview_summary': '전문적인 인터뷰 요약 (최소 5문장 이상)'," # 👈 요약 필드 명시
-            "'contextual_keywords': ["
-            "{'word': '키워드', 'contribution_weight': 0.XX, 'sentiment_label': '긍정/부정/중립/복합', 'reason': '이 단어가 감성결과에 기여한 자세한 근거와 이유 (인터뷰 내용 기반)'}"
-            ", ...]}" 
+            "[분석 기준]\n"
+            "1. **키워드 추출**: 문맥에 가장 중요하게 기여하는 **상황 키워드**를 추출하되, **총 20개**의 키워드를 긍정, 부정, 중립, 복합을 최대한 포함하여 반환하세요.\n"
+            "   - 순수 감정 동사나 형용사(좋다, 화나다, 기쁘다)는 제외하고, 감정을 유발하는 **행위나 상황**만 키워드로 추출하세요.\n"
+            "2. **가중치 부여**: 각 키워드가 전체 상황 이해에 기여하는 정도(0.0~1.0 사이의 가중치)를 추론하세요.\n"
+            "3. **감성 분류**: 각 단어가 기여하는 최종 감성(긍정/부정/중립/복합)을 분류하세요.\n"
+            "4. **최종 감성 결정**: 최종 감성 기조는 키워드 가중치 총합이 가장 높은 극성으로 결정되어야 합니다. 수치적 우위를 명확히 설명해야 합니다.\n\n"
+            
+            "결과를 반드시 다음 JSON 형식으로만 반환하세요. 'confidence'와 'contribution_weight'는 0.00부터 1.00 사이여야 합니다.\n\n"
+            "JSON 형식:\n"
+            "{\n"
+            "  \"primary_sentiment\": \"긍정/부정/중립/복합\",\n"
+            "  \"confidence\": 0.85,\n"
+            "  \"interview_summary\": \"인터뷰 내용을 자연스러운 문장으로 요약 (최소 5문장 이상, 아동의 경험과 상황을 구체적으로 서술)\",\n"
+            "  \"contextual_keywords\": [\n"
+            "    {\n"
+            "      \"word\": \"키워드\",\n"
+            "      \"contribution_weight\": 0.15,\n"
+            "      \"sentiment_label\": \"긍정/부정/중립/복합\",\n"
+            "      \"reason\": \"이 키워드가 감성에 기여한 근거 (인터뷰 내용 기반)\"\n"
+            "    }\n"
+            "  ]\n"
+            "}"
         )
         
-        user_prompt = f"인터뷰 전문:\n\n{interview_text[:6000]}" # Groq는 긴 컨텍스트 지원
+        user_prompt = f"인터뷰 전문:\n\n{interview_text[:6000]}"
         
         try:
             chat_completion = self.groq_client.chat.completions.create(
@@ -78,7 +94,13 @@ class LlamaSbertAnalyzer:
             )
             
             llama_json_string = chat_completion.choices[0].message.content
-            return json.loads(llama_json_string) 
+            result = json.loads(llama_json_string)
+            
+            # 🚨 interview_summary가 없거나 비어있으면 기본값 추가
+            if 'interview_summary' not in result or not result['interview_summary']:
+                result['interview_summary'] = '인터뷰 요약을 생성하지 못했습니다.'
+            
+            return result
         
         except Exception as e:
             print(f"❌ LLaMA API 호출/파싱 실패: {e}")
@@ -136,9 +158,9 @@ class LlamaSbertAnalyzer:
         output_data = {
             'filename': morpheme_data['filename'],
             'analysis_source': 'LLaMA3 + SBERT',
-            # LLaMA 추론 결과
             'primary_sentiment': llama_analysis.get('primary_sentiment', '중립'), 
-            'confidence': llama_analysis.get('confidence', 0.0), 
+            'confidence': llama_analysis.get('confidence', 0.0),
+            'interview_summary': llama_analysis.get('interview_summary', '인터뷰 요약을 찾을 수 없습니다.'),  # 🚨 추가
             'contextual_keywords': llama_analysis.get('contextual_keywords', []), 
             'sbert_similarity_analysis': sbert_results, 
         }
@@ -156,6 +178,7 @@ class LlamaSbertAnalyzer:
 
         print(f"\n  ✅ LLaMA 분석 결과 요약:")
         print(f"     최종 감성: {output_data['primary_sentiment']} (신뢰도: {output_data['confidence']:.2f})")
+        print(f"     인터뷰 요약 미리보기: {output_data['interview_summary'][:100]}...")  # 🚨 추가
         
         return output_data
     
@@ -179,7 +202,7 @@ def main():
         return
 
     # 첫 번째 파일만 분석하도록 설정
-    filename = morpheme_files[0]
+    filename = input("파일명을 입력하세요 ex) EB_001_morpheme.json : ")
     analyzer.analyze_single_file(filename)
 
 

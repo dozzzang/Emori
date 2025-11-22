@@ -3,176 +3,177 @@
   "analysis_source": "LLaMA3 + SBERT",
   "primary_sentiment": "긍정",
   "confidence": 0.85,
+  "interview_summary": "세진이는 친구들과 피구를 할 때 즐거움을 느낀다. 하지만 영어 공부나 쓰기 활동을 할 때는 어려움을 겪으며 화가 난다고 표현했다. 엄마는 밝은 성격이고 아빠는 착하다고 생각하며, 가족으로부터 많은 사랑을 받고 있다고 느낀다. 친구들과 놀 때는 양보를 많이 하는 편이다. 세진이는 자신에 대해 밝고, 친구들과 잘 어울리고, 웃기는 아이라고 생각한다. VR감정놀이터를 체험하고 속이 후련하고 시원하다는 표현을 한다. 세진이는 가족과 함께 많은 시간을 보내고, 엄마와 아빠 모두에게 사랑을 받고 있다고 느낀다. 하지만 영어 공부와 쓰기 활동을 할 때는 어려움을 겪으며 화가 난다. 세진이는 친구들과 잘 어울리고, 웃기는 아이라고 생각하며, 가족과 함께 많은 시간을 보내고 있다.",
   "contextual_keywords": [
     {
-      "word": "친구",
-      "contribution_weight": 0.25,
+      "word": "친구들과 피구",
+      "contribution_weight": 0.15,
       "sentiment_label": "긍정",
-      "reason": "세진이는 친구들과 잘 어울리고, 웃기는 아이라고 말했습니다."
+      "reason": "세진이가 친구들과 피구를 할 때 즐거움을 느낀다."
+    },
+    {
+      "word": "영어 공부",
+      "contribution_weight": 0.1,
+      "sentiment_label": "부정",
+      "reason": "세진이가 영어 공부를 할 때 어려움을 겪으며 화가 난다."
+    },
+    {
+      "word": "쓰기 활동",
+      "contribution_weight": 0.1,
+      "sentiment_label": "부정",
+      "reason": "세진이가 쓰기 활동을 할 때 어려움을 겪으며 화가 난다."
+    },
+    {
+      "word": "엄마",
+      "contribution_weight": 0.1,
+      "sentiment_label": "긍정",
+      "reason": "세진이가 엄마를 밝은 성격으로 생각한다."
+    },
+    {
+      "word": "아빠",
+      "contribution_weight": 0.1,
+      "sentiment_label": "긍정",
+      "reason": "세진이가 아빠를 착한 성격으로 생각한다."
     },
     {
       "word": "양보",
-      "contribution_weight": 0.2,
-      "sentiment_label": "긍정",
-      "reason": "세진이는 친구들과의 갈등을 해결하기 위해 양보를 많이 합니다."
-    },
-    {
-      "word": "피구",
-      "contribution_weight": 0.15,
-      "sentiment_label": "긍정",
-      "reason": "세진이는 피구를 좋아하고, 친구들과 함께 피구를 합니다."
-    },
-    {
-      "word": "국어",
       "contribution_weight": 0.1,
-      "sentiment_label": "부정",
-      "reason": "세진이는 국어가 힘들다고 말했습니다."
-    },
-    {
-      "word": "영어",
-      "contribution_weight": 0.1,
-      "sentiment_label": "부정",
-      "reason": "세진이는 영어가 힘들다고 말했습니다."
-    },
-    {
-      "word": "공부",
-      "contribution_weight": 0.05,
-      "sentiment_label": "부정",
-      "reason": "세진이는 공부할 때 화가 나거나 답답하다고 말했습니다."
-    },
-    {
-      "word": "친구들과",
-      "contribution_weight": 0.05,
       "sentiment_label": "긍정",
-      "reason": "세진이는 친구들과 함께 놀고, 웃기다고 말했습니다."
+      "reason": "세진이가 친구들과 잘 어울리고, 웃기는 아이라고 생각하며, 가족과 함께 많은 시간을 보내고 있다."
+    },
+    {
+      "word": "VR감정놀이터",
+      "contribution_weight": 0.1,
+      "sentiment_label": "긍정",
+      "reason": "세진이가 VR감정놀이터를 체험하고 속이 후련하고 시원하다는 표현을 한다."
     }
   ],
   "sbert_similarity_analysis": [
     {
-      "word_pair": "친구-양보",
-      "word1": "친구",
+      "word_pair": "친구들과 피구-영어 공부",
+      "word1": "친구들과 피구",
+      "word2": "영어 공부",
+      "sbert_score": 0.0894
+    },
+    {
+      "word_pair": "친구들과 피구-쓰기 활동",
+      "word1": "친구들과 피구",
+      "word2": "쓰기 활동",
+      "sbert_score": 0.1404
+    },
+    {
+      "word_pair": "친구들과 피구-엄마",
+      "word1": "친구들과 피구",
+      "word2": "엄마",
+      "sbert_score": 0.0978
+    },
+    {
+      "word_pair": "친구들과 피구-아빠",
+      "word1": "친구들과 피구",
+      "word2": "아빠",
+      "sbert_score": 0.1307
+    },
+    {
+      "word_pair": "친구들과 피구-양보",
+      "word1": "친구들과 피구",
       "word2": "양보",
-      "sbert_score": 0.3716
+      "sbert_score": 0.2313
     },
     {
-      "word_pair": "친구-피구",
-      "word1": "친구",
-      "word2": "피구",
-      "sbert_score": 0.4037
+      "word_pair": "친구들과 피구-VR감정놀이터",
+      "word1": "친구들과 피구",
+      "word2": "VR감정놀이터",
+      "sbert_score": 0.1496
     },
     {
-      "word_pair": "친구-국어",
-      "word1": "친구",
-      "word2": "국어",
-      "sbert_score": 0.3488
+      "word_pair": "영어 공부-쓰기 활동",
+      "word1": "영어 공부",
+      "word2": "쓰기 활동",
+      "sbert_score": 0.2408
     },
     {
-      "word_pair": "친구-영어",
-      "word1": "친구",
-      "word2": "영어",
-      "sbert_score": 0.2308
+      "word_pair": "영어 공부-엄마",
+      "word1": "영어 공부",
+      "word2": "엄마",
+      "sbert_score": 0.1797
     },
     {
-      "word_pair": "친구-공부",
-      "word1": "친구",
-      "word2": "공부",
-      "sbert_score": 0.3072
+      "word_pair": "영어 공부-아빠",
+      "word1": "영어 공부",
+      "word2": "아빠",
+      "sbert_score": 0.1465
     },
     {
-      "word_pair": "친구-친구들과",
-      "word1": "친구",
-      "word2": "친구들과",
-      "sbert_score": 0.8198
+      "word_pair": "영어 공부-양보",
+      "word1": "영어 공부",
+      "word2": "양보",
+      "sbert_score": 0.1939
     },
     {
-      "word_pair": "양보-피구",
+      "word_pair": "영어 공부-VR감정놀이터",
+      "word1": "영어 공부",
+      "word2": "VR감정놀이터",
+      "sbert_score": 0.0171
+    },
+    {
+      "word_pair": "쓰기 활동-엄마",
+      "word1": "쓰기 활동",
+      "word2": "엄마",
+      "sbert_score": 0.1916
+    },
+    {
+      "word_pair": "쓰기 활동-아빠",
+      "word1": "쓰기 활동",
+      "word2": "아빠",
+      "sbert_score": 0.2223
+    },
+    {
+      "word_pair": "쓰기 활동-양보",
+      "word1": "쓰기 활동",
+      "word2": "양보",
+      "sbert_score": 0.3353
+    },
+    {
+      "word_pair": "쓰기 활동-VR감정놀이터",
+      "word1": "쓰기 활동",
+      "word2": "VR감정놀이터",
+      "sbert_score": 0.2836
+    },
+    {
+      "word_pair": "엄마-아빠",
+      "word1": "엄마",
+      "word2": "아빠",
+      "sbert_score": 0.4253
+    },
+    {
+      "word_pair": "엄마-양보",
+      "word1": "엄마",
+      "word2": "양보",
+      "sbert_score": 0.3292
+    },
+    {
+      "word_pair": "엄마-VR감정놀이터",
+      "word1": "엄마",
+      "word2": "VR감정놀이터",
+      "sbert_score": 0.154
+    },
+    {
+      "word_pair": "아빠-양보",
+      "word1": "아빠",
+      "word2": "양보",
+      "sbert_score": 0.3369
+    },
+    {
+      "word_pair": "아빠-VR감정놀이터",
+      "word1": "아빠",
+      "word2": "VR감정놀이터",
+      "sbert_score": 0.219
+    },
+    {
+      "word_pair": "양보-VR감정놀이터",
       "word1": "양보",
-      "word2": "피구",
-      "sbert_score": 0.3829
-    },
-    {
-      "word_pair": "양보-국어",
-      "word1": "양보",
-      "word2": "국어",
-      "sbert_score": 0.4591
-    },
-    {
-      "word_pair": "양보-영어",
-      "word1": "양보",
-      "word2": "영어",
-      "sbert_score": 0.3054
-    },
-    {
-      "word_pair": "양보-공부",
-      "word1": "양보",
-      "word2": "공부",
-      "sbert_score": 0.4071
-    },
-    {
-      "word_pair": "양보-친구들과",
-      "word1": "양보",
-      "word2": "친구들과",
-      "sbert_score": 0.2801
-    },
-    {
-      "word_pair": "피구-국어",
-      "word1": "피구",
-      "word2": "국어",
-      "sbert_score": 0.3093
-    },
-    {
-      "word_pair": "피구-영어",
-      "word1": "피구",
-      "word2": "영어",
-      "sbert_score": 0.2204
-    },
-    {
-      "word_pair": "피구-공부",
-      "word1": "피구",
-      "word2": "공부",
-      "sbert_score": 0.2461
-    },
-    {
-      "word_pair": "피구-친구들과",
-      "word1": "피구",
-      "word2": "친구들과",
-      "sbert_score": 0.2953
-    },
-    {
-      "word_pair": "국어-영어",
-      "word1": "국어",
-      "word2": "영어",
-      "sbert_score": 0.566
-    },
-    {
-      "word_pair": "국어-공부",
-      "word1": "국어",
-      "word2": "공부",
-      "sbert_score": 0.5382
-    },
-    {
-      "word_pair": "국어-친구들과",
-      "word1": "국어",
-      "word2": "친구들과",
-      "sbert_score": 0.2719
-    },
-    {
-      "word_pair": "영어-공부",
-      "word1": "영어",
-      "word2": "공부",
-      "sbert_score": 0.4624
-    },
-    {
-      "word_pair": "영어-친구들과",
-      "word1": "영어",
-      "word2": "친구들과",
-      "sbert_score": 0.1929
-    },
-    {
-      "word_pair": "공부-친구들과",
-      "word1": "공부",
-      "word2": "친구들과",
-      "sbert_score": 0.2501
+      "word2": "VR감정놀이터",
+      "sbert_score": 0.2111
     }
   ]
 }
