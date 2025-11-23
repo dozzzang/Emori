@@ -1798,5 +1798,1661 @@
                 "focus": 0.6432448
             }
         }
+    },
+    "participant_RECORD_20240911__": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Surprise",
+                "stress": 0.48,
+                "engage": 0.46,
+                "relax": 0.49,
+                "excite": 0.61,
+                "interest": 0.43,
+                "focus": 0.49
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.52,
+                "engage": 0.51,
+                "relax": 0.53,
+                "excite": 0.57,
+                "interest": 0.47,
+                "focus": 0.37
+            },
+            "step4": {
+                "fill_rate": "Less",
+                "stress": 0.58,
+                "engage": 0.45,
+                "relax": 0.43,
+                "excite": 0.48,
+                "interest": 0.48,
+                "focus": 0.43
+            }
+        }
+    },
+    "participant_asdas": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "asda",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Surprise",
+                "stress": 0.47,
+                "engage": 0.81,
+                "relax": 0.56,
+                "excite": 0.45,
+                "interest": 0.62,
+                "focus": 0.59
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.42,
+                "engage": 0.48,
+                "relax": 0.55,
+                "excite": 0.19,
+                "interest": 0.55,
+                "focus": 0.42
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.62,
+                "engage": 0.42,
+                "relax": 0.28,
+                "excite": 0.68,
+                "interest": 0.58,
+                "focus": 0.61
+            }
+        }
+    },
+    "participant_3305": {
+        "basic_info": {
+            "age": "16",
+            "gender": "여",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.0,
+                "engage": 0.59,
+                "relax": 0.07,
+                "excite": 0.67,
+                "interest": 0.51,
+                "focus": 0.84
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.47,
+                "engage": 0.69,
+                "relax": 0.13,
+                "excite": 0.71,
+                "interest": 0.65,
+                "focus": 0.79
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.47,
+                "engage": 0.69,
+                "relax": 0.13,
+                "excite": 0.71,
+                "interest": 0.65,
+                "focus": 0.79
+            }
+        }
+    },
+    "participant_3306": {
+        "basic_info": {
+            "age": "16",
+            "gender": "여",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step4": {
+                "fill_rate": "Least",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            }
+        }
+    },
+    "participant_1115": {
+        "basic_info": {
+            "age": "14",
+            "gender": "여",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.65,
+                "relax": 0.07,
+                "excite": 0.73,
+                "interest": 0.55,
+                "focus": 0.83
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.0,
+                "engage": 0.65,
+                "relax": 0.07,
+                "excite": 0.73,
+                "interest": 0.55,
+                "focus": 0.83
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.19,
+                "engage": 0.7,
+                "relax": 0.57,
+                "excite": 0.48,
+                "interest": 0.9,
+                "focus": 0.74
+            }
+        }
+    },
+    "participant_1325": {
+        "basic_info": {
+            "age": "14",
+            "gender": "여",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Angry",
+                "stress": 0.0,
+                "engage": 0.66,
+                "relax": 0.08,
+                "excite": 0.86,
+                "interest": 0.88,
+                "focus": 0.8
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.18,
+                "engage": 0.77,
+                "relax": 0.23,
+                "excite": 0.7,
+                "interest": 0.94,
+                "focus": 0.84
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.4,
+                "engage": 0.57,
+                "relax": 0.24,
+                "excite": 0.61,
+                "interest": 0.79,
+                "focus": 0.76
+            }
+        }
+    },
+    "participant_1416": {
+        "basic_info": {
+            "age": "14",
+            "gender": "남",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Angry",
+                "stress": 0.0,
+                "engage": 0.66,
+                "relax": 0.07,
+                "excite": 0.79,
+                "interest": 0.89,
+                "focus": 0.79
+            },
+            "step3": {
+                "fill_rate": "Highest",
+                "stress": 0.27,
+                "engage": 0.5,
+                "relax": 0.26,
+                "excite": 0.71,
+                "interest": 0.51,
+                "focus": 0.79
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.27,
+                "engage": 0.5,
+                "relax": 0.26,
+                "excite": 0.71,
+                "interest": 0.51,
+                "focus": 0.79
+            }
+        }
+    },
+    "participant_1507": {
+        "basic_info": {
+            "age": "14",
+            "gender": "여",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.71,
+                "relax": 0.08,
+                "excite": 0.79,
+                "interest": 0.91,
+                "focus": 0.79
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.05,
+                "engage": 0.78,
+                "relax": 0.62,
+                "excite": 0.81,
+                "interest": 0.52,
+                "focus": 0.85
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.05,
+                "engage": 0.78,
+                "relax": 0.62,
+                "excite": 0.81,
+                "interest": 0.52,
+                "focus": 0.85
+            }
+        }
+    },
+    "participant_1": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.5935924,
+                "relax": 0.06666667,
+                "excite": 0.7955864,
+                "interest": 0.8551134,
+                "focus": 0.8671159
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.0,
+                "engage": 0.5935924,
+                "relax": 0.06666667,
+                "excite": 0.7955864,
+                "interest": 0.8551134,
+                "focus": 0.8671159
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.08652527,
+                "engage": 0.6551923,
+                "relax": 0.867464,
+                "excite": 0.7697957,
+                "interest": 0.4750429,
+                "focus": 0.8797253
+            }
+        }
+    },
+    "participant_1208": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            }
+        }
+    },
+    "participant_1218": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.7121127,
+                "relax": 0.08090407,
+                "excite": 0.8714089,
+                "interest": 0.6344839,
+                "focus": 0.8467472
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.1790491,
+                "engage": 0.6811242,
+                "relax": 0.8953065,
+                "excite": 0.6065443,
+                "interest": 0.626749,
+                "focus": 0.7793826
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.1671837,
+                "engage": 0.6807061,
+                "relax": 0.6486897,
+                "excite": 0.5821869,
+                "interest": 0.6196195,
+                "focus": 0.7193226
+            }
+        }
+    },
+    "participant_1410": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.5053579,
+                "relax": 0.07530811,
+                "excite": 0.8537725,
+                "interest": 0.7036843,
+                "focus": 0.8553584
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.1061623,
+                "engage": 0.5107116,
+                "relax": 0.5545774,
+                "excite": 0.7409738,
+                "interest": 0.4107693,
+                "focus": 0.849507
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.05545417,
+                "engage": 0.6075333,
+                "relax": 0.9794018,
+                "excite": 0.6408272,
+                "interest": 0.8906883,
+                "focus": 0.7777468
+            }
+        }
+    },
+    "participant_1513": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            }
+        }
+    },
+    "participant_2204": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.6830891,
+                "relax": 0.07535844,
+                "excite": 0.8080657,
+                "interest": 0.871501,
+                "focus": 0.8453627
+            },
+            "step3": {
+                "fill_rate": "Highest",
+                "stress": 0.1487755,
+                "engage": 0.6538033,
+                "relax": 0.8897585,
+                "excite": 0.7503176,
+                "interest": 0.7737776,
+                "focus": 0.8431331
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.1487755,
+                "engage": 0.6538033,
+                "relax": 0.8897585,
+                "excite": 0.7503176,
+                "interest": 0.7737776,
+                "focus": 0.8431331
+            }
+        }
+    },
+    "participant_2208": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Fear",
+                "stress": 0.0,
+                "engage": 0.5859998,
+                "relax": 0.06666667,
+                "excite": 0.7480387,
+                "interest": 0.8744087,
+                "focus": 0.8592997
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.0,
+                "engage": 0.5859998,
+                "relax": 0.06666667,
+                "excite": 0.7480387,
+                "interest": 0.8744087,
+                "focus": 0.8592997
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.3886545,
+                "engage": 0.5703803,
+                "relax": 0.2704675,
+                "excite": 0.7085913,
+                "interest": 0.5387387,
+                "focus": 0.7982991
+            }
+        }
+    },
+    "participant_김도단": {
+        "basic_info": {
+            "age": "11",
+            "gender": "여",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.1857323,
+                "engage": 0.7722261,
+                "relax": 0.758929,
+                "excite": 0.4784099,
+                "interest": 0.8108891,
+                "focus": 0.6592971
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.1857323,
+                "engage": 0.7722261,
+                "relax": 0.758929,
+                "excite": 0.4784099,
+                "interest": 0.8108891,
+                "focus": 0.6592971
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.1857323,
+                "engage": 0.7722261,
+                "relax": 0.758929,
+                "excite": 0.4784099,
+                "interest": 0.8108891,
+                "focus": 0.6592971
+            }
+        }
+    },
+    "participant_김지원": {
+        "basic_info": {
+            "age": "11",
+            "gender": "여",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.674008,
+                "relax": 0.06666667,
+                "excite": 0.5459473,
+                "interest": 0.8187634,
+                "focus": 0.7281179
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.1819452,
+                "engage": 0.551214,
+                "relax": 0.9798754,
+                "excite": 0.6449059,
+                "interest": 0.5769548,
+                "focus": 0.7510601
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.1819452,
+                "engage": 0.551214,
+                "relax": 0.9798754,
+                "excite": 0.6449059,
+                "interest": 0.5769548,
+                "focus": 0.7510601
+            }
+        }
+    },
+    "participant_송연우": {
+        "basic_info": {
+            "age": "13",
+            "gender": "여",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.0,
+                "engage": 0.6936057,
+                "relax": 0.06666667,
+                "excite": 0.5410274,
+                "interest": 0.6174949,
+                "focus": 0.7544281
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.4234457,
+                "engage": 0.5450181,
+                "relax": 0.1929761,
+                "excite": 0.5726028,
+                "interest": 0.7379021,
+                "focus": 0.7049427
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.4234457,
+                "engage": 0.5450181,
+                "relax": 0.1929761,
+                "excite": 0.5726028,
+                "interest": 0.7379021,
+                "focus": 0.7049427
+            }
+        }
+    },
+    "participant_최윤성": {
+        "basic_info": {
+            "age": "13",
+            "gender": "남",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Angry",
+                "stress": 0.0,
+                "engage": 0.6783181,
+                "relax": 0.06666667,
+                "excite": 0.6889939,
+                "interest": 0.6167177,
+                "focus": 0.8104237
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.0,
+                "engage": 0.6783181,
+                "relax": 0.06666667,
+                "excite": 0.6889939,
+                "interest": 0.6167177,
+                "focus": 0.8104237
+            },
+            "step4": {
+                "fill_rate": "Least",
+                "stress": 0.2743394,
+                "engage": 0.5236804,
+                "relax": 0.2160691,
+                "excite": 0.6980202,
+                "interest": 0.7313157,
+                "focus": 0.8069623
+            }
+        }
+    },
+    "participant_11": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.5806751,
+                "relax": 0.07703832,
+                "excite": 0.8262247,
+                "interest": 0.840552,
+                "focus": 0.8229656
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.07042295,
+                "engage": 0.6800089,
+                "relax": 0.7065618,
+                "excite": 0.7506285,
+                "interest": 0.644585,
+                "focus": 0.8261287
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.1711285,
+                "engage": 0.6970987,
+                "relax": 0.8062519,
+                "excite": 0.6442901,
+                "interest": 0.9040741,
+                "focus": 0.8097267
+            }
+        }
+    },
+    "participant_22": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.793608,
+                "relax": 0.08197657,
+                "excite": 0.8606933,
+                "interest": 0.8936235,
+                "focus": 0.8220611
+            },
+            "step3": {
+                "fill_rate": "Highest",
+                "stress": 0.06310309,
+                "engage": 0.5171186,
+                "relax": 0.7277201,
+                "excite": 0.5992921,
+                "interest": 0.6729852,
+                "focus": 0.7648724
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.06310309,
+                "engage": 0.5171186,
+                "relax": 0.7277201,
+                "excite": 0.5992921,
+                "interest": 0.6729852,
+                "focus": 0.7648724
+            }
+        }
+    },
+    "participant_최보미": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.5219209,
+                "relax": 0.06666667,
+                "excite": 0.5572272,
+                "interest": 0.8300965,
+                "focus": 0.7157865
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.0,
+                "engage": 0.5219209,
+                "relax": 0.06666667,
+                "excite": 0.5572272,
+                "interest": 0.8300965,
+                "focus": 0.7157865
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.118394,
+                "engage": 0.6927044,
+                "relax": 0.7823699,
+                "excite": 0.7619259,
+                "interest": 0.422294,
+                "focus": 0.831719
+            }
+        }
+    },
+    "participant_1_3": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Fear",
+                "stress": 0.0,
+                "engage": 0.5050689,
+                "relax": 0.06666667,
+                "excite": 0.6888936,
+                "interest": 0.6621423,
+                "focus": 0.8119411
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.5878893,
+                "engage": 0.6574934,
+                "relax": 0.263557,
+                "excite": 0.5138009,
+                "interest": 0.6718572,
+                "focus": 0.7127912
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.5878893,
+                "engage": 0.6574934,
+                "relax": 0.263557,
+                "excite": 0.5138009,
+                "interest": 0.6718572,
+                "focus": 0.7127912
+            }
+        }
+    },
+    "participant_박하영": {
+        "basic_info": {
+            "age": "17",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.6151361,
+                "relax": 0.06666667,
+                "excite": 0.7572858,
+                "interest": 0.715512,
+                "focus": 0.804669
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.0,
+                "engage": 0.6151361,
+                "relax": 0.06666667,
+                "excite": 0.7572858,
+                "interest": 0.715512,
+                "focus": 0.804669
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.0911613,
+                "engage": 0.7546721,
+                "relax": 0.8362647,
+                "excite": 0.7643251,
+                "interest": 0.8169574,
+                "focus": 0.7813146
+            }
+        }
+    },
+    "participant_1306": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Angry",
+                "stress": 0.0,
+                "engage": 0.670042,
+                "relax": 0.06666667,
+                "excite": 0.7478662,
+                "interest": 0.847738,
+                "focus": 0.8520029
+            },
+            "step3": {
+                "fill_rate": "Highest",
+                "stress": 0.4314039,
+                "engage": 0.6665286,
+                "relax": 0.2187576,
+                "excite": 0.6438781,
+                "interest": 0.5385447,
+                "focus": 0.8019102
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.4314039,
+                "engage": 0.6665286,
+                "relax": 0.2187576,
+                "excite": 0.6438781,
+                "interest": 0.5385447,
+                "focus": 0.8019102
+            }
+        }
+    },
+    "participant_1311": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Fear",
+                "stress": 0.0,
+                "engage": 0.6695507,
+                "relax": 0.06666667,
+                "excite": 0.6859064,
+                "interest": 0.5188621,
+                "focus": 0.8234519
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.0,
+                "engage": 0.6695507,
+                "relax": 0.06666667,
+                "excite": 0.6859064,
+                "interest": 0.5188621,
+                "focus": 0.8234519
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.6942123,
+                "engage": 0.6408156,
+                "relax": 0.2491242,
+                "excite": 0.6044304,
+                "interest": 0.7583137,
+                "focus": 0.7286428
+            }
+        }
+    },
+    "participant_1410_2": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.5974002,
+                "relax": 0.07777683,
+                "excite": 0.8681056,
+                "interest": 0.5779537,
+                "focus": 0.8562728
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.190769,
+                "engage": 0.5571095,
+                "relax": 0.8779007,
+                "excite": 0.835445,
+                "interest": 0.5573355,
+                "focus": 0.9108768
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.190769,
+                "engage": 0.5571095,
+                "relax": 0.8779007,
+                "excite": 0.835445,
+                "interest": 0.5573355,
+                "focus": 0.9108768
+            }
+        }
+    },
+    "participant_1513_2": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Angry",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            }
+        }
+    },
+    "participant_1522": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Angry",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step3": {
+                "fill_rate": "Highest",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            }
+        }
+    },
+    "participant_1526": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.5049621,
+                "relax": 0.07438395,
+                "excite": 0.736419,
+                "interest": 0.5356361,
+                "focus": 0.7806057
+            },
+            "step3": {
+                "fill_rate": "Highest",
+                "stress": 0.05594162,
+                "engage": 0.7986947,
+                "relax": 0.9967786,
+                "excite": 0.640755,
+                "interest": 0.9048153,
+                "focus": 0.8079873
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.1545839,
+                "engage": 0.7015694,
+                "relax": 0.871772,
+                "excite": 0.5417194,
+                "interest": 0.5384094,
+                "focus": 0.7353611
+            }
+        }
+    },
+    "participant_고유슬": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.5222818,
+                "relax": 0.06666667,
+                "excite": 0.7131516,
+                "interest": 0.6175857,
+                "focus": 0.8384703
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.0,
+                "engage": 0.5222818,
+                "relax": 0.06666667,
+                "excite": 0.7131516,
+                "interest": 0.6175857,
+                "focus": 0.8384703
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.1591367,
+                "engage": 0.6416678,
+                "relax": 0.7074475,
+                "excite": 0.6379393,
+                "interest": 0.7367703,
+                "focus": 0.7665739
+            }
+        }
+    },
+    "participant_김수아": {
+        "basic_info": {
+            "age": "11",
+            "gender": "여",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.6554096,
+                "relax": 0.06666667,
+                "excite": 0.6515269,
+                "interest": 0.9195712,
+                "focus": 0.7675462
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.0,
+                "engage": 0.6554096,
+                "relax": 0.06666667,
+                "excite": 0.6515269,
+                "interest": 0.9195712,
+                "focus": 0.7675462
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.1944935,
+                "engage": 0.68134,
+                "relax": 0.5637818,
+                "excite": 0.6361412,
+                "interest": 0.9817194,
+                "focus": 0.795621
+            }
+        }
+    },
+    "participant_백찬율": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.6015798,
+                "relax": 0.06666667,
+                "excite": 0.671092,
+                "interest": 0.446416,
+                "focus": 0.7735535
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.0,
+                "engage": 0.6015798,
+                "relax": 0.06666667,
+                "excite": 0.671092,
+                "interest": 0.446416,
+                "focus": 0.7735535
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.0764789,
+                "engage": 0.5290799,
+                "relax": 0.8387237,
+                "excite": 0.6366377,
+                "interest": 0.6675236,
+                "focus": 0.7949708
+            }
+        }
+    },
+    "participant_오채연": {
+        "basic_info": {
+            "age": "11",
+            "gender": "여",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.6628208,
+                "relax": 0.07581982,
+                "excite": 0.7963043,
+                "interest": 0.5434914,
+                "focus": 0.814328
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.1608103,
+                "engage": 0.6241233,
+                "relax": 0.5388578,
+                "excite": 0.7257629,
+                "interest": 0.7017459,
+                "focus": 0.8709179
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.1608103,
+                "engage": 0.6241233,
+                "relax": 0.5388578,
+                "excite": 0.7257629,
+                "interest": 0.7017459,
+                "focus": 0.8709179
+            }
+        }
+    },
+    "participant_정연서": {
+        "basic_info": {
+            "age": "11",
+            "gender": "여",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.5462306,
+                "relax": 0.06666667,
+                "excite": 0.7253866,
+                "interest": 0.8441961,
+                "focus": 0.8350708
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.1682747,
+                "engage": 0.5116497,
+                "relax": 0.810107,
+                "excite": 0.5488673,
+                "interest": 0.5782337,
+                "focus": 0.7755016
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.08519414,
+                "engage": 0.7884816,
+                "relax": 0.8477528,
+                "excite": 0.7597604,
+                "interest": 0.418761,
+                "focus": 0.8192155
+            }
+        }
+    },
+    "participant_1114": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "남",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.0,
+                "engage": 0.5314701,
+                "relax": 0.06666667,
+                "excite": 0.7073058,
+                "interest": 0.9761273,
+                "focus": 0.8199956
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.5898008,
+                "engage": 0.6256574,
+                "relax": 0.2936374,
+                "excite": 0.6118929,
+                "interest": 0.4988908,
+                "focus": 0.7565157
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.4360363,
+                "engage": 0.7611358,
+                "relax": 0.3517919,
+                "excite": 0.6360757,
+                "interest": 0.8444175,
+                "focus": 0.7487875
+            }
+        }
+    },
+    "participant_1116": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            }
+        }
+    },
+    "participant_1208_2": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.607036,
+                "relax": 0.07201456,
+                "excite": 0.8612442,
+                "interest": 0.8340909,
+                "focus": 0.8533092
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.06270573,
+                "engage": 0.6844798,
+                "relax": 0.5036083,
+                "excite": 0.7784203,
+                "interest": 0.8754284,
+                "focus": 0.8155279
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.09896341,
+                "engage": 0.5786005,
+                "relax": 0.6623666,
+                "excite": 0.7288638,
+                "interest": 0.968569,
+                "focus": 0.8517339
+            }
+        }
+    },
+    "participant_1210": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Surprise",
+                "stress": 0.0,
+                "engage": 0.6962079,
+                "relax": 0.06666667,
+                "excite": 0.6346106,
+                "interest": 0.4724684,
+                "focus": 0.7698544
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.0,
+                "engage": 0.6962079,
+                "relax": 0.06666667,
+                "excite": 0.6346106,
+                "interest": 0.4724684,
+                "focus": 0.7698544
+            },
+            "step4": {
+                "fill_rate": "Least",
+                "stress": 0.481937,
+                "engage": 0.5509972,
+                "relax": 0.1259514,
+                "excite": 0.6702458,
+                "interest": 0.655082,
+                "focus": 0.7811946
+            }
+        }
+    },
+    "participant_1218_2": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            }
+        }
+    },
+    "participant_1308": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.7713451,
+                "relax": 0.08155432,
+                "excite": 0.8612206,
+                "interest": 0.466178,
+                "focus": 0.8280593
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.1642375,
+                "engage": 0.7958529,
+                "relax": 0.7567798,
+                "excite": 0.758686,
+                "interest": 0.6140602,
+                "focus": 0.8626825
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.1642375,
+                "engage": 0.7958529,
+                "relax": 0.7567798,
+                "excite": 0.758686,
+                "interest": 0.6140602,
+                "focus": 0.8626825
+            }
+        }
+    },
+    "participant_김성윤": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.5983927,
+                "relax": 0.06666667,
+                "excite": 0.5833452,
+                "interest": 0.824765,
+                "focus": 0.7586044
+            },
+            "step3": {
+                "fill_rate": "Least",
+                "stress": 0.0,
+                "engage": 0.5983927,
+                "relax": 0.06666667,
+                "excite": 0.5833452,
+                "interest": 0.824765,
+                "focus": 0.7586044
+            },
+            "step4": {
+                "fill_rate": "Higher",
+                "stress": 0.1308929,
+                "engage": 0.7610782,
+                "relax": 0.9101,
+                "excite": 0.6806481,
+                "interest": 0.5606887,
+                "focus": 0.796401
+            }
+        }
+    },
+    "participant_우지호": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.0,
+                "engage": 0.5794274,
+                "relax": 0.06666667,
+                "excite": 0.7377642,
+                "interest": 0.9316794,
+                "focus": 0.8459247
+            },
+            "step3": {
+                "fill_rate": "Highest",
+                "stress": 0.0,
+                "engage": 0.5794274,
+                "relax": 0.06666667,
+                "excite": 0.7377642,
+                "interest": 0.9316794,
+                "focus": 0.8459247
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.3625018,
+                "engage": 0.6795543,
+                "relax": 0.415281,
+                "excite": 0.6092911,
+                "interest": 0.5303485,
+                "focus": 0.7558096
+            }
+        }
+    },
+    "participant_조소린": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Sad",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step3": {
+                "fill_rate": "Low",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            }
+        }
+    },
+    "participant_1_4": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Surprise",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            },
+            "step4": {
+                "fill_rate": "Highest",
+                "stress": 0.01,
+                "engage": 0.01,
+                "relax": 0.01,
+                "excite": 0.01,
+                "interest": 0.01,
+                "focus": 0.01
+            }
+        }
+    },
+    "participant_1_5": {
+        "basic_info": {
+            "age": "NULL",
+            "gender": "NULL",
+            "date": "NULL"
+        },
+        "steps": {
+            "step2": {
+                "emotion_color": "Happy",
+                "stress": 0.0,
+                "engage": 0.5935924,
+                "relax": 0.06666667,
+                "excite": 0.7955864,
+                "interest": 0.8551134,
+                "focus": 0.8671159
+            },
+            "step3": {
+                "fill_rate": "High",
+                "stress": 0.0,
+                "engage": 0.5935924,
+                "relax": 0.06666667,
+                "excite": 0.7955864,
+                "interest": 0.8551134,
+                "focus": 0.8671159
+            },
+            "step4": {
+                "fill_rate": "Half",
+                "stress": 0.08652527,
+                "engage": 0.6551923,
+                "relax": 0.867464,
+                "excite": 0.7697957,
+                "interest": 0.4750429,
+                "focus": 0.8797253
+            }
+        }
     }
 }
