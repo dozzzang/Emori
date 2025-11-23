@@ -33,7 +33,7 @@ if not os.path.exists(OUTPUT_DIR):
     print(f"출력 폴더를 생성했습니다: {OUTPUT_DIR}")
 
 # 파라미터 설정
-OPTIMAL_EPOCHS = 10
+OPTIMAL_EPOCHS = 7
 OPTIMAL_BATCH_SIZE = 1
 LOGGING_FREQUENCY = 5
 ACCUMULATION_STEPS = 8
@@ -118,11 +118,13 @@ dataset = dataset.map(
     desc="Applying chat template and creating 'text' column",
 )
 
-# # 데이터셋의 첫 번째 샘플 확인 (테스트)
-# print("\n--- Formatted Dataset Example (First 100 characters) ---")
-# print(dataset[0]["text"][:100] + "...")
-# print("---------------------------------------------------------")
+# 3.4 학습/검증 데이터셋 80/20 분할
+# seed는 재현성을 위해 고정
+split_dataset = dataset.train_test_split(test_size=0.2, seed=42)
+train_dataset = split_dataset["train"]
+eval_dataset = split_dataset["test"]
 
+print(f"Train size: {len(train_dataset)}, Eval size: {len(eval_dataset)}")
 
 # ===================================================================
 # 4. TrainingArguments 및 SFTTrainer 설정
@@ -136,7 +138,7 @@ training_args = TrainingArguments(
     gradient_accumulation_steps=ACCUMULATION_STEPS,
     optim="paged_adamw_8bit",
     save_strategy="no",
-    eval_strategy="no",
+    eval_strategy="epoch",
     logging_steps=LOGGING_FREQUENCY,
     save_total_limit=0,
     learning_rate=3e-4,
@@ -153,7 +155,8 @@ training_args = TrainingArguments(
 trainer = SFTTrainer(
     model=model,
     args=training_args,
-    train_dataset=dataset,
+    train_dataset=train_dataset,
+    eval_dataset=eval_dataset,  # 검증 데이터셋 추가
     processing_class=tokenizer,
 )
 
@@ -163,7 +166,7 @@ trainer = SFTTrainer(
 print("Starting training...")
 trainer.train()
 
-# 학습 종류 후 pc 끊김 문제 해결 부분
+# 학습 종료 후 pc 끊김 문제 해결 부분
 print("Moving adapter to CPU and saving (adapter-only, safetensors)...")
 
 model.eval()
