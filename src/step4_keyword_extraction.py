@@ -1,64 +1,36 @@
 """
-4단계: BERT Attention Score 추출 및 랭킹
-- BERT의 Attention Score를 활용하여 각 단어의 감정 분류 기여도를 측정
-- 신뢰도 (confidence) 저장 로직 포함
+step4_llama_sbert_analyzer.py: LLaMA 3.1을 사용한 감성 및 기여도 핵심 분석
 """
 
 import os
 import json
 from pathlib import Path
+from groq import Groq 
 import torch
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-from collections import Counter
-import numpy as np
+from sentence_transformers import SentenceTransformer
+import torch.nn.functional as F
 
-# Step 3와 동일한 모델 이름 재사용
-MODEL_NAME = "matthewburke/korean_sentiment" 
+# 🚨 사용자님의 Groq API Key 적용됨
+GROQ_API_KEY = "type your key"
+LLAMA_MODEL_NAME = "llama-3.1-8b-instant" 
 
+# 파일 경로 설정
+MORPHEME_DIR = 'output/vr_interview/morpheme'
+OUTPUT_DIR = 'output/vr_interview/attention'
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-class BertAttentionRanker:
-    """BERT Attention Score 기반 단어 중요도 추출기"""
-    
-    def __init__(self, morpheme_folder="output/morpheme", 
-                 sentiment_folder="output/sentiment",
-                 output_folder="output/attention"):
+class LlamaSbertAnalyzer:
+    def __init__(self):
+        self.groq_client = Groq(api_key=GROQ_API_KEY) 
         
-        self.morpheme_folder = morpheme_folder
-        self.sentiment_folder = sentiment_folder
-        self.output_folder = output_folder
-        os.makedirs(output_folder, exist_ok=True)
-        
-        print(f"🤖 BERT Attention 모델 ({MODEL_NAME}) 로딩 중...")
-        
-        # 🚨 디버깅 코드 추가: 현재 실행 경로 확인
-        #print(f"DEBUG: 현재 작업 디렉토리 (CWD): {os.getcwd()}")
-        #print(f"DEBUG: 찾는 Sentiment 폴더 경로: {os.path.join(os.getcwd(), sentiment_folder)}")
-
+        print(f"🤖 모델 로딩 중: SBERT")
         try:
-            self.tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-            self.model = AutoModelForSequenceClassification.from_pretrained(
-                MODEL_NAME, 
-                output_attentions=True
-            )
-            self.model.eval()
-            print("✅ BERT Attention 모델 로드 완료!")
+            # SBERT 임베딩 모델 (유사도 측정용)
+            self.sbert_model = SentenceTransformer("jhgan/ko-sroberta-multitask")
+            print("✅ SBERT 모델 로드 완료!")
         except Exception as e:
-            raise Exception(f"❌ BERT 모델 로드 실패: {e}")
+            raise Exception(f"❌ 모델 로드 실패: {e}")
 
-    def load_json_file(self, file_path):
-        """파일 경로를 받아 JSON 파일을 로드"""
-        try:
-            if not os.path.exists(file_path):
-                # 파일이 존재하지 않으면 None 반환
-                return None
-            
-            with open(file_path, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except Exception as e:
-            # 파일은 있지만 JSON 형식이 잘못되었거나 권한 문제가 있을 경우
-            print(f"❌ JSON 로드 중 심각한 오류 발생 ({file_path}): {e}")
-            return None
-        
     def get_document_text(self, filename):
         """원본 TXT 파일을 로드"""
         txt_path = os.path.join('data/txt_files', filename)
@@ -67,126 +39,172 @@ class BertAttentionRanker:
                 return f.read()
         return None
 
-    def extract_and_rank(self, morpheme_filename):
-        """단일 파일 Attention Score 추출 및 랭킹"""
+    def call_llama3_analysis(self, interview_text):
+        """Groq LLaMA 3.1 API를 호출하여 요청하신 JSON 형식의 결과를 반환"""
         
-        # 1. 필수 데이터 로드
-        morpheme_data = self.load_json_file(os.path.join(self.morpheme_folder, morpheme_filename))
-        if not morpheme_data: 
-            print(f"⚠️  {morpheme_filename} 파일이 없습니다. Step 2를 먼저 실행하세요.")
+        system_prompt = (
+            "당신은 아동 심리 및 행동 전문가입니다. 다음 인터뷰 전문을 분석하여, "
+            "**아동의 일상생활 속의 행동, 관계, 갈등 상황**에만 집중하세요.\n\n"
+            
+            "[중요: 요약 작성 방법]\n"
+            "interview_summary 필드에는 반드시 **인터뷰 내용 자체를 요약**해야 합니다.\n"
+            "- 아동이 말한 구체적인 상황과 경험을 문장으로 풀어서 작성하세요.\n"
+            "- 예시: '세진이는 친구들과 피구를 할 때 즐거움을 느낀다. 하지만 영어 공부나 쓰기 활동을 할 때는 어려움을 겪으며 화가 난다고 표현했다. "
+            "엄마는 밝은 성격이고 아빠는 착하다고 생각하며, 가족으로부터 많은 사랑을 받고 있다고 느낀다. 친구들과 놀 때는 양보를 많이 하는 편이다.'\n"
+            "- 최소 5문장 이상으로 작성하세요.\n"
+            "- 분석적 해석이 아닌, 인터뷰에서 언급된 실제 내용을 자연스러운 문장으로 요약하세요.\n"
+            "- '~이는', '~라고 말했다', '~느낀다' 등의 표현을 사용하여 아동의 경험을 서술하세요.\n\n"
+            
+            "[분석 기준]\n"
+            "1. **키워드 추출**: 문맥에 가장 중요하게 기여하는 **상황 키워드**를 추출하되, **총 20개**의 키워드를 긍정, 부정, 중립, 복합을 최대한 포함하여 반환하세요.\n"
+            "   - 순수 감정 동사나 형용사(좋다, 화나다, 기쁘다)는 제외하고, 감정을 유발하는 **행위나 상황**만 키워드로 추출하세요.\n"
+            "2. **가중치 부여**: 각 키워드가 전체 상황 이해에 기여하는 정도(0.0~1.0 사이의 가중치)를 추론하세요.\n"
+            "3. **감성 분류**: 각 단어가 기여하는 최종 감성(긍정/부정/중립/복합)을 분류하세요.\n"
+            "4. **최종 감성 결정**: 최종 감성 기조는 키워드 가중치 총합이 가장 높은 극성으로 결정되어야 합니다. 수치적 우위를 명확히 설명해야 합니다.\n\n"
+            
+            "결과를 반드시 다음 JSON 형식으로만 반환하세요. 'confidence'와 'contribution_weight'는 0.00부터 1.00 사이여야 합니다.\n\n"
+            "JSON 형식:\n"
+            "{\n"
+            "  \"primary_sentiment\": \"긍정/부정/중립/복합\",\n"
+            "  \"confidence\": 0.85,\n"
+            "  \"interview_summary\": \"인터뷰 내용을 자연스러운 문장으로 요약 (최소 5문장 이상, 아동의 경험과 상황을 구체적으로 서술)\",\n"
+            "  \"contextual_keywords\": [\n"
+            "    {\n"
+            "      \"word\": \"키워드\",\n"
+            "      \"contribution_weight\": 0.15,\n"
+            "      \"sentiment_label\": \"긍정/부정/중립/복합\",\n"
+            "      \"reason\": \"이 키워드가 감성에 기여한 근거 (인터뷰 내용 기반)\"\n"
+            "    }\n"
+            "  ]\n"
+            "}"
+        )
+        
+        user_prompt = f"인터뷰 전문:\n\n{interview_text[:6000]}"
+        
+        try:
+            chat_completion = self.groq_client.chat.completions.create(
+                model=LLAMA_MODEL_NAME,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ],
+                max_tokens=2048,
+                temperature=0.1,
+                response_format={"type": "json_object"}
+            )
+            
+            llama_json_string = chat_completion.choices[0].message.content
+            result = json.loads(llama_json_string)
+            
+            # 🚨 interview_summary가 없거나 비어있으면 기본값 추가
+            if 'interview_summary' not in result or not result['interview_summary']:
+                result['interview_summary'] = '인터뷰 요약을 생성하지 못했습니다.'
+            
+            return result
+        
+        except Exception as e:
+            print(f"❌ LLaMA API 호출/파싱 실패: {e}")
             return None
-        
-        # Sentiment 파일 경로 생성
-        sentiment_filename_derived = morpheme_filename.replace('_morpheme.json', '_sentiment.json')
-        sentiment_path = os.path.join(self.sentiment_folder, sentiment_filename_derived)
-        
-        # 🚨 디버깅 코드 추가: 찾는 파일 경로 출력
-        #print(f"DEBUG: Sentiment 파일을 찾는 경로: {sentiment_path}") 
 
-        sentiment_data = self.load_json_file(sentiment_path)
+    def analyze_sbert_similarity(self, keywords):
+        """SBERT 임베딩 유사도를 계산 (차트 간 연결성 분석을 위해 유지)"""
+        if len(keywords) < 2: return []
         
-        if not sentiment_data: 
-            # 파일이 없거나 로드에 실패하면 여기서 종료
-            print(f"⚠️  {Path(sentiment_path).name} 파일을 찾지 못했습니다. Step 3 실행 및 경로 확인이 필요합니다.")
-            return None
+        embeddings = self.sbert_model.encode(keywords, convert_to_tensor=True)
+        similarity_results = []
+        cosine_scores = F.cosine_similarity(embeddings.unsqueeze(1), embeddings.unsqueeze(0), dim=2)
+        
+        for i in range(len(keywords)):
+            for j in range(i + 1, len(keywords)):
+                word1 = keywords[i]
+                word2 = keywords[j]
+                sim_score = float(cosine_scores[i][j].item()) 
+                
+                similarity_results.append({
+                    "word_pair": f"{word1}-{word2}",
+                    "word1": word1,
+                    "word2": word2,
+                    "sbert_score": round(sim_score, 4) 
+                })
+        return similarity_results
 
+    def analyze_single_file(self, morpheme_filename):
+        """단일 파일 분석 및 최종 결과 저장"""
+        
+        morpheme_path = os.path.join(MORPHEME_DIR, morpheme_filename)
+        morpheme_data = self.load_json_file(morpheme_path)
+        if not morpheme_data: return
+        
         original_text = self.get_document_text(morpheme_data['filename'])
-        if not original_text: return None
+        if not original_text: return
 
         print(f"\n{'='*60}")
-        print(f"✨ Attention Score 추출 중: {morpheme_filename}")
+        print(f"✨ LLaMA 3 분석 요청: {morpheme_filename}")
         print('='*60)
 
-        # 2. 토큰화 및 Attention 추출 (모델 실행)
-        inputs = self.tokenizer(original_text, return_tensors="pt", truncation=True, padding=True)
+        # 1. LLaMA 3 API 호출 및 JSON 데이터 획득
+        llama_analysis = self.call_llama3_analysis(original_text)
         
-        with torch.no_grad():
-            outputs = self.model(**inputs)
-        
-        # 3. Attention Score 계산 
-        attentions = outputs.attentions 
-        last_layer_att = attentions[-1][0].mean(dim=0)
-        cls_attention = last_layer_att[0, :].cpu().numpy()
+        if not llama_analysis or 'contextual_keywords' not in llama_analysis:
+            print("🛑 LLaMA 분석 결과가 유효하지 않습니다.")
+            return None 
 
-        tokens = self.tokenizer.convert_ids_to_tokens(inputs['input_ids'][0])
-        
-        # 4. 단어별 점수 매핑 및 랭킹
-        token_importance = {}
-        for i, token in enumerate(tokens[1:-1]):
-            word = token.replace('##', '')
-            score = float(cls_attention[i+1])
-            
-            if word not in token_importance:
-                token_importance[word] = []
-            token_importance[word].append(score)
+        # 2. SBERT 유사도 분석
+        keywords_for_sbert = [item['word'] for item in llama_analysis.get('contextual_keywords', [])]
+        sbert_results = self.analyze_sbert_similarity(keywords_for_sbert) 
+        print(f"  ✅ SBERT 유사도 분석 완료. {len(sbert_results)}개 쌍 분석.")
 
-        # 5. 최종 랭킹
-        ranked_words = []
-        all_morphemes = morpheme_data.get('all_nouns', []) + morpheme_data.get('all_verbs', []) + morpheme_data.get('all_adjectives', []) + morpheme_data.get('all_adverbs', []) + morpheme_data.get('all_interjections', [])
-        
-        for word, scores in token_importance.items():
-            avg_score = np.mean(scores)
-            
-            if word in all_morphemes:
-                ranked_words.append((word, avg_score))
-
-        ranked_words.sort(key=lambda x: x[1], reverse=True)
-        
-        # 6. 결과 저장
-        bert_result = sentiment_data['bert_based']
-        
+        # 3. 최종 결과 저장 (Step 6의 입력 파일)
         output_data = {
             'filename': morpheme_data['filename'],
-            'bert_sentiment': bert_result['sentiment'],
-            'bert_confidence': bert_result['confidence'], # 신뢰도 저장
-            'top_attention_words': ranked_words[:30],
-            'total_tokens_analyzed': len(tokens)
+            'analysis_source': 'LLaMA3 + SBERT',
+            'primary_sentiment': llama_analysis.get('primary_sentiment', '중립'), 
+            'confidence': llama_analysis.get('confidence', 0.0),
+            'interview_summary': llama_analysis.get('interview_summary', '인터뷰 요약을 찾을 수 없습니다.'),  # 🚨 추가
+            'contextual_keywords': llama_analysis.get('contextual_keywords', []), 
+            'sbert_similarity_analysis': sbert_results, 
         }
         
-        output_filename = Path(morpheme_filename).stem.replace('_morpheme', '_attention_rank.json')
-        output_path = os.path.join(self.output_folder, output_filename)
+        output_filename = Path(morpheme_filename).stem.replace('_morpheme', '_llama_analysis.json')
+        output_path = os.path.join(OUTPUT_DIR, output_filename)
         
-        with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(output_data, f, ensure_ascii=False, indent=2)
-        
-        print(f"\n    ✅ Top 10 기여 단어:")
-        for word, score in ranked_words[:10]:
-             print(f"       {word}: {score:.4f}")
-        print(f"\n    결과 저장: {output_path}")
+        try:
+            with open(output_path, 'w', encoding='utf-8') as f:
+                json.dump(output_data, f, ensure_ascii=False, indent=2)
+            print(f"\n  ✅ 최종 분석 JSON 저장: {output_path}")
+        except Exception as e:
+            print(f"\n🛑 파일 저장 실패: {e}")
+            return None
 
+        print(f"\n  ✅ LLaMA 분석 결과 요약:")
+        print(f"     최종 감성: {output_data['primary_sentiment']} (신뢰도: {output_data['confidence']:.2f})")
+        print(f"     인터뷰 요약 미리보기: {output_data['interview_summary'][:100]}...")  # 🚨 추가
+        
         return output_data
     
-    def rank_all_files(self):
-        """전체 파일 Attention Score 추출"""
-        morpheme_files = sorted([f for f in os.listdir(self.morpheme_folder) if f.endswith('_morpheme.json')])
-        if not morpheme_files: return []
-        
-        results = []
-        for filename in morpheme_files:
-            result = self.extract_and_rank(filename)
-            if result: results.append(result)
-        
-        return results
-
+    def load_json_file(self, file_path: str) -> dict:
+        """JSON 파일 로드 유틸리티"""
+        try:
+            if not os.path.exists(file_path): return {}
+            with open(file_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception as e:
+            return {}
 
 def main():
-    print("\n 4단계: BERT Attention Score 추출 및 랭킹")
-    try:
-        ranker = BertAttentionRanker()
-        
-        choice = input("\n실행 모드 선택: 1. 단일 파일 분석 / 2. 전체 파일 분석 (1-2): ").strip()
-        
-        if choice == '1':
-            # 파일명을 입력할 때 반드시 '.json'까지 포함해야 합니다.
-            filename = input("파일명 (예: EG_001_morpheme.json): ").strip()
-            ranker.extract_and_rank(filename)
-        elif choice == '2':
-            ranker.rank_all_files()
-        else:
-            print("❌ 잘못된 선택")
+    print("\n🎯 4단계: Groq LLaMA 3.1 기반 분석 시작")
+    analyzer = LlamaSbertAnalyzer()
     
-    except Exception as e:
-        print(f"\n❌ 오류 발생: {e}")
+    morpheme_files = [f for f in os.listdir(MORPHEME_DIR) if f.endswith('_morpheme.json')]
+    
+    if not morpheme_files:
+        print(f"🛑 {MORPHEME_DIR} 폴더에 Step 2 결과 파일이 없습니다. Step 2를 먼저 실행하세요.")
+        return
+
+    # 첫 번째 파일만 분석하도록 설정
+    filename = input("파일명을 입력하세요 ex) EB_001_morpheme.json : ")
+    analyzer.analyze_single_file(filename)
+
 
 if __name__ == "__main__":
     main()
