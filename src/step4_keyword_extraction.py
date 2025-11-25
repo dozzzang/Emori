@@ -11,7 +11,7 @@ from sentence_transformers import SentenceTransformer
 import torch.nn.functional as F
 
 # 🚨 사용자님의 Groq API Key 적용됨
-GROQ_API_KEY = "TYPE YOUR KEY"
+GROQ_API_KEY = "type your key"
 LLAMA_MODEL_NAME = "llama-3.1-8b-instant" 
 
 # 파일 경로 설정

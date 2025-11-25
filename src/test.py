@@ -1,2 +1,1 @@
-st = input("file nae")
-print(st)
+print("hello world")
