@@ -39,8 +39,94 @@ def make_metrics(stress, engage, relax, excite, interest, focus):
     }
 
 
-def metrics_of_state(state_name, pm_by_state, fallback=None):
-    """특정 STEP의 뇌파 수치를 딕셔너리로 반환"""
+# ---------- (구버전) STEP.Step1/2/3 블록에서 PM_* 추출 ----------
+def parse_step_blocks(raw: str):
+    step_blocks = re.findall(
+        r"-{5,}STEP\.([A-Za-z0-9_]+)-{5,}\s*(.*?)(?=(?:-{5,}STEP\.[A-Za-z0-9_]+-{5,})|$)",
+        raw,
+        flags=re.DOTALL,
+    )
+
+    pm_by_state = {}
+
+    for state, body in step_blocks:
+        # 숨고르기(Breathe)나 크로스헤어, PreStep* 단계는 EEG 요약에서 제외
+        if state.lower() in [
+            "breathe",
+            "crosshair",
+            "prestep1",
+            "prestep2",
+            "prestep3",
+        ]:
+            continue
+
+        vals = {}
+        for key in [
+            "PM_Stress",
+            "PM_Engage",
+            "PM_Relax",
+            "PM_Excite",
+            "PM_Interest",
+            "PM_Focus",
+        ]:
+            # ex) PM_Stress : 0.12345
+            m = re.search(rf"{key}\s*:\s*([0-9]*\.?[0-9]+)", body)
+            if m:
+                vals[key] = float(m.group(1))
+
+        if vals:
+            pm_by_state.setdefault(state, []).append(vals)
+
+    return pm_by_state
+
+
+# ---------- (신버전) PM_STEP_Step1/2/3 요약 블록에서 PM_AVERAGE_* 추출 ----------
+# PM_Stress 값만 존재하고, 나머지는 PM_AVERAGE_* (%)로 제공되는 형식을 처리
+def parse_pm_step_summary(raw: str):
+    """
+    PM_STEP_Step1 ~ PM_STEP_Step3 구간에서
+    PM_AVERAGE_Stress/Engage/... (% 단위)를 추출하여 0~1 구간으로 변환.
+    """
+    summary_by_state = {}
+
+    pattern = re.compile(
+        r"PM_STEP_(\w+)\s*(.*?)(?=PM_STEP_\w+|---------End---------|$)",
+        re.DOTALL,
+    )
+
+    for state, body in pattern.findall(raw):
+        vals = {}
+        for key in ["Stress", "Engage", "Relax", "Excite", "Interest", "Focus"]:
+            m = re.search(
+                rf"PM_AVERAGE_{key}\s*:\s*([0-9]*\.?[0-9]+)\s*%?",
+                body,
+            )
+            if m:
+                v = float(m.group(1))
+                # 0~100% -> 0~1 로 변환
+                vals[f"PM_{key}"] = v / 100.0
+
+        if vals:
+            summary_by_state[state] = vals
+
+    return summary_by_state
+
+
+# ---------- 최종 메트릭 선택 로직 ----------
+def metrics_of_state(state_name, pm_by_state, pm_step_summary=None, fallback=None):
+    # 1) 신버전 요약 블록
+    if pm_step_summary is not None and state_name in pm_step_summary:
+        x = pm_step_summary[state_name]
+        return make_metrics(
+            x.get("PM_Stress", 0.0),
+            x.get("PM_Engage", 0.0),
+            x.get("PM_Relax", 0.0),
+            x.get("PM_Excite", 0.0),
+            x.get("PM_Interest", 0.0),
+            x.get("PM_Focus", 0.0),
+        )
+
+    # 2) 구버전 STEP.Step* 블록
     arr = pm_by_state.get(state_name, [])
     if not arr:
         return fallback if fallback is not None else make_metrics(0, 0, 0, 0, 0, 0)
@@ -97,40 +183,21 @@ def run_txt_to_json():
     step2_fill_rate = extract_emotion(r"STEP2_FILL_RATE\s*:\s*(.*)", raw)
     step3_fill_rate = extract_emotion(r"STEP3_FILL_RATE\s*:\s*(.*)", raw)
 
-    # STEP.<State> & 뇌파 수치 추출
-    step_blocks = re.findall(
-        r"-{5,}STEP\.([A-Za-z0-9_]+)-{5,}\s*(.*?)(?=(?:-{5,}STEP\.[A-Za-z0-9_]+-{5,})|$)",
-        raw,
-        flags=re.DOTALL,
-    )
+    # 3. EEG 관련 수치 추출
+    # 3-1) 구버전 STEP.Step* 블록
+    pm_by_state = parse_step_blocks(raw)
+    # 3-2) 신버전 PM_STEP_Step* 요약 블록
+    pm_step_summary = parse_pm_step_summary(raw)
 
-    pm_by_state = {}
-    for state, body in step_blocks:
-        if state in ["Breathe", "Crosshair", "PreStep1", "PreStep2", "PreStep3"]:
-            continue
+    # 4. step2/3/4 에 대응되는 EEG 메트릭 선택
+    #    - step2  <- Step1
+    #    - step3  <- Step2
+    #    - step4  <- Step3
+    m_step2 = metrics_of_state("Step1", pm_by_state, pm_step_summary)
+    m_step3 = metrics_of_state("Step2", pm_by_state, pm_step_summary)
+    m_step4 = metrics_of_state("Step3", pm_by_state, pm_step_summary)
 
-        vals = {}
-        for key in [
-            "PM_Stress",
-            "PM_Engage",
-            "PM_Relax",
-            "PM_Excite",
-            "PM_Interest",
-            "PM_Focus",
-        ]:
-            m = re.search(rf"{key}\s*:\s*([0-9]*\.?[0-9]+)", body)
-            if m:
-                vals[key] = float(m.group(1))
-
-        if vals:
-            pm_by_state.setdefault(state, []).append(vals)
-
-    # 매핑 규칙 적용
-    m_step2 = metrics_of_state("Step1", pm_by_state)
-    m_step3 = metrics_of_state("Step2", pm_by_state)
-    m_step4 = metrics_of_state("Step3", pm_by_state)
-
-    # 3. JSON 구성
+    # 5. JSON 구성
     result_data = {
         f"participant_{name or 'unknown'}": {
             "basic_info": {"age": age, "gender": gender, "date": date},
@@ -142,7 +209,12 @@ def run_txt_to_json():
         }
     }
 
-    # 4. JSON Data 저장
+    # 6. JSON Data 저장
+    try:
+        os.makedirs(os.path.dirname(OUTPUT_FILE_NAME), exist_ok=True)
+    except Exception:
+        pass
+
     try:
         with open(OUTPUT_FILE_NAME, "w", encoding="utf-8") as f:
             json.dump(result_data, f, indent=4, ensure_ascii=False)
