@@ -219,6 +219,7 @@ __marimo__/
 data/hwp_files/*.hwp
 data/txt_files/*.txt
 data/pdf_files/*.pdf
+data/emotionResult/*.txt
 
 # 하지만 폴더 구조는 유지 (.gitkeep 파일은 제외하지 않음)
 !data/hwp_files/.gitkeep
