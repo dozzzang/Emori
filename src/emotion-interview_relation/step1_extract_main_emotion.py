@@ -1,25 +1,23 @@
 import os
 import re
-import json
 from pathlib import Path
 
-# 파일 경로 설정
-EMOTION_INPUT_DIR = 'data/emotionResult'
-OUTPUT_DIR = 'output/emotionRelation/mainEmotion'
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+# --- 설정값 ---
+EMOTION_INPUT_DIR = 'data/emotionResult' # 메인 감정 소스 파일 디렉토리
+OUTPUT_DIR = 'output/emotionRelation/mainEmotion' # 결과 파일 저장 디렉토리
+# --- 설정값 끝 ---
 
-def extract_main_emotion(emotion_filename: str):
+def extract_main_emotion_from_file(emotion_filepath: str, emotion_filename: str) -> str | None:
     """
-    emotionResult 파일에서 STEP1_EMOTION_COLOR 값을 추출하고 JSON으로 저장합니다.
+    emotionResult 파일에서 STEP1_EMOTION_COLOR 값을 추출합니다.
     """
-    input_path = os.path.join(EMOTION_INPUT_DIR, emotion_filename)
     
-    if not os.path.exists(input_path):
-        print(f"🛑 파일이 존재하지 않습니다: {input_path}")
+    if not os.path.exists(emotion_filepath):
+        print(f"🛑 파일이 존재하지 않습니다: {emotion_filepath}")
         return None
 
     try:
-        with open(input_path, 'r', encoding='utf-8') as f:
+        with open(emotion_filepath, 'r', encoding='utf-8') as f:
             content = f.read()
     except Exception as e:
         print(f"🛑 파일 읽기 실패: {e}")
@@ -30,32 +28,63 @@ def extract_main_emotion(emotion_filename: str):
     match = re.search(r'STEP1_EMOTION_COLOR\s*:\s*(\w+)', content)
     
     if match:
-        main_emotion = match.group(1).strip()
+        return match.group(1).strip()
     else:
-        main_emotion = "Unknown"  # 해당 항목을 찾지 못한 경우
+        return "Unknown" # 해당 항목을 찾지 못한 경우
 
-    # 1단계 출력 데이터 형식
-    output_data = {
-      "filename": Path(emotion_filename).stem,
-      "main_emotion": main_emotion, 
-      "main_dot_color": "Black",
-      "source_file": emotion_filename
-    }
+def process_single_file(filename: str):
+    """단일 파일을 처리하고 결과를 텍스트 파일로 저장"""
+    input_path = os.path.join(EMOTION_INPUT_DIR, filename)
+    main_emotion = extract_main_emotion_from_file(input_path, filename)
 
-    # JSON 파일 저장
-    output_filename = Path(emotion_filename).stem + '_mainEmotion.json'
-    output_path = os.path.join(OUTPUT_DIR, output_filename)
+    if main_emotion:
+        # 결과 파일명: 원본 파일명.txt (예: EB_001_emotionResult.txt -> EB_001_emotionResult.txt)
+        output_path = os.path.join(OUTPUT_DIR, filename)
+        
+        try:
+            with open(output_path, 'w', encoding='utf-8') as f:
+                f.write(main_emotion)
+            print(f"✅ 메인 감정 추출 및 저장 완료: {output_path} (감정: **{main_emotion}**)")
+        except Exception as e:
+            print(f"🛑 결과 파일 저장 실패: {e}")
+
+def process_all_files():
+    """디렉토리 내의 모든 파일을 처리합니다."""
     
-    try:
-        os.makedirs(OUTPUT_DIR, exist_ok=True)
-        with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(output_data, f, ensure_ascii=False, indent=2)
-        print(f"✅ 1단계 메인 감정 추출 완료: {output_path} (감정: {main_emotion})")
-        return output_data
-    except Exception as e:
-        print(f"🛑 1단계 결과 저장 실패: {e}")
-        return None
+    emotion_files = [f for f in os.listdir(EMOTION_INPUT_DIR) if f.endswith('.txt')]
+    
+    if not emotion_files:
+        print(f"🛑 {EMOTION_INPUT_DIR} 폴더에 .txt 파일이 없습니다.")
+        return
 
-# # 실행 예시 (사용자가 파일을 지정한다고 가정)
-# # sample_input_filename = "EB_001_emotionResult.txt" 
-# # extract_main_emotion(sample_input_filename)
+    print(f"📁 총 {len(emotion_files)}개의 파일을 처리합니다.")
+    for filename in emotion_files:
+        process_single_file(filename)
+
+def main():
+    """메인 실행 함수: 사용자 입력을 받아 단일/전체 파일 분석 선택"""
+    
+    os.makedirs(OUTPUT_DIR, exist_ok=True) # 출력 디렉토리 생성
+    print("="*40)
+    print("🎯 1단계: 메인 감정 추출 시작")
+    print(f"  > 소스 디렉토리: {EMOTION_INPUT_DIR}")
+    print(f"  > 출력 디렉토리: {OUTPUT_DIR}")
+    print("="*40)
+    
+    while True:
+        choice = input("\n분석 방식을 선택하세요 (1: 단일 파일, 2: 모든 파일, Q: 종료): ")
+        
+        if choice == '1':
+            filename = input("분석할 파일명을 입력하세요 (예: EB_001_emotionResult.txt): ")
+            process_single_file(filename)
+        elif choice == '2':
+            process_all_files()
+            break # 모든 파일 처리 후 종료
+        elif choice.upper() == 'Q':
+            print("프로그램을 종료합니다.")
+            break
+        else:
+            print("잘못된 입력입니다. 1, 2 또는 Q를 입력하세요.")
+
+if __name__ == "__main__":
+    main()
