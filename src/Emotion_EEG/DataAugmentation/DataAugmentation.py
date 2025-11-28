@@ -25,9 +25,9 @@ BASE_INPUT_FILE = Path(file_list[0])
 OUTPUT_JSON_FILE = Path(
     "output/Emotion_EEG/Augmented_Json_Data/Augmented_Report_Data.json"
 )
-EMOTION_CHOICES = ["Happy", "Fear", "Sad", "Surprise", "Angry", "Disgust"]
-FILL_RATE_CHOICES_STEP2 = ["Full", "High", "Half", "Low"]
-FILL_RATE_CHOICES_STEP3 = ["Full", "High", "Half", "Low", "Minimal"]
+EMOTION_CHOICES = ["Happy", "Fear", "Sad", "Surprise", "Angry", "Dislike"]
+FILL_RATE_CHOICES_STEP2 = ["Highest", "High", "Low", "Least"]
+FILL_RATE_CHOICES_STEP3 = ["Highest", "Higher", "Half", "Less", "Least"]
 PM_AUGMENT_RANGE = 0.2  # PM 값 변동 범위: +/- 20% (index < 9 에서 사용)
 PM_CORRELATION_NOISE = 0.2  # 상관관계 기반 값의 변동 폭 (index >= 9 에서 사용)
 PM_NEAR_ZERO_THRESHOLD = 0.05  # 이 값보다 작으면 0 근처에서 변동 (index < 9 에서 사용)
