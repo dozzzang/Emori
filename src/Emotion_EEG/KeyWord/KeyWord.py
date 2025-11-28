@@ -18,7 +18,7 @@ EMOTION_INTENSITY = {
     "Sad": {"Highest": "절망", "High": "슬픔", "Low": "걱정", "Least": "속상"},
     "Fear": {"Highest": "공포", "High": "두려움", "Low": "겁나는", "Least": "불안"},
     "Angry": {"Highest": "분노가득", "High": "화남", "Low": "짜증", "Least": "섭섭함"},
-    "Disgust": {
+    "Dislike": {
         "Highest": "역겨움",
         "High": "너무싫음",
         "Low": "싫증남",
