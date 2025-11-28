@@ -13,16 +13,16 @@ JSON_PATH = INPUT_DIR / "Report_Data.json"
 
 # -------- 감정 세분화 사전(4단계) --------
 EMOTION_INTENSITY = {
-    "Happy": {"Full": "신남", "High": "기쁨", "Half": "편안", "Low": "만족"},
-    "Surprise": {"Full": "충격", "High": "놀람", "Half": "긴장", "Low": "어이없는"},
-    "Sad": {"Full": "절망", "High": "슬픔", "Half": "걱정", "Low": "속상"},
-    "Fear": {"Full": "공포", "High": "두려움", "Half": "겁나는", "Low": "불안"},
-    "Angry": {"Full": "분노가득", "High": "화남", "Half": "짜증", "Low": "섭섭함"},
-    "Disgust": {
-        "Full": "역겨움",
+    "Happy": {"Highest": "신남", "High": "기쁨", "Low": "편안", "Least": "만족"},
+    "Surprise": {"Highest": "충격", "High": "놀람", "Low": "긴장", "Least": "어이없는"},
+    "Sad": {"Highest": "절망", "High": "슬픔", "Low": "걱정", "Least": "속상"},
+    "Fear": {"Highest": "공포", "High": "두려움", "Low": "겁나는", "Least": "불안"},
+    "Angry": {"Highest": "분노가득", "High": "화남", "Low": "짜증", "Least": "섭섭함"},
+    "Dislike": {
+        "Highest": "역겨움",
         "High": "너무싫음",
-        "Half": "싫증남",
-        "Low": "지겨움",
+        "Low": "싫증남",
+        "Least": "지겨움",
     },
 }
 
@@ -32,6 +32,7 @@ AROUSAL_HIGH, AROUSAL_LOW = 0.65, 0.35
 TE_HIGH, TE_LOW = 0.70, 0.40
 
 # -------- step별 가중치 설정(후반의 데이터에 더 높은 가중치 부여) --------
+# 후반의 데이터를 최종 결과에 가까운 변화라고 간주
 STEP_WEIGHTS = {"step2": 0.2, "step3": 0.3, "step4": 0.5}
 
 
