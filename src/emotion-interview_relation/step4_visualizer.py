@@ -14,6 +14,33 @@ os.makedirs(VISUAL_OUTPUT_DIR, exist_ok=True)
 
 BLUE_TO_BLUE_THRESHOLD = 0.7 
 
+# ✅ 감정 한글 매핑 (일단은 컬러 결정용으로만 사용)
+EMOTION_TRANSLATION = {
+    # 기쁘다 계열 (노란색)
+    "Happy": "기쁘다",
+    # 슬프다 계열 (파란색)
+    "Sad": "슬프다",
+    # 화나다 계열 (빨간색)
+    "Angry": "화나다",
+    # 두렵다 계열 (초록색)
+    "fear": "두렵다",
+    # 놀라다 계열 (하늘색)
+    "Surprise": "놀라다",
+    # 싫다 계열 (보라색)
+    "Dislike": "싫다",
+}
+
+# ✅ 메인 감정 노드 색상 매핑
+EMOTION_COLOR = {
+    "Happy": "#f1c40f",     # 노란색
+    "Sad": "#2980b9",       # 파란색
+    "Angry": "#e74c3c",     # 빨강
+    "fear": "#27ae60",      # 초록
+    "Surprise": "#5dade2",  # 하늘색
+    "Dislike": "#9b59b6",   # 보라
+}
+
+
 class NetworkVisualizerPNG:
     def __init__(self):
         print("✅ 네트워크 시각화 준비 완료")
@@ -89,17 +116,12 @@ class NetworkVisualizerPNG:
         if not connected_nodes:
             return pos
         
-        # 각도를 균등하게 분배
         n = len(connected_nodes)
         angles = np.linspace(0, 2 * np.pi, n, endpoint=False)
         
         for i, node in enumerate(connected_nodes):
             weight = edge_weights.get((main_node, node), 0.3)
             
-            # 🚨 핵심 수정: 가중치에 따른 명확한 거리 차이
-            # 가중치 0.9 → 거리 1.5
-            # 가중치 0.5 → 거리 3.5
-            # 가중치 0.3 → 거리 5.0
             if weight >= 0.7:
                 distance = 1.5
             elif weight >= 0.5:
@@ -125,13 +147,16 @@ class NetworkVisualizerPNG:
         main_emotion_word = data['main_emotion_node']['word']
         blue_dot_keywords_data = {k['word']: k for k in data['keyword_nodes']}
 
-        # 🚨 핵심 수정: is_connected가 True인 것만 연결
+        # ✅ 메인 감정에 따른 색상 선택
+        main_emotion_color = EMOTION_COLOR.get(main_emotion_word, '#2c3e50')
+
+        # is_connected 기준으로 분리
         connected_to_main = []
         disconnected_from_main = []
 
         for relation in data['inter_node_relations']:
             word = relation['target']
-            if relation['is_connected']:  # True인 것만!
+            if relation['is_connected']:
                 connected_to_main.append(word)
             else:
                 disconnected_from_main.append(word)
@@ -151,10 +176,9 @@ class NetworkVisualizerPNG:
             for word in connected_to_main:
                 G_connected.add_node(word)
             
-            # 엣지 가중치 저장
             edge_weights = {}
             
-            # 🚨 Black-Blue 연결만 (is_connected=True인 것만)
+            # Black-Blue 연결 (메인 감정 ↔ 키워드)
             for relation in data['inter_node_relations']:
                 if relation['target'] in connected_to_main and relation['is_connected']:
                     edge = (main_emotion_word, relation['target'])
@@ -172,44 +196,42 @@ class NetworkVisualizerPNG:
                         blue_edges.append((edge, relation['sbert_score']))
                         G_connected.add_edge(*edge, weight=relation['sbert_score'])
             
-            # 🚨 가중치 기반 원형 레이아웃
+            # 가중치 기반 원형 레이아웃
             pos = self.create_weighted_circular_layout(
                 main_emotion_word, connected_to_main, edge_weights
             )
             
-            # 🚨 노드 크기 대폭 증가
+            # ✅ 노드 크기 크게 조정
             node_sizes = []
             node_colors = []
             
             for node in G_connected.nodes():
                 if node == main_emotion_word:
-                    node_sizes.append(8000)  # 메인 노드 매우 크게
-                    node_colors.append('#2c3e50')
+                    node_sizes.append(14000)  # 메인 노드 더 크게
+                    node_colors.append(main_emotion_color)
                 else:
                     keyword_data = blue_dot_keywords_data[node]
-                    # Blue Dot도 크게
-                    node_sizes.append(4000 + keyword_data['contribution_weight'] * 3000)
+                    node_sizes.append(6000 + keyword_data['contribution_weight'] * 4000)
                     node_colors.append('#3498db')
             
-            # Black-Blue 엣지 그리기 (가중치별 명확한 차이)
+            # ✅ Black-Blue 엣지: 두께/진하기 강화
             for edge, weight in edge_weights.items():
-                # 가중치별 색상 강도
                 if weight >= 0.7:
-                    color = '#e74c3c'  # 진한 빨강
-                    width = 8
-                    alpha = 0.9
+                    color = '#e74c3c'  # 강한 연결
+                    width = 12
+                    alpha = 1.0
                 elif weight >= 0.5:
-                    color = '#e67e22'  # 주황
-                    width = 5
-                    alpha = 0.7
+                    color = '#e67e22'
+                    width = 8
+                    alpha = 0.85
                 elif weight >= 0.3:
-                    color = '#f39c12'  # 연한 주황
-                    width = 3
-                    alpha = 0.5
+                    color = '#f39c12'
+                    width = 5
+                    alpha = 0.65
                 else:
-                    color = '#95a5a6'  # 회색
-                    width = 2
-                    alpha = 0.3
+                    color = '#95a5a6'
+                    width = 3
+                    alpha = 0.4
                 
                 nx.draw_networkx_edges(
                     G_connected, pos,
@@ -221,14 +243,14 @@ class NetworkVisualizerPNG:
                     ax=ax
                 )
             
-            # Blue-Blue 엣지 그리기
+            # ✅ Blue-Blue 엣지도 더 두껍게
             for edge, weight in blue_edges:
                 nx.draw_networkx_edges(
                     G_connected, pos,
                     edgelist=[edge],
                     edge_color=['#3498db'],
-                    width=2 + weight * 2,
-                    alpha=0.4,
+                    width=3 + weight * 3,   # (대략 3~6)
+                    alpha=0.5,
                     style='dashed',
                     ax=ax
                 )
@@ -248,17 +270,16 @@ class NetworkVisualizerPNG:
                 x, y = pos[node]
                 
                 if node == main_emotion_word:
-                    # 메인 노드: 큰 흰색 글씨
                     bbox_props = dict(
-                        boxstyle='round,pad=0.7',
-                        facecolor='#2c3e50',
+                        boxstyle='round,pad=0.8',
+                        facecolor=main_emotion_color,   # ✅ 감정 색상 사용
                         edgecolor='white',
                         linewidth=3,
-                        alpha=0.95
+                        alpha=0.97
                     )
                     ax.text(
                         x, y, node,
-                        fontsize=28,
+                        fontsize=34,            # ✅ 글씨 키움
                         fontweight='bold',
                         color='white',
                         ha='center',
@@ -268,20 +289,19 @@ class NetworkVisualizerPNG:
                         zorder=1000
                     )
                 else:
-                    # Blue Dot
                     keyword_data = blue_dot_keywords_data[node]
                     sentiment = keyword_data['sentiment_label'][:1]
                     
                     bbox_props = dict(
-                        boxstyle='round,pad=0.5',
+                        boxstyle='round,pad=0.6',
                         facecolor='white',
                         edgecolor='#3498db',
-                        linewidth=2,
-                        alpha=0.95
+                        linewidth=2.5,
+                        alpha=0.97
                     )
                     ax.text(
                         x, y, f"{node}\n({sentiment})",
-                        fontsize=16,
+                        fontsize=20,        # ✅ 글씨 키움
                         fontweight='bold',
                         color='black',
                         ha='center',
@@ -293,7 +313,7 @@ class NetworkVisualizerPNG:
             
             ax.set_title(
                 f"심리 연관성 네트워크: {base_name} (연결 그룹)",
-                fontsize=28,
+                fontsize=30,
                 fontweight='bold',
                 pad=40,
                 fontproperties=self.font_prop
@@ -322,7 +342,6 @@ class NetworkVisualizerPNG:
             for word in disconnected_from_main:
                 G_disconnected.add_node(word)
             
-            # Blue-Blue 연결
             edge_list = []
             
             if 'intra_node_relations' in data:
@@ -334,37 +353,36 @@ class NetworkVisualizerPNG:
                         edge_list.append((edge, relation['sbert_score']))
                         G_disconnected.add_edge(*edge, weight=relation['sbert_score'])
             
-            # 🚨 중앙 배치를 위한 레이아웃
+            # spring 레이아웃
             pos = nx.spring_layout(
                 G_disconnected, 
-                k=2.0,  # 노드 간 거리
+                k=2.0,
                 iterations=150, 
                 seed=42,
-                center=(0, 0)  # 중앙 고정
+                center=(0, 0)
             )
             
-            # 노드 크기 증가
+            # ✅ 단절 그룹도 노드 크게
             node_sizes = []
             node_colors = []
             
             for node in G_disconnected.nodes():
                 keyword_data = blue_dot_keywords_data[node]
-                node_sizes.append(3500 + keyword_data['contribution_weight'] * 2500)
+                node_sizes.append(5000 + keyword_data['contribution_weight'] * 3500)
                 node_colors.append('#95a5a6')
             
-            # 엣지 그리기
+            # ✅ 엣지 두께/진하기 강화
             for edge, weight in edge_list:
                 nx.draw_networkx_edges(
                     G_disconnected, pos,
                     edgelist=[edge],
                     edge_color='#bdc3c7',
-                    width=2 + weight * 3,
-                    alpha=0.5,
+                    width=3 + weight * 4,   # (대략 3~7)
+                    alpha=0.6,
                     style='dashed',
                     ax=ax
                 )
             
-            # 노드 그리기
             nx.draw_networkx_nodes(
                 G_disconnected, pos,
                 node_color=node_colors,
@@ -374,7 +392,7 @@ class NetworkVisualizerPNG:
                 ax=ax
             )
             
-            # 라벨 그리기
+            # 라벨
             for node in G_disconnected.nodes():
                 x, y = pos[node]
                 keyword_data = blue_dot_keywords_data[node]
@@ -382,17 +400,17 @@ class NetworkVisualizerPNG:
                 
                 ax.text(
                     x, y, f"{node}\n({sentiment})",
-                    fontsize=15,
+                    fontsize=18,        # ✅ 글씨 키움
                     fontweight='bold',
                     color='black',
                     ha='center',
                     va='center',
                     bbox=dict(
-                        boxstyle='round,pad=0.4',
+                        boxstyle='round,pad=0.5',
                         facecolor='white',
                         edgecolor='#95a5a6',
                         linewidth=2,
-                        alpha=0.95
+                        alpha=0.97
                     ),
                     fontproperties=self.font_prop,
                     zorder=1000
@@ -400,7 +418,7 @@ class NetworkVisualizerPNG:
             
             ax.set_title(
                 f"심리 연관성 네트워크: {base_name} (단절 그룹)",
-                fontsize=28,
+                fontsize=30,
                 fontweight='bold',
                 pad=40,
                 fontproperties=self.font_prop
@@ -415,6 +433,7 @@ class NetworkVisualizerPNG:
         
         else:
             print(f"  ℹ️ 단절된 키워드가 없음")
+
 
 def main():
     os.makedirs(VISUAL_OUTPUT_DIR, exist_ok=True)

@@ -17,52 +17,21 @@ SIMILARITY_THRESHOLD = 0.25
 EMOTION_TRANSLATION = {
     # 기쁘다 계열 (노란색)
     "Happy": "기쁘다",
-    "Joyful": "기쁘다",
-    "Pleasant": "편안한",
-    "Comfortable": "편안한",
-    "Relieved": "안심",
     
     # 슬프다 계열 (파란색)
     "Sad": "슬프다",
-    "Gloomy": "슬프다",
-    "Depressed": "격정되는",
-    "Heartbroken": "절망적인",
-    "Lonely": "속상한",
     
     # 화나다 계열 (빨간색)
     "Angry": "화나다",
-    "Mad": "화나다",
-    "Annoyed": "짜증나는",
-    "Irritated": "짜증나는",
-    "Disgusted": "섭섭한",
-    "Resentful": "화나는",
-    "Frustrated": "분노로 가득한",
     
     # 두렵다 계열 (초록색)
-    "Afraid": "두렵다",
-    "Scared": "두렵다",
-    "Anxious": "불안한",
-    "Worried": "불안한",
-    "Nervous": "겁나는",
-    "Terrified": "두려운",
-    "Fearful": "공포스러운",
+    "fear": "두렵다",
     
     # 놀라다 계열 (하늘색)
-    "Surprised": "놀라다",
-    "Shocked": "놀라다",
-    "Amazed": "어이가 없는",
-    "Astonished": "긴장되는",
-    "Startled": "깜짝 놀란",
-    "Overwhelmed": "놀라 충격적인",
+    "Surprise": "놀라다",
     
     # 싫다 계열 (보라색)
-    "Disgusted": "싫다",
-    "Averse": "싫다",
-    "Reluctant": "지겨운",
-    "Bored": "지겨운",
-    "Indifferent": "심심나는",
-    "Apathetic": "너무 싫은",
-    "Hateful": "역겨운"
+    "Dislike": "싫다",
 }
 # --- 파일 경로 및 설정 끝 ---
 
