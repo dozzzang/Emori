@@ -108,6 +108,8 @@ class EmotionVisualizer:
         - 단어 크기는 contribution_weight 합으로 결정
         - WordCloud mask를 '원 안'이 0, '원 밖'이 255 가 되도록 설정해서
           단어가 원 안에만 배치되도록 함
+        - 원 영역을 더 작게 잡고, 글자 크기 범위를 줄여서
+          단어들이 더 촘촘하고 원형에 가깝게 모이도록 튜닝
         """
         if not keywords:
             return
@@ -123,7 +125,6 @@ class EmotionVisualizer:
 
             if word in agg:
                 agg[word]['weight'] += weight
-                # 더 큰 weight를 가진 항목의 감성 라벨을 대표로 사용
                 if weight > agg[word]['max_weight']:
                     agg[word]['label'] = label
                     agg[word]['max_weight'] = weight
@@ -137,7 +138,7 @@ class EmotionVisualizer:
         if not agg:
             return
 
-        # 2) 상위 N개만 사용 (너무 많으면 보기 힘드니까)
+        # 2) 상위 N개만 사용
         sorted_words = sorted(
             agg.items(),
             key=lambda x: x[1]['weight'],
@@ -151,10 +152,10 @@ class EmotionVisualizer:
 
         # 감성별 색상
         colors_map = {
-            '긍정': '#4CAF50',  # 초록
-            '부정': '#F44336',  # 빨강
-            '중립': '#9E9E9E',  # 회색
-            '복합': '#FFC107'   # 주황
+            '긍정': '#4CAF50',
+            '부정': '#F44336',
+            '중립': '#9E9E9E',
+            '복합': '#FFC107'
         }
 
         def color_func(word, font_size, position, orientation,
@@ -167,7 +168,8 @@ class EmotionVisualizer:
         mask = np.full((height, width), 255, dtype=np.uint8)  # 기본값 255 (금지 영역)
         center = (width // 2, height // 2)
 
-        padding = 80
+        # 🟢 원을 더 작게 만들어 단어들이 더 모이도록 (padding ↑)
+        padding = 180  # 값이 클수록 원이 작아져서 더 촘촘해짐
         radius = min(width, height) // 2 - padding
 
         y, x = np.ogrid[:height, :width]
@@ -181,14 +183,15 @@ class EmotionVisualizer:
             mask=mask,
             width=width,
             height=height,
-            max_font_size=110,
-            min_font_size=12,
+            # 글자 크기 범위를 좁혀서 더 빽빽하게
+            max_font_size=80,     # 이전보다 살짝 줄임
+            min_font_size=20,     # 최소 크기 조금 키워서 전체 볼륨 유지
             max_words=len(word_scores_dict),
-            relative_scaling=0.5,
+            relative_scaling=0.4,  # 크기 차이는 있지만 너무 극단적이지 않게
             prefer_horizontal=1.0,
             random_state=42,
-            collocations=False,  # 두 단어를 하나의 프레이즈로 묶지 않기
-            # repeat=False 가 기본값 → 한 단어 1번만
+            collocations=False,    # 두 단어를 하나의 프레이즈로 묶지 않기
+            # repeat=False (기본값) → 단어는 1번만
         ).generate_from_frequencies(word_scores_dict)
 
         # 5) 시각화 & 저장
@@ -228,6 +231,7 @@ class EmotionVisualizer:
         plt.close()
 
         print(f"  ✅ [3] 키워드 감성별 워드클라우드 저장: {Path(output_path).name}")
+
 
     def create_contribution_bar_chart(self, keywords: list, primary_sentiment: str,
                                       output_folder: str, filename: str):
