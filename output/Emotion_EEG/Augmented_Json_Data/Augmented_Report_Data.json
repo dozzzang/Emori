@@ -7,7 +7,7 @@
         },
         "steps": {
             "step2": {
-                "emotion_color": "Disgust",
+                "emotion_color": "Dislike",
                 "stress": 0.0744135,
                 "engage": 0.5330203,
                 "relax": 0.0570543,
@@ -16,7 +16,7 @@
                 "focus": 0.8607425
             },
             "step3": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.0594588,
                 "engage": 0.4824203,
                 "relax": 0.0558319,
@@ -25,7 +25,7 @@
                 "focus": 0.8656062
             },
             "step4": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.0940017,
                 "engage": 0.7079549,
                 "relax": 0.8223563,
@@ -52,7 +52,7 @@
                 "focus": 0.8036507
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.0350516,
                 "engage": 0.537681,
                 "relax": 0.054492,
@@ -88,7 +88,7 @@
                 "focus": 0.8325756
             },
             "step3": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.0835769,
                 "engage": 0.513494,
                 "relax": 0.0628072,
@@ -97,7 +97,7 @@
                 "focus": 0.9030683
             },
             "step4": {
-                "fill_rate": "High",
+                "fill_rate": "Higher",
                 "stress": 0.0716915,
                 "engage": 0.690567,
                 "relax": 0.8574334,
@@ -115,7 +115,7 @@
         },
         "steps": {
             "step2": {
-                "emotion_color": "Disgust",
+                "emotion_color": "Dislike",
                 "stress": 0.0844423,
                 "engage": 0.659125,
                 "relax": 0.0594413,
@@ -160,7 +160,7 @@
                 "focus": 0.7081248
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.0118553,
                 "engage": 0.6238528,
                 "relax": 0.0744555,
@@ -169,7 +169,7 @@
                 "focus": 0.8105855
             },
             "step4": {
-                "fill_rate": "Minimal",
+                "fill_rate": "Least",
                 "stress": 0.1036961,
                 "engage": 0.6628225,
                 "relax": 0.9911492,
@@ -187,7 +187,7 @@
         },
         "steps": {
             "step2": {
-                "emotion_color": "Disgust",
+                "emotion_color": "Dislike",
                 "stress": 0.0120437,
                 "engage": 0.5781033,
                 "relax": 0.0654326,
@@ -196,7 +196,7 @@
                 "focus": 0.7743707
             },
             "step3": {
-                "fill_rate": "Half",
+                "fill_rate": "Low",
                 "stress": 0.050558,
                 "engage": 0.5172925,
                 "relax": 0.0776701,
@@ -232,7 +232,7 @@
                 "focus": 0.7114356
             },
             "step3": {
-                "fill_rate": "Half",
+                "fill_rate": "Low",
                 "stress": 0.087923,
                 "engage": 0.6997147,
                 "relax": 0.0556174,
@@ -241,7 +241,7 @@
                 "focus": 0.9266707
             },
             "step4": {
-                "fill_rate": "Low",
+                "fill_rate": "Less",
                 "stress": 0.0957258,
                 "engage": 0.5578023,
                 "relax": 0.8394213,
@@ -277,7 +277,7 @@
                 "focus": 0.8633629
             },
             "step4": {
-                "fill_rate": "Minimal",
+                "fill_rate": "Least",
                 "stress": 0.0895862,
                 "engage": 0.5260384,
                 "relax": 0.9105909,
@@ -304,7 +304,7 @@
                 "focus": 0.8686074
             },
             "step3": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.0477944,
                 "engage": 0.6611716,
                 "relax": 0.0748666,
@@ -313,7 +313,7 @@
                 "focus": 0.8257268
             },
             "step4": {
-                "fill_rate": "Minimal",
+                "fill_rate": "Least",
                 "stress": 0.0838803,
                 "engage": 0.6465502,
                 "relax": 0.9170894,
@@ -340,7 +340,7 @@
                 "focus": 0.1866735
             },
             "step3": {
-                "fill_rate": "Half",
+                "fill_rate": "Low",
                 "stress": 0.1730046,
                 "engage": 0.6607719,
                 "relax": 0.8951402,
@@ -349,7 +349,7 @@
                 "focus": 0.6275961
             },
             "step4": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.6791344,
                 "engage": 0.4669116,
                 "relax": 0.1919051,
@@ -376,7 +376,7 @@
                 "focus": 0.6017151
             },
             "step3": {
-                "fill_rate": "Half",
+                "fill_rate": "Low",
                 "stress": 0.2881921,
                 "engage": 0.0507587,
                 "relax": 0.6821965,
@@ -385,7 +385,7 @@
                 "focus": 0.0509256
             },
             "step4": {
-                "fill_rate": "Low",
+                "fill_rate": "Less",
                 "stress": 0.4085224,
                 "engage": 0.7028594,
                 "relax": 0.579533,
@@ -412,7 +412,7 @@
                 "focus": 0.5960522
             },
             "step3": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.7816897,
                 "engage": 0.7566888,
                 "relax": 0.240381,
@@ -421,7 +421,7 @@
                 "focus": 0.6621292
             },
             "step4": {
-                "fill_rate": "Minimal",
+                "fill_rate": "Least",
                 "stress": 0.8219452,
                 "engage": 0.4589872,
                 "relax": 0.1691145,
@@ -448,7 +448,7 @@
                 "focus": 0.9293965
             },
             "step3": {
-                "fill_rate": "Half",
+                "fill_rate": "Low",
                 "stress": 0.7551818,
                 "engage": 0.7566494,
                 "relax": 0.2843732,
@@ -457,7 +457,7 @@
                 "focus": 0.9099549
             },
             "step4": {
-                "fill_rate": "Minimal",
+                "fill_rate": "Least",
                 "stress": 0.1960004,
                 "engage": 0.5884993,
                 "relax": 0.6417608,
@@ -511,7 +511,7 @@
         },
         "steps": {
             "step2": {
-                "emotion_color": "Disgust",
+                "emotion_color": "Dislike",
                 "stress": 0.2342109,
                 "engage": 0.9740282,
                 "relax": 0.6411968,
@@ -529,7 +529,7 @@
                 "focus": 0.9563562
             },
             "step4": {
-                "fill_rate": "High",
+                "fill_rate": "Higher",
                 "stress": 0.7105878,
                 "engage": 0.7531243,
                 "relax": 0.3107831,
@@ -556,7 +556,7 @@
                 "focus": 0.2367879
             },
             "step3": {
-                "fill_rate": "Half",
+                "fill_rate": "Low",
                 "stress": 0.1465619,
                 "engage": 0.1625601,
                 "relax": 0.7334626,
@@ -565,7 +565,7 @@
                 "focus": 0.1660195
             },
             "step4": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.3959738,
                 "engage": 0.5275942,
                 "relax": 0.5275754,
@@ -628,7 +628,7 @@
                 "focus": 0.2158134
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.4437859,
                 "engage": 0.3695913,
                 "relax": 0.6482627,
@@ -637,7 +637,7 @@
                 "focus": 0.2719638
             },
             "step4": {
-                "fill_rate": "Low",
+                "fill_rate": "Less",
                 "stress": 0.8026297,
                 "engage": 0.3943856,
                 "relax": 0.2857482,
@@ -664,7 +664,7 @@
                 "focus": 0.7716179
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.3511529,
                 "engage": 0.542749,
                 "relax": 0.5572634,
@@ -673,7 +673,7 @@
                 "focus": 0.4708769
             },
             "step4": {
-                "fill_rate": "High",
+                "fill_rate": "Higher",
                 "stress": 0.4990968,
                 "engage": 0.3106764,
                 "relax": 0.6160813,
@@ -709,7 +709,7 @@
                 "focus": 0.2025868
             },
             "step4": {
-                "fill_rate": "Low",
+                "fill_rate": "Less",
                 "stress": 0.6795337,
                 "engage": 0.4097903,
                 "relax": 0.2236835,
@@ -727,7 +727,7 @@
         },
         "steps": {
             "step2": {
-                "emotion_color": "Disgust",
+                "emotion_color": "Dislike",
                 "stress": 0.5603726,
                 "engage": 0.0075888,
                 "relax": 0.4614651,
@@ -736,7 +736,7 @@
                 "focus": 0.0075724
             },
             "step3": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.4113274,
                 "engage": 0.535901,
                 "relax": 0.5231258,
@@ -745,7 +745,7 @@
                 "focus": 0.6469049
             },
             "step4": {
-                "fill_rate": "Minimal",
+                "fill_rate": "Least",
                 "stress": 0.5690262,
                 "engage": 0.1411721,
                 "relax": 0.4441614,
@@ -772,7 +772,7 @@
                 "focus": 0.4398878
             },
             "step3": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.268824,
                 "engage": 0.6929353,
                 "relax": 0.5667261,
@@ -781,7 +781,7 @@
                 "focus": 0.7821536
             },
             "step4": {
-                "fill_rate": "Low",
+                "fill_rate": "Less",
                 "stress": 0.4029444,
                 "engage": 0.8609202,
                 "relax": 0.7316397,
@@ -808,7 +808,7 @@
                 "focus": 0.1850187
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.2062219,
                 "engage": 0.7776645,
                 "relax": 0.6986189,
@@ -817,7 +817,7 @@
                 "focus": 0.8623195
             },
             "step4": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.352996,
                 "engage": 0.0808355,
                 "relax": 0.565001,
@@ -844,7 +844,7 @@
                 "focus": 0.6442605
             },
             "step3": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.600422,
                 "engage": 0.7572022,
                 "relax": 0.3392601,
@@ -880,7 +880,7 @@
                 "focus": 0.5371636
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.7199845,
                 "engage": 0.3230085,
                 "relax": 0.313526,
@@ -889,7 +889,7 @@
                 "focus": 0.2513715
             },
             "step4": {
-                "fill_rate": "High",
+                "fill_rate": "Higher",
                 "stress": 0.5151468,
                 "engage": 0.5503078,
                 "relax": 0.4611678,
@@ -988,7 +988,7 @@
                 "focus": 0.747159
             },
             "step3": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.1953733,
                 "engage": 0.9211862,
                 "relax": 0.8226948,
@@ -997,7 +997,7 @@
                 "focus": 0.835246
             },
             "step4": {
-                "fill_rate": "High",
+                "fill_rate": "Higher",
                 "stress": 0.6308787,
                 "engage": 0.5745543,
                 "relax": 0.2231277,
@@ -1024,7 +1024,7 @@
                 "focus": 0.2936155
             },
             "step3": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.2172937,
                 "engage": 0.1767579,
                 "relax": 0.6387867,
@@ -1033,7 +1033,7 @@
                 "focus": 0.1636353
             },
             "step4": {
-                "fill_rate": "High",
+                "fill_rate": "Higher",
                 "stress": 0.300383,
                 "engage": 0.6957685,
                 "relax": 0.7162358,
@@ -1060,7 +1060,7 @@
                 "focus": 0.0463066
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.5277336,
                 "engage": 0.9215666,
                 "relax": 0.5085151,
@@ -1069,7 +1069,7 @@
                 "focus": 0.8732741
             },
             "step4": {
-                "fill_rate": "Low",
+                "fill_rate": "Less",
                 "stress": 0.3305326,
                 "engage": 0.8892521,
                 "relax": 0.6546993,
@@ -1096,7 +1096,7 @@
                 "focus": 0.3245023
             },
             "step3": {
-                "fill_rate": "Half",
+                "fill_rate": "Low",
                 "stress": 0.7703308,
                 "engage": 0.3115335,
                 "relax": 0.3536666,
@@ -1105,7 +1105,7 @@
                 "focus": 0.3294698
             },
             "step4": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.5379207,
                 "engage": 0.20772,
                 "relax": 0.4521984,
@@ -1132,7 +1132,7 @@
                 "focus": 0.7991811
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.1045567,
                 "engage": 0.7620808,
                 "relax": 0.9521683,
@@ -1141,7 +1141,7 @@
                 "focus": 0.8675986
             },
             "step4": {
-                "fill_rate": "Low",
+                "fill_rate": "Less",
                 "stress": 0.8121287,
                 "engage": 0.7488516,
                 "relax": 0.325276,
@@ -1168,7 +1168,7 @@
                 "focus": 0.9485849
             },
             "step3": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.4997717,
                 "engage": 0.6461633,
                 "relax": 0.5604065,
@@ -1204,7 +1204,7 @@
                 "focus": 0.7393368
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.6884605,
                 "engage": 0.970997,
                 "relax": 0.1453402,
@@ -1213,7 +1213,7 @@
                 "focus": 0.9902707
             },
             "step4": {
-                "fill_rate": "Low",
+                "fill_rate": "Less",
                 "stress": 0.7590083,
                 "engage": 0.8202867,
                 "relax": 0.1533072,
@@ -1240,7 +1240,7 @@
                 "focus": 0.7933691
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.8553917,
                 "engage": 0.1007965,
                 "relax": 0.304987,
@@ -1285,7 +1285,7 @@
                 "focus": 0.0097463
             },
             "step4": {
-                "fill_rate": "High",
+                "fill_rate": "Higher",
                 "stress": 0.4169255,
                 "engage": 0.5753949,
                 "relax": 0.6487946,
@@ -1312,7 +1312,7 @@
                 "focus": 0.3398847
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.3229047,
                 "engage": 0.9436584,
                 "relax": 0.8188596,
@@ -1321,7 +1321,7 @@
                 "focus": 0.8297818
             },
             "step4": {
-                "fill_rate": "Minimal",
+                "fill_rate": "Least",
                 "stress": 0.2264197,
                 "engage": 0.1978621,
                 "relax": 0.8173545,
@@ -1348,7 +1348,7 @@
                 "focus": 0.0302223
             },
             "step3": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.25626,
                 "engage": 0.8511698,
                 "relax": 0.6628601,
@@ -1375,7 +1375,7 @@
         },
         "steps": {
             "step2": {
-                "emotion_color": "Disgust",
+                "emotion_color": "Dislike",
                 "stress": 0.4892855,
                 "engage": 0.8024612,
                 "relax": 0.3855193,
@@ -1384,7 +1384,7 @@
                 "focus": 0.8176424
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.2041437,
                 "engage": 0.8102033,
                 "relax": 0.6139339,
@@ -1393,7 +1393,7 @@
                 "focus": 0.9790073
             },
             "step4": {
-                "fill_rate": "Minimal",
+                "fill_rate": "Least",
                 "stress": 0.8165531,
                 "engage": 0.0746593,
                 "relax": 0.255169,
@@ -1420,7 +1420,7 @@
                 "focus": 0.8314873
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.2957604,
                 "engage": 0.1304486,
                 "relax": 0.6908587,
@@ -1429,7 +1429,7 @@
                 "focus": 0.1263279
             },
             "step4": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.7123538,
                 "engage": 0.5070591,
                 "relax": 0.3328938,
@@ -1456,7 +1456,7 @@
                 "focus": 0.9934842
             },
             "step3": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.996508,
                 "engage": 0.3725361,
                 "relax": 0.1238997,
@@ -1465,7 +1465,7 @@
                 "focus": 0.3457225
             },
             "step4": {
-                "fill_rate": "Low",
+                "fill_rate": "Less",
                 "stress": 0.2769459,
                 "engage": 0.2607557,
                 "relax": 0.7792539,
@@ -1492,7 +1492,7 @@
                 "focus": 0.7746626
             },
             "step3": {
-                "fill_rate": "Half",
+                "fill_rate": "Low",
                 "stress": 0.6751784,
                 "engage": 0.3479486,
                 "relax": 0.1972397,
@@ -1501,7 +1501,7 @@
                 "focus": 0.4134469
             },
             "step4": {
-                "fill_rate": "High",
+                "fill_rate": "Higher",
                 "stress": 0.7884571,
                 "engage": 0.716125,
                 "relax": 0.2948615,
@@ -1528,7 +1528,7 @@
                 "focus": 0.4466117
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.3660201,
                 "engage": 0.6573904,
                 "relax": 0.613874,
@@ -1537,7 +1537,7 @@
                 "focus": 0.4608184
             },
             "step4": {
-                "fill_rate": "Low",
+                "fill_rate": "Less",
                 "stress": 0.3590152,
                 "engage": 0.9266115,
                 "relax": 0.719851,
@@ -1564,7 +1564,7 @@
                 "focus": 0.0793703
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.1967269,
                 "engage": 0.1031287,
                 "relax": 0.860871,
@@ -1573,7 +1573,7 @@
                 "focus": 0.0964559
             },
             "step4": {
-                "fill_rate": "Low",
+                "fill_rate": "Less",
                 "stress": 0.599022,
                 "engage": 0.131251,
                 "relax": 0.4001298,
@@ -1600,7 +1600,7 @@
                 "focus": 0.4296644
             },
             "step3": {
-                "fill_rate": "Half",
+                "fill_rate": "Low",
                 "stress": 0.6579449,
                 "engage": 0.232467,
                 "relax": 0.3573913,
@@ -1645,7 +1645,7 @@
                 "focus": 0.3441125
             },
             "step4": {
-                "fill_rate": "Minimal",
+                "fill_rate": "Least",
                 "stress": 0.8263359,
                 "engage": 0.0799924,
                 "relax": 0.1457981,
@@ -1672,7 +1672,7 @@
                 "focus": 0.5451334
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.5632593,
                 "engage": 0.1912886,
                 "relax": 0.3176821,
@@ -1681,7 +1681,7 @@
                 "focus": 0.1845187
             },
             "step4": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.5958966,
                 "engage": 0.7978358,
                 "relax": 0.4536682,
@@ -1708,7 +1708,7 @@
                 "focus": 0.5357971
             },
             "step3": {
-                "fill_rate": "Low",
+                "fill_rate": "Least",
                 "stress": 0.2933325,
                 "engage": 0.7223594,
                 "relax": 0.6189699,
@@ -1717,7 +1717,7 @@
                 "focus": 0.6404941
             },
             "step4": {
-                "fill_rate": "Full",
+                "fill_rate": "Highest",
                 "stress": 0.4443397,
                 "engage": 0.370926,
                 "relax": 0.4845037,
@@ -1771,7 +1771,7 @@
         },
         "steps": {
             "step2": {
-                "emotion_color": "Disgust",
+                "emotion_color": "Dislike",
                 "stress": 0.3541591,
                 "engage": 0.3471946,
                 "relax": 0.4671303,
@@ -1780,7 +1780,7 @@
                 "focus": 0.3729935
             },
             "step3": {
-                "fill_rate": "Half",
+                "fill_rate": "Low",
                 "stress": 0.1225497,
                 "engage": 0.0869918,
                 "relax": 0.8764137,
