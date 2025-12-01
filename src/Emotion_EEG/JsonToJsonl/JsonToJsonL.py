@@ -89,6 +89,12 @@ def load_manual_labels(csv_file_path: str) -> dict:
         print(f"Error reading CSV file: {e}")
         return {}
 
+    # ===== v4 제외 필터링 ===== -> 4번 단순 요약은 라벨에는 존재하지만, 결과에는 비교적 부자연스러워서 제외 후 학습 결정
+    if "version" in df.columns:
+        df = df[df["version"] != "v4"]
+    elif "policy" in df.columns:
+        df = df[~df["policy"].str.contains("v4", case=False, na=False)]
+
     # 참가자 ID(pid)별로 정답(assistant_content)을 리스트로 그룹화
     label_map = {}
     for pid, group in df.groupby("participant_id"):
@@ -131,8 +137,8 @@ def main():
         # 해당 참가자에 대한 수동 정답 목록을 로드
         assistant_answers = manual_labels_map.get(pid)
 
-        if not assistant_answers or len(assistant_answers) < 4:
-            # 4개 미만의 정답이 있을 경우 경고 및 건너뛰기
+        # 정답이 없으면 해당 참가자 건은 건너뜀
+        if not assistant_answers:
             missing_labels_count += 1
             continue
 
