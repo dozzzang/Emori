@@ -6,29 +6,29 @@ INPUT_DIR = Path("output/Emotion_EEG/Augmented_Json_Data")
 JSON_FILE_NAME = "Augmented_Report_Data.json"
 SRC = INPUT_DIR / JSON_FILE_NAME
 
-# 수동 작성된 정답지(CSV) 파일 경로 (LABEL_CSV)
+
 LABEL_CSV = Path("data/Emotion_EEG/Llama3_Assistant_Data/Manual_Assistant_Labels.csv")
 
-# 최종 LLM 학습용 JSONL 파일 경로 (OUT)
+
 OUT = Path("output/Emotion_EEG/Jsonl_For_Llama3/Train_Data.jsonl")
 
 
-# ===== 보조 함수 =====
+
 def delta(a, b):
-    """변화량 Δ = a - b (None 안전 처리)"""
+                                    
     a = 0.0 if a is None else float(a)
     b = 0.0 if b is None else float(b)
     return a - b
 
 
 def sign_fmt(x, prec=2):
-    """부호 포함 포맷 +0.12 / -0.07"""
+                                
     return f"{x:+.{prec}f}"
 
 
-# ===== JSON → JSONL 생성 함수 =====
+
 def build_base_record(pid: str, participant: dict):
-    """JSON 데이터를 읽어 user와 system 필드만 포함된 JSONL 뼈대를 반환"""
+                                                        
     steps = participant.get("steps", {})
     s2, s3, s4 = steps.get("step2", {}), steps.get("step3", {}), steps.get("step4", {})
 
@@ -36,7 +36,7 @@ def build_base_record(pid: str, participant: dict):
     step3_fill = s3.get("fill_rate")
     step4_fill = s4.get("fill_rate")
 
-    # 최종(step4) 값
+    
     final = {
         "stress": float(s4.get("stress", s2.get("stress", 0.0))),
         "engage": float(s4.get("engage", s2.get("engage", 0.0))),
@@ -45,10 +45,10 @@ def build_base_record(pid: str, participant: dict):
         "interest": float(s4.get("interest", s2.get("interest", 0.0))),
         "focus": float(s4.get("focus", s2.get("focus", 0.0))),
     }
-    # 트렌드(step4 - step2)
+    
     trend = {k: delta(final[k], float(s2.get(k, 0.0))) for k in final.keys()}
 
-    # ===== 입력(user) =====
+    
     user = (
         "다음 정보를 바탕으로 2~3문장 한국어 보고서 톤으로 요약하세요.\n"
         f"- step2.emotion_color: {base_color}\n"
@@ -62,14 +62,14 @@ def build_base_record(pid: str, participant: dict):
         "요건: 2~3문장, 보고서형 어체(…로 해석됩니다/보입니다), 핵심 요소(감정·신체감각·최종 EEG·변화·복합지표)를 반드시 포함."
     )
 
-    # ===== 시스템(system) =====
+    
     system = (
         "너는 VR 감정/EEG 데이터를 2~3문장으로 요약하는 한국어 보고서 작성 도우미다. "
         "반드시 보고서형 어체를 사용하고, 과장·추측을 피하며, 입력된 지표(최종값과 변화)를 반영한다. "
         "인지/몰입·각성/관여·조절/안정 각 그룹에서 1개씩 대표 지표를 선택해 기술하고, 전반적인 상태를 포함하라."
     )
 
-    # 이 뼈대 딕셔너리를 반환
+    
     return {
         "user_content": user,
         "system_content": system,
@@ -78,9 +78,9 @@ def build_base_record(pid: str, participant: dict):
 
 
 def load_manual_labels(csv_file_path: str) -> dict:
-    """CSV 파일에서 수동 작성된 정답지(Assistant)를 로드하여 딕셔너리로 그룹화"""
+                                                        
     try:
-        # CSV 파일 로드
+        
         df = pd.read_csv(csv_file_path)
     except FileNotFoundError:
         print(f"Error: 정답 파일 '{csv_file_path}'을 찾을 수 없습니다.")
@@ -89,63 +89,63 @@ def load_manual_labels(csv_file_path: str) -> dict:
         print(f"Error reading CSV file: {e}")
         return {}
 
-    # ===== v4 제외 필터링 ===== -> 4번 단순 요약은 라벨에는 존재하지만, 결과에는 비교적 부자연스러워서 제외 후 학습 결정
+    
     if "version" in df.columns:
         df = df[df["version"] != "v4"]
     elif "policy" in df.columns:
         df = df[~df["policy"].str.contains("v4", case=False, na=False)]
 
-    # 참가자 ID(pid)별로 정답(assistant_content)을 리스트로 그룹화
+    
     label_map = {}
     for pid, group in df.groupby("participant_id"):
-        # 'summary_ko' 열의 값만 리스트로 변환하여 저장
+        
         label_map[pid] = group["summary_ko"].tolist()
 
     return label_map
 
 
 def main():
-    # 1. 수동 작성된 정답 목록 로드 (CSV 파일 사용)
+    
     manual_labels_map = load_manual_labels(LABEL_CSV)
     if not manual_labels_map:
         print("정답 데이터가 없으므로 JSONL 생성을 중단합니다.")
         return
 
-    # 2. 입력 JSON 파일 로드
+    
     try:
         print(f"입력 JSON 파일 로드 시도: {SRC}")
         with open(SRC, "r", encoding="utf-8") as f:
             src_json = json.load(f)
     except FileNotFoundError:
-        # 파일이 없을 경우
+        
         print(f"Error: 입력 파일 '{SRC}'을 찾을 수 없습니다. (현재 작업 디렉토리 기준)")
         return
     except json.JSONDecodeError as e:
-        # JSON 형식이 잘못되었을 경우
+        
         print(f"Error: '{SRC}' 파일의 JSON 형식이 올바르지 않습니다. 오류: {e}")
         return
     except Exception as e:
-        # 기타 파일 로드 오류
+        
         print(f"Error loading JSON file: {e}")
         return
 
     jsonl_records = []
     missing_labels_count = 0
 
-    # 3. 통합된 JSON 파일의 모든 참가자 데이터를 순회
+    
     for pid, participant_data in src_json.items():
-        # 해당 참가자에 대한 수동 정답 목록을 로드
+        
         assistant_answers = manual_labels_map.get(pid)
 
-        # 정답이 없으면 해당 참가자 건은 건너뜀
+        
         if not assistant_answers:
             missing_labels_count += 1
             continue
 
-        # 4. 입력(user) 및 시스템(system)의 뼈대를 먼저 생성
+        
         base_record = build_base_record(pid, participant_data)
 
-        # 5. N개의 정답 목록을 반복하면서 레코드를 생성하고 추가
+        
         for idx, answer in enumerate(assistant_answers):
             record = {
                 "messages": [
@@ -154,7 +154,7 @@ def main():
                     {
                         "role": "assistant",
                         "content": answer,
-                    },  # CSV에서 로드된 정답 삽입
+                    },  
                 ],
                 "meta": {
                     "participant_id": pid,
@@ -163,7 +163,7 @@ def main():
             }
             jsonl_records.append(record)
 
-    # 6. JSONL 파일로 출력
+    
     with open(OUT, "w", encoding="utf-8") as f:
         for r in jsonl_records:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")

@@ -16,8 +16,8 @@ def get_counseling_prompt(text):
 
 3. Contextualizing Ambiguous Targets
    - 만약 하나의 대상(예: '거래')에 대해 긍정과 부정 감정이 동시에 나타난다면, 단순히 단어만 쓰지 말고 구체적인 상황을 덧붙여 구분하라.
-   - 나쁜 예: {{"target": "거래", "emotion": "기쁨"}}, {{"target": "거래", "emotion": "싫음"}}
-   - 좋은 예: {{"target": "비즈 스티커 거래", "emotion": "기쁨"}}, {{"target": "억지로 하는 거래", "emotion": "싫음"}}
+   - 나쁜 예: { "target": "거래", "emotion": "기쁨"} , { "target": "거래", "emotion": "싫음"} 
+   - 좋은 예: { "target": "비즈 스티커 거래", "emotion": "기쁨"} , { "target": "억지로 하는 거래", "emotion": "싫음"} 
 
 4. 강도 (Intensity) 정밀 측정:
    - 감정의 세기를 0.00 ~ 1.00 사이의 소수점 둘째 자리까지 정밀하게 표현하라. (예: 0.85, 0.12)
@@ -26,13 +26,13 @@ def get_counseling_prompt(text):
 {text}
 
 ### 출력 형식 (JSON Object)
-반드시 아래와 같은 JSON 객체 포맷(중괄호 {{ }} 로 시작)으로만 출력하라. 설명이나 잡담은 절대 포함하지 마라.
+반드시 아래와 같은 JSON 객체 포맷(중괄호 {  }  로 시작)으로만 출력하라. 설명이나 잡담은 절대 포함하지 마라.
 
-{{
+{ 
   "analysis_result": [
-    {{"target": "엄마 잔소리", "emotion": "짜증", "intensity": 0.82}},
-    {{"target": "학교 가는 길", "emotion": "귀찮음", "intensity": 0.65}},
-    {{"target": "친구와 게임", "emotion": "신남", "intensity": 0.91}}
+    { "target": "엄마 잔소리", "emotion": "짜증", "intensity": 0.82} ,
+    { "target": "학교 가는 길", "emotion": "귀찮음", "intensity": 0.65} ,
+    { "target": "친구와 게임", "emotion": "신남", "intensity": 0.91} 
   ]
-}}
+} 
 """

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib.font_manager as fm
 
-# ====== Path & Configuration ======
+
 INPUT_DIR = Path("output/Emotion_EEG/Report_Json_Data")
 OUTPUT_DIR = Path("output/Emotion_EEG/Chart_Result")
 
@@ -13,16 +13,16 @@ JSON_PATH = INPUT_DIR / "Report_Data.json"
 BAR_OUT_PATH = OUTPUT_DIR / "bar_chart.png"
 RADAR_OUT_PATH = OUTPUT_DIR / "radar_chart.png"
 
-# 기타 Configuration
+
 STEPS_TO_PLOT = ["step2", "step3", "step4"]
 BAR_COLORS = ["#6BAED6", "#74C476", "#FD8D3C"]
 RADAR_COLOR = "darkorange"
 BAR_WIDTH = 0.25
 
 
-# ====== Matplotlib 폰트 설정 (한글 깨짐 방지) ======
+
 def set_korean_font():
-    """시스템에 설치된 한글 폰트 설정"""
+                           
     font_names = ["Malgun Gothic", "AppleGothic", "NanumGothic", "Noto Sans CJK JP"]
     font_path = None
     for name in font_names:
@@ -37,9 +37,9 @@ def set_korean_font():
         print("경고: 적절한 한글 폰트를 찾지 못했습니다. 기본 폰트로 출력됩니다.")
 
 
-# ====== 보조 함수 ======
+
 def clamp01(x):
-    """값을 0.0과 1.0 사이로 제한합니다."""
+                                
     try:
         x_float = float(x)
     except (ValueError, TypeError):
@@ -48,7 +48,7 @@ def clamp01(x):
 
 
 def calculate_indices(m):
-    """JSON의 뇌파 수치(6개)를 바탕으로 5가지 복합 지표를 계산합니다."""
+                                                 
     stress = clamp01(m.get("stress", 0.0))
     engage = clamp01(m.get("engage", 0.0))
     relax = clamp01(m.get("relax", 0.0))
@@ -64,22 +64,20 @@ def calculate_indices(m):
         "종합 몰입도": (engage + focus + interest) / 3,
     }
 
-    # 최종 결과도 0.0 ~ 1.0 사이로 클램프
+    
     for k in indices:
         indices[k] = float(np.clip(indices[k], 0.0, 1.0))
 
     return indices
 
 
-# ====== 실행 함수 ======
+
 def run_rader_chart():
-    """
-    JSON 파일을 로드하여 막대 차트와 방사형 차트를 생성하고 이미지 파일로 저장합니다.
-    """
+           
     set_korean_font()
     plt.rcParams["axes.unicode_minus"] = False
 
-    # 1. JSON 파일 로드
+    
     try:
         print(f"RaderChart: JSON 파일 로드 시도: {JSON_PATH.resolve()}")
         with open(JSON_PATH, "r", encoding="utf-8") as f:
@@ -96,7 +94,7 @@ def run_rader_chart():
         print(f"RaderChart 오류: 파일 로드 중 오류 발생: {e}")
         return False
 
-    # 2. 참가자 및 단계 데이터 추출
+    
     try:
         participant_key = next(iter(data.keys()))
         steps_data = data[participant_key]["steps"]
@@ -106,7 +104,7 @@ def run_rader_chart():
         )
         return False
 
-    # 3. 모든 단계의 지표 계산
+    
     all_step_indices = {}
     for step_name in STEPS_TO_PLOT:
         if step_name in steps_data:
@@ -115,11 +113,11 @@ def run_rader_chart():
         else:
             print(f"RaderChart 경고: {step_name} 데이터가 JSON 파일에 없어 건너뜁니다.")
 
-    # 4. Bar Chart 생성 및 저장
+    
     if all_step_indices:
         _create_bar_chart(all_step_indices, participant_key)
 
-        # 5. Radar Chart (Step4) 생성 및 저장
+        
         _create_radar_chart(all_step_indices.get("step4"), participant_key)
 
         return True
@@ -130,23 +128,23 @@ def run_rader_chart():
         return False
 
 
-# ====== 내부 함수: Bar Chart 생성 ======
-def _create_bar_chart(all_step_indices, participant_key):
-    """막대 그래프를 생성하고 저장합니다."""
 
-    # 데이터프레임으로 변환
+def _create_bar_chart(all_step_indices, participant_key):
+                             
+
+    
     first_step_indices = next(iter(all_step_indices.values()))
     index_names = list(first_step_indices.keys())
     df = pd.DataFrame(all_step_indices).T
     df = df[index_names]
 
-    # 플롯 준비
+    
     fig, ax = plt.subplots(figsize=(12, 6))
     x = np.arange(len(index_names))
     n_steps = len(STEPS_TO_PLOT)
     start_x = x - (BAR_WIDTH * (n_steps - 1) / 2)
 
-    # 각 단계별로 막대 플롯
+    
     for i, step_name in enumerate(STEPS_TO_PLOT):
         if step_name not in df.index:
             continue
@@ -170,7 +168,7 @@ def _create_bar_chart(all_step_indices, participant_key):
                 fontsize=10,
             )
 
-    # 차트 설정
+    
     ax.set_ylabel("지표 점수", fontsize=12)
     ax.set_title(f"{participant_key} 단계별 지표 비교", fontsize=16)
     ax.set_xticks(x)
@@ -181,16 +179,16 @@ def _create_bar_chart(all_step_indices, participant_key):
     ax.legend(loc="upper right", title="단계")
     plt.tight_layout()
 
-    # 저장
+    
     BAR_OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     plt.savefig(BAR_OUT_PATH, dpi=160, bbox_inches="tight")
-    plt.close(fig)  # 메모리 해제
+    plt.close(fig)  
     print(f"RaderChart: 막대 그래프 저장 완료: {BAR_OUT_PATH.resolve()}")
 
 
-# ====== 내부 함수: Radar Chart 생성 ======
+
 def _create_radar_chart(radar_indices, participant_key):
-    """방사형 차트를 생성하고 저장합니다."""
+                             
     if not radar_indices:
         print("RaderChart 경고: step4 데이터가 없어 방사형 차트 생성을 건너뜁니다.")
         return
@@ -203,7 +201,7 @@ def _create_radar_chart(radar_indices, participant_key):
     angles_closed = angles + [angles[0]]
     values_closed = values + [values[0]]
 
-    # 차트 설정
+    
     fig = plt.figure(figsize=(8, 8))
     ax = plt.subplot(111, polar=True)
 
@@ -217,7 +215,7 @@ def _create_radar_chart(radar_indices, participant_key):
     )
     ax.fill(angles_closed, values_closed, color=RADAR_COLOR, alpha=0.3)
 
-    # 축 설정
+    
     ax.set_xticks(angles)
     ax.set_xticklabels([""] * N)
     y_ticks = np.arange(20, 101, 20)
@@ -225,7 +223,7 @@ def _create_radar_chart(radar_indices, participant_key):
     ax.set_yticklabels([f"{int(y)}" for y in y_ticks], color="gray", size=10)
     ax.set_ylim(0, 100)
 
-    # 데이터 레이블 표시
+    
     DATA_LABEL_OFFSET = 5
     for angle, value in zip(angles, values):
         text_y = value + DATA_LABEL_OFFSET
@@ -240,7 +238,7 @@ def _create_radar_chart(radar_indices, participant_key):
             color="black",
         )
 
-    # 지표 레이블 표시
+    
     TEXT_OFFSET = 12
     for angle, label in zip(angles, labels):
         ha_align = "center"
@@ -260,10 +258,10 @@ def _create_radar_chart(radar_indices, participant_key):
     ax.set_title(title, y=1.08, loc="left", fontsize=14)
     plt.tight_layout()
 
-    # 저장
+    
     RADAR_OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     plt.savefig(RADAR_OUT_PATH, dpi=160, bbox_inches="tight")
-    plt.close(fig)  # 메모리 해제
+    plt.close(fig)  
     print(f"RaderChart: 방사형 차트 저장 완료: {RADAR_OUT_PATH.resolve()}")
 
 

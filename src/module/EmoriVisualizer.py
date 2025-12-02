@@ -5,7 +5,7 @@ import os
 import json
 from pathlib import Path
 
-# 1. EmoriAnalyzer 모듈 가져오기 
+
 current_dir = Path(__file__).resolve().parent
 if str(current_dir) not in sys.path:
     sys.path.append(str(current_dir))
@@ -13,7 +13,7 @@ if str(current_dir) not in sys.path:
 try:
     from EmoriAnalyzer import EmoriAnalyzer
 except ImportError:
-    # 상위 폴더에서 실행할 경우를 대비
+    
     try:
         from src.modules.EmoriAnalyzer import EmoriAnalyzer
     except ImportError:
@@ -25,18 +25,18 @@ class EmoriVisualizer:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         
-        # 🎨 컬러 팔레트
+        
         self.colors = {
-            'brain_blue': "#ED1212",   # VR/뇌파 (신체)
-            'text_black': '#333333',   # 상담/언어 (현재)
-            'warning_red': "#6F3CE7",  # 경고/괴리
-            'safe_gray': '#7F8C8D'     # 일치/안정
+            'brain_blue': "#ED1212",   
+            'text_black': '#333333',   
+            'warning_red': "#6F3CE7",  
+            'safe_gray': '#7F8C8D'     
         }
         
         self._set_korean_font()
 
     def _set_korean_font(self):
-        """OS별 한글 폰트 자동 설정"""
+                             
         font_names = ["Malgun Gothic", "AppleGothic", "NanumGothic", "Noto Sans CJK JP"]
         font_found = False
         for name in font_names:
@@ -57,7 +57,7 @@ class EmoriVisualizer:
         y_pos = 0
         height = 0.6
         
-        # 1. 막대 그래프 (좌: 스트레스, 우: 긍정성)
+        
         ax.barh(y_pos, -stress_score, height, align='center', color=self.colors['brain_blue'], alpha=0.9)
         ax.barh(y_pos, text_score, height, align='center', color=self.colors['text_black'], alpha=0.9)
     
@@ -97,7 +97,7 @@ class EmoriVisualizer:
         plt.close()
         print(f"차트 생성 완료: {save_path}")
 
-#   Analyzer 결과를 받아서 시각화 실행
+
 if __name__ == "__main__":
     if EmoriAnalyzer is None:
         print("❌ Analyzer 모듈이 없어 연동 테스트를 중단합니다.")
@@ -105,10 +105,10 @@ if __name__ == "__main__":
 
     print("\n🚀 [Integration Test] Analyzer -> Visualizer 데이터 연결 테스트 시작...")
 
-    # 1. 파일 경로 설정 (프로젝트 루트 기준 output 폴더 가정)
+    
     base_dir = Path(os.getcwd())
     
-    # 예시: output/Emotion_EEG/... (실제 파일 경로)
+    
     eeg_path = base_dir / "output/Emotion_EEG/Report_Json_Data/Report_Data.json"
     llama_path = base_dir / "output/llama3/EB_001_llama_analysis.json"
     

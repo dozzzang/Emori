@@ -12,38 +12,38 @@ from trl import SFTTrainer
 from datasets import load_dataset
 from pathlib import Path
 
-# ===================================================================
-# 프로젝트 루트 경로 설정
-# ===================================================================
-# LLM 훈련에 사용할 JSONL 파일 경로 (현재 작업 디렉토리 기준 상대 경로)
+
+
+
+
 JSONL_FILE = Path("output/Emotion_EEG/Jsonl_For_Llama3/Train_Data.jsonl")
 
-# LoRA 어댑터를 저장할 출력 디렉토리 경로
+
 OUTPUT_DIR = Path("output/Emotion_EEG/Llama3_Result")
 
-# ===================================================================
-# 0. 설정 변수 / Llama-3.1-8B-Instruct 모델 사용 (접근권한 및 토큰 필요)
-# ===================================================================
 
-# 모델 ID (접근 권한 및 토큰 필요)
+
+
+
+
 MODEL_ID = "meta-llama/Meta-Llama-3.1-8B-Instruct"
 
 if not os.path.exists(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     print(f"출력 폴더를 생성했습니다: {OUTPUT_DIR}")
 
-# 파라미터 설정
+
 OPTIMAL_EPOCHS = 7
 OPTIMAL_BATCH_SIZE = 1
 LOGGING_FREQUENCY = 5
 ACCUMULATION_STEPS = 8
 GROUP_BY_LENGTH_FLAG = False
 
-# ===================================================================
-# 1. 모델 및 토크나이저 설정
-# ===================================================================
 
-# 4-bit 양자화 설정 (GPU 메모리 절약)
+
+
+
+
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
     bnb_4bit_quant_type="nf4",
@@ -51,7 +51,7 @@ bnb_config = BitsAndBytesConfig(
     bnb_4bit_use_double_quant=True,
 )
 
-# 모델 로드
+
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_ID,
     quantization_config=bnb_config,
@@ -60,16 +60,16 @@ model = AutoModelForCausalLM.from_pretrained(
     trust_remote_code=True,
 )
 
-# 토크나이저 로드
+
 tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 model.config.pad_token_id = tokenizer.pad_token_id
 
-# ===================================================================
-# 2. PEFT (LoRA) 설정 및 모델 변환
-# ===================================================================
-# LoRA 설정
+
+
+
+
 peft_config = LoraConfig(
     r=32,
     lora_alpha=16,
@@ -82,14 +82,14 @@ model = get_peft_model(model, peft_config)
 print("Model successfully converted to PEFT (LoRA) model.")
 
 
-# ===================================================================
-# 3. 데이터 로드 및 포매팅
-# ===================================================================
 
-# 3.1 데이터셋 로드
+
+
+
+
 print(f"Loading dataset from {JSONL_FILE}...")
 try:
-    # JSONL 파일을 로드합니다.
+    
     dataset = load_dataset("json", data_files=str(JSONL_FILE), split="train")
 except Exception as e:
     print(
@@ -98,11 +98,9 @@ except Exception as e:
     exit()
 
 
-# 3.2 Llama 3.1 Chat Template 포맷 함수 정의
+
 def apply_chat_template_to_text(example):
-    """
-    'messages' 컬럼의 내용을 Llama 3.1의 채팅 템플릿 문자열로 변환하여 'text' 컬럼에 저장합니다.
-    """
+           
     text = tokenizer.apply_chat_template(
         example["messages"],
         tokenize=False,
@@ -111,26 +109,26 @@ def apply_chat_template_to_text(example):
     return {"text": text}
 
 
-# 3.3 데이터셋에 포매팅 적용
+
 dataset = dataset.map(
     apply_chat_template_to_text,
     remove_columns=dataset.column_names,
     desc="Applying chat template and creating 'text' column",
 )
 
-# 3.4 학습/검증 데이터셋 80/20 분할
-# seed는 재현성을 위해 고정
+
+
 split_dataset = dataset.train_test_split(test_size=0.2, seed=42)
 train_dataset = split_dataset["train"]
 eval_dataset = split_dataset["test"]
 
 print(f"Train size: {len(train_dataset)}, Eval size: {len(eval_dataset)}")
 
-# ===================================================================
-# 4. TrainingArguments 및 SFTTrainer 설정
-# ===================================================================
 
-# TrainingArguments 설정
+
+
+
+
 training_args = TrainingArguments(
     output_dir=OUTPUT_DIR,
     num_train_epochs=OPTIMAL_EPOCHS,
@@ -151,48 +149,48 @@ training_args = TrainingArguments(
     report_to="none",
 )
 
-# SFTTrainer 설정
+
 trainer = SFTTrainer(
     model=model,
     args=training_args,
     train_dataset=train_dataset,
-    eval_dataset=eval_dataset,  # 검증 데이터셋 추가
+    eval_dataset=eval_dataset,  
     processing_class=tokenizer,
 )
 
-# ===================================================================
-# 5. 훈련 실행
-# ===================================================================
+
+
+
 print("Starting training...")
 trainer.train()
 
-# 학습 종료 후 pc 끊김 문제 해결 부분
+
 print("Moving adapter to CPU and saving (adapter-only, safetensors)...")
 
 model.eval()
-model.to("cpu")  # CPU로 옮겨 저장 과정의 VRAM 압박 완화
+model.to("cpu")  
 import torch
 
-torch.cuda.empty_cache()  # 남은 VRAM 비우기
+torch.cuda.empty_cache()  
 
-# PEFT(PeftModel)라면 어댑터만 저장
+
 model.save_pretrained(OUTPUT_DIR, safe_serialization=True)
 tokenizer.save_pretrained(OUTPUT_DIR)
 
 print(f"Adapter & tokenizer saved to {OUTPUT_DIR}")
 
-# ===================================================================
-# 6. 프로그램 종료 및 CUDA 컨텍스트 해제 (최종 안정화)
-# ===================================================================
 
-# Python 프로세스가 완전히 종료되도록 명시적인 명령어 추가
+
+
+
+
 try:
-    # Python에게 메모리 정리를 요청합니다.
+    
     import gc
 
     gc.collect()
 
-    # CUDA 메모리를 마지막으로 한 번 더 비웁니다.
+    
     torch.cuda.empty_cache()
 
     print("CUDA context cleanup initiated. Script will now terminate.")
@@ -203,4 +201,4 @@ except Exception as e:
 
 import sys
 
-sys.exit(0)  # 정상 종료 코드 반환
+sys.exit(0)  

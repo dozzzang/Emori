@@ -5,7 +5,7 @@ from sentence_transformers import SentenceTransformer, util
 import webbrowser
 import graph_renderer 
 
-# 1. 설정 및 모델 로드
+
 TARGET_FILE = "output/llama3/EB_001_llama_analysis.json"
 OUTPUT_HTML = "EB_001_graph_white_static.html"
 MODEL_NAME = "jhgan/ko-sbert-multitask"
@@ -31,7 +31,7 @@ if not data_nodes:
     print("데이터가 없습니다.")
     exit()
 
-# 3. 구조 분석 
+
 print("데이터 분석 및 노드 배치 계산 중...")
 
 emotions = [item.get("emotion", "무감정") for item in data_nodes]
@@ -41,18 +41,18 @@ cosine_scores = util.cos_sim(embeddings, embeddings)
 nx_graph = nx.Graph()
 THRESHOLD = 0.60
 
-# 노드 추가
+
 for i in range(len(data_nodes)):
     nx_graph.add_node(i)
 
-# 엣지 추가 (유사도 기반)
+
 for i in range(len(data_nodes)):
     for j in range(i + 1, len(data_nodes)):
         score = float(cosine_scores[i][j])
         if score >= THRESHOLD:
             nx_graph.add_edge(i, j, weight=score)
 
-# 4. 시각화 요청 
+
 print("그래프 렌더링 중")
 
 graph_renderer.render_graph(nx_graph, data_nodes, OUTPUT_HTML)

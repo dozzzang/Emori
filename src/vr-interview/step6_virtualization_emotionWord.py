@@ -1,10 +1,4 @@
-"""
-step6_visualizer.py: LLaMA 3 분석 결과를 기반으로 요청된 차트 시각화 및 폴더 정리
-- 1. 워드클라우드: 감성별 색상 적용. (원형 마스크 적용, 중앙 밀집/원형 채움 스타일 최종 최적화)
-- 2. 바 차트: 키워드 15개 이상 수용 가능.
-- 3. 파이 차트: 최종 감성 극성 키워드의 가중치 비율로 분할 표시.
-- 4. 요약: LLaMA가 생성한 최소 5문장 이상 요약 텍스트 출력.
-"""
+   
 
 import os
 import json
@@ -14,14 +8,14 @@ import matplotlib.font_manager as fm
 from wordcloud import WordCloud
 import numpy as np
 from collections import defaultdict
-import networkx as nx  # (현재는 안 쓰지만 원본 구조 유지)
+import networkx as nx  
 
-# 파일 경로 설정
+
 ATTENTION_DIR = 'output/vr_interview/attention'
 VISUAL_ROOT_DIR = 'output/vr_interview/visualization'
 os.makedirs(VISUAL_ROOT_DIR, exist_ok=True)
 
-# 파이 차트에서 접근하기 위한 전역 분석 데이터
+
 analysis_data = {}
 
 
@@ -34,7 +28,7 @@ class EmotionVisualizer:
         print("✅ 감정 단어 시각화기 초기화 완료!\n")
 
     def _setup_korean_font(self):
-        """한글 폰트 설정"""
+                      
         font_paths_mac = ['/System/Library/Fonts/AppleSDGothicNeo.ttc']
         font_paths_linux = ['/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc']
         font_paths_windows = ['C:\\Windows\\Fonts\\malgun.ttf']
@@ -50,7 +44,7 @@ class EmotionVisualizer:
         return None
 
     def load_json_file(self, file_path: str) -> dict:
-        """JSON 파일 로드"""
+                        
         try:
             if not os.path.exists(file_path):
                 return {}
@@ -61,7 +55,7 @@ class EmotionVisualizer:
             return {}
 
     def create_summary_txt(self, analysis_data: dict, output_folder: str):
-        """인터뷰 요약 내용을 TXT 파일로 생성 (요청 반영: 문장형 요약)"""
+                                                   
 
         primary_sentiment = analysis_data.get('primary_sentiment', '불명')
         confidence = analysis_data.get('confidence', 0.0)
@@ -101,20 +95,13 @@ class EmotionVisualizer:
         except Exception as e:
             print(f"❌ 요약 TXT 파일 저장 실패: {e}")
 
-    # ★ 여기서부터 수정된 워드클라우드 메서드 전체 ★
+    
     def create_wordcloud_chart(self, keywords: list, output_folder: str, filename: str):
-        """
-        - 같은 단어는 1번만 출력
-        - 단어 크기는 contribution_weight 합으로 결정
-        - WordCloud mask를 '원 안'이 0, '원 밖'이 255 가 되도록 설정해서
-          단어가 원 안에만 배치되도록 함
-        - 원 영역을 더 작게 잡고, 글자 크기 범위를 줄여서
-          단어들이 더 촘촘하고 원형에 가깝게 모이도록 튜닝
-        """
+                   
         if not keywords:
             return
 
-        # 1) 단어별로 weight 합산 + 대표 감성(label) 선택 (중복 제거)
+        
         agg = {}
         for item in keywords:
             word = item.get('word')
@@ -138,7 +125,7 @@ class EmotionVisualizer:
         if not agg:
             return
 
-        # 2) 상위 N개만 사용
+        
         sorted_words = sorted(
             agg.items(),
             key=lambda x: x[1]['weight'],
@@ -150,7 +137,7 @@ class EmotionVisualizer:
         word_scores_dict = {w: info['weight'] for w, info in sorted_words}
         word_sentiment_map = {w: info['label'] for w, info in sorted_words}
 
-        # 감성별 색상
+        
         colors_map = {
             '긍정': '#4CAF50',
             '부정': '#F44336',
@@ -163,38 +150,38 @@ class EmotionVisualizer:
             sentiment = word_sentiment_map.get(word, '중립')
             return colors_map.get(sentiment, '#9E9E9E')
 
-        # 3) 원형 마스크 생성 (단어가 들어갈 영역 = 0, 밖 = 255)
+        
         width, height = 800, 800
-        mask = np.full((height, width), 255, dtype=np.uint8)  # 기본값 255 (금지 영역)
+        mask = np.full((height, width), 255, dtype=np.uint8)  
         center = (width // 2, height // 2)
 
-        # 🟢 원을 더 작게 만들어 단어들이 더 모이도록 (padding ↑)
-        padding = 180  # 값이 클수록 원이 작아져서 더 촘촘해짐
+        
+        padding = 180  
         radius = min(width, height) // 2 - padding
 
         y, x = np.ogrid[:height, :width]
         circle_area = (x - center[0]) ** 2 + (y - center[1]) ** 2 <= radius ** 2
-        mask[circle_area] = 0   # 0 = 단어 허용 영역 (원 안)
+        mask[circle_area] = 0   
 
-        # 4) 워드클라우드 생성
+        
         wordcloud = WordCloud(
             background_color='white',
             font_path=self.font_path,
             mask=mask,
             width=width,
             height=height,
-            # 글자 크기 범위를 좁혀서 더 빽빽하게
-            max_font_size=80,     # 이전보다 살짝 줄임
-            min_font_size=20,     # 최소 크기 조금 키워서 전체 볼륨 유지
+            
+            max_font_size=80,     
+            min_font_size=20,     
             max_words=len(word_scores_dict),
-            relative_scaling=0.4,  # 크기 차이는 있지만 너무 극단적이지 않게
+            relative_scaling=0.4,  
             prefer_horizontal=1.0,
             random_state=42,
-            collocations=False,    # 두 단어를 하나의 프레이즈로 묶지 않기
-            # repeat=False (기본값) → 단어는 1번만
+            collocations=False,    
+            
         ).generate_from_frequencies(word_scores_dict)
 
-        # 5) 시각화 & 저장
+        
         fig, ax = plt.subplots(figsize=(8, 8))
         ax.imshow(
             wordcloud.recolor(color_func=color_func, random_state=42),
@@ -235,10 +222,8 @@ class EmotionVisualizer:
 
     def create_contribution_bar_chart(self, keywords: list, primary_sentiment: str,
                                       output_folder: str, filename: str):
-        """
-        감성별 기여도 막대형 차트 (키워드 수량 증가 반영)
-        """
-        # 1. 감성별로 키워드 분리 및 정렬
+                   
+        
         grouped_keywords = defaultdict(list)
         for item in keywords:
             sentiment = item.get('sentiment_label', '중립')
@@ -322,13 +307,11 @@ class EmotionVisualizer:
 
     def create_sentiment_pie_chart(self, primary_sentiment: str, confidence: float,
                                    output_folder: str, filename: str):
-        """
-        최종 감성과 그 감성에 기여한 키워드별 가중치를 보여주는 원형 차트
-        """
+                   
         global analysis_data
         keywords = analysis_data.get('contextual_keywords', [])
 
-        # 1. 최종 감성과 일치하는 키워드만 필터링
+        
         relevant_keywords = [
             item for item in keywords
             if item.get('sentiment_label') == primary_sentiment
@@ -392,7 +375,7 @@ class EmotionVisualizer:
         print(f"  ✅ [2] 최종 감성 키워드 파이 차트 저장: {Path(output_path).name}")
 
     def visualize_single_file(self, filename_prefix: str):
-        """단일 파일 시각화 및 결과 폴더 정리"""
+                                  
         global analysis_data
 
         analysis_path = os.path.join(
@@ -414,26 +397,26 @@ class EmotionVisualizer:
         confidence = analysis_data.get('confidence', 0.0)
         keywords = analysis_data.get('contextual_keywords', [])
 
-        # 1. 감성별 기여도 막대 차트
+        
         self.create_contribution_bar_chart(
             keywords, primary_sentiment, output_folder, filename_prefix
         )
 
-        # 2. 최종 감성 키워드 파이 차트
+        
         self.create_sentiment_pie_chart(
             primary_sentiment, confidence, output_folder, filename_prefix
         )
 
-        # 3. 키워드 감성별 워드클라우드 (원형 마스크 적용)
+        
         self.create_wordcloud_chart(keywords, output_folder, filename_prefix)
 
-        # 4. 인터뷰 요약 TXT 생성
+        
         self.create_summary_txt(analysis_data, output_folder)
 
         print(f"\n   ✅ 시각화 완료! 결과 폴더: {output_folder}")
 
     def visualize_all_files(self):
-        """전체 파일 시각화"""
+                       
         analysis_files = sorted([
             f for f in os.listdir(ATTENTION_DIR)
             if f.endswith('_llama_analysis.json')

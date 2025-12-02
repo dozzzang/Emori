@@ -2,15 +2,13 @@ import os
 import re
 from pathlib import Path
 
-# --- 설정값 ---
-EMOTION_INPUT_DIR = 'data/emotionResult' # 메인 감정 소스 파일 디렉토리
-OUTPUT_DIR = 'output/emotionRelation/mainEmotion' # 결과 파일 저장 디렉토리
-# --- 설정값 끝 ---
+
+EMOTION_INPUT_DIR = 'data/emotionResult' 
+OUTPUT_DIR = 'output/emotionRelation/mainEmotion' 
+
 
 def extract_main_emotion_from_file(emotion_filepath: str, emotion_filename: str) -> str | None:
-    """
-    emotionResult 파일에서 STEP1_EMOTION_COLOR 값을 추출합니다.
-    """
+           
     
     if not os.path.exists(emotion_filepath):
         print(f"🛑 파일이 존재하지 않습니다: {emotion_filepath}")
@@ -23,22 +21,22 @@ def extract_main_emotion_from_file(emotion_filepath: str, emotion_filename: str)
         print(f"🛑 파일 읽기 실패: {e}")
         return None
 
-    # 정규 표현식을 사용하여 'STEP1_EMOTION_COLOR' 항목의 값 추출
-    # 값 앞뒤의 공백을 제거하여 순수한 감정 단어만 얻습니다.
+    
+    
     match = re.search(r'STEP1_EMOTION_COLOR\s*:\s*(\w+)', content)
     
     if match:
         return match.group(1).strip()
     else:
-        return "Unknown" # 해당 항목을 찾지 못한 경우
+        return "Unknown" 
 
 def process_single_file(filename: str):
-    """단일 파일을 처리하고 결과를 텍스트 파일로 저장"""
+                                    
     input_path = os.path.join(EMOTION_INPUT_DIR, filename)
     main_emotion = extract_main_emotion_from_file(input_path, filename)
 
     if main_emotion:
-        # 결과 파일명: 원본 파일명.txt (예: EB_001_emotionResult.txt -> EB_001_emotionResult.txt)
+        
         output_path = os.path.join(OUTPUT_DIR, filename)
         
         try:
@@ -49,7 +47,7 @@ def process_single_file(filename: str):
             print(f"🛑 결과 파일 저장 실패: {e}")
 
 def process_all_files():
-    """디렉토리 내의 모든 파일을 처리합니다."""
+                               
     
     emotion_files = [f for f in os.listdir(EMOTION_INPUT_DIR) if f.endswith('.txt')]
     
@@ -62,9 +60,9 @@ def process_all_files():
         process_single_file(filename)
 
 def main():
-    """메인 실행 함수: 사용자 입력을 받아 단일/전체 파일 분석 선택"""
+                                             
     
-    os.makedirs(OUTPUT_DIR, exist_ok=True) # 출력 디렉토리 생성
+    os.makedirs(OUTPUT_DIR, exist_ok=True) 
     print("="*40)
     print("🎯 1단계: 메인 감정 추출 시작")
     print(f"  > 소스 디렉토리: {EMOTION_INPUT_DIR}")
@@ -79,7 +77,7 @@ def main():
             process_single_file(filename)
         elif choice == '2':
             process_all_files()
-            break # 모든 파일 처리 후 종료
+            break 
         elif choice.upper() == 'Q':
             print("프로그램을 종료합니다.")
             break

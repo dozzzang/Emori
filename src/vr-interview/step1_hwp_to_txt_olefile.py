@@ -1,7 +1,4 @@
-"""
-1단계: HWP 파일을 TXT 파일로 변환 (olefile 전문 버전)
-HWP 5.0 파일 구조를 완전히 분석하여 텍스트 추출
-"""
+   
 
 import os
 import struct
@@ -10,7 +7,7 @@ from pathlib import Path
 import olefile
 
 class HWPParser:
-    """HWP 5.0 파일 구조 파서"""
+                          
     
     HWPTAG_BEGIN = 0x10
     HWPTAG_TEXT = 67
@@ -20,7 +17,7 @@ class HWPParser:
         self.ole = None
         
     def open(self):
-        """HWP 파일 열기"""
+                       
         try:
             self.ole = olefile.OleFileIO(self.hwp_path)
             return True
@@ -29,12 +26,12 @@ class HWPParser:
             return False
     
     def close(self):
-        """HWP 파일 닫기"""
+                       
         if self.ole:
             self.ole.close()
     
     def decompress_stream(self, data):
-        """압축된 스트림 해제"""
+                        
         try:
             decompressed = zlib.decompress(data, -zlib.MAX_WBITS)
             return decompressed
@@ -42,11 +39,11 @@ class HWPParser:
             return data
     
     def extract_text_from_section(self, section_data):
-        """섹션 데이터에서 텍스트 추출"""
+                             
         data = self.decompress_stream(section_data)
         texts = []
         
-        # 방법 1: HWP 레코드 구조 파싱
+        
         pos = 0
         while pos < len(data) - 4:
             try:
@@ -76,7 +73,7 @@ class HWPParser:
                 pos += 1
                 continue
         
-        # 방법 2: UTF-16LE 디코딩
+        
         if not texts:
             try:
                 decoded = data.decode('utf-16le', errors='ignore')
@@ -86,16 +83,14 @@ class HWPParser:
             except:
                 pass
         
-        # 방법 3: 바이트 패턴 검색
+        
         if not texts:
             text_parts = []
             i = 0
             while i < len(data) - 1:
                 try:
                     char_code = struct.unpack('<H', data[i:i+2])[0]
-                    if (0xAC00 <= char_code <= 0xD7A3) or \
-                       (0x0020 <= char_code <= 0x007E) or \
-                       (0x3000 <= char_code <= 0x9FFF):
+                    if (0xAC00 <= char_code <= 0xD7A3) or                       (0x0020 <= char_code <= 0x007E) or                       (0x3000 <= char_code <= 0x9FFF):
                         try:
                             char = chr(char_code)
                             text_parts.append(char)
@@ -116,7 +111,7 @@ class HWPParser:
         return '\n'.join(texts)
     
     def extract_all_text(self):
-        """HWP 파일에서 모든 텍스트 추출"""
+                                
         if not self.ole:
             return None
         
@@ -150,7 +145,7 @@ class HWPConverter:
         os.makedirs(output_folder, exist_ok=True)
     
     def convert_single_file(self, hwp_filename):
-        """단일 HWP 파일을 TXT로 변환"""
+                                
         hwp_path = os.path.join(self.input_folder, hwp_filename)
         
         if not os.path.exists(hwp_path):
@@ -210,7 +205,7 @@ class HWPConverter:
             return False
     
     def convert_all_files(self):
-        """모든 HWP 파일 변환"""
+                          
         hwp_files = sorted([f for f in os.listdir(self.input_folder) if f.endswith('.hwp')])
         
         if not hwp_files:

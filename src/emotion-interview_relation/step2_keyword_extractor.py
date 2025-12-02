@@ -5,15 +5,15 @@ from groq import Groq
 from sentence_transformers import SentenceTransformer
 import torch.nn.functional as F
 
-# 🚨 사용자 Groq API Key 설정
+
 GROQ_API_KEY = "사용자 개인 키 입력" 
 LLAMA_MODEL_NAME = "llama-3.1-8b-instant" 
 
-# --- 파일 경로 설정 ---
+
 INTERVIEW_INPUT_DIR = 'data/txt_files'
 OUTPUT_DIR = 'output/emotionRelation/interviewEmotion'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
-# --- 파일 경로 설정 끝 ---
+
 
 class KeywordExtractor:
     def __init__(self):
@@ -25,7 +25,7 @@ class KeywordExtractor:
             raise Exception(f"❌ SBERT 모델 로드 실패: {e}")
 
     def get_document_text(self, filename: str):
-        """원본 인터뷰 TXT 파일을 로드"""
+                               
         txt_path = os.path.join(INTERVIEW_INPUT_DIR, filename)
         if os.path.exists(txt_path):
             with open(txt_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -34,7 +34,7 @@ class KeywordExtractor:
         return None
 
     def call_llama3_keyword_analysis(self, interview_text: str):
-        # 🚨 강화된 LLaMA 프롬프트 (생략) ...
+        
         system_prompt = (
             "당신은 아동 심리 및 행동 전문가입니다. 다음 인터뷰 전문을 분석하여, "
             "**아동의 주된 감정 기조(긍정/부정)를 강화하거나 설명하는 구체적인 경험, 상황, 심리적 상태**에 집중하세요.\n\n"
@@ -70,12 +70,12 @@ class KeywordExtractor:
             )
             return json.loads(chat_completion.choices[0].message.content)
         except Exception as e:
-            # 🚨 API 호출 실패 시 구체적인 메시지 출력
+            
             print(f"❌ LLaMA API 호출/파싱 실패: {e}")
             return None
 
     def analyze_sbert_similarity(self, keywords: list[str]) -> list[dict]:
-        # ... (SBERT 분석 로직 생략) ...
+        
         if len(keywords) < 2: return []
         embeddings = self.sbert_model.encode(keywords, convert_to_tensor=True)
         similarity_results = []
@@ -115,16 +115,16 @@ class KeywordExtractor:
         output_path = os.path.join(OUTPUT_DIR, output_filename)
         
         try:
-            # 🚨 파일 저장 시도
+            
             with open(output_path, 'w', encoding='utf-8') as f:
                 json.dump(output_data, f, ensure_ascii=False, indent=2)
             print(f"\n  ✅ 최종 Blue Dot JSON 저장 성공: {output_path}")
         except Exception as e:
-            # 🚨 파일 저장 실패 시 구체적인 메시지 출력
+            
             print(f"\n🛑 파일 저장 실패: {e}")
 
 def process_all_files(extractor: KeywordExtractor):
-    """(기능 단순화를 위해) 이 로직은 추후 전체 파일 처리가 필요할 때 구현하세요."""
+                                                      
     print("현재는 단일 파일 처리만 지원합니다.")
 
 def main():
@@ -139,7 +139,7 @@ def main():
     print("🎯 2단계: LLaMA/SBERT Blue Dot 추출 시작")
     print("="*40)
     
-    # 🚨 반복 구조 제거, 단일 선택 후 종료
+    
     choice = input("\n분석 방식을 선택하세요 (1: 단일 파일, 2: 전체 파일, 3: 종료): ")
     
     if choice == '1':
