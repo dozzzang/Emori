@@ -32,9 +32,9 @@ OUTPUT_DIR = "output/Emotion_EEG/EEG_Tables"
 
 # 기준뇌파 열 제거: Step2, Step3, Step4만 사용
 STEP_CONFIG = [
-    ("step2", "STEP2", ["Step2"]),
-    ("step3", "STEP3", ["Step3"]),
-    ("step4", "STEP4", ["Step4"]),
+    ("step2", "STEP2", ["Step1"]),
+    ("step3", "STEP3", ["Step2"]),
+    ("step4", "STEP4", ["Step3"]),
 ]
 
 # 뇌파 지표
