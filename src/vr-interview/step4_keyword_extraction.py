@@ -1,6 +1,4 @@
-"""
-step4_llama_sbert_analyzer.py: LLaMA 3.1을 사용한 감성 및 기여도 핵심 분석
-"""
+   
 
 import os
 import json
@@ -10,11 +8,11 @@ import torch
 from sentence_transformers import SentenceTransformer
 import torch.nn.functional as F
 
-# 🚨 사용자의 Groq API Key 적용됨
+
 GROQ_API_KEY = "사용자의 개인 키 입력 필요"
 LLAMA_MODEL_NAME = "llama-3.1-8b-instant" 
 
-# 파일 경로 설정
+
 MORPHEME_DIR = 'output/vr_interview/morpheme'
 OUTPUT_DIR = 'output/vr_interview/attention'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -25,14 +23,14 @@ class LlamaSbertAnalyzer:
         
         print(f"🤖 모델 로딩 중: SBERT")
         try:
-            # SBERT 임베딩 모델 (유사도 측정용)
+            
             self.sbert_model = SentenceTransformer("jhgan/ko-sroberta-multitask")
             print("✅ SBERT 모델 로드 완료!")
         except Exception as e:
             raise Exception(f"❌ 모델 로드 실패: {e}")
 
     def get_document_text(self, filename):
-        """원본 TXT 파일을 로드"""
+                           
         txt_path = os.path.join('data/txt_files', filename)
         if os.path.exists(txt_path):
             with open(txt_path, 'r', encoding='utf-8') as f:
@@ -40,7 +38,7 @@ class LlamaSbertAnalyzer:
         return None
 
     def call_llama3_analysis(self, interview_text):
-        """Groq LLaMA 3.1 API를 호출하여 요청하신 JSON 형식의 결과를 반환"""
+                                                           
         
         system_prompt = (
             "당신은 아동 심리 및 행동 전문가입니다. 다음 인터뷰 전문을 분석하여, "
@@ -51,8 +49,8 @@ class LlamaSbertAnalyzer:
             "- 검사대상이 말한 구체적인 상황과 경험을 문장으로 풀어서 작성하세요.\n"
             "- (중요)줄 마다 개행 넣고 개조식으로 하고 좀 더 구조화시키세요.\n"
             "- (중요)읽기 좋게, 상황별로 구조화"
-            # "- 예시: 'ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"
-            # "ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ'\n"
+            
+            
             "- 최소 5문장 이상으로 작성하세요.\n"
             "- 분석적 해석이 아닌, 인터뷰에서 언급된 실제 내용을 자연스러운 문장으로 요약하세요.\n"
             "- '~이는', '~라고 말함', '~느낌' 등의 표현을 사용하여 아동의 경험을 서술하세요.\n\n"
@@ -98,7 +96,7 @@ class LlamaSbertAnalyzer:
             llama_json_string = chat_completion.choices[0].message.content
             result = json.loads(llama_json_string)
             
-            # 🚨 interview_summary가 없거나 비어있으면 기본값 추가
+            
             if 'interview_summary' not in result or not result['interview_summary']:
                 result['interview_summary'] = '인터뷰 요약을 생성하지 못했습니다.'
             
@@ -109,7 +107,7 @@ class LlamaSbertAnalyzer:
             return None
 
     def analyze_sbert_similarity(self, keywords):
-        """SBERT 임베딩 유사도를 계산 (차트 간 연결성 분석을 위해 유지)"""
+                                                    
         if len(keywords) < 2: return []
         
         embeddings = self.sbert_model.encode(keywords, convert_to_tensor=True)
@@ -131,7 +129,7 @@ class LlamaSbertAnalyzer:
         return similarity_results
 
     def analyze_single_file(self, morpheme_filename):
-        """단일 파일 분석 및 최종 결과 저장"""
+                                 
         
         morpheme_path = os.path.join(MORPHEME_DIR, morpheme_filename)
         morpheme_data = self.load_json_file(morpheme_path)
@@ -144,25 +142,25 @@ class LlamaSbertAnalyzer:
         print(f"✨ LLaMA 3 분석 요청: {morpheme_filename}")
         print('='*60)
 
-        # 1. LLaMA 3 API 호출 및 JSON 데이터 획득
+        
         llama_analysis = self.call_llama3_analysis(original_text)
         
         if not llama_analysis or 'contextual_keywords' not in llama_analysis:
             print("🛑 LLaMA 분석 결과가 유효하지 않습니다.")
             return None 
 
-        # 2. SBERT 유사도 분석
+        
         keywords_for_sbert = [item['word'] for item in llama_analysis.get('contextual_keywords', [])]
         sbert_results = self.analyze_sbert_similarity(keywords_for_sbert) 
         print(f"  ✅ SBERT 유사도 분석 완료. {len(sbert_results)}개 쌍 분석.")
 
-        # 3. 최종 결과 저장 (Step 6의 입력 파일)
+        
         output_data = {
             'filename': morpheme_data['filename'],
             'analysis_source': 'LLaMA3 + SBERT',
             'primary_sentiment': llama_analysis.get('primary_sentiment', '중립'), 
             'confidence': llama_analysis.get('confidence', 0.0),
-            'interview_summary': llama_analysis.get('interview_summary', '인터뷰 요약을 찾을 수 없습니다.'),  # 🚨 추가
+            'interview_summary': llama_analysis.get('interview_summary', '인터뷰 요약을 찾을 수 없습니다.'),  
             'contextual_keywords': llama_analysis.get('contextual_keywords', []), 
             'sbert_similarity_analysis': sbert_results, 
         }
@@ -180,12 +178,12 @@ class LlamaSbertAnalyzer:
 
         print(f"\n  ✅ LLaMA 분석 결과 요약:")
         print(f"     최종 감성: {output_data['primary_sentiment']} (신뢰도: {output_data['confidence']:.2f})")
-        print(f"     인터뷰 요약 미리보기: {output_data['interview_summary'][:100]}...")  # 🚨 추가
+        print(f"     인터뷰 요약 미리보기: {output_data['interview_summary'][:100]}...")  
         
         return output_data
     
     def load_json_file(self, file_path: str) -> dict:
-        """JSON 파일 로드 유틸리티"""
+                             
         try:
             if not os.path.exists(file_path): return {}
             with open(file_path, 'r', encoding='utf-8') as f:
@@ -203,7 +201,7 @@ def main():
         print(f"🛑 {MORPHEME_DIR} 폴더에 Step 2 결과 파일이 없습니다. Step 2를 먼저 실행하세요.")
         return
 
-    # 첫 번째 파일만 분석하도록 설정
+    
     filename = input("파일명을 입력하세요 ex) EB_001_morpheme.json : ")
     analyzer.analyze_single_file(filename)
 

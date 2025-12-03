@@ -3,11 +3,11 @@ import os
 from pyvis.network import Network
 from collections import Counter
 
-# 1. 디자인 상수 및 설정 
-# 파스텔 톤 팔레트
+
+
 PALETTE = ["#FFADAD", "#FFD6A5", "#FDFFB6", "#CAFFBF", "#9BF6FF", "#A0C4FF", "#BDB2FF"]
 
-# 물리 엔진 설정
+
 PHYSICS_OPTIONS = {
     "physics": {
         "forceAtlas2Based": {
@@ -29,7 +29,7 @@ PHYSICS_OPTIONS = {
     }
 }
 
-#  CSS (화이트 모드 + 툴팁 + 범례)
+
 CUSTOM_CSS = """
 <style>
     @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
@@ -70,7 +70,7 @@ CUSTOM_CSS = """
 </style>
 """
 
-# JS (자동 줌인 + 물리엔진 정지)
+
 CUSTOM_JS = """
 <script>
     network.on("stabilizationIterationsDone", function () {
@@ -92,30 +92,30 @@ CUSTOM_JS = """
 </script>
 """
 
-# 렌더링 함수
+
 def render_graph(nx_graph, data_nodes, output_file):
     import networkx as nx 
 
-    # PyVis 초기화
+    
     net = Network(height="100vh", width="100%", bgcolor="#ffffff", font_color="#333333")
     net.set_options(json.dumps(PHYSICS_OPTIONS))
 
-    # 연결된 컴포넌트(그룹) 분석
+    
     components = list(nx.connected_components(nx_graph))
     legend_html = ""
 
     for group_idx, component in enumerate(components):
         comp_list = list(component)
         
-        # 그룹 대표 감정 추출
+        
         comp_emotions = [data_nodes[idx]["emotion"] for idx in comp_list]
         most_common_emotion = Counter(comp_emotions).most_common(1)[0][0]
         group_color = PALETTE[group_idx % len(PALETTE)]
         
-        # 범례 HTML 생성
+        
         legend_html += f"<span style='margin-right: 20px; display: inline-flex; align-items: center;'><span style='color:{group_color}; font-size:24px; margin-right:5px;'>●</span> <span style='color:#333; font-weight:600;'>{most_common_emotion} 그룹</span></span>"
 
-        # 1. 그룹 이름표 노드 생성
+        
         label_id = f"group_{group_idx}"
         net.add_node(
             n_id=label_id,
@@ -128,7 +128,7 @@ def render_graph(nx_graph, data_nodes, output_file):
             shadow={'enabled': True, 'color': 'rgba(0,0,0,0.1)', 'size': 10, 'x': 5, 'y': 5}
         )
 
-        # 2. 데이터 노드 생성
+        
         for node_idx in comp_list:
             item = data_nodes[node_idx]
             target = item.get("target", "?")
@@ -162,14 +162,14 @@ def render_graph(nx_graph, data_nodes, output_file):
             
             net.add_edge(label_id, node_idx, color='rgba(0,0,0,0)', width=0)
 
-        # 3. 노드 간 실제 연결
+        
         for u in comp_list:
             for v in comp_list:
                 if nx_graph.has_edge(u, v):
                     weight = nx_graph[u][v]['weight']
                     net.add_edge(u, v, width=weight*3, color=group_color, alpha=0.5)
 
-    # HTML 저장
+    
     net.save_graph(output_file)
     _inject_custom_scripts(output_file, legend_html)
 

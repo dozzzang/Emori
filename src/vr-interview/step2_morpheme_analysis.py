@@ -1,12 +1,10 @@
-"""
-step2_morpheme_analyzer.py: 파일 관리 및 LLaMA 분석을 위한 기본 데이터 구조 생성
-"""
+   
 import os
 import json
 from konlpy.tag import Mecab
 from pathlib import Path
 
-# 파일 경로 설정
+
 TXT_DIR = 'data/txt_files'
 OUTPUT_DIR = 'output/vr_interview/morpheme'
 os.makedirs(TXT_DIR, exist_ok=True)
@@ -14,7 +12,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 class MorphemeAnalyzer:
     def __init__(self):
-        # 🚨 Mecab(은전한닢) 설치 필요
+        
         try:
             self.tagger = Mecab()
         except Exception:
@@ -22,7 +20,7 @@ class MorphemeAnalyzer:
             self.tagger = None
 
     def analyze_file(self, file_path):
-        """단일 TXT 파일을 분석하여 파일 관리용 JSON 구조를 생성"""
+                                                
         if not self.tagger: return
 
         try:
@@ -32,7 +30,7 @@ class MorphemeAnalyzer:
             print(f"❌ 파일 읽기 실패: {file_path}, {e}")
             return
 
-        # LLaMA 분석 시 전체 텍스트를 사용하므로, 형태소 분석 결과를 단순화
+        
         morphemes = self.tagger.pos(text)
         
         output_filename = Path(file_path).stem + '_morpheme.json'
@@ -43,7 +41,7 @@ class MorphemeAnalyzer:
             'file_path': str(Path(file_path).resolve()),
             'total_morphemes': len(morphemes),
             'text_preview': text[:100] + '...'
-            # 기타 형태소 정보는 LLaMA가 대체하므로 생략
+            
         }
 
         with open(output_path, 'w', encoding='utf-8') as f:
