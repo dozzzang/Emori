@@ -61,39 +61,261 @@ class EmotionVisualizer:
         confidence = analysis_data.get('confidence', 0.0)
         summary_text = analysis_data.get('interview_summary', 'LLaMA 분석 요약 내용을 찾을 수 없습니다.')
 
-        summary_lines = [
-            "==========================================",
-            f"🎯 LLaMA 3 아동 심리 분석 보고서: {Path(output_folder).name}",
-            "==========================================",
-            f"최종 추론 감성 기조: {primary_sentiment} (BERT 기반 신뢰도: {confidence:.3f})",
-            "",
-            "1. [인터뷰 내용 상세 요약]",
-            "------------------------------------------",
-            summary_text,
-            "",
-            "2. [상황적 키워드 기여 근거]",
-            "------------------------------------------"
-        ]
+        import re
+        summary_text = re.sub(r'학생[^은]*은\s*', '', summary_text)
+        summary_text = re.sub(r'학생[^가]*가\s*', '', summary_text)
+        summary_text = re.sub(r'학생[^를]*를\s*', '', summary_text)
+        summary_text = re.sub(r'학생[^의]*의\s*', '', summary_text)
+        summary_text = re.sub(r'학생[^에게]*에게\s*', '', summary_text)
+        summary_text = re.sub(r'학생\s*', '', summary_text)
 
+        participant_name = Path(output_folder).name
+        
+        html_content = f"""
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인터뷰 요약 - {participant_name}</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+        
+        * {{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }}
+        
+        body {{
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+            line-height: 1.8;
+        }}
+        
+        .container {{
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }}
+        
+        .header {{
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }}
+        
+        .header h1 {{
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }}
+        
+        .header .subtitle {{
+            font-size: 16px;
+            opacity: 0.9;
+            margin-top: 8px;
+        }}
+        
+        .content {{
+            padding: 40px;
+        }}
+        
+        .section {{
+            margin-bottom: 40px;
+        }}
+        
+        .section-title {{
+            font-size: 22px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }}
+        
+        .sentiment-badge {{
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-left: 10px;
+        }}
+        
+        .sentiment-positive {{
+            background: #4CAF50;
+            color: white;
+        }}
+        
+        .sentiment-negative {{
+            background: #F44336;
+            color: white;
+        }}
+        
+        .sentiment-neutral {{
+            background: #9E9E9E;
+            color: white;
+        }}
+        
+        .sentiment-complex {{
+            background: #FFC107;
+            color: #333;
+        }}
+        
+        .summary-text {{
+            font-size: 16px;
+            line-height: 2;
+            color: #444;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            white-space: pre-wrap;
+        }}
+        
+        .keywords-grid {{
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }}
+        
+        .keyword-card {{
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }}
+        
+        .keyword-card:hover {{
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }}
+        
+        .keyword-header {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }}
+        
+        .keyword-word {{
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+        }}
+        
+        .keyword-weight {{
+            font-size: 14px;
+            color: #666;
+            font-weight: 600;
+        }}
+        
+        .keyword-reason {{
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-top: 8px;
+        }}
+        
+        .confidence-info {{
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #1976d2;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>아동 심리 분석 보고서</h1>
+            <div class="subtitle">{participant_name}</div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">
+                    최종 감성 기조
+                    <span class="sentiment-badge sentiment-{primary_sentiment.lower()}">{primary_sentiment}</span>
+                </h2>
+                <div class="confidence-info">
+                    신뢰도: {confidence:.1%} (BERT 기반 분석)
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">인터뷰 내용 상세 요약</h2>
+                <div class="summary-text">{summary_text}</div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">상황적 키워드 기여 근거</h2>
+                <div class="keywords-grid">
+"""
+
+        import re
         keywords = analysis_data.get('contextual_keywords', [])
         for item in keywords:
             word = item.get('word', 'N/A')
             weight = item.get('contribution_weight', 0.0)
             reason = item.get('reason', '근거 없음')
+            
+            cleaned_reason = re.sub(r'학생[^은]*은\s*', '', reason)
+            cleaned_reason = re.sub(r'학생[^가]*가\s*', '', cleaned_reason)
+            cleaned_reason = re.sub(r'학생[^를]*를\s*', '', cleaned_reason)
+            cleaned_reason = re.sub(r'학생[^의]*의\s*', '', cleaned_reason)
+            cleaned_reason = re.sub(r'학생\s*', '', cleaned_reason)
+            
             sentiment_label = item.get('sentiment_label', '중립')
+            
+            sentiment_class = sentiment_label.lower()
+            if sentiment_label == '긍정':
+                sentiment_class = 'positive'
+            elif sentiment_label == '부정':
+                sentiment_class = 'negative'
+            elif sentiment_label == '중립':
+                sentiment_class = 'neutral'
+            elif sentiment_label == '복합':
+                sentiment_class = 'complex'
+            
+            html_content += f"""
+                    <div class="keyword-card">
+                        <div class="keyword-header">
+                            <span class="keyword-word">{word}</span>
+                            <span class="sentiment-badge sentiment-{sentiment_class}">{sentiment_label}</span>
+                        </div>
+                        <div class="keyword-weight">기여도: {weight:.3f}</div>
+                        <div class="keyword-reason">{cleaned_reason}</div>
+                    </div>
+"""
 
-            summary_lines.append(f"• 키워드: {word} (분류: {sentiment_label})")
-            summary_lines.append(f"  > 기여도: {weight:.4f}")
-            summary_lines.append(f"  > 분석 근거: {reason}")
+        html_content += """
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+"""
 
-        summary_path = os.path.join(output_folder, f"{Path(output_folder).name}_summary.txt")
+        summary_path = os.path.join(output_folder, f"{Path(output_folder).name}_summary.html")
 
         try:
             with open(summary_path, 'w', encoding='utf-8') as f:
-                f.write('\n\n'.join(summary_lines))
-            print(f"  ✅ [4] 인터뷰 요약 TXT 저장: {Path(summary_path).name}")
+                f.write(html_content)
+            print(f"  ✅ [4] 인터뷰 요약 HTML 저장: {Path(summary_path).name}")
         except Exception as e:
-            print(f"❌ 요약 TXT 파일 저장 실패: {e}")
+            print(f"❌ 요약 HTML 파일 저장 실패: {e}")
 
     
     def create_wordcloud_chart(self, keywords: list, output_folder: str, filename: str):
@@ -220,7 +442,7 @@ class EmotionVisualizer:
         print(f"  ✅ [3] 키워드 감성별 워드클라우드 저장: {Path(output_path).name}")
 
 
-    def create_contribution_bar_chart(self, keywords: list, primary_sentiment: str,
+    def create_contribution_bar_chart_html(self, keywords: list, primary_sentiment: str,
                                       output_folder: str, filename: str):
                    
         
@@ -243,19 +465,23 @@ class EmotionVisualizer:
             '복합': '#FFC107'
         }
 
-        num_charts = len(grouped_keywords)
-        if num_charts == 0:
+        if len(grouped_keywords) == 0:
             return
 
-        fig, axes = plt.subplots(num_charts, 1, figsize=(12, 5.5 * num_charts))
-        if num_charts == 1:
-            axes = [axes]
+        try:
+            import plotly.graph_objects as go
+            from plotly.subplots import make_subplots
+        except ImportError:
+            print("⚠️ Plotly가 설치되지 않았습니다. pip install plotly로 설치해주세요.")
+            return
 
-        fig.suptitle(
-            f'문서: {filename} | LLaMA 기반 상황적 키워드 기여도 분석',
-            fontsize=16,
-            fontweight='bold',
-            y=1.02
+        num_charts = len(grouped_keywords)
+        fig = make_subplots(
+            rows=num_charts, cols=1,
+            subplot_titles=[f'[{sentiment} 기여도] Top {len(grouped_keywords[sentiment])} 키워드' 
+                          for sentiment in sentiment_order if sentiment in grouped_keywords],
+            vertical_spacing=0.15,
+            row_heights=[1.0] * num_charts
         )
 
         max_weight = max(
@@ -264,7 +490,7 @@ class EmotionVisualizer:
             for item in item_list
         ) if grouped_keywords else 0.1
 
-        plot_index = 0
+        plot_index = 1
         for sentiment in sentiment_order:
             if sentiment in grouped_keywords:
                 data = grouped_keywords[sentiment]
@@ -272,38 +498,53 @@ class EmotionVisualizer:
                 weights = [item['contribution_weight'] for item in data]
                 reasons = [item.get('reason', '') for item in data]
 
-                ax = axes[plot_index]
-                bars = ax.barh(words, weights, color=colors[sentiment])
-                ax.set_title(f'[{sentiment} 기여도] Top {len(words)} 키워드', fontsize=13)
-                ax.set_xlabel('상황적 문맥 기여도 (0.0 ~ 1.0)', fontsize=11)
-                ax.invert_yaxis()
-
-                ax.set_xlim(right=max_weight * 1.5)
-
-                for bar, weight, reason in zip(bars, weights, reasons):
-                    text = f'{weight:.4f}'
+                import re
+                hover_texts = []
+                for word, weight, reason in zip(words, weights, reasons):
+                    hover_text = f"<b>{word}</b><br>기여도: {weight:.3f}"
                     if reason:
-                        reason_wrapped = '\n'.join(
-                            [reason[i:i + 35] for i in range(0, len(reason), 35)]
-                        )
-                        text += f'\n({reason_wrapped})'
+                        cleaned_reason = re.sub(r'학생[^은]*은\s*', '', reason)
+                        cleaned_reason = re.sub(r'학생[^가]*가\s*', '', cleaned_reason)
+                        cleaned_reason = re.sub(r'학생[^를]*를\s*', '', cleaned_reason)
+                        cleaned_reason = re.sub(r'학생[^의]*의\s*', '', cleaned_reason)
+                        cleaned_reason = re.sub(r'학생\s*', '', cleaned_reason)
+                        hover_text += f"<br>근거: {cleaned_reason[:100]}{'...' if len(cleaned_reason) > 100 else ''}"
+                    hover_texts.append(hover_text)
 
-                    ax.text(
-                        bar.get_width() + 0.005,
-                        bar.get_y() + bar.get_height() / 2,
-                        text,
-                        va='center',
-                        fontsize=7,
-                        ha='left'
-                    )
+                fig.add_trace(
+                    go.Bar(
+                        y=words,
+                        x=weights,
+                        orientation='h',
+                        name=sentiment,
+                        marker_color=colors[sentiment],
+                        text=[f'{w:.3f}' for w in weights],
+                        textposition='outside',
+                        hovertext=hover_texts,
+                        hoverinfo='text',
+                        showlegend=False
+                    ),
+                    row=plot_index, col=1
+                )
+
+                fig.update_xaxes(
+                    title_text="상황적 문맥 기여도 (0.0 ~ 1.0)",
+                    range=[0, max_weight * 1.2],
+                    row=plot_index, col=1
+                )
+                fig.update_yaxes(autorange="reversed", row=plot_index, col=1)
 
                 plot_index += 1
 
-        plt.tight_layout(rect=[0, 0, 1, 0.98])
-        output_path = os.path.join(output_folder, f"{filename}_contribution_barchart.png")
-        plt.savefig(output_path, dpi=300, bbox_inches='tight')
-        plt.close()
-        print(f"  ✅ [1] 감성별 기여도 막대 차트 저장: {Path(output_path).name}")
+        fig.update_layout(
+            height=400 * num_charts,
+            font={'family': 'Pretendard, sans-serif', 'size': 12},
+            template='plotly_white'
+        )
+
+        output_path = os.path.join(output_folder, f"{filename}_contribution_barchart.html")
+        fig.write_html(output_path, config={'displayModeBar': True})
+        print(f"  ✅ [1] 감성별 기여도 막대 차트 HTML 저장: {Path(output_path).name}")
 
     def create_sentiment_pie_chart(self, primary_sentiment: str, confidence: float,
                                    output_folder: str, filename: str):
@@ -398,7 +639,7 @@ class EmotionVisualizer:
         keywords = analysis_data.get('contextual_keywords', [])
 
         
-        self.create_contribution_bar_chart(
+        self.create_contribution_bar_chart_html(
             keywords, primary_sentiment, output_folder, filename_prefix
         )
 

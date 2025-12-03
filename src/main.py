@@ -84,7 +84,7 @@ def step4_visualization(participant_id: str):
         step4_module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(step4_module)
         
-        visualizer = step4_module.NetworkVisualizerPNG()
+        visualizer = step4_module.NetworkVisualizerHTML()
         visualizer.visualize_single_file(f"{participant_id}_finalRelation.json")
         print("✅ Step4 완료")
     except Exception as e:
@@ -396,12 +396,27 @@ def preprocess_interview_hyunwoo(participant_id: str):
         
         print("2-1. 형태소 분석 중...")
         morpheme_analyzer = step2_module.MorphemeAnalyzer()
-        morpheme_analyzer.analyze_file(str(txt_path))
+        morpheme_success = morpheme_analyzer.analyze_file(str(txt_path))
+        
+        if not morpheme_success:
+            print(f"⚠️ 형태소 분석 실패. 키워드 추출을 건너뜁니다.")
+            return
+        
+        # 형태소 분석 결과 확인
+        morpheme_output_path = Path("output/vr_interview/morpheme") / f"{participant_id}_morpheme.json"
+        if not morpheme_output_path.exists():
+            print(f"⚠️ 형태소 분석 결과 파일이 생성되지 않았습니다: {morpheme_output_path}")
+            return
+        
+        print(f"✅ 형태소 분석 완료: {morpheme_output_path}")
         
         print("2-2. 키워드 추출 중...")
-        morpheme_filename = f"{participant_id}_morpheme.json"
-        keyword_analyzer = step4_module.LlamaSbertAnalyzer()
-        keyword_analyzer.analyze_single_file(morpheme_filename)
+        result = step4_module.analyze_by_participant_id(participant_id)
+        if not result:
+            print("⚠️ 키워드 추출 실패 또는 파일 없음")
+            return
+        
+        print(f"✅ 키워드 추출 완료: output/vr_interview/attention/{participant_id}_llama_analysis.json")
         
         print("✅ 인터뷰 분석 완료")
     except Exception as e:

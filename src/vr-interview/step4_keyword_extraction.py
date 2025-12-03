@@ -1,5 +1,5 @@
    
-
+   
 import os
 import json
 from pathlib import Path
@@ -7,10 +7,11 @@ from groq import Groq
 import torch
 from sentence_transformers import SentenceTransformer
 import torch.nn.functional as F
+from dotenv import load_dotenv
 
-
-GROQ_API_KEY = "사용자의 개인 키 입력 필요"
-LLAMA_MODEL_NAME = "llama-3.1-8b-instant" 
+load_dotenv()
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "사용자의 개인 키 입력 필요")
+LLAMA_MODEL_NAME = "llama-3.1-8b-instant"
 
 
 MORPHEME_DIR = 'output/vr_interview/morpheme'
@@ -19,6 +20,8 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 class LlamaSbertAnalyzer:
     def __init__(self):
+        if not GROQ_API_KEY or GROQ_API_KEY == "사용자의 개인 키 입력 필요":
+            raise ValueError("GROQ_API_KEY 환경 변수가 설정되지 않았습니다. .env 파일을 확인하세요.")
         self.groq_client = Groq(api_key=GROQ_API_KEY) 
         
         print(f"🤖 모델 로딩 중: SBERT")
@@ -191,6 +194,23 @@ class LlamaSbertAnalyzer:
         except Exception as e:
             return {}
 
+def analyze_by_participant_id(participant_id: str):
+    """
+    participant_id를 받아서 자동으로 morpheme 파일을 찾아 분석
+    예: participant_id="EB_002" -> "EB_002_morpheme.json" 찾아서 분석
+    """
+    print(f"\n🎯 4단계: Groq LLaMA 3.1 기반 분석 시작 (참가자: {participant_id})")
+    analyzer = LlamaSbertAnalyzer()
+    
+    morpheme_filename = f"{participant_id}_morpheme.json"
+    morpheme_path = os.path.join(MORPHEME_DIR, morpheme_filename)
+    
+    if not os.path.exists(morpheme_path):
+        print(f"⚠️ {morpheme_path} 파일이 없습니다. 건너뜁니다.")
+        return None
+    
+    return analyzer.analyze_single_file(morpheme_filename)
+
 def main():
     print("\n🎯 4단계: Groq LLaMA 3.1 기반 분석 시작")
     analyzer = LlamaSbertAnalyzer()
@@ -200,7 +220,7 @@ def main():
     if not morpheme_files:
         print(f"🛑 {MORPHEME_DIR} 폴더에 Step 2 결과 파일이 없습니다. Step 2를 먼저 실행하세요.")
         return
-
+    
     
     filename = input("파일명을 입력하세요 ex) EB_001_morpheme.json : ")
     analyzer.analyze_single_file(filename)

@@ -1,0 +1,15 @@
+olefile
+python-mecab-ko
+transformers
+torch
+scikit-learn
+networkx
+numpy
+matplotlib
+wordcloud
+pyvis
+sentence-transformers
+python-dotenv
+groq
+peft
+streamlit

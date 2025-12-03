@@ -170,7 +170,8 @@ def _create_bar_chart(all_step_indices, participant_key):
 
     
     ax.set_ylabel("지표 점수", fontsize=12)
-    ax.set_title(f"{participant_key} 단계별 지표 비교", fontsize=16)
+    participant_name = participant_key.replace("participant_", "") if participant_key.startswith("participant_") else participant_key
+    ax.set_title(f"{participant_name} 단계별 지표 비교", fontsize=16)
     ax.set_xticks(x)
     ax.set_xticklabels(index_names, fontsize=12)
     ax.set_yticks(np.arange(0, 101, 20))
@@ -254,7 +255,8 @@ def _create_radar_chart(radar_indices, participant_key):
             fontsize=12,
         )
 
-    title = f"{participant_key}"
+    participant_name = participant_key.replace("participant_", "") if participant_key.startswith("participant_") else participant_key
+    title = f"{participant_name}"
     ax.set_title(title, y=1.08, loc="left", fontsize=14)
     plt.tight_layout()
 
