@@ -59,10 +59,10 @@ class EmoriAnalyzer:
         {data_str}
 
         ### Output Format (JSON ONLY)
-        { 
+        {{
             "score": <int>,
             "reason": "<short explanation in Korean>"
-        } 
+        }} 
         """
         
         try:

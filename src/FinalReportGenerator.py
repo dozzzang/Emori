@@ -294,7 +294,7 @@ class FinalReportGenerator:
         
         
         report.append(f"1. 핵심 감정 탐색")
-        report.append(f"오늘 활동에서 학생이 가장 깊이 있게 탐색한 핵심 감정은 '{main_emotion}'입니다.")
+        report.append(f"오늘 활동에서 학생이 가장 깊이 있게 탐색한 핵심 감정은 뇌파 기기로 인해 도출된 '{main_emotion}'입니다.")
         
         
         

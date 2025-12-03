@@ -1,20 +1,40 @@
 import os
 import json
+import re
 from prompts import get_counseling_prompt
 from dotenv import load_dotenv
-from step2_morpheme_analysis_window import QAMorphemeAnalyzer
 from groq import Groq  
 
 INPUT_FOLDER = "data/txt_files"
 OUTPUT_FOLDER = "output/llama3"
 
-def clean_text(text):
-    if QAMorphemeAnalyzer:
-        analyzer = QAMorphemeAnalyzer()
-        
-        return analyzer.extract_qa_sections(text, include_qa_label=False)
+def extract_qa_sections(text, include_qa_label=False):
+    """
+    Q&A 섹션을 추출하는 함수
+    """
+    lines = text.split('\n')
+    qa_lines = []
+    qa_pattern = re.compile(r'^[\s]*(Q|Q\)|Q:|질문|Q：|A|A\)|A:|답변|A：)', re.IGNORECASE)
+    
+    for line in lines:
+        if qa_pattern.match(line.strip()):
+            qa_lines.append(line)
+    
+    if include_qa_label:
+        return '\n'.join(qa_lines)
     else:
-        return text
+        cleaned_lines = []
+        for line in qa_lines:
+            cleaned = re.sub(r'^[\s]*(Q|Q\)|Q:|질문|Q：|A|A\)|A:|답변|A：)\s*', '', line)
+            if cleaned.strip():
+                cleaned_lines.append(cleaned)
+        return '\n'.join(cleaned_lines)
+
+def clean_text(text):
+    """
+    텍스트를 정리하여 Q&A 섹션만 추출
+    """
+    return extract_qa_sections(text, include_qa_label=False)
     
 def analyze_file(client, filename):
     file_path = os.path.join(INPUT_FOLDER, filename)
@@ -63,7 +83,11 @@ def analyze_file(client, filename):
 def main():
     
     load_dotenv()
-    client = Groq("GROQ_API_KEY")
+    api_key = os.getenv("GROQ_API_KEY")
+    if not api_key:
+        print("⚠️ GROQ_API_KEY가 설정되지 않았습니다.")
+        return
+    client = Groq(api_key=api_key)
     
     
     os.makedirs(OUTPUT_FOLDER, exist_ok=True)

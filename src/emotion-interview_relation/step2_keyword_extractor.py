@@ -4,9 +4,10 @@ from pathlib import Path
 from groq import Groq 
 from sentence_transformers import SentenceTransformer
 import torch.nn.functional as F
+from dotenv import load_dotenv
 
-
-GROQ_API_KEY = "사용자 개인 키 입력" 
+load_dotenv()
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "사용자 개인 키 입력")
 LLAMA_MODEL_NAME = "llama-3.1-8b-instant" 
 
 
@@ -68,10 +69,21 @@ class KeywordExtractor:
                 messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}],
                 max_tokens=2048, temperature=0.1, response_format={"type": "json_object"}
             )
-            return json.loads(chat_completion.choices[0].message.content)
+            response_content = chat_completion.choices[0].message.content
+            if isinstance(response_content, bytes):
+                response_content = response_content.decode('utf-8')
+            return json.loads(response_content)
+        except UnicodeDecodeError as e:
+            print(f"❌ LLaMA API 응답 인코딩 오류: {e}")
+            return None
+        except json.JSONDecodeError as e:
+            print(f"❌ LLaMA API 응답 JSON 파싱 오류: {e}")
+            print(f"   응답 내용: {response_content[:200] if 'response_content' in locals() else 'N/A'}")
+            return None
         except Exception as e:
-            
             print(f"❌ LLaMA API 호출/파싱 실패: {e}")
+            import traceback
+            traceback.print_exc()
             return None
 
     def analyze_sbert_similarity(self, keywords: list[str]) -> list[dict]:
