@@ -1,54 +1,23 @@
-   
-
-import os
 import json
+import os
 import sys
 from pathlib import Path
-
+import importlib.util
 
 current_dir = Path(__file__).resolve().parent
-project_root = current_dir.parent
+project_root = current_dir.parent.parent
 if str(project_root) not in sys.path:
     sys.path.append(str(project_root))
 
-
-def quintile_level(value: float) -> float:
-           
-    if value >= 0.8:
-        return 1.0
-    elif value >= 0.6:
-        return 0.8
-    elif value >= 0.4:
-        return 0.6
-    elif value >= 0.2:
-        return 0.4
-    elif value >= 0.0:
-        return 0.2
-    else:
-        return 0.0
-
-
-keywords_from_json = None
 try:
-    
-    keyword_module_path = current_dir / "Emotion_EEG" / "KeyWord" / "KeyWord.py"
-    if not keyword_module_path.exists():
-        
-        keyword_module_path = project_root / "Emotion_EEG_Code" / "KeyWord" / "KeyWord.py"
-    
-    if keyword_module_path.exists():
-        import importlib.util
-        spec = importlib.util.spec_from_file_location("KeyWord", keyword_module_path)
-        keyword_module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(keyword_module)
-        keywords_from_json = keyword_module.keywords_from_json
-        print("✅ KeyWord 모듈 로드 성공")
-    else:
-        print(f"⚠️ KeyWord 모듈 파일을 찾을 수 없습니다. 경로 확인 필요.")
+    keyword_path = project_root / "src" / "Emotion_EEG" / "KeyWord" / "KeyWord.py"
+    spec = importlib.util.spec_from_file_location("KeyWord", keyword_path)
+    keyword_module = importlib.util.module_from_spec(spec)
+    sys.modules["KeyWord"] = keyword_module
+    spec.loader.exec_module(keyword_module)
+    keywords_from_json = keyword_module.keywords_from_json
 except Exception as e:
-    print(f"⚠️ KeyWord 모듈 임포트 경고: {e}")
     keywords_from_json = None
-
 
 class FinalReportGenerator:
                        
@@ -112,40 +81,77 @@ class FinalReportGenerator:
     
     def _extract_main_emotion_from_llama(self, llama_data):
                                                              
-        if not llama_data:
-            return None
         analysis_results = llama_data.get('analysis_result', [])
-        if analysis_results:
-            
-            top_emotion = max(analysis_results, key=lambda x: x.get('intensity', 0))
-            return top_emotion.get('emotion', None)
+        if not analysis_results:
+            return None
+        
+        emotion_counts = {}
+        for item in analysis_results:
+            emotion = item.get('emotion')
+            if emotion:
+                emotion_counts[emotion] = emotion_counts.get(emotion, 0) + 1
+        
+        if emotion_counts:
+            return max(emotion_counts, key=emotion_counts.get)
         return None
     
-    def _calculate_discrepancy_score(self, eeg_sentiment_tags, interview_sentiment):
-                   
+    def _get_eeg_quintile_stress(self, participant_id):
+        eeg_data = self._load_json(self.eeg_json_path)
+        if not eeg_data:
+            return 0.0
         
-        eeg_positive = any('긍정' in tag for tag in eeg_sentiment_tags)
-        eeg_negative = any('부정' in tag for tag in eeg_sentiment_tags)
+        participant_key = None
+        for key in eeg_data.keys():
+            if participant_id in key or key in participant_id or 'participant' in key.lower():
+                participant_key = key
+                break
+        
+        if not participant_key:
+            participant_key = next(iter(eeg_data.keys()))
+        
+        steps = eeg_data.get(participant_key, {}).get('steps', {})
+        step4_data = steps.get('step4', {})
+        return float(step4_data.get('stress', 0.0))
+    
+    def _calculate_discrepancy_score(self, eeg_tags, primary_sentiment):
+        
+        stress_val = self._get_eeg_quintile_stress(self.p_id)
+        
+        sentiment_score = 0.5 
+        if primary_sentiment == '긍정':
+            sentiment_score = 0.8
+        elif primary_sentiment == '부정':
+            sentiment_score = 0.2
         
         
-        interview_positive = interview_sentiment in ['긍정', 'POSITIVE', 'positive']
-        interview_negative = interview_sentiment in ['부정', 'NEGATIVE', 'negative']
+        stability = (1.0 - stress_val) 
         
         
-        if (eeg_positive and interview_positive) or (eeg_negative and interview_negative):
-            return 0.2  
-        elif (eeg_positive and interview_negative) or (eeg_negative and interview_positive):
-            return 0.8  
-        else:
-            return 0.5  
+        discrepancy = abs(stability - sentiment_score)
+        return discrepancy
+    
+    def _extract_participant_name(self):
+        """
+        EEG 데이터에서 참가자 이름 추출
+        participant_김도단 -> 김도단
+        """
+        try:
+            eeg_data = self._load_json(self.eeg_json_path)
+            if eeg_data:
+                participant_key = next(iter(eeg_data.keys()))
+                if participant_key.startswith("participant_"):
+                    return participant_key.replace("participant_", "")
+                return participant_key
+        except Exception:
+            pass
+        
+        if self.p_id.startswith("participant_"):
+            return self.p_id.replace("participant_", "")
+        return self.p_id
     
     def generate(self):
                               
-        
-        
-        
-        
-        
+        participant_name = self._extract_participant_name()
         
         eeg_data = self._load_json(self.eeg_json_path)
         
@@ -177,23 +183,20 @@ class FinalReportGenerator:
                     if 'participant' in key.lower():
                         participant_data = eeg_data[key]
                         break
+                if not participant_data:
+                    participant_data = next(iter(eeg_data.values()))
             
-            if participant_data:
-                steps = participant_data.get("steps", {})
-                step4_data = steps.get("step4", {})
-                stress_val = step4_data.get("stress", 0.0)
+            steps = participant_data.get('steps', {})
+            step4_data = steps.get('step4', {})
+            stress_val = float(step4_data.get('stress', 0.0))
         
         
         llama_data = self._load_json(self.llama_json_path)
         sentiment_data = self._load_json(self.sentiment_json_path)
         
         
-        primary_sentiment = "중립"
-        if sentiment_data:
-            bert_result = sentiment_data.get('bert_based', {})
-            primary_sentiment = bert_result.get('sentiment', '중립')
-        elif llama_data:
-            
+        primary_sentiment = '중립'
+        if llama_data:
             analysis_results = llama_data.get('analysis_result', [])
             if analysis_results:
                 
@@ -256,7 +259,6 @@ class FinalReportGenerator:
             
             keywords = sorted(keywords, key=lambda x: x.get('contribution_weight', 0), reverse=True)
         
-        
         discrepancy_score = self._calculate_discrepancy_score(eeg_tags, primary_sentiment)
         
         
@@ -286,84 +288,70 @@ class FinalReportGenerator:
         
         
         
-        
         report = []
-        report.append(f"### 📋 {self.p_id} 학생 종합 심리 분석 보고서\n")
+        report.append(f"{participant_name} 학생 종합 심리 분석 보고서\n")
+        report.append("")
         
-        
-        
-        
-        report.append(f"1. 핵심 감정 탐색")
+        report.append(f"## 1. 핵심 감정 탐색")
         report.append(f"오늘 활동에서 학생이 가장 깊이 있게 탐색한 핵심 감정은 뇌파 기기로 인해 도출된 '{main_emotion}'입니다.")
+        report.append("")
         
-        
-        
-        
-        report.append(f"2. 신체적 반응 (뇌파 분석)")
+        report.append(f"## 2. 신체적 반응 (뇌파 분석)")
         tag_str = ", ".join(eeg_tags) if eeg_tags else "분석 불가"
         report.append(f"뇌파 측정 결과, 학생은 {tag_str} 상태를 보이고 있습니다.")
-        
+        report.append("")
         
         if is_high_stress:
-            report.append(f"⚠️ 특히 자신의 감정을 몸으로 표현하는 과정(Step 4)에서 높은 수준의 신체적 긴장(스트레스 상위 20%)이 감지되었습니다. 편안한 이완 활동이 도움이 될 수 있습니다.")
+            report.append(f"특히 자신의 감정을 몸으로 표현하는 과정(Step 4)에서 높은 수준의 신체적 긴장(스트레스 상위 20%)이 감지되었습니다.")
+            report.append(f"편안한 이완 활동이 도움이 될 수 있습니다.")
         else:
             report.append(f"신체적 긴장도는 안정적인 수준을 유지하고 있습니다.")
         report.append("")
         
-        
-        
-        
-        report.append(f"3. 심리적 표현 (상담 인터뷰)")
+        report.append(f"## 3. 심리적 표현 (상담 인터뷰)")
         report.append(f"인터뷰 대화 전반에 흐르는 주된 정서 기조는 '{primary_sentiment}'입니다.")
-        
+        report.append("")
         
         if negative_causes:
             causes_str = ", ".join(negative_causes[:3])  
             report.append(f"학생은 주로 {causes_str} 등과 관련된 이야기를 할 때 부정적인 감정을 내비쳤습니다.")
-        
+            report.append("")
         
         if positive_causes:
             causes_str = ", ".join(positive_causes[:3])
             report.append(f"반면 {causes_str} 등과 관련된 주제에서는 긍정적인 감정을 보였습니다.")
+            report.append("")
         
         if summary_text:
-            report.append(f"[상담 요약]")
-            report.append(f"{summary_text}\n")
+            report.append(f"**[상담 요약]**")
+            report.append(f"{summary_text}")
+            report.append("")
         
-        
-        
-        
-        report.append(f"4. 종합 소견 (일치/괴리 분석)")
-        
+        report.append(f"## 4. 종합 소견 (일치/괴리 분석)")
+        report.append("")
         
         if discrepancy_score > 0.6:
-            report.append(f"[주의 필요: 괴리감 높음]")
+            report.append(f"**[주의 필요: 괴리감 높음]**")
             report.append(f"신체 반응(뇌파)과 언어 표현(인터뷰) 사이에 상당한 차이가 있습니다.")
             report.append(f"겉으로는 괜찮다고 말하거나 긍정적으로 표현하지만, 실제 몸은 스트레스를 받고 있을 가능성이 큽니다.")
         elif discrepancy_score < 0.3:
-            report.append(f"*[안정적: 일치함]")
+            report.append(f"**[안정적: 일치함]**")
             report.append(f"몸이 느끼는 반응과 말로 표현하는 감정이 잘 일치하고 있습니다.")
             report.append(f"이는 학생이 자신의 감정을 잘 인식하고 있으며, 심리적으로 안정된 상태임을 시사합니다.")
         else:
-            report.append(f"[보통: 부분적 일치]")
+            report.append(f"**[보통: 부분적 일치]**")
             report.append(f"신체 반응과 언어 표현이 대체로 일치하지만, 특정 주제에 대해서는 약간의 긴장이나 망설임이 관찰됩니다.")
         
-        return "\n".join(report)
-
+        return "\n\n".join(report)
 
 
 if __name__ == "__main__":
+    participant_id = "EB_002"
+    generator = FinalReportGenerator(base_dir="output", participant_id=participant_id)
+    final_report_content = generator.generate()
     
-    generator = FinalReportGenerator(base_dir="output", participant_id="EB_001")
-    final_report = generator.generate()
-    
-    print(final_report)
-    
-    
-    output_path = Path("output") / "final_reports" / "EB_001_final_report.md"
+    output_path = Path("output") / "final_reports" / f"{participant_id}_final_report.md"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
-        f.write(final_report)
-    
+        f.write(final_report_content)
     print(f"\n✅ 보고서 저장 완료: {output_path}")
-
