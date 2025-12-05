@@ -127,7 +127,7 @@ def step3_radar_chart(participant_id: str):
     try:
         from src.Emotion_EEG.Rader_Chart.RaderChart import run_rader_chart
         
-        run_rader_chart()
+        run_rader_chart(participant_id=participant_id)
         print("✅ 3단계 완료")
     except Exception as e:
         print(f"❌ 3단계 오류: {e}")
@@ -149,13 +149,21 @@ def step4_eeg_summary(participant_id: str):
             return
         
         print("\n4-2. Llama3 모델로 요약 생성 중...")
-        from src.Emotion_EEG.DescriptiveSummary_Llama3.Llama3Main import run_llama_inference
-        
-        inference_success = run_llama_inference()
-        if inference_success:
-            print("✅ 4단계 완료")
-        else:
-            print("⚠️ Llama3 추론 실패. 모델 어댑터가 없거나 GPU 환경 문제일 수 있습니다.")
+        try:
+            from src.Emotion_EEG.DescriptiveSummary_Llama3.Llama3Main import run_llama_inference
+            
+            inference_success = run_llama_inference()
+            if inference_success:
+                print("✅ 4단계 완료")
+            else:
+                print("⚠️ Llama3 추론 실패. 모델 어댑터가 없거나 GPU 환경 문제일 수 있습니다.")
+        except ModuleNotFoundError as e:
+            if "peft" in str(e).lower():
+                print("⚠️ PEFT 모듈이 없어 Llama3 로컬 추론을 건너뜁니다. (Groq API를 사용하는 다른 단계는 정상 작동합니다)")
+            else:
+                print(f"⚠️ 모듈 로드 실패: {e}")
+        except Exception as e:
+            print(f"⚠️ Llama3 추론 중 오류: {e}")
     except Exception as e:
         print(f"❌ 4단계 오류: {e}")
         import traceback
@@ -248,6 +256,43 @@ def step6_topic_network(participant_id: str):
         import traceback
         traceback.print_exc()
 
+def _extract_participant_name_from_eeg(participant_id: str) -> str:
+    """EEG JSON 데이터에서 participant_id에 해당하는 참가자 이름 추출"""
+    try:
+        eeg_path = Path("output/Emotion_EEG/Report_Json_Data/Report_Data.json")
+        if not eeg_path.exists():
+            return participant_id
+        
+        import json
+        with open(eeg_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        if not data:
+            return participant_id
+        
+        # participant_id로 참가자 찾기
+        for key in data.keys():
+            key_name = key.replace("participant_", "") if key.startswith("participant_") else key
+            
+            # 정확한 매칭
+            if key == participant_id or key == f"participant_{participant_id}":
+                return key.replace("participant_", "") if key.startswith("participant_") else key
+            
+            # 이름으로 매칭 (participant_id가 이름인 경우)
+            if not participant_id.startswith("EB_"):
+                if participant_id == key_name:
+                    return key.replace("participant_", "") if key.startswith("participant_") else key
+            else:
+                # EB_ 형식인 경우
+                if participant_id in key or key_name == participant_id:
+                    return key.replace("participant_", "") if key.startswith("participant_") else key
+        
+        # 찾지 못한 경우 첫 번째 참가자 사용
+        participant_key = next(iter(data.keys()))
+        return participant_key.replace("participant_", "") if participant_key.startswith("participant_") else participant_key
+    except Exception:
+        return participant_id
+
 def step7_eeg_interview_consistency(participant_id: str):
     print("\n" + "="*60)
     print("7. 뇌파 - 인터뷰 일치")
@@ -264,6 +309,16 @@ def step7_eeg_interview_consistency(participant_id: str):
             print(f"⚠️ 필요한 파일이 없습니다. 건너뜁니다.")
             return
         
+        # participant_name 추출
+        participant_name = _extract_participant_name_from_eeg(participant_id)
+        discrepancy_path = Path("output/report_images") / f"{participant_name}_discrepancy.png"
+        
+        # 파일이 이미 존재하면 스킵
+        if discrepancy_path.exists():
+            print(f"⚠️ 일치 분석 파일이 이미 존재합니다. 스킵: {discrepancy_path}")
+            print("✅ 7단계 완료")
+            return
+        
         analyzer = EmoriAnalyzer(eeg_path, llama_path)
         result = analyzer.analyze()
         
@@ -272,7 +327,7 @@ def step7_eeg_interview_consistency(participant_id: str):
             visualizer.plot_discrepancy(
                 stress_score=result['discrepancy']['stress_val'],
                 text_score=result['discrepancy']['text_val'],
-                filename=f"{participant_id}_discrepancy.png"
+                filename=f"{participant_name}_discrepancy.png"
             )
             print(f"✅ 일치 분석 완료")
         
@@ -290,11 +345,31 @@ def step8_final_report(participant_id: str):
     try:
         from src.FinalReportGenerator import FinalReportGenerator
         
+        # participant_name 추출
+        participant_name = _extract_participant_name_from_eeg(participant_id)
+        
+        # 파일 경로 설정 (final_reports/data 또는 final_reports 확인)
+        final_reports_dir = Path("output") / "final_reports"
+        output_path = final_reports_dir / f"{participant_name}_final_report.md"
+        
+        # final_reports/data 경로도 확인
+        data_dir_path = final_reports_dir / "data" / f"{participant_name}_final_report.md"
+        
+        # 파일이 이미 존재하면 스킵
+        if output_path.exists() or data_dir_path.exists():
+            existing_path = output_path if output_path.exists() else data_dir_path
+            print(f"⚠️ 최종 보고서 파일이 이미 존재합니다. 스킵: {existing_path}")
+            print("✅ 8단계 완료")
+            return
+        
         generator = FinalReportGenerator(base_dir="output", participant_id=participant_id)
         report = generator.generate()
         
-        output_path = Path("output") / "final_reports" / f"{participant_id}_final_report.md"
-        output_path.parent.mkdir(parents=True, exist_ok=True)
+        # final_reports/data 디렉토리에 저장 (사용자가 언급한 경로)
+        data_dir = final_reports_dir / "data"
+        data_dir.mkdir(parents=True, exist_ok=True)
+        output_path = data_dir / f"{participant_name}_final_report.md"
+        
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(report)
         
@@ -340,10 +415,13 @@ def preprocess_interview_doheon(participant_id: str):
         import os
         import json
         
-        load_dotenv()
+        # 프로젝트 루트에서 .env 파일 로드
+        env_path = project_root / ".env"
+        load_dotenv(dotenv_path=env_path)
         api_key = os.getenv("GROQ_API_KEY")
         if not api_key:
             print("⚠️ GROQ_API_KEY가 설정되지 않았습니다. 건너뜁니다.")
+            print(f"   .env 파일 위치: {env_path}")
             return
         
         client = Groq(api_key=api_key)

@@ -6,8 +6,17 @@ from sentence_transformers import SentenceTransformer
 import torch.nn.functional as F
 from dotenv import load_dotenv
 
-load_dotenv()
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "사용자 개인 키 입력")
+# 프로젝트 루트에서 .env 파일 로드
+current_file = Path(__file__).resolve()
+project_root = current_file.parent.parent.parent
+env_path = project_root / ".env"
+load_dotenv(dotenv_path=env_path)
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+if not GROQ_API_KEY or GROQ_API_KEY == "사용자 개인 키 입력":
+    print("⚠️ GROQ_API_KEY가 설정되지 않았습니다. .env 파일을 확인하세요.")
+    GROQ_API_KEY = None
+
 LLAMA_MODEL_NAME = "llama-3.1-8b-instant" 
 
 
@@ -18,6 +27,8 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 class KeywordExtractor:
     def __init__(self):
+        if not GROQ_API_KEY:
+            raise ValueError("GROQ_API_KEY가 설정되지 않았습니다. .env 파일을 확인하세요.")
         self.groq_client = Groq(api_key=GROQ_API_KEY) 
         try:
             self.sbert_model = SentenceTransformer("jhgan/ko-sroberta-multitask")
@@ -73,6 +84,15 @@ class KeywordExtractor:
             if isinstance(response_content, bytes):
                 response_content = response_content.decode('utf-8')
             return json.loads(response_content)
+        except Exception as e:
+            error_msg = str(e)
+            if "403" in error_msg or "PermissionDenied" in error_msg:
+                print(f"❌ Groq API 접근 거부: API 키가 유효하지 않거나 네트워크 설정을 확인하세요.")
+                print(f"   .env 파일 위치: {env_path}")
+                print(f"   API 키 존재 여부: {bool(GROQ_API_KEY)}")
+            else:
+                print(f"❌ LLaMA API 호출 오류: {e}")
+            return None
         except UnicodeDecodeError as e:
             print(f"❌ LLaMA API 응답 인코딩 오류: {e}")
             return None

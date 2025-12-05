@@ -93,6 +93,13 @@ class EmoriVisualizer:
         plt.subplots_adjust(bottom=0.25)
         
         save_path = self.output_dir / filename
+        
+        # 파일이 이미 존재하면 스킵
+        if save_path.exists():
+            print(f"⚠️ 일치 분석 차트 파일이 이미 존재합니다. 스킵: {save_path}")
+            plt.close()
+            return
+        
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
         plt.close()
         print(f"차트 생성 완료: {save_path}")

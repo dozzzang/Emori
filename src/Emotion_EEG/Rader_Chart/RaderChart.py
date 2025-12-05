@@ -10,8 +10,7 @@ INPUT_DIR = Path("output/Emotion_EEG/Report_Json_Data")
 OUTPUT_DIR = Path("output/Emotion_EEG/Chart_Result")
 
 JSON_PATH = INPUT_DIR / "Report_Data.json"
-BAR_OUT_PATH = OUTPUT_DIR / "bar_chart.png"
-RADAR_OUT_PATH = OUTPUT_DIR / "radar_chart.png"
+# 파일명은 participant_name 기반으로 동적 생성됨
 
 
 STEPS_TO_PLOT = ["step2", "step3", "step4"]
@@ -72,8 +71,11 @@ def calculate_indices(m):
 
 
 
-def run_rader_chart():
-           
+def run_rader_chart(participant_id=None):
+    """
+    Radar Chart 생성
+    participant_id: 특정 참가자 ID (None이면 첫 번째 참가자 사용)
+    """
     set_korean_font()
     plt.rcParams["axes.unicode_minus"] = False
 
@@ -96,8 +98,56 @@ def run_rader_chart():
 
     
     try:
-        participant_key = next(iter(data.keys()))
+        # participant_id가 지정된 경우 해당 참가자 찾기
+        if participant_id:
+            participant_key = None
+            print(f"RaderChart: participant_id '{participant_id}'로 참가자 찾는 중...")
+            print(f"  사용 가능한 키: {list(data.keys())}")
+            
+            for key in data.keys():
+                # 키에서 이름 추출
+                key_name = key.replace("participant_", "") if key.startswith("participant_") else key
+                
+                # 정확한 매칭 시도
+                if key == participant_id or key == f"participant_{participant_id}":
+                    participant_key = key
+                    print(f"  ✅ 정확한 매칭 발견: {key}")
+                    break
+                
+                # 이름으로 매칭 (participant_id가 이름인 경우, 예: "최준혁")
+                if not participant_id.startswith("EB_"):
+                    # 정확히 일치하는 경우
+                    if participant_id == key_name:
+                        participant_key = key
+                        print(f"  ✅ 이름 매칭 발견: {key} (이름: {key_name})")
+                        break
+                    # 부분 일치 (더 느슨한 매칭)
+                    elif participant_id in key_name or key_name in participant_id:
+                        participant_key = key
+                        print(f"  ✅ 부분 매칭 발견: {key} (이름: {key_name})")
+                        break
+                else:
+                    # EB_ 형식인 경우 키에 포함되어 있는지 확인
+                    if participant_id in key or key_name == participant_id:
+                        participant_key = key
+                        print(f"  ✅ EB_ 형식 매칭 발견: {key}")
+                        break
+            
+            if not participant_key:
+                # 찾지 못한 경우 첫 번째 참가자 사용
+                participant_key = next(iter(data.keys()))
+                print(f"  ⚠️ RaderChart 경고: {participant_id}에 해당하는 데이터를 찾지 못해 첫 번째 참가자 데이터를 사용합니다.")
+                print(f"  사용된 키: {participant_key}")
+            else:
+                print(f"  ✅ 최종 선택된 키: {participant_key}")
+        else:
+            participant_key = next(iter(data.keys()))
+            print(f"RaderChart: participant_id가 없어 첫 번째 참가자 사용: {participant_key}")
+        
         steps_data = data[participant_key]["steps"]
+        
+        # participant_name 추출
+        participant_name = participant_key.replace("participant_", "") if participant_key.startswith("participant_") else participant_key
     except (StopIteration, KeyError):
         print(
             "RaderChart 오류: JSON 파일에 참가자 데이터 또는 'steps' 데이터가 없습니다."
@@ -115,10 +165,10 @@ def run_rader_chart():
 
     
     if all_step_indices:
-        _create_bar_chart(all_step_indices, participant_key)
+        _create_bar_chart(all_step_indices, participant_key, participant_name)
 
         
-        _create_radar_chart(all_step_indices.get("step4"), participant_key)
+        _create_radar_chart(all_step_indices.get("step4"), participant_key, participant_name)
 
         return True
     else:
@@ -129,8 +179,15 @@ def run_rader_chart():
 
 
 
-def _create_bar_chart(all_step_indices, participant_key):
+def _create_bar_chart(all_step_indices, participant_key, participant_name):
                              
+    # participant_name 기반 파일 경로 생성
+    bar_out_path = OUTPUT_DIR / f"{participant_name}_barchart.png"
+    
+    # 파일이 이미 존재하면 스킵
+    if bar_out_path.exists():
+        print(f"RaderChart: 막대 그래프 파일이 이미 존재합니다. 스킵: {bar_out_path.resolve()}")
+        return
 
     
     first_step_indices = next(iter(all_step_indices.values()))
@@ -170,7 +227,6 @@ def _create_bar_chart(all_step_indices, participant_key):
 
     
     ax.set_ylabel("지표 점수", fontsize=12)
-    participant_name = participant_key.replace("participant_", "") if participant_key.startswith("participant_") else participant_key
     ax.set_title(f"{participant_name} 단계별 지표 비교", fontsize=16)
     ax.set_xticks(x)
     ax.set_xticklabels(index_names, fontsize=12)
@@ -181,17 +237,25 @@ def _create_bar_chart(all_step_indices, participant_key):
     plt.tight_layout()
 
     
-    BAR_OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    plt.savefig(BAR_OUT_PATH, dpi=160, bbox_inches="tight")
+    bar_out_path.parent.mkdir(parents=True, exist_ok=True)
+    plt.savefig(bar_out_path, dpi=160, bbox_inches="tight")
     plt.close(fig)  
-    print(f"RaderChart: 막대 그래프 저장 완료: {BAR_OUT_PATH.resolve()}")
+    print(f"RaderChart: 막대 그래프 저장 완료: {bar_out_path.resolve()}")
 
 
 
-def _create_radar_chart(radar_indices, participant_key):
+def _create_radar_chart(radar_indices, participant_key, participant_name):
                              
     if not radar_indices:
         print("RaderChart 경고: step4 데이터가 없어 방사형 차트 생성을 건너뜁니다.")
+        return
+
+    # participant_name 기반 파일 경로 생성
+    radar_out_path = OUTPUT_DIR / f"{participant_name}_radarchart.png"
+    
+    # 파일이 이미 존재하면 스킵
+    if radar_out_path.exists():
+        print(f"RaderChart: 방사형 차트 파일이 이미 존재합니다. 스킵: {radar_out_path.resolve()}")
         return
 
     labels = list(radar_indices.keys())
@@ -255,16 +319,15 @@ def _create_radar_chart(radar_indices, participant_key):
             fontsize=12,
         )
 
-    participant_name = participant_key.replace("participant_", "") if participant_key.startswith("participant_") else participant_key
     title = f"{participant_name}"
     ax.set_title(title, y=1.08, loc="left", fontsize=14)
     plt.tight_layout()
 
     
-    RADAR_OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    plt.savefig(RADAR_OUT_PATH, dpi=160, bbox_inches="tight")
+    radar_out_path.parent.mkdir(parents=True, exist_ok=True)
+    plt.savefig(radar_out_path, dpi=160, bbox_inches="tight")
     plt.close(fig)  
-    print(f"RaderChart: 방사형 차트 저장 완료: {RADAR_OUT_PATH.resolve()}")
+    print(f"RaderChart: 방사형 차트 저장 완료: {radar_out_path.resolve()}")
 
 
 if __name__ == "__main__":

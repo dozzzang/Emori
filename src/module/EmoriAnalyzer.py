@@ -16,8 +16,9 @@ if str(src_dir) not in sys.path:
 
 class EmoriAnalyzer:
     def __init__(self, eeg_json_path, llama_json_path):
-                   
-        load_dotenv()
+        # 프로젝트 루트에서 .env 파일 로드
+        env_path = current_dir.parent.parent / ".env"
+        load_dotenv(dotenv_path=env_path)
         self.api_key = os.getenv("GROQ_API_KEY")
         self.client = Groq(api_key=self.api_key) if self.api_key else None
         

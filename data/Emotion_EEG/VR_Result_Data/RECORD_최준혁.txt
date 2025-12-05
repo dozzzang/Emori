@@ -1,0 +1,6859 @@
+---------UserInfo---------
+NAME  :   최준혁
+AGE   :   12
+GENDER    :   남
+---------OwnerInfo---------
+SCHOOL    :   구림초등학교
+COUNCELLING_COUNT    :   1
+ORGANIZATION  :   1
+REPORT_DAY    :   
+RECORDTIME  :   12분 37초
+---------GameData---------
+STEP1_EMOTION_COLOR   :   Angry
+STEP2_FILL_RATE   :   Low
+STEP3_FILL_RATE   :   Half
+---------ResultInfo---------
+stepState : CrossHair
+progressTime : 0
+stepState : MiniGame
+progressTime : 8
+stepState : Step1
+progressTime : 2
+stepState : Step2
+progressTime : 1
+stepState : Step3
+progressTime : 2
+---------NeuroState---------
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp0
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 81096.75
+channel.alpha : 77638.34
+channel.lowbeta : 70027.52
+channel.highbeta : 42836.63
+channel.gamma : 35813.69
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 382455.1
+channel.alpha : 366145.1
+channel.lowbeta : 330252.2
+channel.highbeta : 202019
+channel.gamma : 168898.6
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 476561.3
+channel.alpha : 456238
+channel.lowbeta : 411513.4
+channel.highbeta : 251727.4
+channel.gamma : 210457.5
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 734453.6
+channel.alpha : 703132.5
+channel.lowbeta : 634205
+channel.highbeta : 387950.4
+channel.gamma : 324347.1
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 239786.8
+channel.alpha : 229561
+channel.lowbeta : 207057.3
+channel.highbeta : 126659.3
+channel.gamma : 105893.9
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 331469.6
+channel.alpha : 317333.9
+channel.lowbeta : 286226
+channel.highbeta : 175087.7
+channel.gamma : 146382.6
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 71692.57
+channel.alpha : 68635.2
+channel.lowbeta : 61906.95
+channel.highbeta : 37869.18
+channel.gamma : 31660.64
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 232981.7
+channel.alpha : 223046
+channel.lowbeta : 201181
+channel.highbeta : 123064.7
+channel.gamma : 102888.6
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 426744.5
+channel.alpha : 408545.7
+channel.lowbeta : 368496.3
+channel.highbeta : 225413.4
+channel.gamma : 188457.5
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 70712.79
+channel.alpha : 67697.2
+channel.lowbeta : 61060.91
+channel.highbeta : 37351.64
+channel.gamma : 31227.96
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 537717.1
+channel.alpha : 514785.9
+channel.lowbeta : 464321.9
+channel.highbeta : 284030.9
+channel.gamma : 237464.9
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 162280
+channel.alpha : 155359.4
+channel.lowbeta : 140129.7
+channel.highbeta : 85718.91
+channel.gamma : 71665.55
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 82035.03
+channel.alpha : 78536.61
+channel.lowbeta : 70837.73
+channel.highbeta : 43332.24
+channel.gamma : 36228.05
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 211195.6
+channel.alpha : 202189
+channel.lowbeta : 182368.6
+channel.highbeta : 111556.9
+channel.gamma : 93267.52
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp1
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 81096.75
+channel.alpha : 77638.34
+channel.lowbeta : 70027.52
+channel.highbeta : 42836.63
+channel.gamma : 35813.69
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 382455.1
+channel.alpha : 366145.1
+channel.lowbeta : 330252.2
+channel.highbeta : 202019
+channel.gamma : 168898.6
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 476561.3
+channel.alpha : 456238
+channel.lowbeta : 411513.4
+channel.highbeta : 251727.4
+channel.gamma : 210457.5
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 734453.6
+channel.alpha : 703132.5
+channel.lowbeta : 634205
+channel.highbeta : 387950.4
+channel.gamma : 324347.1
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 239786.8
+channel.alpha : 229561
+channel.lowbeta : 207057.3
+channel.highbeta : 126659.3
+channel.gamma : 105893.9
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 331469.6
+channel.alpha : 317333.9
+channel.lowbeta : 286226
+channel.highbeta : 175087.7
+channel.gamma : 146382.6
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 71692.57
+channel.alpha : 68635.2
+channel.lowbeta : 61906.95
+channel.highbeta : 37869.18
+channel.gamma : 31660.64
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 232981.7
+channel.alpha : 223046
+channel.lowbeta : 201181
+channel.highbeta : 123064.7
+channel.gamma : 102888.6
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 426744.5
+channel.alpha : 408545.7
+channel.lowbeta : 368496.3
+channel.highbeta : 225413.4
+channel.gamma : 188457.5
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 70712.79
+channel.alpha : 67697.2
+channel.lowbeta : 61060.91
+channel.highbeta : 37351.64
+channel.gamma : 31227.96
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 537717.1
+channel.alpha : 514785.9
+channel.lowbeta : 464321.9
+channel.highbeta : 284030.9
+channel.gamma : 237464.9
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 162280
+channel.alpha : 155359.4
+channel.lowbeta : 140129.7
+channel.highbeta : 85718.91
+channel.gamma : 71665.55
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 82035.03
+channel.alpha : 78536.61
+channel.lowbeta : 70837.73
+channel.highbeta : 43332.24
+channel.gamma : 36228.05
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 211195.6
+channel.alpha : 202189
+channel.lowbeta : 182368.6
+channel.highbeta : 111556.9
+channel.gamma : 93267.52
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp2
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 81096.75
+channel.alpha : 77638.34
+channel.lowbeta : 70027.52
+channel.highbeta : 42836.63
+channel.gamma : 35813.69
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 382455.1
+channel.alpha : 366145.1
+channel.lowbeta : 330252.2
+channel.highbeta : 202019
+channel.gamma : 168898.6
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 476561.3
+channel.alpha : 456238
+channel.lowbeta : 411513.4
+channel.highbeta : 251727.4
+channel.gamma : 210457.5
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 734453.6
+channel.alpha : 703132.5
+channel.lowbeta : 634205
+channel.highbeta : 387950.4
+channel.gamma : 324347.1
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 239786.8
+channel.alpha : 229561
+channel.lowbeta : 207057.3
+channel.highbeta : 126659.3
+channel.gamma : 105893.9
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 331469.6
+channel.alpha : 317333.9
+channel.lowbeta : 286226
+channel.highbeta : 175087.7
+channel.gamma : 146382.6
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 71692.57
+channel.alpha : 68635.2
+channel.lowbeta : 61906.95
+channel.highbeta : 37869.18
+channel.gamma : 31660.64
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 232981.7
+channel.alpha : 223046
+channel.lowbeta : 201181
+channel.highbeta : 123064.7
+channel.gamma : 102888.6
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 426744.5
+channel.alpha : 408545.7
+channel.lowbeta : 368496.3
+channel.highbeta : 225413.4
+channel.gamma : 188457.5
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 70712.79
+channel.alpha : 67697.2
+channel.lowbeta : 61060.91
+channel.highbeta : 37351.64
+channel.gamma : 31227.96
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 537717.1
+channel.alpha : 514785.9
+channel.lowbeta : 464321.9
+channel.highbeta : 284030.9
+channel.gamma : 237464.9
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 162280
+channel.alpha : 155359.4
+channel.lowbeta : 140129.7
+channel.highbeta : 85718.91
+channel.gamma : 71665.55
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 82035.03
+channel.alpha : 78536.61
+channel.lowbeta : 70837.73
+channel.highbeta : 43332.24
+channel.gamma : 36228.05
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 211195.6
+channel.alpha : 202189
+channel.lowbeta : 182368.6
+channel.highbeta : 111556.9
+channel.gamma : 93267.52
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp3
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 81096.75
+channel.alpha : 77638.34
+channel.lowbeta : 70027.52
+channel.highbeta : 42836.63
+channel.gamma : 35813.69
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 382455.1
+channel.alpha : 366145.1
+channel.lowbeta : 330252.2
+channel.highbeta : 202019
+channel.gamma : 168898.6
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 476561.3
+channel.alpha : 456238
+channel.lowbeta : 411513.4
+channel.highbeta : 251727.4
+channel.gamma : 210457.5
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 734453.6
+channel.alpha : 703132.5
+channel.lowbeta : 634205
+channel.highbeta : 387950.4
+channel.gamma : 324347.1
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 239786.8
+channel.alpha : 229561
+channel.lowbeta : 207057.3
+channel.highbeta : 126659.3
+channel.gamma : 105893.9
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 331469.6
+channel.alpha : 317333.9
+channel.lowbeta : 286226
+channel.highbeta : 175087.7
+channel.gamma : 146382.6
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 71692.57
+channel.alpha : 68635.2
+channel.lowbeta : 61906.95
+channel.highbeta : 37869.18
+channel.gamma : 31660.64
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 232981.7
+channel.alpha : 223046
+channel.lowbeta : 201181
+channel.highbeta : 123064.7
+channel.gamma : 102888.6
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 426744.5
+channel.alpha : 408545.7
+channel.lowbeta : 368496.3
+channel.highbeta : 225413.4
+channel.gamma : 188457.5
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 70712.79
+channel.alpha : 67697.2
+channel.lowbeta : 61060.91
+channel.highbeta : 37351.64
+channel.gamma : 31227.96
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 537717.1
+channel.alpha : 514785.9
+channel.lowbeta : 464321.9
+channel.highbeta : 284030.9
+channel.gamma : 237464.9
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 162280
+channel.alpha : 155359.4
+channel.lowbeta : 140129.7
+channel.highbeta : 85718.91
+channel.gamma : 71665.55
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 82035.03
+channel.alpha : 78536.61
+channel.lowbeta : 70837.73
+channel.highbeta : 43332.24
+channel.gamma : 36228.05
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 211195.6
+channel.alpha : 202189
+channel.lowbeta : 182368.6
+channel.highbeta : 111556.9
+channel.gamma : 93267.52
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp4
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 81096.75
+channel.alpha : 77638.34
+channel.lowbeta : 70027.52
+channel.highbeta : 42836.63
+channel.gamma : 35813.69
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 382455.1
+channel.alpha : 366145.1
+channel.lowbeta : 330252.2
+channel.highbeta : 202019
+channel.gamma : 168898.6
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 476561.3
+channel.alpha : 456238
+channel.lowbeta : 411513.4
+channel.highbeta : 251727.4
+channel.gamma : 210457.5
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 734453.6
+channel.alpha : 703132.5
+channel.lowbeta : 634205
+channel.highbeta : 387950.4
+channel.gamma : 324347.1
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 239786.8
+channel.alpha : 229561
+channel.lowbeta : 207057.3
+channel.highbeta : 126659.3
+channel.gamma : 105893.9
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 331469.6
+channel.alpha : 317333.9
+channel.lowbeta : 286226
+channel.highbeta : 175087.7
+channel.gamma : 146382.6
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 71692.57
+channel.alpha : 68635.2
+channel.lowbeta : 61906.95
+channel.highbeta : 37869.18
+channel.gamma : 31660.64
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 232981.7
+channel.alpha : 223046
+channel.lowbeta : 201181
+channel.highbeta : 123064.7
+channel.gamma : 102888.6
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 426744.5
+channel.alpha : 408545.7
+channel.lowbeta : 368496.3
+channel.highbeta : 225413.4
+channel.gamma : 188457.5
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 70712.79
+channel.alpha : 67697.2
+channel.lowbeta : 61060.91
+channel.highbeta : 37351.64
+channel.gamma : 31227.96
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 537717.1
+channel.alpha : 514785.9
+channel.lowbeta : 464321.9
+channel.highbeta : 284030.9
+channel.gamma : 237464.9
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 162280
+channel.alpha : 155359.4
+channel.lowbeta : 140129.7
+channel.highbeta : 85718.91
+channel.gamma : 71665.55
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 82035.03
+channel.alpha : 78536.61
+channel.lowbeta : 70837.73
+channel.highbeta : 43332.24
+channel.gamma : 36228.05
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 211195.6
+channel.alpha : 202189
+channel.lowbeta : 182368.6
+channel.highbeta : 111556.9
+channel.gamma : 93267.52
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp5
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 4328.857
+channel.alpha : 3803.082
+channel.lowbeta : 4668.927
+channel.highbeta : 3835.677
+channel.gamma : 3654.787
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 6385.481
+channel.alpha : 5609.911
+channel.lowbeta : 6887.115
+channel.highbeta : 5657.993
+channel.gamma : 5391.162
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.0009831603
+channel.alpha : 0.0008637473
+channel.lowbeta : 0.001060396
+channel.highbeta : 0.0008711503
+channel.gamma : 0.000830067
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1846.641
+channel.alpha : 1622.351
+channel.lowbeta : 1991.71
+channel.highbeta : 1636.256
+channel.gamma : 1559.09
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 607.6501
+channel.alpha : 533.8459
+channel.lowbeta : 655.3862
+channel.highbeta : 538.4214
+channel.gamma : 513.0295
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 85.94667
+channel.alpha : 75.50774
+channel.lowbeta : 92.69852
+channel.highbeta : 76.15489
+channel.gamma : 72.56344
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 2199.838
+channel.alpha : 1932.65
+channel.lowbeta : 2372.655
+channel.highbeta : 1949.214
+channel.gamma : 1857.289
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 7325.606
+channel.alpha : 6435.851
+channel.lowbeta : 7901.096
+channel.highbeta : 6491.011
+channel.gamma : 6184.896
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 101.0955
+channel.alpha : 88.81664
+channel.lowbeta : 109.0375
+channel.highbeta : 89.57787
+channel.gamma : 85.35339
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 3792.984
+channel.alpha : 3332.295
+channel.lowbeta : 4090.956
+channel.highbeta : 3360.855
+channel.gamma : 3202.357
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 1053.864
+channel.alpha : 925.8638
+channel.lowbeta : 1136.655
+channel.highbeta : 933.7992
+channel.gamma : 889.7613
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3.84047
+channel.alpha : 3.374013
+channel.lowbeta : 4.142172
+channel.highbeta : 3.402931
+channel.gamma : 3.242449
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 4243.326
+channel.alpha : 3727.939
+channel.lowbeta : 4576.676
+channel.highbeta : 3759.89
+channel.gamma : 3582.574
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1660.689
+channel.alpha : 1458.984
+channel.lowbeta : 1791.15
+channel.highbeta : 1471.489
+channel.gamma : 1402.094
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp6
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 4328.857
+channel.alpha : 3803.082
+channel.lowbeta : 4668.927
+channel.highbeta : 3835.677
+channel.gamma : 3654.787
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 6385.481
+channel.alpha : 5609.911
+channel.lowbeta : 6887.115
+channel.highbeta : 5657.993
+channel.gamma : 5391.162
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.0009831603
+channel.alpha : 0.0008637473
+channel.lowbeta : 0.001060396
+channel.highbeta : 0.0008711503
+channel.gamma : 0.000830067
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1846.641
+channel.alpha : 1622.351
+channel.lowbeta : 1991.71
+channel.highbeta : 1636.256
+channel.gamma : 1559.09
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 607.6501
+channel.alpha : 533.8459
+channel.lowbeta : 655.3862
+channel.highbeta : 538.4214
+channel.gamma : 513.0295
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 85.94667
+channel.alpha : 75.50774
+channel.lowbeta : 92.69852
+channel.highbeta : 76.15489
+channel.gamma : 72.56344
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 2199.838
+channel.alpha : 1932.65
+channel.lowbeta : 2372.655
+channel.highbeta : 1949.214
+channel.gamma : 1857.289
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 7325.606
+channel.alpha : 6435.851
+channel.lowbeta : 7901.096
+channel.highbeta : 6491.011
+channel.gamma : 6184.896
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 101.0955
+channel.alpha : 88.81664
+channel.lowbeta : 109.0375
+channel.highbeta : 89.57787
+channel.gamma : 85.35339
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 3792.984
+channel.alpha : 3332.295
+channel.lowbeta : 4090.956
+channel.highbeta : 3360.855
+channel.gamma : 3202.357
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 1053.864
+channel.alpha : 925.8638
+channel.lowbeta : 1136.655
+channel.highbeta : 933.7992
+channel.gamma : 889.7613
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3.84047
+channel.alpha : 3.374013
+channel.lowbeta : 4.142172
+channel.highbeta : 3.402931
+channel.gamma : 3.242449
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 4243.326
+channel.alpha : 3727.939
+channel.lowbeta : 4576.676
+channel.highbeta : 3759.89
+channel.gamma : 3582.574
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1660.689
+channel.alpha : 1458.984
+channel.lowbeta : 1791.15
+channel.highbeta : 1471.489
+channel.gamma : 1402.094
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp7
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 4328.857
+channel.alpha : 3803.082
+channel.lowbeta : 4668.927
+channel.highbeta : 3835.677
+channel.gamma : 3654.787
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 6385.481
+channel.alpha : 5609.911
+channel.lowbeta : 6887.115
+channel.highbeta : 5657.993
+channel.gamma : 5391.162
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.0009831603
+channel.alpha : 0.0008637473
+channel.lowbeta : 0.001060396
+channel.highbeta : 0.0008711503
+channel.gamma : 0.000830067
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1846.641
+channel.alpha : 1622.351
+channel.lowbeta : 1991.71
+channel.highbeta : 1636.256
+channel.gamma : 1559.09
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 607.6501
+channel.alpha : 533.8459
+channel.lowbeta : 655.3862
+channel.highbeta : 538.4214
+channel.gamma : 513.0295
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 85.94667
+channel.alpha : 75.50774
+channel.lowbeta : 92.69852
+channel.highbeta : 76.15489
+channel.gamma : 72.56344
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 2199.838
+channel.alpha : 1932.65
+channel.lowbeta : 2372.655
+channel.highbeta : 1949.214
+channel.gamma : 1857.289
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 7325.606
+channel.alpha : 6435.851
+channel.lowbeta : 7901.096
+channel.highbeta : 6491.011
+channel.gamma : 6184.896
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 101.0955
+channel.alpha : 88.81664
+channel.lowbeta : 109.0375
+channel.highbeta : 89.57787
+channel.gamma : 85.35339
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 3792.984
+channel.alpha : 3332.295
+channel.lowbeta : 4090.956
+channel.highbeta : 3360.855
+channel.gamma : 3202.357
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 1053.864
+channel.alpha : 925.8638
+channel.lowbeta : 1136.655
+channel.highbeta : 933.7992
+channel.gamma : 889.7613
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3.84047
+channel.alpha : 3.374013
+channel.lowbeta : 4.142172
+channel.highbeta : 3.402931
+channel.gamma : 3.242449
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 4243.326
+channel.alpha : 3727.939
+channel.lowbeta : 4576.676
+channel.highbeta : 3759.89
+channel.gamma : 3582.574
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1660.689
+channel.alpha : 1458.984
+channel.lowbeta : 1791.15
+channel.highbeta : 1471.489
+channel.gamma : 1402.094
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp8
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 4328.857
+channel.alpha : 3803.082
+channel.lowbeta : 4668.927
+channel.highbeta : 3835.677
+channel.gamma : 3654.787
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 6385.481
+channel.alpha : 5609.911
+channel.lowbeta : 6887.115
+channel.highbeta : 5657.993
+channel.gamma : 5391.162
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.0009831603
+channel.alpha : 0.0008637473
+channel.lowbeta : 0.001060396
+channel.highbeta : 0.0008711503
+channel.gamma : 0.000830067
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1846.641
+channel.alpha : 1622.351
+channel.lowbeta : 1991.71
+channel.highbeta : 1636.256
+channel.gamma : 1559.09
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 607.6501
+channel.alpha : 533.8459
+channel.lowbeta : 655.3862
+channel.highbeta : 538.4214
+channel.gamma : 513.0295
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 85.94667
+channel.alpha : 75.50774
+channel.lowbeta : 92.69852
+channel.highbeta : 76.15489
+channel.gamma : 72.56344
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 2199.838
+channel.alpha : 1932.65
+channel.lowbeta : 2372.655
+channel.highbeta : 1949.214
+channel.gamma : 1857.289
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 7325.606
+channel.alpha : 6435.851
+channel.lowbeta : 7901.096
+channel.highbeta : 6491.011
+channel.gamma : 6184.896
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 101.0955
+channel.alpha : 88.81664
+channel.lowbeta : 109.0375
+channel.highbeta : 89.57787
+channel.gamma : 85.35339
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 3792.984
+channel.alpha : 3332.295
+channel.lowbeta : 4090.956
+channel.highbeta : 3360.855
+channel.gamma : 3202.357
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 1053.864
+channel.alpha : 925.8638
+channel.lowbeta : 1136.655
+channel.highbeta : 933.7992
+channel.gamma : 889.7613
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3.84047
+channel.alpha : 3.374013
+channel.lowbeta : 4.142172
+channel.highbeta : 3.402931
+channel.gamma : 3.242449
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 4243.326
+channel.alpha : 3727.939
+channel.lowbeta : 4576.676
+channel.highbeta : 3759.89
+channel.gamma : 3582.574
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1660.689
+channel.alpha : 1458.984
+channel.lowbeta : 1791.15
+channel.highbeta : 1471.489
+channel.gamma : 1402.094
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp9
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 4328.857
+channel.alpha : 3803.082
+channel.lowbeta : 4668.927
+channel.highbeta : 3835.677
+channel.gamma : 3654.787
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 6385.481
+channel.alpha : 5609.911
+channel.lowbeta : 6887.115
+channel.highbeta : 5657.993
+channel.gamma : 5391.162
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.0009831603
+channel.alpha : 0.0008637473
+channel.lowbeta : 0.001060396
+channel.highbeta : 0.0008711503
+channel.gamma : 0.000830067
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1846.641
+channel.alpha : 1622.351
+channel.lowbeta : 1991.71
+channel.highbeta : 1636.256
+channel.gamma : 1559.09
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 607.6501
+channel.alpha : 533.8459
+channel.lowbeta : 655.3862
+channel.highbeta : 538.4214
+channel.gamma : 513.0295
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 85.94667
+channel.alpha : 75.50774
+channel.lowbeta : 92.69852
+channel.highbeta : 76.15489
+channel.gamma : 72.56344
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 2199.838
+channel.alpha : 1932.65
+channel.lowbeta : 2372.655
+channel.highbeta : 1949.214
+channel.gamma : 1857.289
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 7325.606
+channel.alpha : 6435.851
+channel.lowbeta : 7901.096
+channel.highbeta : 6491.011
+channel.gamma : 6184.896
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 101.0955
+channel.alpha : 88.81664
+channel.lowbeta : 109.0375
+channel.highbeta : 89.57787
+channel.gamma : 85.35339
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 3792.984
+channel.alpha : 3332.295
+channel.lowbeta : 4090.956
+channel.highbeta : 3360.855
+channel.gamma : 3202.357
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 1053.864
+channel.alpha : 925.8638
+channel.lowbeta : 1136.655
+channel.highbeta : 933.7992
+channel.gamma : 889.7613
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3.84047
+channel.alpha : 3.374013
+channel.lowbeta : 4.142172
+channel.highbeta : 3.402931
+channel.gamma : 3.242449
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 4243.326
+channel.alpha : 3727.939
+channel.lowbeta : 4576.676
+channel.highbeta : 3759.89
+channel.gamma : 3582.574
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1660.689
+channel.alpha : 1458.984
+channel.lowbeta : 1791.15
+channel.highbeta : 1471.489
+channel.gamma : 1402.094
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp10
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 4328.857
+channel.alpha : 3803.082
+channel.lowbeta : 4668.927
+channel.highbeta : 3835.677
+channel.gamma : 3654.787
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 6385.481
+channel.alpha : 5609.911
+channel.lowbeta : 6887.115
+channel.highbeta : 5657.993
+channel.gamma : 5391.162
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.0009831603
+channel.alpha : 0.0008637473
+channel.lowbeta : 0.001060396
+channel.highbeta : 0.0008711503
+channel.gamma : 0.000830067
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1846.641
+channel.alpha : 1622.351
+channel.lowbeta : 1991.71
+channel.highbeta : 1636.256
+channel.gamma : 1559.09
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 607.6501
+channel.alpha : 533.8459
+channel.lowbeta : 655.3862
+channel.highbeta : 538.4214
+channel.gamma : 513.0295
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 85.94667
+channel.alpha : 75.50774
+channel.lowbeta : 92.69852
+channel.highbeta : 76.15489
+channel.gamma : 72.56344
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 2199.838
+channel.alpha : 1932.65
+channel.lowbeta : 2372.655
+channel.highbeta : 1949.214
+channel.gamma : 1857.289
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 7325.606
+channel.alpha : 6435.851
+channel.lowbeta : 7901.096
+channel.highbeta : 6491.011
+channel.gamma : 6184.896
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 101.0955
+channel.alpha : 88.81664
+channel.lowbeta : 109.0375
+channel.highbeta : 89.57787
+channel.gamma : 85.35339
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 3792.984
+channel.alpha : 3332.295
+channel.lowbeta : 4090.956
+channel.highbeta : 3360.855
+channel.gamma : 3202.357
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 1053.864
+channel.alpha : 925.8638
+channel.lowbeta : 1136.655
+channel.highbeta : 933.7992
+channel.gamma : 889.7613
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3.84047
+channel.alpha : 3.374013
+channel.lowbeta : 4.142172
+channel.highbeta : 3.402931
+channel.gamma : 3.242449
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 4243.326
+channel.alpha : 3727.939
+channel.lowbeta : 4576.676
+channel.highbeta : 3759.89
+channel.gamma : 3582.574
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1660.689
+channel.alpha : 1458.984
+channel.lowbeta : 1791.15
+channel.highbeta : 1471.489
+channel.gamma : 1402.094
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp11
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 4328.857
+channel.alpha : 3803.082
+channel.lowbeta : 4668.927
+channel.highbeta : 3835.677
+channel.gamma : 3654.787
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 6385.481
+channel.alpha : 5609.911
+channel.lowbeta : 6887.115
+channel.highbeta : 5657.993
+channel.gamma : 5391.162
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.0009831603
+channel.alpha : 0.0008637473
+channel.lowbeta : 0.001060396
+channel.highbeta : 0.0008711503
+channel.gamma : 0.000830067
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1846.641
+channel.alpha : 1622.351
+channel.lowbeta : 1991.71
+channel.highbeta : 1636.256
+channel.gamma : 1559.09
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 607.6501
+channel.alpha : 533.8459
+channel.lowbeta : 655.3862
+channel.highbeta : 538.4214
+channel.gamma : 513.0295
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 85.94667
+channel.alpha : 75.50774
+channel.lowbeta : 92.69852
+channel.highbeta : 76.15489
+channel.gamma : 72.56344
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 2199.838
+channel.alpha : 1932.65
+channel.lowbeta : 2372.655
+channel.highbeta : 1949.214
+channel.gamma : 1857.289
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 7325.606
+channel.alpha : 6435.851
+channel.lowbeta : 7901.096
+channel.highbeta : 6491.011
+channel.gamma : 6184.896
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 101.0955
+channel.alpha : 88.81664
+channel.lowbeta : 109.0375
+channel.highbeta : 89.57787
+channel.gamma : 85.35339
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 3792.984
+channel.alpha : 3332.295
+channel.lowbeta : 4090.956
+channel.highbeta : 3360.855
+channel.gamma : 3202.357
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 1053.864
+channel.alpha : 925.8638
+channel.lowbeta : 1136.655
+channel.highbeta : 933.7992
+channel.gamma : 889.7613
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3.84047
+channel.alpha : 3.374013
+channel.lowbeta : 4.142172
+channel.highbeta : 3.402931
+channel.gamma : 3.242449
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 4243.326
+channel.alpha : 3727.939
+channel.lowbeta : 4576.676
+channel.highbeta : 3759.89
+channel.gamma : 3582.574
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1660.689
+channel.alpha : 1458.984
+channel.lowbeta : 1791.15
+channel.highbeta : 1471.489
+channel.gamma : 1402.094
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp12
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 4328.857
+channel.alpha : 3803.082
+channel.lowbeta : 4668.927
+channel.highbeta : 3835.677
+channel.gamma : 3654.787
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 6385.481
+channel.alpha : 5609.911
+channel.lowbeta : 6887.115
+channel.highbeta : 5657.993
+channel.gamma : 5391.162
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.0009831603
+channel.alpha : 0.0008637473
+channel.lowbeta : 0.001060396
+channel.highbeta : 0.0008711503
+channel.gamma : 0.000830067
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1846.641
+channel.alpha : 1622.351
+channel.lowbeta : 1991.71
+channel.highbeta : 1636.256
+channel.gamma : 1559.09
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 607.6501
+channel.alpha : 533.8459
+channel.lowbeta : 655.3862
+channel.highbeta : 538.4214
+channel.gamma : 513.0295
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 85.94667
+channel.alpha : 75.50774
+channel.lowbeta : 92.69852
+channel.highbeta : 76.15489
+channel.gamma : 72.56344
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 2199.838
+channel.alpha : 1932.65
+channel.lowbeta : 2372.655
+channel.highbeta : 1949.214
+channel.gamma : 1857.289
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 7325.606
+channel.alpha : 6435.851
+channel.lowbeta : 7901.096
+channel.highbeta : 6491.011
+channel.gamma : 6184.896
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 101.0955
+channel.alpha : 88.81664
+channel.lowbeta : 109.0375
+channel.highbeta : 89.57787
+channel.gamma : 85.35339
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 3792.984
+channel.alpha : 3332.295
+channel.lowbeta : 4090.956
+channel.highbeta : 3360.855
+channel.gamma : 3202.357
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 1053.864
+channel.alpha : 925.8638
+channel.lowbeta : 1136.655
+channel.highbeta : 933.7992
+channel.gamma : 889.7613
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3.84047
+channel.alpha : 3.374013
+channel.lowbeta : 4.142172
+channel.highbeta : 3.402931
+channel.gamma : 3.242449
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 4243.326
+channel.alpha : 3727.939
+channel.lowbeta : 4576.676
+channel.highbeta : 3759.89
+channel.gamma : 3582.574
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1660.689
+channel.alpha : 1458.984
+channel.lowbeta : 1791.15
+channel.highbeta : 1471.489
+channel.gamma : 1402.094
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp13
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 4328.857
+channel.alpha : 3803.082
+channel.lowbeta : 4668.927
+channel.highbeta : 3835.677
+channel.gamma : 3654.787
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 6385.481
+channel.alpha : 5609.911
+channel.lowbeta : 6887.115
+channel.highbeta : 5657.993
+channel.gamma : 5391.162
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.0009831603
+channel.alpha : 0.0008637473
+channel.lowbeta : 0.001060396
+channel.highbeta : 0.0008711503
+channel.gamma : 0.000830067
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1846.641
+channel.alpha : 1622.351
+channel.lowbeta : 1991.71
+channel.highbeta : 1636.256
+channel.gamma : 1559.09
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 607.6501
+channel.alpha : 533.8459
+channel.lowbeta : 655.3862
+channel.highbeta : 538.4214
+channel.gamma : 513.0295
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 85.94667
+channel.alpha : 75.50774
+channel.lowbeta : 92.69852
+channel.highbeta : 76.15489
+channel.gamma : 72.56344
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 2199.838
+channel.alpha : 1932.65
+channel.lowbeta : 2372.655
+channel.highbeta : 1949.214
+channel.gamma : 1857.289
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 7325.606
+channel.alpha : 6435.851
+channel.lowbeta : 7901.096
+channel.highbeta : 6491.011
+channel.gamma : 6184.896
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 101.0955
+channel.alpha : 88.81664
+channel.lowbeta : 109.0375
+channel.highbeta : 89.57787
+channel.gamma : 85.35339
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 3792.984
+channel.alpha : 3332.295
+channel.lowbeta : 4090.956
+channel.highbeta : 3360.855
+channel.gamma : 3202.357
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 1053.864
+channel.alpha : 925.8638
+channel.lowbeta : 1136.655
+channel.highbeta : 933.7992
+channel.gamma : 889.7613
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3.84047
+channel.alpha : 3.374013
+channel.lowbeta : 4.142172
+channel.highbeta : 3.402931
+channel.gamma : 3.242449
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 4243.326
+channel.alpha : 3727.939
+channel.lowbeta : 4576.676
+channel.highbeta : 3759.89
+channel.gamma : 3582.574
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1660.689
+channel.alpha : 1458.984
+channel.lowbeta : 1791.15
+channel.highbeta : 1471.489
+channel.gamma : 1402.094
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp14
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 4328.857
+channel.alpha : 3803.082
+channel.lowbeta : 4668.927
+channel.highbeta : 3835.677
+channel.gamma : 3654.787
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 6385.481
+channel.alpha : 5609.911
+channel.lowbeta : 6887.115
+channel.highbeta : 5657.993
+channel.gamma : 5391.162
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.0009831603
+channel.alpha : 0.0008637473
+channel.lowbeta : 0.001060396
+channel.highbeta : 0.0008711503
+channel.gamma : 0.000830067
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1846.641
+channel.alpha : 1622.351
+channel.lowbeta : 1991.71
+channel.highbeta : 1636.256
+channel.gamma : 1559.09
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 607.6501
+channel.alpha : 533.8459
+channel.lowbeta : 655.3862
+channel.highbeta : 538.4214
+channel.gamma : 513.0295
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 85.94667
+channel.alpha : 75.50774
+channel.lowbeta : 92.69852
+channel.highbeta : 76.15489
+channel.gamma : 72.56344
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 2199.838
+channel.alpha : 1932.65
+channel.lowbeta : 2372.655
+channel.highbeta : 1949.214
+channel.gamma : 1857.289
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 7325.606
+channel.alpha : 6435.851
+channel.lowbeta : 7901.096
+channel.highbeta : 6491.011
+channel.gamma : 6184.896
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 101.0955
+channel.alpha : 88.81664
+channel.lowbeta : 109.0375
+channel.highbeta : 89.57787
+channel.gamma : 85.35339
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 3792.984
+channel.alpha : 3332.295
+channel.lowbeta : 4090.956
+channel.highbeta : 3360.855
+channel.gamma : 3202.357
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 1053.864
+channel.alpha : 925.8638
+channel.lowbeta : 1136.655
+channel.highbeta : 933.7992
+channel.gamma : 889.7613
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3.84047
+channel.alpha : 3.374013
+channel.lowbeta : 4.142172
+channel.highbeta : 3.402931
+channel.gamma : 3.242449
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 4243.326
+channel.alpha : 3727.939
+channel.lowbeta : 4576.676
+channel.highbeta : 3759.89
+channel.gamma : 3582.574
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1660.689
+channel.alpha : 1458.984
+channel.lowbeta : 1791.15
+channel.highbeta : 1471.489
+channel.gamma : 1402.094
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp15
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 4328.857
+channel.alpha : 3803.082
+channel.lowbeta : 4668.927
+channel.highbeta : 3835.677
+channel.gamma : 3654.787
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 6385.481
+channel.alpha : 5609.911
+channel.lowbeta : 6887.115
+channel.highbeta : 5657.993
+channel.gamma : 5391.162
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.0009831603
+channel.alpha : 0.0008637473
+channel.lowbeta : 0.001060396
+channel.highbeta : 0.0008711503
+channel.gamma : 0.000830067
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1846.641
+channel.alpha : 1622.351
+channel.lowbeta : 1991.71
+channel.highbeta : 1636.256
+channel.gamma : 1559.09
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 607.6501
+channel.alpha : 533.8459
+channel.lowbeta : 655.3862
+channel.highbeta : 538.4214
+channel.gamma : 513.0295
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 85.94667
+channel.alpha : 75.50774
+channel.lowbeta : 92.69852
+channel.highbeta : 76.15489
+channel.gamma : 72.56344
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 2199.838
+channel.alpha : 1932.65
+channel.lowbeta : 2372.655
+channel.highbeta : 1949.214
+channel.gamma : 1857.289
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 7325.606
+channel.alpha : 6435.851
+channel.lowbeta : 7901.096
+channel.highbeta : 6491.011
+channel.gamma : 6184.896
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 101.0955
+channel.alpha : 88.81664
+channel.lowbeta : 109.0375
+channel.highbeta : 89.57787
+channel.gamma : 85.35339
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 3792.984
+channel.alpha : 3332.295
+channel.lowbeta : 4090.956
+channel.highbeta : 3360.855
+channel.gamma : 3202.357
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 1053.864
+channel.alpha : 925.8638
+channel.lowbeta : 1136.655
+channel.highbeta : 933.7992
+channel.gamma : 889.7613
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3.84047
+channel.alpha : 3.374013
+channel.lowbeta : 4.142172
+channel.highbeta : 3.402931
+channel.gamma : 3.242449
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 4243.326
+channel.alpha : 3727.939
+channel.lowbeta : 4576.676
+channel.highbeta : 3759.89
+channel.gamma : 3582.574
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1660.689
+channel.alpha : 1458.984
+channel.lowbeta : 1791.15
+channel.highbeta : 1471.489
+channel.gamma : 1402.094
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp16
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 5694.27
+channel.alpha : 4263.407
+channel.lowbeta : 3101.849
+channel.highbeta : 2833.259
+channel.gamma : 845.1002
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 12884.6
+channel.alpha : 9646.946
+channel.lowbeta : 7018.652
+channel.highbeta : 6410.905
+channel.gamma : 1912.235
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 36048.25
+channel.alpha : 26990.01
+channel.lowbeta : 19636.63
+channel.highbeta : 17936.29
+channel.gamma : 5350.008
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 0
+channel.alpha : 0
+channel.lowbeta : 0
+channel.highbeta : 0
+channel.gamma : 0
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 14415.18
+channel.alpha : 10792.92
+channel.lowbeta : 7852.404
+channel.highbeta : 7172.462
+channel.gamma : 2139.391
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 70.75005
+channel.alpha : 52.97189
+channel.lowbeta : 38.53979
+channel.highbeta : 35.20262
+channel.gamma : 10.50018
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 6079.399
+channel.alpha : 4551.761
+channel.lowbeta : 3311.641
+channel.highbeta : 3024.885
+channel.gamma : 902.2582
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 496.8153
+channel.alpha : 371.975
+channel.lowbeta : 270.631
+channel.highbeta : 247.197
+channel.gamma : 73.73355
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 1680.553
+channel.alpha : 1258.262
+channel.lowbeta : 915.4504
+channel.highbeta : 836.1814
+channel.gamma : 249.4149
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 12936.71
+channel.alpha : 9685.959
+channel.lowbeta : 7047.036
+channel.highbeta : 6436.831
+channel.gamma : 1919.968
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 11702.13
+channel.alpha : 8761.604
+channel.lowbeta : 6374.52
+channel.highbeta : 5822.548
+channel.gamma : 1736.741
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3724.321
+channel.alpha : 2788.469
+channel.lowbeta : 2028.755
+channel.highbeta : 1853.085
+channel.gamma : 552.7354
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 11840.92
+channel.alpha : 8865.517
+channel.lowbeta : 6450.122
+channel.highbeta : 5891.604
+channel.gamma : 1757.339
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 11007.8
+channel.alpha : 8241.745
+channel.lowbeta : 5996.295
+channel.highbeta : 5477.075
+channel.gamma : 1633.694
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp17
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 5694.27
+channel.alpha : 4263.407
+channel.lowbeta : 3101.849
+channel.highbeta : 2833.259
+channel.gamma : 845.1002
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 12884.6
+channel.alpha : 9646.946
+channel.lowbeta : 7018.652
+channel.highbeta : 6410.905
+channel.gamma : 1912.235
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 36048.25
+channel.alpha : 26990.01
+channel.lowbeta : 19636.63
+channel.highbeta : 17936.29
+channel.gamma : 5350.008
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 0
+channel.alpha : 0
+channel.lowbeta : 0
+channel.highbeta : 0
+channel.gamma : 0
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 14415.18
+channel.alpha : 10792.92
+channel.lowbeta : 7852.404
+channel.highbeta : 7172.462
+channel.gamma : 2139.391
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 70.75005
+channel.alpha : 52.97189
+channel.lowbeta : 38.53979
+channel.highbeta : 35.20262
+channel.gamma : 10.50018
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 6079.399
+channel.alpha : 4551.761
+channel.lowbeta : 3311.641
+channel.highbeta : 3024.885
+channel.gamma : 902.2582
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 496.8153
+channel.alpha : 371.975
+channel.lowbeta : 270.631
+channel.highbeta : 247.197
+channel.gamma : 73.73355
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 1680.553
+channel.alpha : 1258.262
+channel.lowbeta : 915.4504
+channel.highbeta : 836.1814
+channel.gamma : 249.4149
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 12936.71
+channel.alpha : 9685.959
+channel.lowbeta : 7047.036
+channel.highbeta : 6436.831
+channel.gamma : 1919.968
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 11702.13
+channel.alpha : 8761.604
+channel.lowbeta : 6374.52
+channel.highbeta : 5822.548
+channel.gamma : 1736.741
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3724.321
+channel.alpha : 2788.469
+channel.lowbeta : 2028.755
+channel.highbeta : 1853.085
+channel.gamma : 552.7354
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 11840.92
+channel.alpha : 8865.517
+channel.lowbeta : 6450.122
+channel.highbeta : 5891.604
+channel.gamma : 1757.339
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 11007.8
+channel.alpha : 8241.745
+channel.lowbeta : 5996.295
+channel.highbeta : 5477.075
+channel.gamma : 1633.694
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp18
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 5694.27
+channel.alpha : 4263.407
+channel.lowbeta : 3101.849
+channel.highbeta : 2833.259
+channel.gamma : 845.1002
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 12884.6
+channel.alpha : 9646.946
+channel.lowbeta : 7018.652
+channel.highbeta : 6410.905
+channel.gamma : 1912.235
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 36048.25
+channel.alpha : 26990.01
+channel.lowbeta : 19636.63
+channel.highbeta : 17936.29
+channel.gamma : 5350.008
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 0
+channel.alpha : 0
+channel.lowbeta : 0
+channel.highbeta : 0
+channel.gamma : 0
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 14415.18
+channel.alpha : 10792.92
+channel.lowbeta : 7852.404
+channel.highbeta : 7172.462
+channel.gamma : 2139.391
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 70.75005
+channel.alpha : 52.97189
+channel.lowbeta : 38.53979
+channel.highbeta : 35.20262
+channel.gamma : 10.50018
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 6079.399
+channel.alpha : 4551.761
+channel.lowbeta : 3311.641
+channel.highbeta : 3024.885
+channel.gamma : 902.2582
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 496.8153
+channel.alpha : 371.975
+channel.lowbeta : 270.631
+channel.highbeta : 247.197
+channel.gamma : 73.73355
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 1680.553
+channel.alpha : 1258.262
+channel.lowbeta : 915.4504
+channel.highbeta : 836.1814
+channel.gamma : 249.4149
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 12936.71
+channel.alpha : 9685.959
+channel.lowbeta : 7047.036
+channel.highbeta : 6436.831
+channel.gamma : 1919.968
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 11702.13
+channel.alpha : 8761.604
+channel.lowbeta : 6374.52
+channel.highbeta : 5822.548
+channel.gamma : 1736.741
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3724.321
+channel.alpha : 2788.469
+channel.lowbeta : 2028.755
+channel.highbeta : 1853.085
+channel.gamma : 552.7354
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 11840.92
+channel.alpha : 8865.517
+channel.lowbeta : 6450.122
+channel.highbeta : 5891.604
+channel.gamma : 1757.339
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 11007.8
+channel.alpha : 8241.745
+channel.lowbeta : 5996.295
+channel.highbeta : 5477.075
+channel.gamma : 1633.694
+
+---------STEP.Breathe---------
+stepState : Breathe
+recordTimeStamp19
+PM_Stress : 0.01
+PM_Engage : 0.01
+PM_Relax : 0.01
+PM_Excite : 0.01
+PM_Interest : 0.01
+PM_Focus : 0.01
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 5694.27
+channel.alpha : 4263.407
+channel.lowbeta : 3101.849
+channel.highbeta : 2833.259
+channel.gamma : 845.1002
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 12884.6
+channel.alpha : 9646.946
+channel.lowbeta : 7018.652
+channel.highbeta : 6410.905
+channel.gamma : 1912.235
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 36048.25
+channel.alpha : 26990.01
+channel.lowbeta : 19636.63
+channel.highbeta : 17936.29
+channel.gamma : 5350.008
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 0
+channel.alpha : 0
+channel.lowbeta : 0
+channel.highbeta : 0
+channel.gamma : 0
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 14415.18
+channel.alpha : 10792.92
+channel.lowbeta : 7852.404
+channel.highbeta : 7172.462
+channel.gamma : 2139.391
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 70.75005
+channel.alpha : 52.97189
+channel.lowbeta : 38.53979
+channel.highbeta : 35.20262
+channel.gamma : 10.50018
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 6079.399
+channel.alpha : 4551.761
+channel.lowbeta : 3311.641
+channel.highbeta : 3024.885
+channel.gamma : 902.2582
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 496.8153
+channel.alpha : 371.975
+channel.lowbeta : 270.631
+channel.highbeta : 247.197
+channel.gamma : 73.73355
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 1680.553
+channel.alpha : 1258.262
+channel.lowbeta : 915.4504
+channel.highbeta : 836.1814
+channel.gamma : 249.4149
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 12936.71
+channel.alpha : 9685.959
+channel.lowbeta : 7047.036
+channel.highbeta : 6436.831
+channel.gamma : 1919.968
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 11702.13
+channel.alpha : 8761.604
+channel.lowbeta : 6374.52
+channel.highbeta : 5822.548
+channel.gamma : 1736.741
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3724.321
+channel.alpha : 2788.469
+channel.lowbeta : 2028.755
+channel.highbeta : 1853.085
+channel.gamma : 552.7354
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 11840.92
+channel.alpha : 8865.517
+channel.lowbeta : 6450.122
+channel.highbeta : 5891.604
+channel.gamma : 1757.339
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 11007.8
+channel.alpha : 8241.745
+channel.lowbeta : 5996.295
+channel.highbeta : 5477.075
+channel.gamma : 1633.694
+
+---------STEP.CrossHair---------
+stepState : CrossHair
+recordTimeStamp0
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 6776.573
+channel.alpha : 12244.42
+channel.lowbeta : 6560.261
+channel.highbeta : 7725.616
+channel.gamma : 4770.141
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 1617.986
+channel.alpha : 2923.498
+channel.lowbeta : 1566.339
+channel.highbeta : 1844.581
+channel.gamma : 1138.927
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 18.94667
+channel.alpha : 34.23426
+channel.lowbeta : 18.34188
+channel.highbeta : 21.6001
+channel.gamma : 13.33687
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 0
+channel.alpha : 0
+channel.lowbeta : 0
+channel.highbeta : 0
+channel.gamma : 0
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 491.7332
+channel.alpha : 888.5005
+channel.lowbeta : 476.0368
+channel.highbeta : 560.5993
+channel.gamma : 346.1391
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6594.566
+channel.alpha : 11915.56
+channel.lowbeta : 6384.064
+channel.highbeta : 7518.121
+channel.gamma : 4642.023
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 9242.288
+channel.alpha : 16699.66
+channel.lowbeta : 8947.27
+channel.highbeta : 10536.65
+channel.gamma : 6505.798
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 10.49611
+channel.alpha : 18.96516
+channel.lowbeta : 10.16107
+channel.highbeta : 11.96607
+channel.gamma : 7.388385
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 5201.087
+channel.alpha : 9397.715
+channel.lowbeta : 5035.066
+channel.highbeta : 5929.488
+channel.gamma : 3661.131
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 10689.3
+channel.alpha : 19314.23
+channel.lowbeta : 10348.09
+channel.highbeta : 12186.32
+channel.gamma : 7524.375
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 9014.711
+channel.alpha : 16288.46
+channel.lowbeta : 8726.957
+channel.highbeta : 10277.2
+channel.gamma : 6345.603
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3525.895
+channel.alpha : 6370.852
+channel.lowbeta : 3413.347
+channel.highbeta : 4019.689
+channel.gamma : 2481.935
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 16.79004
+channel.alpha : 30.33751
+channel.lowbeta : 16.25409
+channel.highbeta : 19.14145
+channel.gamma : 11.81878
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 5250.285
+channel.alpha : 9486.608
+channel.lowbeta : 5082.693
+channel.highbeta : 5985.575
+channel.gamma : 3695.761
+
+---------STEP.CrossHair---------
+stepState : CrossHair
+recordTimeStamp1
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 6776.573
+channel.alpha : 12244.42
+channel.lowbeta : 6560.261
+channel.highbeta : 7725.616
+channel.gamma : 4770.141
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 1617.986
+channel.alpha : 2923.498
+channel.lowbeta : 1566.339
+channel.highbeta : 1844.581
+channel.gamma : 1138.927
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 18.94667
+channel.alpha : 34.23426
+channel.lowbeta : 18.34188
+channel.highbeta : 21.6001
+channel.gamma : 13.33687
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 0
+channel.alpha : 0
+channel.lowbeta : 0
+channel.highbeta : 0
+channel.gamma : 0
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 491.7332
+channel.alpha : 888.5005
+channel.lowbeta : 476.0368
+channel.highbeta : 560.5993
+channel.gamma : 346.1391
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6594.566
+channel.alpha : 11915.56
+channel.lowbeta : 6384.064
+channel.highbeta : 7518.121
+channel.gamma : 4642.023
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 9242.288
+channel.alpha : 16699.66
+channel.lowbeta : 8947.27
+channel.highbeta : 10536.65
+channel.gamma : 6505.798
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 10.49611
+channel.alpha : 18.96516
+channel.lowbeta : 10.16107
+channel.highbeta : 11.96607
+channel.gamma : 7.388385
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 5201.087
+channel.alpha : 9397.715
+channel.lowbeta : 5035.066
+channel.highbeta : 5929.488
+channel.gamma : 3661.131
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 10689.3
+channel.alpha : 19314.23
+channel.lowbeta : 10348.09
+channel.highbeta : 12186.32
+channel.gamma : 7524.375
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 9014.711
+channel.alpha : 16288.46
+channel.lowbeta : 8726.957
+channel.highbeta : 10277.2
+channel.gamma : 6345.603
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3525.895
+channel.alpha : 6370.852
+channel.lowbeta : 3413.347
+channel.highbeta : 4019.689
+channel.gamma : 2481.935
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 16.79004
+channel.alpha : 30.33751
+channel.lowbeta : 16.25409
+channel.highbeta : 19.14145
+channel.gamma : 11.81878
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 5250.285
+channel.alpha : 9486.608
+channel.lowbeta : 5082.693
+channel.highbeta : 5985.575
+channel.gamma : 3695.761
+
+---------STEP.CrossHair---------
+stepState : CrossHair
+recordTimeStamp2
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 6776.573
+channel.alpha : 12244.42
+channel.lowbeta : 6560.261
+channel.highbeta : 7725.616
+channel.gamma : 4770.141
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 1617.986
+channel.alpha : 2923.498
+channel.lowbeta : 1566.339
+channel.highbeta : 1844.581
+channel.gamma : 1138.927
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 18.94667
+channel.alpha : 34.23426
+channel.lowbeta : 18.34188
+channel.highbeta : 21.6001
+channel.gamma : 13.33687
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 0
+channel.alpha : 0
+channel.lowbeta : 0
+channel.highbeta : 0
+channel.gamma : 0
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 491.7332
+channel.alpha : 888.5005
+channel.lowbeta : 476.0368
+channel.highbeta : 560.5993
+channel.gamma : 346.1391
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6594.566
+channel.alpha : 11915.56
+channel.lowbeta : 6384.064
+channel.highbeta : 7518.121
+channel.gamma : 4642.023
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 9242.288
+channel.alpha : 16699.66
+channel.lowbeta : 8947.27
+channel.highbeta : 10536.65
+channel.gamma : 6505.798
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 10.49611
+channel.alpha : 18.96516
+channel.lowbeta : 10.16107
+channel.highbeta : 11.96607
+channel.gamma : 7.388385
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 5201.087
+channel.alpha : 9397.715
+channel.lowbeta : 5035.066
+channel.highbeta : 5929.488
+channel.gamma : 3661.131
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 10689.3
+channel.alpha : 19314.23
+channel.lowbeta : 10348.09
+channel.highbeta : 12186.32
+channel.gamma : 7524.375
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 9014.711
+channel.alpha : 16288.46
+channel.lowbeta : 8726.957
+channel.highbeta : 10277.2
+channel.gamma : 6345.603
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3525.895
+channel.alpha : 6370.852
+channel.lowbeta : 3413.347
+channel.highbeta : 4019.689
+channel.gamma : 2481.935
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 16.79004
+channel.alpha : 30.33751
+channel.lowbeta : 16.25409
+channel.highbeta : 19.14145
+channel.gamma : 11.81878
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 5250.285
+channel.alpha : 9486.608
+channel.lowbeta : 5082.693
+channel.highbeta : 5985.575
+channel.gamma : 3695.761
+
+---------STEP.CrossHair---------
+stepState : CrossHair
+recordTimeStamp3
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 6776.573
+channel.alpha : 12244.42
+channel.lowbeta : 6560.261
+channel.highbeta : 7725.616
+channel.gamma : 4770.141
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 1617.986
+channel.alpha : 2923.498
+channel.lowbeta : 1566.339
+channel.highbeta : 1844.581
+channel.gamma : 1138.927
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 18.94667
+channel.alpha : 34.23426
+channel.lowbeta : 18.34188
+channel.highbeta : 21.6001
+channel.gamma : 13.33687
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 0
+channel.alpha : 0
+channel.lowbeta : 0
+channel.highbeta : 0
+channel.gamma : 0
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 491.7332
+channel.alpha : 888.5005
+channel.lowbeta : 476.0368
+channel.highbeta : 560.5993
+channel.gamma : 346.1391
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6594.566
+channel.alpha : 11915.56
+channel.lowbeta : 6384.064
+channel.highbeta : 7518.121
+channel.gamma : 4642.023
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 9242.288
+channel.alpha : 16699.66
+channel.lowbeta : 8947.27
+channel.highbeta : 10536.65
+channel.gamma : 6505.798
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 10.49611
+channel.alpha : 18.96516
+channel.lowbeta : 10.16107
+channel.highbeta : 11.96607
+channel.gamma : 7.388385
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 5201.087
+channel.alpha : 9397.715
+channel.lowbeta : 5035.066
+channel.highbeta : 5929.488
+channel.gamma : 3661.131
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 10689.3
+channel.alpha : 19314.23
+channel.lowbeta : 10348.09
+channel.highbeta : 12186.32
+channel.gamma : 7524.375
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 9014.711
+channel.alpha : 16288.46
+channel.lowbeta : 8726.957
+channel.highbeta : 10277.2
+channel.gamma : 6345.603
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3525.895
+channel.alpha : 6370.852
+channel.lowbeta : 3413.347
+channel.highbeta : 4019.689
+channel.gamma : 2481.935
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 16.79004
+channel.alpha : 30.33751
+channel.lowbeta : 16.25409
+channel.highbeta : 19.14145
+channel.gamma : 11.81878
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 5250.285
+channel.alpha : 9486.608
+channel.lowbeta : 5082.693
+channel.highbeta : 5985.575
+channel.gamma : 3695.761
+
+---------STEP.CrossHair---------
+stepState : CrossHair
+recordTimeStamp4
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 6776.573
+channel.alpha : 12244.42
+channel.lowbeta : 6560.261
+channel.highbeta : 7725.616
+channel.gamma : 4770.141
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 1617.986
+channel.alpha : 2923.498
+channel.lowbeta : 1566.339
+channel.highbeta : 1844.581
+channel.gamma : 1138.927
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 18.94667
+channel.alpha : 34.23426
+channel.lowbeta : 18.34188
+channel.highbeta : 21.6001
+channel.gamma : 13.33687
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 0
+channel.alpha : 0
+channel.lowbeta : 0
+channel.highbeta : 0
+channel.gamma : 0
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 491.7332
+channel.alpha : 888.5005
+channel.lowbeta : 476.0368
+channel.highbeta : 560.5993
+channel.gamma : 346.1391
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6594.566
+channel.alpha : 11915.56
+channel.lowbeta : 6384.064
+channel.highbeta : 7518.121
+channel.gamma : 4642.023
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 9242.288
+channel.alpha : 16699.66
+channel.lowbeta : 8947.27
+channel.highbeta : 10536.65
+channel.gamma : 6505.798
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 10.49611
+channel.alpha : 18.96516
+channel.lowbeta : 10.16107
+channel.highbeta : 11.96607
+channel.gamma : 7.388385
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 5201.087
+channel.alpha : 9397.715
+channel.lowbeta : 5035.066
+channel.highbeta : 5929.488
+channel.gamma : 3661.131
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 10689.3
+channel.alpha : 19314.23
+channel.lowbeta : 10348.09
+channel.highbeta : 12186.32
+channel.gamma : 7524.375
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 9014.711
+channel.alpha : 16288.46
+channel.lowbeta : 8726.957
+channel.highbeta : 10277.2
+channel.gamma : 6345.603
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3525.895
+channel.alpha : 6370.852
+channel.lowbeta : 3413.347
+channel.highbeta : 4019.689
+channel.gamma : 2481.935
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 16.79004
+channel.alpha : 30.33751
+channel.lowbeta : 16.25409
+channel.highbeta : 19.14145
+channel.gamma : 11.81878
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 5250.285
+channel.alpha : 9486.608
+channel.lowbeta : 5082.693
+channel.highbeta : 5985.575
+channel.gamma : 3695.761
+
+---------STEP.CrossHair---------
+stepState : CrossHair
+recordTimeStamp5
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 6776.573
+channel.alpha : 12244.42
+channel.lowbeta : 6560.261
+channel.highbeta : 7725.616
+channel.gamma : 4770.141
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 1617.986
+channel.alpha : 2923.498
+channel.lowbeta : 1566.339
+channel.highbeta : 1844.581
+channel.gamma : 1138.927
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 18.94667
+channel.alpha : 34.23426
+channel.lowbeta : 18.34188
+channel.highbeta : 21.6001
+channel.gamma : 13.33687
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 0
+channel.alpha : 0
+channel.lowbeta : 0
+channel.highbeta : 0
+channel.gamma : 0
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 491.7332
+channel.alpha : 888.5005
+channel.lowbeta : 476.0368
+channel.highbeta : 560.5993
+channel.gamma : 346.1391
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6594.566
+channel.alpha : 11915.56
+channel.lowbeta : 6384.064
+channel.highbeta : 7518.121
+channel.gamma : 4642.023
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 9242.288
+channel.alpha : 16699.66
+channel.lowbeta : 8947.27
+channel.highbeta : 10536.65
+channel.gamma : 6505.798
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 10.49611
+channel.alpha : 18.96516
+channel.lowbeta : 10.16107
+channel.highbeta : 11.96607
+channel.gamma : 7.388385
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 5201.087
+channel.alpha : 9397.715
+channel.lowbeta : 5035.066
+channel.highbeta : 5929.488
+channel.gamma : 3661.131
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 10689.3
+channel.alpha : 19314.23
+channel.lowbeta : 10348.09
+channel.highbeta : 12186.32
+channel.gamma : 7524.375
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 9014.711
+channel.alpha : 16288.46
+channel.lowbeta : 8726.957
+channel.highbeta : 10277.2
+channel.gamma : 6345.603
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3525.895
+channel.alpha : 6370.852
+channel.lowbeta : 3413.347
+channel.highbeta : 4019.689
+channel.gamma : 2481.935
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 16.79004
+channel.alpha : 30.33751
+channel.lowbeta : 16.25409
+channel.highbeta : 19.14145
+channel.gamma : 11.81878
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 5250.285
+channel.alpha : 9486.608
+channel.lowbeta : 5082.693
+channel.highbeta : 5985.575
+channel.gamma : 3695.761
+
+---------STEP.CrossHair---------
+stepState : CrossHair
+recordTimeStamp6
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 6776.573
+channel.alpha : 12244.42
+channel.lowbeta : 6560.261
+channel.highbeta : 7725.616
+channel.gamma : 4770.141
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 1617.986
+channel.alpha : 2923.498
+channel.lowbeta : 1566.339
+channel.highbeta : 1844.581
+channel.gamma : 1138.927
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 18.94667
+channel.alpha : 34.23426
+channel.lowbeta : 18.34188
+channel.highbeta : 21.6001
+channel.gamma : 13.33687
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 0
+channel.alpha : 0
+channel.lowbeta : 0
+channel.highbeta : 0
+channel.gamma : 0
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 491.7332
+channel.alpha : 888.5005
+channel.lowbeta : 476.0368
+channel.highbeta : 560.5993
+channel.gamma : 346.1391
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6594.566
+channel.alpha : 11915.56
+channel.lowbeta : 6384.064
+channel.highbeta : 7518.121
+channel.gamma : 4642.023
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 9242.288
+channel.alpha : 16699.66
+channel.lowbeta : 8947.27
+channel.highbeta : 10536.65
+channel.gamma : 6505.798
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 10.49611
+channel.alpha : 18.96516
+channel.lowbeta : 10.16107
+channel.highbeta : 11.96607
+channel.gamma : 7.388385
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 5201.087
+channel.alpha : 9397.715
+channel.lowbeta : 5035.066
+channel.highbeta : 5929.488
+channel.gamma : 3661.131
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 10689.3
+channel.alpha : 19314.23
+channel.lowbeta : 10348.09
+channel.highbeta : 12186.32
+channel.gamma : 7524.375
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 9014.711
+channel.alpha : 16288.46
+channel.lowbeta : 8726.957
+channel.highbeta : 10277.2
+channel.gamma : 6345.603
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3525.895
+channel.alpha : 6370.852
+channel.lowbeta : 3413.347
+channel.highbeta : 4019.689
+channel.gamma : 2481.935
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 16.79004
+channel.alpha : 30.33751
+channel.lowbeta : 16.25409
+channel.highbeta : 19.14145
+channel.gamma : 11.81878
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 5250.285
+channel.alpha : 9486.608
+channel.lowbeta : 5082.693
+channel.highbeta : 5985.575
+channel.gamma : 3695.761
+
+---------STEP.CrossHair---------
+stepState : CrossHair
+recordTimeStamp7
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 6776.573
+channel.alpha : 12244.42
+channel.lowbeta : 6560.261
+channel.highbeta : 7725.616
+channel.gamma : 4770.141
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 1617.986
+channel.alpha : 2923.498
+channel.lowbeta : 1566.339
+channel.highbeta : 1844.581
+channel.gamma : 1138.927
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 18.94667
+channel.alpha : 34.23426
+channel.lowbeta : 18.34188
+channel.highbeta : 21.6001
+channel.gamma : 13.33687
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 0
+channel.alpha : 0
+channel.lowbeta : 0
+channel.highbeta : 0
+channel.gamma : 0
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 491.7332
+channel.alpha : 888.5005
+channel.lowbeta : 476.0368
+channel.highbeta : 560.5993
+channel.gamma : 346.1391
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6594.566
+channel.alpha : 11915.56
+channel.lowbeta : 6384.064
+channel.highbeta : 7518.121
+channel.gamma : 4642.023
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 9242.288
+channel.alpha : 16699.66
+channel.lowbeta : 8947.27
+channel.highbeta : 10536.65
+channel.gamma : 6505.798
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 10.49611
+channel.alpha : 18.96516
+channel.lowbeta : 10.16107
+channel.highbeta : 11.96607
+channel.gamma : 7.388385
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 5201.087
+channel.alpha : 9397.715
+channel.lowbeta : 5035.066
+channel.highbeta : 5929.488
+channel.gamma : 3661.131
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 10689.3
+channel.alpha : 19314.23
+channel.lowbeta : 10348.09
+channel.highbeta : 12186.32
+channel.gamma : 7524.375
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 9014.711
+channel.alpha : 16288.46
+channel.lowbeta : 8726.957
+channel.highbeta : 10277.2
+channel.gamma : 6345.603
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3525.895
+channel.alpha : 6370.852
+channel.lowbeta : 3413.347
+channel.highbeta : 4019.689
+channel.gamma : 2481.935
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 16.79004
+channel.alpha : 30.33751
+channel.lowbeta : 16.25409
+channel.highbeta : 19.14145
+channel.gamma : 11.81878
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 5250.285
+channel.alpha : 9486.608
+channel.lowbeta : 5082.693
+channel.highbeta : 5985.575
+channel.gamma : 3695.761
+
+---------STEP.CrossHair---------
+stepState : CrossHair
+recordTimeStamp8
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 6776.573
+channel.alpha : 12244.42
+channel.lowbeta : 6560.261
+channel.highbeta : 7725.616
+channel.gamma : 4770.141
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 1617.986
+channel.alpha : 2923.498
+channel.lowbeta : 1566.339
+channel.highbeta : 1844.581
+channel.gamma : 1138.927
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 18.94667
+channel.alpha : 34.23426
+channel.lowbeta : 18.34188
+channel.highbeta : 21.6001
+channel.gamma : 13.33687
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 0
+channel.alpha : 0
+channel.lowbeta : 0
+channel.highbeta : 0
+channel.gamma : 0
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 491.7332
+channel.alpha : 888.5005
+channel.lowbeta : 476.0368
+channel.highbeta : 560.5993
+channel.gamma : 346.1391
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6594.566
+channel.alpha : 11915.56
+channel.lowbeta : 6384.064
+channel.highbeta : 7518.121
+channel.gamma : 4642.023
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 9242.288
+channel.alpha : 16699.66
+channel.lowbeta : 8947.27
+channel.highbeta : 10536.65
+channel.gamma : 6505.798
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 10.49611
+channel.alpha : 18.96516
+channel.lowbeta : 10.16107
+channel.highbeta : 11.96607
+channel.gamma : 7.388385
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 5201.087
+channel.alpha : 9397.715
+channel.lowbeta : 5035.066
+channel.highbeta : 5929.488
+channel.gamma : 3661.131
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 10689.3
+channel.alpha : 19314.23
+channel.lowbeta : 10348.09
+channel.highbeta : 12186.32
+channel.gamma : 7524.375
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 9014.711
+channel.alpha : 16288.46
+channel.lowbeta : 8726.957
+channel.highbeta : 10277.2
+channel.gamma : 6345.603
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3525.895
+channel.alpha : 6370.852
+channel.lowbeta : 3413.347
+channel.highbeta : 4019.689
+channel.gamma : 2481.935
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 16.79004
+channel.alpha : 30.33751
+channel.lowbeta : 16.25409
+channel.highbeta : 19.14145
+channel.gamma : 11.81878
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 5250.285
+channel.alpha : 9486.608
+channel.lowbeta : 5082.693
+channel.highbeta : 5985.575
+channel.gamma : 3695.761
+
+---------STEP.CrossHair---------
+stepState : CrossHair
+recordTimeStamp9
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 6776.573
+channel.alpha : 12244.42
+channel.lowbeta : 6560.261
+channel.highbeta : 7725.616
+channel.gamma : 4770.141
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 1617.986
+channel.alpha : 2923.498
+channel.lowbeta : 1566.339
+channel.highbeta : 1844.581
+channel.gamma : 1138.927
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 18.94667
+channel.alpha : 34.23426
+channel.lowbeta : 18.34188
+channel.highbeta : 21.6001
+channel.gamma : 13.33687
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 0
+channel.alpha : 0
+channel.lowbeta : 0
+channel.highbeta : 0
+channel.gamma : 0
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 491.7332
+channel.alpha : 888.5005
+channel.lowbeta : 476.0368
+channel.highbeta : 560.5993
+channel.gamma : 346.1391
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6594.566
+channel.alpha : 11915.56
+channel.lowbeta : 6384.064
+channel.highbeta : 7518.121
+channel.gamma : 4642.023
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 9242.288
+channel.alpha : 16699.66
+channel.lowbeta : 8947.27
+channel.highbeta : 10536.65
+channel.gamma : 6505.798
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 10.49611
+channel.alpha : 18.96516
+channel.lowbeta : 10.16107
+channel.highbeta : 11.96607
+channel.gamma : 7.388385
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 5201.087
+channel.alpha : 9397.715
+channel.lowbeta : 5035.066
+channel.highbeta : 5929.488
+channel.gamma : 3661.131
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 10689.3
+channel.alpha : 19314.23
+channel.lowbeta : 10348.09
+channel.highbeta : 12186.32
+channel.gamma : 7524.375
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 9014.711
+channel.alpha : 16288.46
+channel.lowbeta : 8726.957
+channel.highbeta : 10277.2
+channel.gamma : 6345.603
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3525.895
+channel.alpha : 6370.852
+channel.lowbeta : 3413.347
+channel.highbeta : 4019.689
+channel.gamma : 2481.935
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 16.79004
+channel.alpha : 30.33751
+channel.lowbeta : 16.25409
+channel.highbeta : 19.14145
+channel.gamma : 11.81878
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 5250.285
+channel.alpha : 9486.608
+channel.lowbeta : 5082.693
+channel.highbeta : 5985.575
+channel.gamma : 3695.761
+
+---------STEP.PreStep1---------
+stepState : PreStep1
+recordTimeStamp0
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 10780.47
+channel.alpha : 6958.967
+channel.lowbeta : 5591.053
+channel.highbeta : 4034.446
+channel.gamma : 1874.39
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 4861.115
+channel.alpha : 2806.023
+channel.lowbeta : 2108.26
+channel.highbeta : 1494.635
+channel.gamma : 722.2637
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 14482.02
+channel.alpha : 7198.332
+channel.lowbeta : 2531.7
+channel.highbeta : 294.7467
+channel.gamma : 359.2043
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1.364569
+channel.alpha : 1.149412
+channel.lowbeta : 0.9905618
+channel.highbeta : 0.6672806
+channel.gamma : 0.2862807
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 13798.6
+channel.alpha : 10361.97
+channel.lowbeta : 8465.499
+channel.highbeta : 5926.255
+channel.gamma : 2634.886
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 14015.99
+channel.alpha : 6710.939
+channel.lowbeta : 2372.159
+channel.highbeta : 353.299
+channel.gamma : 399.7122
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 7756.503
+channel.alpha : 3821.096
+channel.lowbeta : 2294.77
+channel.highbeta : 1413.614
+channel.gamma : 763.7134
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 17790.65
+channel.alpha : 10676.93
+channel.lowbeta : 8251.24
+channel.highbeta : 5906.721
+channel.gamma : 2812.285
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 6863.415
+channel.alpha : 5070.526
+channel.lowbeta : 4149.413
+channel.highbeta : 2921.262
+channel.gamma : 1303.362
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 11818.31
+channel.alpha : 5755.559
+channel.lowbeta : 2018.358
+channel.highbeta : 257.2205
+channel.gamma : 310.5735
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 29714.39
+channel.alpha : 16439.38
+channel.lowbeta : 11845.91
+channel.highbeta : 8240.944
+channel.gamma : 4067.482
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3903.761
+channel.alpha : 2360.577
+channel.lowbeta : 1834.753
+channel.highbeta : 1315.903
+channel.gamma : 624.2966
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 18211.76
+channel.alpha : 13911.28
+channel.lowbeta : 11279.85
+channel.highbeta : 7806.963
+channel.gamma : 3452.841
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 25181.1
+channel.alpha : 13685.55
+channel.lowbeta : 9694.386
+channel.highbeta : 6690.006
+channel.gamma : 3328.115
+
+---------STEP.PreStep1---------
+stepState : PreStep1
+recordTimeStamp1
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 10780.47
+channel.alpha : 6958.967
+channel.lowbeta : 5591.053
+channel.highbeta : 4034.446
+channel.gamma : 1874.39
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 4861.115
+channel.alpha : 2806.023
+channel.lowbeta : 2108.26
+channel.highbeta : 1494.635
+channel.gamma : 722.2637
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 14482.02
+channel.alpha : 7198.332
+channel.lowbeta : 2531.7
+channel.highbeta : 294.7467
+channel.gamma : 359.2043
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1.364569
+channel.alpha : 1.149412
+channel.lowbeta : 0.9905618
+channel.highbeta : 0.6672806
+channel.gamma : 0.2862807
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 13798.6
+channel.alpha : 10361.97
+channel.lowbeta : 8465.499
+channel.highbeta : 5926.255
+channel.gamma : 2634.886
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 14015.99
+channel.alpha : 6710.939
+channel.lowbeta : 2372.159
+channel.highbeta : 353.299
+channel.gamma : 399.7122
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 7756.503
+channel.alpha : 3821.096
+channel.lowbeta : 2294.77
+channel.highbeta : 1413.614
+channel.gamma : 763.7134
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 17790.65
+channel.alpha : 10676.93
+channel.lowbeta : 8251.24
+channel.highbeta : 5906.721
+channel.gamma : 2812.285
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 6863.415
+channel.alpha : 5070.526
+channel.lowbeta : 4149.413
+channel.highbeta : 2921.262
+channel.gamma : 1303.362
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 11818.31
+channel.alpha : 5755.559
+channel.lowbeta : 2018.358
+channel.highbeta : 257.2205
+channel.gamma : 310.5735
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 29714.39
+channel.alpha : 16439.38
+channel.lowbeta : 11845.91
+channel.highbeta : 8240.944
+channel.gamma : 4067.482
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3903.761
+channel.alpha : 2360.577
+channel.lowbeta : 1834.753
+channel.highbeta : 1315.903
+channel.gamma : 624.2966
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 18211.76
+channel.alpha : 13911.28
+channel.lowbeta : 11279.85
+channel.highbeta : 7806.963
+channel.gamma : 3452.841
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 25181.1
+channel.alpha : 13685.55
+channel.lowbeta : 9694.386
+channel.highbeta : 6690.006
+channel.gamma : 3328.115
+
+---------STEP.PreStep1---------
+stepState : PreStep1
+recordTimeStamp2
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 10780.47
+channel.alpha : 6958.967
+channel.lowbeta : 5591.053
+channel.highbeta : 4034.446
+channel.gamma : 1874.39
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 4861.115
+channel.alpha : 2806.023
+channel.lowbeta : 2108.26
+channel.highbeta : 1494.635
+channel.gamma : 722.2637
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 14482.02
+channel.alpha : 7198.332
+channel.lowbeta : 2531.7
+channel.highbeta : 294.7467
+channel.gamma : 359.2043
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1.364569
+channel.alpha : 1.149412
+channel.lowbeta : 0.9905618
+channel.highbeta : 0.6672806
+channel.gamma : 0.2862807
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 13798.6
+channel.alpha : 10361.97
+channel.lowbeta : 8465.499
+channel.highbeta : 5926.255
+channel.gamma : 2634.886
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 14015.99
+channel.alpha : 6710.939
+channel.lowbeta : 2372.159
+channel.highbeta : 353.299
+channel.gamma : 399.7122
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 7756.503
+channel.alpha : 3821.096
+channel.lowbeta : 2294.77
+channel.highbeta : 1413.614
+channel.gamma : 763.7134
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 17790.65
+channel.alpha : 10676.93
+channel.lowbeta : 8251.24
+channel.highbeta : 5906.721
+channel.gamma : 2812.285
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 6863.415
+channel.alpha : 5070.526
+channel.lowbeta : 4149.413
+channel.highbeta : 2921.262
+channel.gamma : 1303.362
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 11818.31
+channel.alpha : 5755.559
+channel.lowbeta : 2018.358
+channel.highbeta : 257.2205
+channel.gamma : 310.5735
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 29714.39
+channel.alpha : 16439.38
+channel.lowbeta : 11845.91
+channel.highbeta : 8240.944
+channel.gamma : 4067.482
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3903.761
+channel.alpha : 2360.577
+channel.lowbeta : 1834.753
+channel.highbeta : 1315.903
+channel.gamma : 624.2966
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 18211.76
+channel.alpha : 13911.28
+channel.lowbeta : 11279.85
+channel.highbeta : 7806.963
+channel.gamma : 3452.841
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 25181.1
+channel.alpha : 13685.55
+channel.lowbeta : 9694.386
+channel.highbeta : 6690.006
+channel.gamma : 3328.115
+
+---------STEP.PreStep1---------
+stepState : PreStep1
+recordTimeStamp3
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 10780.47
+channel.alpha : 6958.967
+channel.lowbeta : 5591.053
+channel.highbeta : 4034.446
+channel.gamma : 1874.39
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 4861.115
+channel.alpha : 2806.023
+channel.lowbeta : 2108.26
+channel.highbeta : 1494.635
+channel.gamma : 722.2637
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 14482.02
+channel.alpha : 7198.332
+channel.lowbeta : 2531.7
+channel.highbeta : 294.7467
+channel.gamma : 359.2043
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1.364569
+channel.alpha : 1.149412
+channel.lowbeta : 0.9905618
+channel.highbeta : 0.6672806
+channel.gamma : 0.2862807
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 13798.6
+channel.alpha : 10361.97
+channel.lowbeta : 8465.499
+channel.highbeta : 5926.255
+channel.gamma : 2634.886
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 14015.99
+channel.alpha : 6710.939
+channel.lowbeta : 2372.159
+channel.highbeta : 353.299
+channel.gamma : 399.7122
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 7756.503
+channel.alpha : 3821.096
+channel.lowbeta : 2294.77
+channel.highbeta : 1413.614
+channel.gamma : 763.7134
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 17790.65
+channel.alpha : 10676.93
+channel.lowbeta : 8251.24
+channel.highbeta : 5906.721
+channel.gamma : 2812.285
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 6863.415
+channel.alpha : 5070.526
+channel.lowbeta : 4149.413
+channel.highbeta : 2921.262
+channel.gamma : 1303.362
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 11818.31
+channel.alpha : 5755.559
+channel.lowbeta : 2018.358
+channel.highbeta : 257.2205
+channel.gamma : 310.5735
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 29714.39
+channel.alpha : 16439.38
+channel.lowbeta : 11845.91
+channel.highbeta : 8240.944
+channel.gamma : 4067.482
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3903.761
+channel.alpha : 2360.577
+channel.lowbeta : 1834.753
+channel.highbeta : 1315.903
+channel.gamma : 624.2966
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 18211.76
+channel.alpha : 13911.28
+channel.lowbeta : 11279.85
+channel.highbeta : 7806.963
+channel.gamma : 3452.841
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 25181.1
+channel.alpha : 13685.55
+channel.lowbeta : 9694.386
+channel.highbeta : 6690.006
+channel.gamma : 3328.115
+
+---------STEP.PreStep1---------
+stepState : PreStep1
+recordTimeStamp4
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 10780.47
+channel.alpha : 6958.967
+channel.lowbeta : 5591.053
+channel.highbeta : 4034.446
+channel.gamma : 1874.39
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 4861.115
+channel.alpha : 2806.023
+channel.lowbeta : 2108.26
+channel.highbeta : 1494.635
+channel.gamma : 722.2637
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 14482.02
+channel.alpha : 7198.332
+channel.lowbeta : 2531.7
+channel.highbeta : 294.7467
+channel.gamma : 359.2043
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1.364569
+channel.alpha : 1.149412
+channel.lowbeta : 0.9905618
+channel.highbeta : 0.6672806
+channel.gamma : 0.2862807
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 13798.6
+channel.alpha : 10361.97
+channel.lowbeta : 8465.499
+channel.highbeta : 5926.255
+channel.gamma : 2634.886
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 14015.99
+channel.alpha : 6710.939
+channel.lowbeta : 2372.159
+channel.highbeta : 353.299
+channel.gamma : 399.7122
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 7756.503
+channel.alpha : 3821.096
+channel.lowbeta : 2294.77
+channel.highbeta : 1413.614
+channel.gamma : 763.7134
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 17790.65
+channel.alpha : 10676.93
+channel.lowbeta : 8251.24
+channel.highbeta : 5906.721
+channel.gamma : 2812.285
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 6863.415
+channel.alpha : 5070.526
+channel.lowbeta : 4149.413
+channel.highbeta : 2921.262
+channel.gamma : 1303.362
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 11818.31
+channel.alpha : 5755.559
+channel.lowbeta : 2018.358
+channel.highbeta : 257.2205
+channel.gamma : 310.5735
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 29714.39
+channel.alpha : 16439.38
+channel.lowbeta : 11845.91
+channel.highbeta : 8240.944
+channel.gamma : 4067.482
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3903.761
+channel.alpha : 2360.577
+channel.lowbeta : 1834.753
+channel.highbeta : 1315.903
+channel.gamma : 624.2966
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 18211.76
+channel.alpha : 13911.28
+channel.lowbeta : 11279.85
+channel.highbeta : 7806.963
+channel.gamma : 3452.841
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 25181.1
+channel.alpha : 13685.55
+channel.lowbeta : 9694.386
+channel.highbeta : 6690.006
+channel.gamma : 3328.115
+
+---------STEP.PreStep1---------
+stepState : PreStep1
+recordTimeStamp5
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 10780.47
+channel.alpha : 6958.967
+channel.lowbeta : 5591.053
+channel.highbeta : 4034.446
+channel.gamma : 1874.39
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 4861.115
+channel.alpha : 2806.023
+channel.lowbeta : 2108.26
+channel.highbeta : 1494.635
+channel.gamma : 722.2637
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 14482.02
+channel.alpha : 7198.332
+channel.lowbeta : 2531.7
+channel.highbeta : 294.7467
+channel.gamma : 359.2043
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1.364569
+channel.alpha : 1.149412
+channel.lowbeta : 0.9905618
+channel.highbeta : 0.6672806
+channel.gamma : 0.2862807
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 13798.6
+channel.alpha : 10361.97
+channel.lowbeta : 8465.499
+channel.highbeta : 5926.255
+channel.gamma : 2634.886
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 14015.99
+channel.alpha : 6710.939
+channel.lowbeta : 2372.159
+channel.highbeta : 353.299
+channel.gamma : 399.7122
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 7756.503
+channel.alpha : 3821.096
+channel.lowbeta : 2294.77
+channel.highbeta : 1413.614
+channel.gamma : 763.7134
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 17790.65
+channel.alpha : 10676.93
+channel.lowbeta : 8251.24
+channel.highbeta : 5906.721
+channel.gamma : 2812.285
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 6863.415
+channel.alpha : 5070.526
+channel.lowbeta : 4149.413
+channel.highbeta : 2921.262
+channel.gamma : 1303.362
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 11818.31
+channel.alpha : 5755.559
+channel.lowbeta : 2018.358
+channel.highbeta : 257.2205
+channel.gamma : 310.5735
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 29714.39
+channel.alpha : 16439.38
+channel.lowbeta : 11845.91
+channel.highbeta : 8240.944
+channel.gamma : 4067.482
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3903.761
+channel.alpha : 2360.577
+channel.lowbeta : 1834.753
+channel.highbeta : 1315.903
+channel.gamma : 624.2966
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 18211.76
+channel.alpha : 13911.28
+channel.lowbeta : 11279.85
+channel.highbeta : 7806.963
+channel.gamma : 3452.841
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 25181.1
+channel.alpha : 13685.55
+channel.lowbeta : 9694.386
+channel.highbeta : 6690.006
+channel.gamma : 3328.115
+
+---------STEP.PreStep1---------
+stepState : PreStep1
+recordTimeStamp6
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 10780.47
+channel.alpha : 6958.967
+channel.lowbeta : 5591.053
+channel.highbeta : 4034.446
+channel.gamma : 1874.39
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 4861.115
+channel.alpha : 2806.023
+channel.lowbeta : 2108.26
+channel.highbeta : 1494.635
+channel.gamma : 722.2637
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 14482.02
+channel.alpha : 7198.332
+channel.lowbeta : 2531.7
+channel.highbeta : 294.7467
+channel.gamma : 359.2043
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1.364569
+channel.alpha : 1.149412
+channel.lowbeta : 0.9905618
+channel.highbeta : 0.6672806
+channel.gamma : 0.2862807
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 13798.6
+channel.alpha : 10361.97
+channel.lowbeta : 8465.499
+channel.highbeta : 5926.255
+channel.gamma : 2634.886
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 14015.99
+channel.alpha : 6710.939
+channel.lowbeta : 2372.159
+channel.highbeta : 353.299
+channel.gamma : 399.7122
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 7756.503
+channel.alpha : 3821.096
+channel.lowbeta : 2294.77
+channel.highbeta : 1413.614
+channel.gamma : 763.7134
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 17790.65
+channel.alpha : 10676.93
+channel.lowbeta : 8251.24
+channel.highbeta : 5906.721
+channel.gamma : 2812.285
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 6863.415
+channel.alpha : 5070.526
+channel.lowbeta : 4149.413
+channel.highbeta : 2921.262
+channel.gamma : 1303.362
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 11818.31
+channel.alpha : 5755.559
+channel.lowbeta : 2018.358
+channel.highbeta : 257.2205
+channel.gamma : 310.5735
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 29714.39
+channel.alpha : 16439.38
+channel.lowbeta : 11845.91
+channel.highbeta : 8240.944
+channel.gamma : 4067.482
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3903.761
+channel.alpha : 2360.577
+channel.lowbeta : 1834.753
+channel.highbeta : 1315.903
+channel.gamma : 624.2966
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 18211.76
+channel.alpha : 13911.28
+channel.lowbeta : 11279.85
+channel.highbeta : 7806.963
+channel.gamma : 3452.841
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 25181.1
+channel.alpha : 13685.55
+channel.lowbeta : 9694.386
+channel.highbeta : 6690.006
+channel.gamma : 3328.115
+
+---------STEP.PreStep1---------
+stepState : PreStep1
+recordTimeStamp7
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 10780.47
+channel.alpha : 6958.967
+channel.lowbeta : 5591.053
+channel.highbeta : 4034.446
+channel.gamma : 1874.39
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 4861.115
+channel.alpha : 2806.023
+channel.lowbeta : 2108.26
+channel.highbeta : 1494.635
+channel.gamma : 722.2637
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 14482.02
+channel.alpha : 7198.332
+channel.lowbeta : 2531.7
+channel.highbeta : 294.7467
+channel.gamma : 359.2043
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1.364569
+channel.alpha : 1.149412
+channel.lowbeta : 0.9905618
+channel.highbeta : 0.6672806
+channel.gamma : 0.2862807
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 13798.6
+channel.alpha : 10361.97
+channel.lowbeta : 8465.499
+channel.highbeta : 5926.255
+channel.gamma : 2634.886
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 14015.99
+channel.alpha : 6710.939
+channel.lowbeta : 2372.159
+channel.highbeta : 353.299
+channel.gamma : 399.7122
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 7756.503
+channel.alpha : 3821.096
+channel.lowbeta : 2294.77
+channel.highbeta : 1413.614
+channel.gamma : 763.7134
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 17790.65
+channel.alpha : 10676.93
+channel.lowbeta : 8251.24
+channel.highbeta : 5906.721
+channel.gamma : 2812.285
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 6863.415
+channel.alpha : 5070.526
+channel.lowbeta : 4149.413
+channel.highbeta : 2921.262
+channel.gamma : 1303.362
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 11818.31
+channel.alpha : 5755.559
+channel.lowbeta : 2018.358
+channel.highbeta : 257.2205
+channel.gamma : 310.5735
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 29714.39
+channel.alpha : 16439.38
+channel.lowbeta : 11845.91
+channel.highbeta : 8240.944
+channel.gamma : 4067.482
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3903.761
+channel.alpha : 2360.577
+channel.lowbeta : 1834.753
+channel.highbeta : 1315.903
+channel.gamma : 624.2966
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 18211.76
+channel.alpha : 13911.28
+channel.lowbeta : 11279.85
+channel.highbeta : 7806.963
+channel.gamma : 3452.841
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 25181.1
+channel.alpha : 13685.55
+channel.lowbeta : 9694.386
+channel.highbeta : 6690.006
+channel.gamma : 3328.115
+
+---------STEP.PreStep1---------
+stepState : PreStep1
+recordTimeStamp8
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 10780.47
+channel.alpha : 6958.967
+channel.lowbeta : 5591.053
+channel.highbeta : 4034.446
+channel.gamma : 1874.39
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 4861.115
+channel.alpha : 2806.023
+channel.lowbeta : 2108.26
+channel.highbeta : 1494.635
+channel.gamma : 722.2637
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 14482.02
+channel.alpha : 7198.332
+channel.lowbeta : 2531.7
+channel.highbeta : 294.7467
+channel.gamma : 359.2043
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1.364569
+channel.alpha : 1.149412
+channel.lowbeta : 0.9905618
+channel.highbeta : 0.6672806
+channel.gamma : 0.2862807
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 13798.6
+channel.alpha : 10361.97
+channel.lowbeta : 8465.499
+channel.highbeta : 5926.255
+channel.gamma : 2634.886
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 14015.99
+channel.alpha : 6710.939
+channel.lowbeta : 2372.159
+channel.highbeta : 353.299
+channel.gamma : 399.7122
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 7756.503
+channel.alpha : 3821.096
+channel.lowbeta : 2294.77
+channel.highbeta : 1413.614
+channel.gamma : 763.7134
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 17790.65
+channel.alpha : 10676.93
+channel.lowbeta : 8251.24
+channel.highbeta : 5906.721
+channel.gamma : 2812.285
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 6863.415
+channel.alpha : 5070.526
+channel.lowbeta : 4149.413
+channel.highbeta : 2921.262
+channel.gamma : 1303.362
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 11818.31
+channel.alpha : 5755.559
+channel.lowbeta : 2018.358
+channel.highbeta : 257.2205
+channel.gamma : 310.5735
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 29714.39
+channel.alpha : 16439.38
+channel.lowbeta : 11845.91
+channel.highbeta : 8240.944
+channel.gamma : 4067.482
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 3903.761
+channel.alpha : 2360.577
+channel.lowbeta : 1834.753
+channel.highbeta : 1315.903
+channel.gamma : 624.2966
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 18211.76
+channel.alpha : 13911.28
+channel.lowbeta : 11279.85
+channel.highbeta : 7806.963
+channel.gamma : 3452.841
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 25181.1
+channel.alpha : 13685.55
+channel.lowbeta : 9694.386
+channel.highbeta : 6690.006
+channel.gamma : 3328.115
+
+---------STEP.PreStep1---------
+stepState : PreStep1
+recordTimeStamp9
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 211145.7
+channel.alpha : 248908.6
+channel.lowbeta : 370092.9
+channel.highbeta : 197621.5
+channel.gamma : 90000.47
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 226824
+channel.alpha : 267390.9
+channel.lowbeta : 397573.5
+channel.highbeta : 212295.5
+channel.gamma : 96683.29
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 9809.099
+channel.alpha : 11563.43
+channel.lowbeta : 17193.23
+channel.highbeta : 9180.808
+channel.gamma : 4181.11
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 60794.83
+channel.alpha : 71667.84
+channel.lowbeta : 106560.2
+channel.highbeta : 56900.81
+channel.gamma : 25913.68
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 195829.9
+channel.alpha : 230853.6
+channel.lowbeta : 343247.5
+channel.highbeta : 183286.6
+channel.gamma : 83472.11
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 15613.65
+channel.alpha : 18406.11
+channel.lowbeta : 27367.35
+channel.highbeta : 14613.56
+channel.gamma : 6655.287
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 2459.056
+channel.alpha : 2898.853
+channel.lowbeta : 4310.195
+channel.highbeta : 2301.549
+channel.gamma : 1048.168
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 213650.5
+channel.alpha : 251861.4
+channel.lowbeta : 374483.2
+channel.highbeta : 199965.8
+channel.gamma : 91068.12
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 32055.31
+channel.alpha : 37788.33
+channel.lowbeta : 56186.04
+channel.highbeta : 30002.11
+channel.gamma : 13663.52
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 372819.3
+channel.alpha : 439497.1
+channel.lowbeta : 653471.7
+channel.highbeta : 348939.5
+channel.gamma : 158913.5
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 33003.79
+channel.alpha : 38906.45
+channel.lowbeta : 57848.53
+channel.highbeta : 30889.84
+channel.gamma : 14067.8
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 4534.727
+channel.alpha : 5345.751
+channel.lowbeta : 7948.397
+channel.highbeta : 4244.269
+channel.gamma : 1932.919
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 13633.62
+channel.alpha : 16071.96
+channel.lowbeta : 23896.79
+channel.highbeta : 12760.36
+channel.gamma : 5811.303
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 190869.8
+channel.alpha : 225006.4
+channel.lowbeta : 334553.5
+channel.highbeta : 178644.2
+channel.gamma : 81357.89
+
+---------STEP.Step1---------
+stepState : Step1
+recordTimeStamp0
+PM_Stress : 0
+PM_Engage : 0.5422531
+PM_Relax : 0.08795291
+PM_Excite : 0.7300448
+PM_Interest : 0.6743726
+PM_Focus : 0.775004
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 1148.187
+channel.alpha : 762.6833
+channel.lowbeta : 876.9363
+channel.highbeta : 409.9911
+channel.gamma : 196.5544
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 17958.86
+channel.alpha : 11929.17
+channel.lowbeta : 13716.21
+channel.highbeta : 6412.693
+channel.gamma : 3074.318
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.21713
+channel.alpha : 0.1442286
+channel.lowbeta : 0.1658346
+channel.highbeta : 0.07753211
+channel.gamma : 0.03716977
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 32666.56
+channel.alpha : 21698.77
+channel.lowbeta : 24949.33
+channel.highbeta : 11664.47
+channel.gamma : 5592.082
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 48822.51
+channel.alpha : 32430.35
+channel.lowbeta : 37288.55
+channel.highbeta : 17433.39
+channel.gamma : 8357.765
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 24426.55
+channel.alpha : 16225.34
+channel.lowbeta : 18655.96
+channel.highbeta : 8722.156
+channel.gamma : 4181.501
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 18688.14
+channel.alpha : 12413.6
+channel.lowbeta : 14273.2
+channel.highbeta : 6673.102
+channel.gamma : 3199.161
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 16.50549
+channel.alpha : 10.96377
+channel.lowbeta : 12.60619
+channel.highbeta : 5.893727
+channel.gamma : 2.82552
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 13159.88
+channel.alpha : 8741.449
+channel.lowbeta : 10050.95
+channel.highbeta : 4699.088
+channel.gamma : 2252.796
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 38501.48
+channel.alpha : 25574.61
+channel.lowbeta : 29405.79
+channel.highbeta : 13747.99
+channel.gamma : 6590.942
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 8124.586
+channel.alpha : 5396.756
+channel.lowbeta : 6205.211
+channel.highbeta : 2901.101
+channel.gamma : 1390.821
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 5446.194
+channel.alpha : 3617.635
+channel.lowbeta : 4159.571
+channel.highbeta : 1944.71
+channel.gamma : 932.3161
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 13713.49
+channel.alpha : 9109.188
+channel.lowbeta : 10473.78
+channel.highbeta : 4896.771
+channel.gamma : 2347.568
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 39357.65
+channel.alpha : 26143.32
+channel.lowbeta : 30059.7
+channel.highbeta : 14053.71
+channel.gamma : 6737.507
+
+---------STEP.PreStep2---------
+stepState : PreStep2
+recordTimeStamp0
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23206.34
+channel.alpha : 17879.21
+channel.lowbeta : 12110.21
+channel.highbeta : 4924.757
+channel.gamma : 1234.335
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 60854.41
+channel.alpha : 46885
+channel.lowbeta : 31756.84
+channel.highbeta : 12914.28
+channel.gamma : 3236.82
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.2956264
+channel.alpha : 0.227764
+channel.lowbeta : 0.1542725
+channel.highbeta : 0.06273668
+channel.gamma : 0.01572424
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 46104.51
+channel.alpha : 35521.01
+channel.lowbeta : 24059.61
+channel.highbeta : 9784.117
+channel.gamma : 2452.279
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 12.37744
+channel.alpha : 9.53614
+channel.lowbeta : 6.459158
+channel.highbeta : 2.626691
+channel.gamma : 0.6583506
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 1612.422
+channel.alpha : 1242.283
+channel.lowbeta : 841.4417
+channel.highbeta : 342.182
+channel.gamma : 85.76405
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 3442.554
+channel.alpha : 2652.301
+channel.lowbeta : 1796.495
+channel.highbeta : 730.5654
+channel.gamma : 183.108
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 32090.5
+channel.alpha : 24723.98
+channel.lowbeta : 16746.41
+channel.highbeta : 6810.121
+channel.gamma : 1706.88
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 918.3407
+channel.alpha : 707.5314
+channel.lowbeta : 479.2355
+channel.highbeta : 194.8867
+channel.gamma : 48.84615
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 36262.95
+channel.alpha : 27938.62
+channel.lowbeta : 18923.79
+channel.highbeta : 7695.58
+channel.gamma : 1928.81
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 6822.225
+channel.alpha : 5256.152
+channel.lowbeta : 3560.174
+channel.highbeta : 1447.786
+channel.gamma : 362.8712
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 62570.55
+channel.alpha : 48207.2
+channel.lowbeta : 32652.4
+channel.highbeta : 13278.48
+channel.gamma : 3328.101
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 27230.81
+channel.alpha : 20979.86
+channel.lowbeta : 14210.38
+channel.highbeta : 5778.816
+channel.gamma : 1448.395
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 32343.09
+channel.alpha : 24918.59
+channel.lowbeta : 16878.22
+channel.highbeta : 6863.725
+channel.gamma : 1720.315
+
+---------STEP.PreStep2---------
+stepState : PreStep2
+recordTimeStamp1
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23206.34
+channel.alpha : 17879.21
+channel.lowbeta : 12110.21
+channel.highbeta : 4924.757
+channel.gamma : 1234.335
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 60854.41
+channel.alpha : 46885
+channel.lowbeta : 31756.84
+channel.highbeta : 12914.28
+channel.gamma : 3236.82
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.2956264
+channel.alpha : 0.227764
+channel.lowbeta : 0.1542725
+channel.highbeta : 0.06273668
+channel.gamma : 0.01572424
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 46104.51
+channel.alpha : 35521.01
+channel.lowbeta : 24059.61
+channel.highbeta : 9784.117
+channel.gamma : 2452.279
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 12.37744
+channel.alpha : 9.53614
+channel.lowbeta : 6.459158
+channel.highbeta : 2.626691
+channel.gamma : 0.6583506
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 1612.422
+channel.alpha : 1242.283
+channel.lowbeta : 841.4417
+channel.highbeta : 342.182
+channel.gamma : 85.76405
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 3442.554
+channel.alpha : 2652.301
+channel.lowbeta : 1796.495
+channel.highbeta : 730.5654
+channel.gamma : 183.108
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 32090.5
+channel.alpha : 24723.98
+channel.lowbeta : 16746.41
+channel.highbeta : 6810.121
+channel.gamma : 1706.88
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 918.3407
+channel.alpha : 707.5314
+channel.lowbeta : 479.2355
+channel.highbeta : 194.8867
+channel.gamma : 48.84615
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 36262.95
+channel.alpha : 27938.62
+channel.lowbeta : 18923.79
+channel.highbeta : 7695.58
+channel.gamma : 1928.81
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 6822.225
+channel.alpha : 5256.152
+channel.lowbeta : 3560.174
+channel.highbeta : 1447.786
+channel.gamma : 362.8712
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 62570.55
+channel.alpha : 48207.2
+channel.lowbeta : 32652.4
+channel.highbeta : 13278.48
+channel.gamma : 3328.101
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 27230.81
+channel.alpha : 20979.86
+channel.lowbeta : 14210.38
+channel.highbeta : 5778.816
+channel.gamma : 1448.395
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 32343.09
+channel.alpha : 24918.59
+channel.lowbeta : 16878.22
+channel.highbeta : 6863.725
+channel.gamma : 1720.315
+
+---------STEP.PreStep2---------
+stepState : PreStep2
+recordTimeStamp2
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23206.34
+channel.alpha : 17879.21
+channel.lowbeta : 12110.21
+channel.highbeta : 4924.757
+channel.gamma : 1234.335
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 60854.41
+channel.alpha : 46885
+channel.lowbeta : 31756.84
+channel.highbeta : 12914.28
+channel.gamma : 3236.82
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.2956264
+channel.alpha : 0.227764
+channel.lowbeta : 0.1542725
+channel.highbeta : 0.06273668
+channel.gamma : 0.01572424
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 46104.51
+channel.alpha : 35521.01
+channel.lowbeta : 24059.61
+channel.highbeta : 9784.117
+channel.gamma : 2452.279
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 12.37744
+channel.alpha : 9.53614
+channel.lowbeta : 6.459158
+channel.highbeta : 2.626691
+channel.gamma : 0.6583506
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 1612.422
+channel.alpha : 1242.283
+channel.lowbeta : 841.4417
+channel.highbeta : 342.182
+channel.gamma : 85.76405
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 3442.554
+channel.alpha : 2652.301
+channel.lowbeta : 1796.495
+channel.highbeta : 730.5654
+channel.gamma : 183.108
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 32090.5
+channel.alpha : 24723.98
+channel.lowbeta : 16746.41
+channel.highbeta : 6810.121
+channel.gamma : 1706.88
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 918.3407
+channel.alpha : 707.5314
+channel.lowbeta : 479.2355
+channel.highbeta : 194.8867
+channel.gamma : 48.84615
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 36262.95
+channel.alpha : 27938.62
+channel.lowbeta : 18923.79
+channel.highbeta : 7695.58
+channel.gamma : 1928.81
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 6822.225
+channel.alpha : 5256.152
+channel.lowbeta : 3560.174
+channel.highbeta : 1447.786
+channel.gamma : 362.8712
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 62570.55
+channel.alpha : 48207.2
+channel.lowbeta : 32652.4
+channel.highbeta : 13278.48
+channel.gamma : 3328.101
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 27230.81
+channel.alpha : 20979.86
+channel.lowbeta : 14210.38
+channel.highbeta : 5778.816
+channel.gamma : 1448.395
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 32343.09
+channel.alpha : 24918.59
+channel.lowbeta : 16878.22
+channel.highbeta : 6863.725
+channel.gamma : 1720.315
+
+---------STEP.PreStep2---------
+stepState : PreStep2
+recordTimeStamp3
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23206.34
+channel.alpha : 17879.21
+channel.lowbeta : 12110.21
+channel.highbeta : 4924.757
+channel.gamma : 1234.335
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 60854.41
+channel.alpha : 46885
+channel.lowbeta : 31756.84
+channel.highbeta : 12914.28
+channel.gamma : 3236.82
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.2956264
+channel.alpha : 0.227764
+channel.lowbeta : 0.1542725
+channel.highbeta : 0.06273668
+channel.gamma : 0.01572424
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 46104.51
+channel.alpha : 35521.01
+channel.lowbeta : 24059.61
+channel.highbeta : 9784.117
+channel.gamma : 2452.279
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 12.37744
+channel.alpha : 9.53614
+channel.lowbeta : 6.459158
+channel.highbeta : 2.626691
+channel.gamma : 0.6583506
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 1612.422
+channel.alpha : 1242.283
+channel.lowbeta : 841.4417
+channel.highbeta : 342.182
+channel.gamma : 85.76405
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 3442.554
+channel.alpha : 2652.301
+channel.lowbeta : 1796.495
+channel.highbeta : 730.5654
+channel.gamma : 183.108
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 32090.5
+channel.alpha : 24723.98
+channel.lowbeta : 16746.41
+channel.highbeta : 6810.121
+channel.gamma : 1706.88
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 918.3407
+channel.alpha : 707.5314
+channel.lowbeta : 479.2355
+channel.highbeta : 194.8867
+channel.gamma : 48.84615
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 36262.95
+channel.alpha : 27938.62
+channel.lowbeta : 18923.79
+channel.highbeta : 7695.58
+channel.gamma : 1928.81
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 6822.225
+channel.alpha : 5256.152
+channel.lowbeta : 3560.174
+channel.highbeta : 1447.786
+channel.gamma : 362.8712
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 62570.55
+channel.alpha : 48207.2
+channel.lowbeta : 32652.4
+channel.highbeta : 13278.48
+channel.gamma : 3328.101
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 27230.81
+channel.alpha : 20979.86
+channel.lowbeta : 14210.38
+channel.highbeta : 5778.816
+channel.gamma : 1448.395
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 32343.09
+channel.alpha : 24918.59
+channel.lowbeta : 16878.22
+channel.highbeta : 6863.725
+channel.gamma : 1720.315
+
+---------STEP.PreStep2---------
+stepState : PreStep2
+recordTimeStamp4
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23206.34
+channel.alpha : 17879.21
+channel.lowbeta : 12110.21
+channel.highbeta : 4924.757
+channel.gamma : 1234.335
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 60854.41
+channel.alpha : 46885
+channel.lowbeta : 31756.84
+channel.highbeta : 12914.28
+channel.gamma : 3236.82
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.2956264
+channel.alpha : 0.227764
+channel.lowbeta : 0.1542725
+channel.highbeta : 0.06273668
+channel.gamma : 0.01572424
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 46104.51
+channel.alpha : 35521.01
+channel.lowbeta : 24059.61
+channel.highbeta : 9784.117
+channel.gamma : 2452.279
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 12.37744
+channel.alpha : 9.53614
+channel.lowbeta : 6.459158
+channel.highbeta : 2.626691
+channel.gamma : 0.6583506
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 1612.422
+channel.alpha : 1242.283
+channel.lowbeta : 841.4417
+channel.highbeta : 342.182
+channel.gamma : 85.76405
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 3442.554
+channel.alpha : 2652.301
+channel.lowbeta : 1796.495
+channel.highbeta : 730.5654
+channel.gamma : 183.108
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 32090.5
+channel.alpha : 24723.98
+channel.lowbeta : 16746.41
+channel.highbeta : 6810.121
+channel.gamma : 1706.88
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 918.3407
+channel.alpha : 707.5314
+channel.lowbeta : 479.2355
+channel.highbeta : 194.8867
+channel.gamma : 48.84615
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 36262.95
+channel.alpha : 27938.62
+channel.lowbeta : 18923.79
+channel.highbeta : 7695.58
+channel.gamma : 1928.81
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 6822.225
+channel.alpha : 5256.152
+channel.lowbeta : 3560.174
+channel.highbeta : 1447.786
+channel.gamma : 362.8712
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 62570.55
+channel.alpha : 48207.2
+channel.lowbeta : 32652.4
+channel.highbeta : 13278.48
+channel.gamma : 3328.101
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 27230.81
+channel.alpha : 20979.86
+channel.lowbeta : 14210.38
+channel.highbeta : 5778.816
+channel.gamma : 1448.395
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 32343.09
+channel.alpha : 24918.59
+channel.lowbeta : 16878.22
+channel.highbeta : 6863.725
+channel.gamma : 1720.315
+
+---------STEP.PreStep2---------
+stepState : PreStep2
+recordTimeStamp5
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23206.34
+channel.alpha : 17879.21
+channel.lowbeta : 12110.21
+channel.highbeta : 4924.757
+channel.gamma : 1234.335
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 60854.41
+channel.alpha : 46885
+channel.lowbeta : 31756.84
+channel.highbeta : 12914.28
+channel.gamma : 3236.82
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.2956264
+channel.alpha : 0.227764
+channel.lowbeta : 0.1542725
+channel.highbeta : 0.06273668
+channel.gamma : 0.01572424
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 46104.51
+channel.alpha : 35521.01
+channel.lowbeta : 24059.61
+channel.highbeta : 9784.117
+channel.gamma : 2452.279
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 12.37744
+channel.alpha : 9.53614
+channel.lowbeta : 6.459158
+channel.highbeta : 2.626691
+channel.gamma : 0.6583506
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 1612.422
+channel.alpha : 1242.283
+channel.lowbeta : 841.4417
+channel.highbeta : 342.182
+channel.gamma : 85.76405
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 3442.554
+channel.alpha : 2652.301
+channel.lowbeta : 1796.495
+channel.highbeta : 730.5654
+channel.gamma : 183.108
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 32090.5
+channel.alpha : 24723.98
+channel.lowbeta : 16746.41
+channel.highbeta : 6810.121
+channel.gamma : 1706.88
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 918.3407
+channel.alpha : 707.5314
+channel.lowbeta : 479.2355
+channel.highbeta : 194.8867
+channel.gamma : 48.84615
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 36262.95
+channel.alpha : 27938.62
+channel.lowbeta : 18923.79
+channel.highbeta : 7695.58
+channel.gamma : 1928.81
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 6822.225
+channel.alpha : 5256.152
+channel.lowbeta : 3560.174
+channel.highbeta : 1447.786
+channel.gamma : 362.8712
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 62570.55
+channel.alpha : 48207.2
+channel.lowbeta : 32652.4
+channel.highbeta : 13278.48
+channel.gamma : 3328.101
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 27230.81
+channel.alpha : 20979.86
+channel.lowbeta : 14210.38
+channel.highbeta : 5778.816
+channel.gamma : 1448.395
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 32343.09
+channel.alpha : 24918.59
+channel.lowbeta : 16878.22
+channel.highbeta : 6863.725
+channel.gamma : 1720.315
+
+---------STEP.PreStep2---------
+stepState : PreStep2
+recordTimeStamp6
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23206.34
+channel.alpha : 17879.21
+channel.lowbeta : 12110.21
+channel.highbeta : 4924.757
+channel.gamma : 1234.335
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 60854.41
+channel.alpha : 46885
+channel.lowbeta : 31756.84
+channel.highbeta : 12914.28
+channel.gamma : 3236.82
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.2956264
+channel.alpha : 0.227764
+channel.lowbeta : 0.1542725
+channel.highbeta : 0.06273668
+channel.gamma : 0.01572424
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 46104.51
+channel.alpha : 35521.01
+channel.lowbeta : 24059.61
+channel.highbeta : 9784.117
+channel.gamma : 2452.279
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 12.37744
+channel.alpha : 9.53614
+channel.lowbeta : 6.459158
+channel.highbeta : 2.626691
+channel.gamma : 0.6583506
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 1612.422
+channel.alpha : 1242.283
+channel.lowbeta : 841.4417
+channel.highbeta : 342.182
+channel.gamma : 85.76405
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 3442.554
+channel.alpha : 2652.301
+channel.lowbeta : 1796.495
+channel.highbeta : 730.5654
+channel.gamma : 183.108
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 32090.5
+channel.alpha : 24723.98
+channel.lowbeta : 16746.41
+channel.highbeta : 6810.121
+channel.gamma : 1706.88
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 918.3407
+channel.alpha : 707.5314
+channel.lowbeta : 479.2355
+channel.highbeta : 194.8867
+channel.gamma : 48.84615
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 36262.95
+channel.alpha : 27938.62
+channel.lowbeta : 18923.79
+channel.highbeta : 7695.58
+channel.gamma : 1928.81
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 6822.225
+channel.alpha : 5256.152
+channel.lowbeta : 3560.174
+channel.highbeta : 1447.786
+channel.gamma : 362.8712
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 62570.55
+channel.alpha : 48207.2
+channel.lowbeta : 32652.4
+channel.highbeta : 13278.48
+channel.gamma : 3328.101
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 27230.81
+channel.alpha : 20979.86
+channel.lowbeta : 14210.38
+channel.highbeta : 5778.816
+channel.gamma : 1448.395
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 32343.09
+channel.alpha : 24918.59
+channel.lowbeta : 16878.22
+channel.highbeta : 6863.725
+channel.gamma : 1720.315
+
+---------STEP.PreStep2---------
+stepState : PreStep2
+recordTimeStamp7
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23206.34
+channel.alpha : 17879.21
+channel.lowbeta : 12110.21
+channel.highbeta : 4924.757
+channel.gamma : 1234.335
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 60854.41
+channel.alpha : 46885
+channel.lowbeta : 31756.84
+channel.highbeta : 12914.28
+channel.gamma : 3236.82
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.2956264
+channel.alpha : 0.227764
+channel.lowbeta : 0.1542725
+channel.highbeta : 0.06273668
+channel.gamma : 0.01572424
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 46104.51
+channel.alpha : 35521.01
+channel.lowbeta : 24059.61
+channel.highbeta : 9784.117
+channel.gamma : 2452.279
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 12.37744
+channel.alpha : 9.53614
+channel.lowbeta : 6.459158
+channel.highbeta : 2.626691
+channel.gamma : 0.6583506
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 1612.422
+channel.alpha : 1242.283
+channel.lowbeta : 841.4417
+channel.highbeta : 342.182
+channel.gamma : 85.76405
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 3442.554
+channel.alpha : 2652.301
+channel.lowbeta : 1796.495
+channel.highbeta : 730.5654
+channel.gamma : 183.108
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 32090.5
+channel.alpha : 24723.98
+channel.lowbeta : 16746.41
+channel.highbeta : 6810.121
+channel.gamma : 1706.88
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 918.3407
+channel.alpha : 707.5314
+channel.lowbeta : 479.2355
+channel.highbeta : 194.8867
+channel.gamma : 48.84615
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 36262.95
+channel.alpha : 27938.62
+channel.lowbeta : 18923.79
+channel.highbeta : 7695.58
+channel.gamma : 1928.81
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 6822.225
+channel.alpha : 5256.152
+channel.lowbeta : 3560.174
+channel.highbeta : 1447.786
+channel.gamma : 362.8712
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 62570.55
+channel.alpha : 48207.2
+channel.lowbeta : 32652.4
+channel.highbeta : 13278.48
+channel.gamma : 3328.101
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 27230.81
+channel.alpha : 20979.86
+channel.lowbeta : 14210.38
+channel.highbeta : 5778.816
+channel.gamma : 1448.395
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 32343.09
+channel.alpha : 24918.59
+channel.lowbeta : 16878.22
+channel.highbeta : 6863.725
+channel.gamma : 1720.315
+
+---------STEP.PreStep2---------
+stepState : PreStep2
+recordTimeStamp8
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23206.34
+channel.alpha : 17879.21
+channel.lowbeta : 12110.21
+channel.highbeta : 4924.757
+channel.gamma : 1234.335
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 60854.41
+channel.alpha : 46885
+channel.lowbeta : 31756.84
+channel.highbeta : 12914.28
+channel.gamma : 3236.82
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.2956264
+channel.alpha : 0.227764
+channel.lowbeta : 0.1542725
+channel.highbeta : 0.06273668
+channel.gamma : 0.01572424
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 46104.51
+channel.alpha : 35521.01
+channel.lowbeta : 24059.61
+channel.highbeta : 9784.117
+channel.gamma : 2452.279
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 12.37744
+channel.alpha : 9.53614
+channel.lowbeta : 6.459158
+channel.highbeta : 2.626691
+channel.gamma : 0.6583506
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 1612.422
+channel.alpha : 1242.283
+channel.lowbeta : 841.4417
+channel.highbeta : 342.182
+channel.gamma : 85.76405
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 3442.554
+channel.alpha : 2652.301
+channel.lowbeta : 1796.495
+channel.highbeta : 730.5654
+channel.gamma : 183.108
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 32090.5
+channel.alpha : 24723.98
+channel.lowbeta : 16746.41
+channel.highbeta : 6810.121
+channel.gamma : 1706.88
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 918.3407
+channel.alpha : 707.5314
+channel.lowbeta : 479.2355
+channel.highbeta : 194.8867
+channel.gamma : 48.84615
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 36262.95
+channel.alpha : 27938.62
+channel.lowbeta : 18923.79
+channel.highbeta : 7695.58
+channel.gamma : 1928.81
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 6822.225
+channel.alpha : 5256.152
+channel.lowbeta : 3560.174
+channel.highbeta : 1447.786
+channel.gamma : 362.8712
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 62570.55
+channel.alpha : 48207.2
+channel.lowbeta : 32652.4
+channel.highbeta : 13278.48
+channel.gamma : 3328.101
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 27230.81
+channel.alpha : 20979.86
+channel.lowbeta : 14210.38
+channel.highbeta : 5778.816
+channel.gamma : 1448.395
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 32343.09
+channel.alpha : 24918.59
+channel.lowbeta : 16878.22
+channel.highbeta : 6863.725
+channel.gamma : 1720.315
+
+---------STEP.PreStep2---------
+stepState : PreStep2
+recordTimeStamp9
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23206.34
+channel.alpha : 17879.21
+channel.lowbeta : 12110.21
+channel.highbeta : 4924.757
+channel.gamma : 1234.335
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 60854.41
+channel.alpha : 46885
+channel.lowbeta : 31756.84
+channel.highbeta : 12914.28
+channel.gamma : 3236.82
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 0.2956264
+channel.alpha : 0.227764
+channel.lowbeta : 0.1542725
+channel.highbeta : 0.06273668
+channel.gamma : 0.01572424
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 46104.51
+channel.alpha : 35521.01
+channel.lowbeta : 24059.61
+channel.highbeta : 9784.117
+channel.gamma : 2452.279
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 12.37744
+channel.alpha : 9.53614
+channel.lowbeta : 6.459158
+channel.highbeta : 2.626691
+channel.gamma : 0.6583506
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 1612.422
+channel.alpha : 1242.283
+channel.lowbeta : 841.4417
+channel.highbeta : 342.182
+channel.gamma : 85.76405
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 3442.554
+channel.alpha : 2652.301
+channel.lowbeta : 1796.495
+channel.highbeta : 730.5654
+channel.gamma : 183.108
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 32090.5
+channel.alpha : 24723.98
+channel.lowbeta : 16746.41
+channel.highbeta : 6810.121
+channel.gamma : 1706.88
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 918.3407
+channel.alpha : 707.5314
+channel.lowbeta : 479.2355
+channel.highbeta : 194.8867
+channel.gamma : 48.84615
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 36262.95
+channel.alpha : 27938.62
+channel.lowbeta : 18923.79
+channel.highbeta : 7695.58
+channel.gamma : 1928.81
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 6822.225
+channel.alpha : 5256.152
+channel.lowbeta : 3560.174
+channel.highbeta : 1447.786
+channel.gamma : 362.8712
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 62570.55
+channel.alpha : 48207.2
+channel.lowbeta : 32652.4
+channel.highbeta : 13278.48
+channel.gamma : 3328.101
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 27230.81
+channel.alpha : 20979.86
+channel.lowbeta : 14210.38
+channel.highbeta : 5778.816
+channel.gamma : 1448.395
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 32343.09
+channel.alpha : 24918.59
+channel.lowbeta : 16878.22
+channel.highbeta : 6863.725
+channel.gamma : 1720.315
+
+---------STEP.Step2---------
+stepState : Step2
+recordTimeStamp0
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 20153.86
+channel.alpha : 24271.73
+channel.lowbeta : 19980.85
+channel.highbeta : 15112.4
+channel.gamma : 6599.769
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 14409.07
+channel.alpha : 17638.96
+channel.lowbeta : 14470.44
+channel.highbeta : 10913.09
+channel.gamma : 4777.873
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 5664.893
+channel.alpha : 7000.433
+channel.lowbeta : 5727.242
+channel.highbeta : 4309.747
+channel.gamma : 1890.126
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 726.5695
+channel.alpha : 914.8204
+channel.lowbeta : 740.9208
+channel.highbeta : 553.1681
+channel.gamma : 243.8844
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 22661.11
+channel.alpha : 27500.73
+channel.lowbeta : 22605.8
+channel.highbeta : 17076.61
+channel.gamma : 7465.909
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 12032.53
+channel.alpha : 14700.68
+channel.lowbeta : 12065.88
+channel.highbeta : 9103.302
+channel.gamma : 3984.211
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 735.6785
+channel.alpha : 905.5685
+channel.lowbeta : 708.186
+channel.highbeta : 514.9738
+channel.gamma : 229.8922
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 16311.17
+channel.alpha : 19572.68
+channel.lowbeta : 16122.56
+channel.highbeta : 12200.72
+channel.gamma : 5325.517
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 6017.214
+channel.alpha : 7221.025
+channel.lowbeta : 5948.074
+channel.highbeta : 4501.136
+channel.gamma : 1964.734
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 874.6342
+channel.alpha : 1075.702
+channel.lowbeta : 881.3574
+channel.highbeta : 664.0062
+channel.gamma : 290.9486
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 17241.24
+channel.alpha : 20925.33
+channel.lowbeta : 17200.44
+channel.highbeta : 12993.14
+channel.gamma : 5680.695
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 2572.754
+channel.alpha : 3221.97
+channel.lowbeta : 2620.537
+channel.highbeta : 1962.858
+channel.gamma : 863.6382
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 4517.457
+channel.alpha : 5641.278
+channel.lowbeta : 4595.566
+channel.highbeta : 3446.49
+channel.gamma : 1515.172
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 187.6053
+channel.alpha : 229.2482
+channel.lowbeta : 188.1516
+channel.highbeta : 141.9489
+channel.gamma : 62.12818
+
+---------STEP.PreStep3---------
+stepState : PreStep3
+recordTimeStamp0
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 36112.65
+channel.alpha : 30388.29
+channel.lowbeta : 23167.02
+channel.highbeta : 12918.42
+channel.gamma : 3887.145
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 32754.26
+channel.alpha : 27361.38
+channel.lowbeta : 20704.7
+channel.highbeta : 11550.14
+channel.gamma : 3455.429
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 13844.23
+channel.alpha : 11503.09
+channel.lowbeta : 8657.972
+channel.highbeta : 4835.416
+channel.gamma : 1446.706
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 3422.028
+channel.alpha : 2841.663
+channel.lowbeta : 2137.5
+channel.highbeta : 1193.997
+channel.gamma : 357.3268
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 6426.412
+channel.alpha : 5427.242
+channel.lowbeta : 4152.908
+channel.highbeta : 2316.326
+channel.gamma : 700.5372
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 10769.63
+channel.alpha : 9180.767
+channel.lowbeta : 7092.829
+channel.highbeta : 3963.446
+channel.gamma : 1221.526
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 562.8128
+channel.alpha : 502.1516
+channel.lowbeta : 407.06
+channel.highbeta : 234.0438
+channel.gamma : 85.24575
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 321.6192
+channel.alpha : 291.583
+channel.lowbeta : 240.403
+channel.highbeta : 140.3689
+channel.gamma : 54.87119
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 30412
+channel.alpha : 25581.5
+channel.lowbeta : 19493.89
+channel.highbeta : 10870.07
+channel.gamma : 3269.105
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 15443.62
+channel.alpha : 12934.09
+channel.lowbeta : 9811.785
+channel.highbeta : 5471.954
+channel.gamma : 1639.027
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 19615.85
+channel.alpha : 16595.25
+channel.lowbeta : 12722.31
+channel.highbeta : 7097.643
+channel.gamma : 2153.16
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 29626
+channel.alpha : 24906.93
+channel.lowbeta : 18967.96
+channel.highbeta : 10576.69
+channel.gamma : 3178.648
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 2382.578
+channel.alpha : 2047.152
+channel.lowbeta : 1594.596
+channel.highbeta : 893.5612
+channel.gamma : 281.3844
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1656.117
+channel.alpha : 1411.592
+channel.lowbeta : 1090.583
+channel.highbeta : 609.425
+channel.gamma : 187.8407
+
+---------STEP.PreStep3---------
+stepState : PreStep3
+recordTimeStamp1
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 36112.65
+channel.alpha : 30388.29
+channel.lowbeta : 23167.02
+channel.highbeta : 12918.42
+channel.gamma : 3887.145
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 32754.26
+channel.alpha : 27361.38
+channel.lowbeta : 20704.7
+channel.highbeta : 11550.14
+channel.gamma : 3455.429
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 13844.23
+channel.alpha : 11503.09
+channel.lowbeta : 8657.972
+channel.highbeta : 4835.416
+channel.gamma : 1446.706
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 3422.028
+channel.alpha : 2841.663
+channel.lowbeta : 2137.5
+channel.highbeta : 1193.997
+channel.gamma : 357.3268
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 6426.412
+channel.alpha : 5427.242
+channel.lowbeta : 4152.908
+channel.highbeta : 2316.326
+channel.gamma : 700.5372
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 10769.63
+channel.alpha : 9180.767
+channel.lowbeta : 7092.829
+channel.highbeta : 3963.446
+channel.gamma : 1221.526
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 562.8128
+channel.alpha : 502.1516
+channel.lowbeta : 407.06
+channel.highbeta : 234.0438
+channel.gamma : 85.24575
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 321.6192
+channel.alpha : 291.583
+channel.lowbeta : 240.403
+channel.highbeta : 140.3689
+channel.gamma : 54.87119
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 30412
+channel.alpha : 25581.5
+channel.lowbeta : 19493.89
+channel.highbeta : 10870.07
+channel.gamma : 3269.105
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 15443.62
+channel.alpha : 12934.09
+channel.lowbeta : 9811.785
+channel.highbeta : 5471.954
+channel.gamma : 1639.027
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 19615.85
+channel.alpha : 16595.25
+channel.lowbeta : 12722.31
+channel.highbeta : 7097.643
+channel.gamma : 2153.16
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 29626
+channel.alpha : 24906.93
+channel.lowbeta : 18967.96
+channel.highbeta : 10576.69
+channel.gamma : 3178.648
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 2382.578
+channel.alpha : 2047.152
+channel.lowbeta : 1594.596
+channel.highbeta : 893.5612
+channel.gamma : 281.3844
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1656.117
+channel.alpha : 1411.592
+channel.lowbeta : 1090.583
+channel.highbeta : 609.425
+channel.gamma : 187.8407
+
+---------STEP.PreStep3---------
+stepState : PreStep3
+recordTimeStamp2
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 36112.65
+channel.alpha : 30388.29
+channel.lowbeta : 23167.02
+channel.highbeta : 12918.42
+channel.gamma : 3887.145
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 32754.26
+channel.alpha : 27361.38
+channel.lowbeta : 20704.7
+channel.highbeta : 11550.14
+channel.gamma : 3455.429
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 13844.23
+channel.alpha : 11503.09
+channel.lowbeta : 8657.972
+channel.highbeta : 4835.416
+channel.gamma : 1446.706
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 3422.028
+channel.alpha : 2841.663
+channel.lowbeta : 2137.5
+channel.highbeta : 1193.997
+channel.gamma : 357.3268
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 6426.412
+channel.alpha : 5427.242
+channel.lowbeta : 4152.908
+channel.highbeta : 2316.326
+channel.gamma : 700.5372
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 10769.63
+channel.alpha : 9180.767
+channel.lowbeta : 7092.829
+channel.highbeta : 3963.446
+channel.gamma : 1221.526
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 562.8128
+channel.alpha : 502.1516
+channel.lowbeta : 407.06
+channel.highbeta : 234.0438
+channel.gamma : 85.24575
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 321.6192
+channel.alpha : 291.583
+channel.lowbeta : 240.403
+channel.highbeta : 140.3689
+channel.gamma : 54.87119
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 30412
+channel.alpha : 25581.5
+channel.lowbeta : 19493.89
+channel.highbeta : 10870.07
+channel.gamma : 3269.105
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 15443.62
+channel.alpha : 12934.09
+channel.lowbeta : 9811.785
+channel.highbeta : 5471.954
+channel.gamma : 1639.027
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 19615.85
+channel.alpha : 16595.25
+channel.lowbeta : 12722.31
+channel.highbeta : 7097.643
+channel.gamma : 2153.16
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 29626
+channel.alpha : 24906.93
+channel.lowbeta : 18967.96
+channel.highbeta : 10576.69
+channel.gamma : 3178.648
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 2382.578
+channel.alpha : 2047.152
+channel.lowbeta : 1594.596
+channel.highbeta : 893.5612
+channel.gamma : 281.3844
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1656.117
+channel.alpha : 1411.592
+channel.lowbeta : 1090.583
+channel.highbeta : 609.425
+channel.gamma : 187.8407
+
+---------STEP.PreStep3---------
+stepState : PreStep3
+recordTimeStamp3
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 36112.65
+channel.alpha : 30388.29
+channel.lowbeta : 23167.02
+channel.highbeta : 12918.42
+channel.gamma : 3887.145
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 32754.26
+channel.alpha : 27361.38
+channel.lowbeta : 20704.7
+channel.highbeta : 11550.14
+channel.gamma : 3455.429
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 13844.23
+channel.alpha : 11503.09
+channel.lowbeta : 8657.972
+channel.highbeta : 4835.416
+channel.gamma : 1446.706
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 3422.028
+channel.alpha : 2841.663
+channel.lowbeta : 2137.5
+channel.highbeta : 1193.997
+channel.gamma : 357.3268
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 6426.412
+channel.alpha : 5427.242
+channel.lowbeta : 4152.908
+channel.highbeta : 2316.326
+channel.gamma : 700.5372
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 10769.63
+channel.alpha : 9180.767
+channel.lowbeta : 7092.829
+channel.highbeta : 3963.446
+channel.gamma : 1221.526
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 562.8128
+channel.alpha : 502.1516
+channel.lowbeta : 407.06
+channel.highbeta : 234.0438
+channel.gamma : 85.24575
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 321.6192
+channel.alpha : 291.583
+channel.lowbeta : 240.403
+channel.highbeta : 140.3689
+channel.gamma : 54.87119
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 30412
+channel.alpha : 25581.5
+channel.lowbeta : 19493.89
+channel.highbeta : 10870.07
+channel.gamma : 3269.105
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 15443.62
+channel.alpha : 12934.09
+channel.lowbeta : 9811.785
+channel.highbeta : 5471.954
+channel.gamma : 1639.027
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 19615.85
+channel.alpha : 16595.25
+channel.lowbeta : 12722.31
+channel.highbeta : 7097.643
+channel.gamma : 2153.16
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 29626
+channel.alpha : 24906.93
+channel.lowbeta : 18967.96
+channel.highbeta : 10576.69
+channel.gamma : 3178.648
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 2382.578
+channel.alpha : 2047.152
+channel.lowbeta : 1594.596
+channel.highbeta : 893.5612
+channel.gamma : 281.3844
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1656.117
+channel.alpha : 1411.592
+channel.lowbeta : 1090.583
+channel.highbeta : 609.425
+channel.gamma : 187.8407
+
+---------STEP.PreStep3---------
+stepState : PreStep3
+recordTimeStamp4
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 36112.65
+channel.alpha : 30388.29
+channel.lowbeta : 23167.02
+channel.highbeta : 12918.42
+channel.gamma : 3887.145
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 32754.26
+channel.alpha : 27361.38
+channel.lowbeta : 20704.7
+channel.highbeta : 11550.14
+channel.gamma : 3455.429
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 13844.23
+channel.alpha : 11503.09
+channel.lowbeta : 8657.972
+channel.highbeta : 4835.416
+channel.gamma : 1446.706
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 3422.028
+channel.alpha : 2841.663
+channel.lowbeta : 2137.5
+channel.highbeta : 1193.997
+channel.gamma : 357.3268
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 6426.412
+channel.alpha : 5427.242
+channel.lowbeta : 4152.908
+channel.highbeta : 2316.326
+channel.gamma : 700.5372
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 10769.63
+channel.alpha : 9180.767
+channel.lowbeta : 7092.829
+channel.highbeta : 3963.446
+channel.gamma : 1221.526
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 562.8128
+channel.alpha : 502.1516
+channel.lowbeta : 407.06
+channel.highbeta : 234.0438
+channel.gamma : 85.24575
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 321.6192
+channel.alpha : 291.583
+channel.lowbeta : 240.403
+channel.highbeta : 140.3689
+channel.gamma : 54.87119
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 30412
+channel.alpha : 25581.5
+channel.lowbeta : 19493.89
+channel.highbeta : 10870.07
+channel.gamma : 3269.105
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 15443.62
+channel.alpha : 12934.09
+channel.lowbeta : 9811.785
+channel.highbeta : 5471.954
+channel.gamma : 1639.027
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 19615.85
+channel.alpha : 16595.25
+channel.lowbeta : 12722.31
+channel.highbeta : 7097.643
+channel.gamma : 2153.16
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 29626
+channel.alpha : 24906.93
+channel.lowbeta : 18967.96
+channel.highbeta : 10576.69
+channel.gamma : 3178.648
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 2382.578
+channel.alpha : 2047.152
+channel.lowbeta : 1594.596
+channel.highbeta : 893.5612
+channel.gamma : 281.3844
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 1656.117
+channel.alpha : 1411.592
+channel.lowbeta : 1090.583
+channel.highbeta : 609.425
+channel.gamma : 187.8407
+
+---------STEP.PreStep3---------
+stepState : PreStep3
+recordTimeStamp5
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23.57741
+channel.alpha : 20.34061
+channel.lowbeta : 19.84916
+channel.highbeta : 21.47246
+channel.gamma : 17.57206
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 2404.797
+channel.alpha : 2074.657
+channel.lowbeta : 2024.532
+channel.highbeta : 2190.101
+channel.gamma : 1792.276
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 637.9267
+channel.alpha : 550.3497
+channel.lowbeta : 537.0527
+channel.highbeta : 580.9736
+channel.gamma : 475.4417
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1.467255E-33
+channel.alpha : 2.650962E-35
+channel.lowbeta : 2.790904E-36
+channel.highbeta : 3.376665E-37
+channel.gamma : 1.646824E-38
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 1036.042
+channel.alpha : 893.8099
+channel.lowbeta : 872.2148
+channel.highbeta : 943.5457
+channel.gamma : 772.1537
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6302.037
+channel.alpha : 5436.869
+channel.lowbeta : 5305.51
+channel.highbeta : 5739.401
+channel.gamma : 4696.859
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 763.9017
+channel.alpha : 659.0303
+channel.lowbeta : 643.1076
+channel.highbeta : 695.7018
+channel.gamma : 569.33
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 984.3447
+channel.alpha : 849.21
+channel.lowbeta : 828.6924
+channel.highbeta : 896.464
+channel.gamma : 733.6243
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 2048.414
+channel.alpha : 1767.199
+channel.lowbeta : 1724.502
+channel.highbeta : 1865.534
+channel.gamma : 1526.667
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 193.7449
+channel.alpha : 167.1468
+channel.lowbeta : 163.1084
+channel.highbeta : 176.4476
+channel.gamma : 144.3965
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 5.906182
+channel.alpha : 5.095359
+channel.lowbeta : 4.97225
+channel.highbeta : 5.378888
+channel.gamma : 4.401831
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 984.0391
+channel.alpha : 848.9464
+channel.lowbeta : 828.4352
+channel.highbeta : 896.1857
+channel.gamma : 733.3966
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 6175.096
+channel.alpha : 5327.355
+channel.lowbeta : 5198.642
+channel.highbeta : 5623.793
+channel.gamma : 4602.25
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 402.0384
+channel.alpha : 346.845
+channel.lowbeta : 338.4649
+channel.highbeta : 366.145
+channel.gamma : 299.636
+
+---------STEP.PreStep3---------
+stepState : PreStep3
+recordTimeStamp6
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23.57741
+channel.alpha : 20.34061
+channel.lowbeta : 19.84916
+channel.highbeta : 21.47246
+channel.gamma : 17.57206
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 2404.797
+channel.alpha : 2074.657
+channel.lowbeta : 2024.532
+channel.highbeta : 2190.101
+channel.gamma : 1792.276
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 637.9267
+channel.alpha : 550.3497
+channel.lowbeta : 537.0527
+channel.highbeta : 580.9736
+channel.gamma : 475.4417
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1.467255E-33
+channel.alpha : 2.650962E-35
+channel.lowbeta : 2.790904E-36
+channel.highbeta : 3.376665E-37
+channel.gamma : 1.646824E-38
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 1036.042
+channel.alpha : 893.8099
+channel.lowbeta : 872.2148
+channel.highbeta : 943.5457
+channel.gamma : 772.1537
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6302.037
+channel.alpha : 5436.869
+channel.lowbeta : 5305.51
+channel.highbeta : 5739.401
+channel.gamma : 4696.859
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 763.9017
+channel.alpha : 659.0303
+channel.lowbeta : 643.1076
+channel.highbeta : 695.7018
+channel.gamma : 569.33
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 984.3447
+channel.alpha : 849.21
+channel.lowbeta : 828.6924
+channel.highbeta : 896.464
+channel.gamma : 733.6243
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 2048.414
+channel.alpha : 1767.199
+channel.lowbeta : 1724.502
+channel.highbeta : 1865.534
+channel.gamma : 1526.667
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 193.7449
+channel.alpha : 167.1468
+channel.lowbeta : 163.1084
+channel.highbeta : 176.4476
+channel.gamma : 144.3965
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 5.906182
+channel.alpha : 5.095359
+channel.lowbeta : 4.97225
+channel.highbeta : 5.378888
+channel.gamma : 4.401831
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 984.0391
+channel.alpha : 848.9464
+channel.lowbeta : 828.4352
+channel.highbeta : 896.1857
+channel.gamma : 733.3966
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 6175.096
+channel.alpha : 5327.355
+channel.lowbeta : 5198.642
+channel.highbeta : 5623.793
+channel.gamma : 4602.25
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 402.0384
+channel.alpha : 346.845
+channel.lowbeta : 338.4649
+channel.highbeta : 366.145
+channel.gamma : 299.636
+
+---------STEP.PreStep3---------
+stepState : PreStep3
+recordTimeStamp7
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23.57741
+channel.alpha : 20.34061
+channel.lowbeta : 19.84916
+channel.highbeta : 21.47246
+channel.gamma : 17.57206
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 2404.797
+channel.alpha : 2074.657
+channel.lowbeta : 2024.532
+channel.highbeta : 2190.101
+channel.gamma : 1792.276
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 637.9267
+channel.alpha : 550.3497
+channel.lowbeta : 537.0527
+channel.highbeta : 580.9736
+channel.gamma : 475.4417
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1.467255E-33
+channel.alpha : 2.650962E-35
+channel.lowbeta : 2.790904E-36
+channel.highbeta : 3.376665E-37
+channel.gamma : 1.646824E-38
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 1036.042
+channel.alpha : 893.8099
+channel.lowbeta : 872.2148
+channel.highbeta : 943.5457
+channel.gamma : 772.1537
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6302.037
+channel.alpha : 5436.869
+channel.lowbeta : 5305.51
+channel.highbeta : 5739.401
+channel.gamma : 4696.859
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 763.9017
+channel.alpha : 659.0303
+channel.lowbeta : 643.1076
+channel.highbeta : 695.7018
+channel.gamma : 569.33
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 984.3447
+channel.alpha : 849.21
+channel.lowbeta : 828.6924
+channel.highbeta : 896.464
+channel.gamma : 733.6243
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 2048.414
+channel.alpha : 1767.199
+channel.lowbeta : 1724.502
+channel.highbeta : 1865.534
+channel.gamma : 1526.667
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 193.7449
+channel.alpha : 167.1468
+channel.lowbeta : 163.1084
+channel.highbeta : 176.4476
+channel.gamma : 144.3965
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 5.906182
+channel.alpha : 5.095359
+channel.lowbeta : 4.97225
+channel.highbeta : 5.378888
+channel.gamma : 4.401831
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 984.0391
+channel.alpha : 848.9464
+channel.lowbeta : 828.4352
+channel.highbeta : 896.1857
+channel.gamma : 733.3966
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 6175.096
+channel.alpha : 5327.355
+channel.lowbeta : 5198.642
+channel.highbeta : 5623.793
+channel.gamma : 4602.25
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 402.0384
+channel.alpha : 346.845
+channel.lowbeta : 338.4649
+channel.highbeta : 366.145
+channel.gamma : 299.636
+
+---------STEP.PreStep3---------
+stepState : PreStep3
+recordTimeStamp8
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23.57741
+channel.alpha : 20.34061
+channel.lowbeta : 19.84916
+channel.highbeta : 21.47246
+channel.gamma : 17.57206
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 2404.797
+channel.alpha : 2074.657
+channel.lowbeta : 2024.532
+channel.highbeta : 2190.101
+channel.gamma : 1792.276
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 637.9267
+channel.alpha : 550.3497
+channel.lowbeta : 537.0527
+channel.highbeta : 580.9736
+channel.gamma : 475.4417
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1.467255E-33
+channel.alpha : 2.650962E-35
+channel.lowbeta : 2.790904E-36
+channel.highbeta : 3.376665E-37
+channel.gamma : 1.646824E-38
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 1036.042
+channel.alpha : 893.8099
+channel.lowbeta : 872.2148
+channel.highbeta : 943.5457
+channel.gamma : 772.1537
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6302.037
+channel.alpha : 5436.869
+channel.lowbeta : 5305.51
+channel.highbeta : 5739.401
+channel.gamma : 4696.859
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 763.9017
+channel.alpha : 659.0303
+channel.lowbeta : 643.1076
+channel.highbeta : 695.7018
+channel.gamma : 569.33
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 984.3447
+channel.alpha : 849.21
+channel.lowbeta : 828.6924
+channel.highbeta : 896.464
+channel.gamma : 733.6243
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 2048.414
+channel.alpha : 1767.199
+channel.lowbeta : 1724.502
+channel.highbeta : 1865.534
+channel.gamma : 1526.667
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 193.7449
+channel.alpha : 167.1468
+channel.lowbeta : 163.1084
+channel.highbeta : 176.4476
+channel.gamma : 144.3965
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 5.906182
+channel.alpha : 5.095359
+channel.lowbeta : 4.97225
+channel.highbeta : 5.378888
+channel.gamma : 4.401831
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 984.0391
+channel.alpha : 848.9464
+channel.lowbeta : 828.4352
+channel.highbeta : 896.1857
+channel.gamma : 733.3966
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 6175.096
+channel.alpha : 5327.355
+channel.lowbeta : 5198.642
+channel.highbeta : 5623.793
+channel.gamma : 4602.25
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 402.0384
+channel.alpha : 346.845
+channel.lowbeta : 338.4649
+channel.highbeta : 366.145
+channel.gamma : 299.636
+
+---------STEP.PreStep3---------
+stepState : PreStep3
+recordTimeStamp9
+PM_Stress : 0.1442609
+PM_Engage : 0.6150315
+PM_Relax : 0.1204
+PM_Excite : 0.8603691
+PM_Interest : 0.6302906
+PM_Focus : 0.899408
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 23.57741
+channel.alpha : 20.34061
+channel.lowbeta : 19.84916
+channel.highbeta : 21.47246
+channel.gamma : 17.57206
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 2404.797
+channel.alpha : 2074.657
+channel.lowbeta : 2024.532
+channel.highbeta : 2190.101
+channel.gamma : 1792.276
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 637.9267
+channel.alpha : 550.3497
+channel.lowbeta : 537.0527
+channel.highbeta : 580.9736
+channel.gamma : 475.4417
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 1.467255E-33
+channel.alpha : 2.650962E-35
+channel.lowbeta : 2.790904E-36
+channel.highbeta : 3.376665E-37
+channel.gamma : 1.646824E-38
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 1036.042
+channel.alpha : 893.8099
+channel.lowbeta : 872.2148
+channel.highbeta : 943.5457
+channel.gamma : 772.1537
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 6302.037
+channel.alpha : 5436.869
+channel.lowbeta : 5305.51
+channel.highbeta : 5739.401
+channel.gamma : 4696.859
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 763.9017
+channel.alpha : 659.0303
+channel.lowbeta : 643.1076
+channel.highbeta : 695.7018
+channel.gamma : 569.33
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 984.3447
+channel.alpha : 849.21
+channel.lowbeta : 828.6924
+channel.highbeta : 896.464
+channel.gamma : 733.6243
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 2048.414
+channel.alpha : 1767.199
+channel.lowbeta : 1724.502
+channel.highbeta : 1865.534
+channel.gamma : 1526.667
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 193.7449
+channel.alpha : 167.1468
+channel.lowbeta : 163.1084
+channel.highbeta : 176.4476
+channel.gamma : 144.3965
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 5.906182
+channel.alpha : 5.095359
+channel.lowbeta : 4.97225
+channel.highbeta : 5.378888
+channel.gamma : 4.401831
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 984.0391
+channel.alpha : 848.9464
+channel.lowbeta : 828.4352
+channel.highbeta : 896.1857
+channel.gamma : 733.3966
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 6175.096
+channel.alpha : 5327.355
+channel.lowbeta : 5198.642
+channel.highbeta : 5623.793
+channel.gamma : 4602.25
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 402.0384
+channel.alpha : 346.845
+channel.lowbeta : 338.4649
+channel.highbeta : 366.145
+channel.gamma : 299.636
+
+---------STEP.Step3---------
+stepState : Step3
+recordTimeStamp0
+PM_Stress : 0.3426745
+PM_Engage : 0.7639117
+PM_Relax : 0.2573526
+PM_Excite : 0.6119529
+PM_Interest : 0.5481155
+PM_Focus : 0.7791724
+---------CHANNEL.IED_AF3---------
+channel.type : IED_AF3
+channel.theta : 11473.18
+channel.alpha : 19370.31
+channel.lowbeta : 8916.79
+channel.highbeta : 14974.86
+channel.gamma : 9270.796
+---------CHANNEL.IED_AF4---------
+channel.type : IED_AF4
+channel.theta : 5728.484
+channel.alpha : 9671.467
+channel.lowbeta : 4452.094
+channel.highbeta : 7476.848
+channel.gamma : 4628.847
+---------CHANNEL.IED_F3---------
+channel.type : IED_F3
+channel.theta : 3390.015
+channel.alpha : 5723.402
+channel.lowbeta : 2634.67
+channel.highbeta : 4424.665
+channel.gamma : 2739.269
+---------CHANNEL.IED_F4---------
+channel.type : IED_F4
+channel.theta : 4922.723
+channel.alpha : 8311.091
+channel.lowbeta : 3825.868
+channel.highbeta : 6425.164
+channel.gamma : 3977.759
+---------CHANNEL.IED_F7---------
+channel.type : IED_F7
+channel.theta : 610.1932
+channel.alpha : 1030.196
+channel.lowbeta : 474.2332
+channel.highbeta : 796.4274
+channel.gamma : 493.0608
+---------CHANNEL.IED_F8---------
+channel.type : IED_F8
+channel.theta : 8414.662
+channel.alpha : 14206.57
+channel.lowbeta : 6539.752
+channel.highbeta : 10982.86
+channel.gamma : 6799.388
+---------CHANNEL.IED_FC5---------
+channel.type : IED_FC5
+channel.theta : 5122.732
+channel.alpha : 8648.769
+channel.lowbeta : 3981.313
+channel.highbeta : 6686.217
+channel.gamma : 4139.375
+---------CHANNEL.IED_FC6---------
+channel.type : IED_FC6
+channel.theta : 5687.97
+channel.alpha : 9603.066
+channel.lowbeta : 4420.607
+channel.highbeta : 7423.969
+channel.gamma : 4596.11
+---------CHANNEL.IED_O1---------
+channel.type : IED_O1
+channel.theta : 5648.66
+channel.alpha : 9536.699
+channel.lowbeta : 4390.057
+channel.highbeta : 7372.662
+channel.gamma : 4564.346
+---------CHANNEL.IED_O2---------
+channel.type : IED_O2
+channel.theta : 2785.392
+channel.alpha : 4702.61
+channel.lowbeta : 2164.766
+channel.highbeta : 3635.509
+channel.gamma : 2250.71
+---------CHANNEL.IED_P7---------
+channel.type : IED_P7
+channel.theta : 460.0768
+channel.alpha : 776.7531
+channel.lowbeta : 357.565
+channel.highbeta : 600.4946
+channel.gamma : 371.7607
+---------CHANNEL.IED_P8---------
+channel.type : IED_P8
+channel.theta : 78.40984
+channel.alpha : 132.3803
+channel.lowbeta : 60.93899
+channel.highbeta : 102.341
+channel.gamma : 63.35833
+---------CHANNEL.IED_T7---------
+channel.type : IED_T7
+channel.theta : 9326.092
+channel.alpha : 15745.35
+channel.lowbeta : 7248.103
+channel.highbeta : 12172.46
+channel.gamma : 7535.86
+---------CHANNEL.IED_T8---------
+channel.type : IED_T8
+channel.theta : 8896.436
+channel.alpha : 15019.96
+channel.lowbeta : 6914.18
+channel.highbeta : 11611.67
+channel.gamma : 7188.68
+
+PM_STEP_CrossHair
+PM_AVERAGE_Stress : 0%
+PM_AVERAGE_Engage : 54%
+PM_AVERAGE_Relax : 9%
+PM_AVERAGE_Excite : 73%
+PM_AVERAGE_Interest : 67%
+PM_AVERAGE_Focus : 78%
+PM_STEP_Step1
+PM_AVERAGE_Stress : 0%
+PM_AVERAGE_Engage : 54%
+PM_AVERAGE_Relax : 9%
+PM_AVERAGE_Excite : 73%
+PM_AVERAGE_Interest : 67%
+PM_AVERAGE_Focus : 78%
+PM_STEP_Step2
+PM_AVERAGE_Stress : 14%
+PM_AVERAGE_Engage : 62%
+PM_AVERAGE_Relax : 12%
+PM_AVERAGE_Excite : 86%
+PM_AVERAGE_Interest : 63%
+PM_AVERAGE_Focus : 90%
+PM_STEP_Step3
+PM_AVERAGE_Stress : 34%
+PM_AVERAGE_Engage : 76%
+PM_AVERAGE_Relax : 26%
+PM_AVERAGE_Excite : 61%
+PM_AVERAGE_Interest : 55%
+PM_AVERAGE_Focus : 78%
+---------End---------

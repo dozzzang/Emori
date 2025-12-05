@@ -9,8 +9,16 @@ from sentence_transformers import SentenceTransformer
 import torch.nn.functional as F
 from dotenv import load_dotenv
 
-load_dotenv()
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "사용자의 개인 키 입력 필요")
+# 프로젝트 루트에서 .env 파일 로드
+current_file = Path(__file__).resolve()
+project_root = current_file.parent.parent.parent
+env_path = project_root / ".env"
+load_dotenv(dotenv_path=env_path)
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+if not GROQ_API_KEY or GROQ_API_KEY == "사용자의 개인 키 입력 필요":
+    GROQ_API_KEY = None
+
 LLAMA_MODEL_NAME = "llama-3.1-8b-instant"
 
 

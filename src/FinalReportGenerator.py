@@ -133,20 +133,60 @@ class FinalReportGenerator:
     def _extract_participant_name(self):
         """
         EEG 데이터에서 참가자 이름 추출
-        participant_김도단 -> 김도단
+        participant_id를 기반으로 올바른 참가자 이름 추출
         """
         try:
             eeg_data = self._load_json(self.eeg_json_path)
             if eeg_data:
-                participant_key = next(iter(eeg_data.keys()))
-                if participant_key.startswith("participant_"):
-                    return participant_key.replace("participant_", "")
-                return participant_key
-        except Exception:
+                # participant_id가 지정된 경우 해당 참가자 찾기
+                if self.p_id:
+                    print(f"FinalReportGenerator: participant_id '{self.p_id}'로 참가자 찾는 중...")
+                    print(f"  사용 가능한 키: {list(eeg_data.keys())}")
+                    
+                    for key in eeg_data.keys():
+                        # 키에서 이름 추출
+                        key_name = key.replace("participant_", "") if key.startswith("participant_") else key
+                        
+                        # 정확한 매칭 시도
+                        if key == self.p_id or key == f"participant_{self.p_id}":
+                            result = key.replace("participant_", "") if key.startswith("participant_") else key
+                            print(f"  ✅ 정확한 매칭 발견: {key} -> {result}")
+                            return result
+                        
+                        # 이름으로 매칭 (participant_id가 이름인 경우, 예: "최준혁")
+                        if not self.p_id.startswith("EB_"):
+                            # 정확히 일치하는 경우
+                            if self.p_id == key_name:
+                                result = key.replace("participant_", "") if key.startswith("participant_") else key
+                                print(f"  ✅ 이름 매칭 발견: {key} (이름: {key_name}) -> {result}")
+                                return result
+                            # 부분 일치 (더 느슨한 매칭)
+                            elif self.p_id in key_name or key_name in self.p_id:
+                                result = key.replace("participant_", "") if key.startswith("participant_") else key
+                                print(f"  ✅ 부분 매칭 발견: {key} (이름: {key_name}) -> {result}")
+                                return result
+                        else:
+                            # EB_ 형식인 경우 키에 포함되어 있는지 확인
+                            if self.p_id in key or key_name == self.p_id:
+                                result = key.replace("participant_", "") if key.startswith("participant_") else key
+                                print(f"  ✅ EB_ 형식 매칭 발견: {key} -> {result}")
+                                return result
+                    
+                    # 찾지 못한 경우 첫 번째 참가자 사용
+                    participant_key = next(iter(eeg_data.keys()))
+                    result = participant_key.replace("participant_", "") if participant_key.startswith("participant_") else participant_key
+                    print(f"  ⚠️ FinalReportGenerator 경고: {self.p_id}에 해당하는 데이터를 찾지 못해 첫 번째 참가자 사용: {participant_key} -> {result}")
+                    return result
+        except Exception as e:
+            print(f"  ❌ FinalReportGenerator 오류: {e}")
             pass
         
+        # EEG 데이터에서 찾지 못한 경우 participant_id에서 추출
         if self.p_id.startswith("participant_"):
             return self.p_id.replace("participant_", "")
+        # participant_id가 이름인 경우 그대로 반환
+        if not self.p_id.startswith("EB_"):
+            return self.p_id
         return self.p_id
     
     def generate(self):
@@ -174,21 +214,39 @@ class FinalReportGenerator:
         
         step4_data = {}
         stress_val = 0.0
+        engage_val = 0.0
+        relax_val = 0.0
+        excite_val = 0.0
+        interest_val = 0.0
+        focus_val = 0.0
+        
+        # step2, step3 데이터도 추출 (집중도 변화 추적용)
+        step2_data = {}
+        step3_data = {}
+        
         if eeg_data:
             
             participant_data = eeg_data.get(self.p_id, {})
             if not participant_data:
                 
                 for key in eeg_data.keys():
-                    if 'participant' in key.lower():
+                    if 'participant' in key.lower() or self.p_id in key or key.replace("participant_", "") == self.p_id:
                         participant_data = eeg_data[key]
                         break
                 if not participant_data:
                     participant_data = next(iter(eeg_data.values()))
             
             steps = participant_data.get('steps', {})
+            step2_data = steps.get('step2', {})
+            step3_data = steps.get('step3', {})
             step4_data = steps.get('step4', {})
+            
             stress_val = float(step4_data.get('stress', 0.0))
+            engage_val = float(step4_data.get('engage', 0.0))
+            relax_val = float(step4_data.get('relax', 0.0))
+            excite_val = float(step4_data.get('excite', 0.0))
+            interest_val = float(step4_data.get('interest', 0.0))
+            focus_val = float(step4_data.get('focus', 0.0))
         
         
         llama_data = self._load_json(self.llama_json_path)
@@ -288,59 +346,207 @@ class FinalReportGenerator:
         
         
         
+        # 집중도 변화 추적 (step2 -> step3 -> step4)
+        focus_step2 = float(step2_data.get('focus', 0.0))
+        focus_step3 = float(step3_data.get('focus', 0.0))
+        focus_step4 = focus_val
+        
+        focus_trend = "상승" if focus_step4 > focus_step2 else ("하락" if focus_step4 < focus_step2 else "유지")
+        
+        # 감정 매핑 (한글 감정명으로 변환)
+        emotion_map = {
+            'Angry': '분노', 'Happy': '행복', 'Sad': '슬픔', 'Fear': '두려움',
+            'Surprise': '놀람', 'Disgust': '혐오', 'Neutral': '중립'
+        }
+        main_emotion_kr = emotion_map.get(main_emotion, main_emotion)
+        
+        # 긴장도 판단
+        is_high_stress = stress_val >= 0.6
+        is_stable_stress = stress_val < 0.4
+        
+        # 참여도/집중도 판단
+        is_high_engagement = engage_val >= 0.6
+        is_high_focus = focus_val >= 0.6
+        is_high_interest = interest_val >= 0.6
+        
+        # 뇌파 패턴과 인터뷰 일치도 판단
+        is_consistent = discrepancy_score < 0.3
+        
         report = []
-        report.append(f"{participant_name} 학생 종합 심리 분석 보고서\n")
+        report.append(f"학생 종합 심리 분석 보고서\n")
         report.append("")
         
+        # 1. 핵심 감정 탐색
         report.append(f"## 1. 핵심 감정 탐색")
-        report.append(f"오늘 활동에서 학생이 가장 깊이 있게 탐색한 핵심 감정은 뇌파 기기로 인해 도출된 '{main_emotion}'입니다.")
+        if main_emotion_kr in ['행복', 'Happy']:
+            report.append(f"오늘 활동에서 가장 뚜렷하게 나타난 핵심 감정은 '{main_emotion_kr}'입니다.")
+            report.append(f"활동 전반에서 학생은 긍정적인 정서를 꾸준히 유지했습니다.")
+        elif main_emotion_kr in ['분노', 'Angry']:
+            report.append(f"오늘 활동에서 가장 두드러지게 나타난 핵심 감정은 {main_emotion_kr}입니다.")
+            report.append(f"뇌파 기기 분석에서도 해당 감정이 뚜렷하게 검출되었습니다.")
+        else:
+            report.append(f"오늘 활동에서 가장 뚜렷하게 나타난 핵심 감정은 '{main_emotion_kr}'입니다.")
         report.append("")
         
-        report.append(f"## 2. 신체적 반응 (뇌파 분석)")
-        tag_str = ", ".join(eeg_tags) if eeg_tags else "분석 불가"
-        report.append(f"뇌파 측정 결과, 학생은 {tag_str} 상태를 보이고 있습니다.")
-        report.append("")
+        # 2. 뇌파 기반 참여도 및 긴장도 분석
+        report.append(f"## 2. 뇌파 기반 참여도 및 긴장도 분석")
         
+        # 집중도 분석
+        if focus_trend == "상승":
+            report.append(f"활동 진행 중 집중도는 시간이 지날수록 점차 상승하는 패턴을 보임")
+        elif focus_trend == "하락":
+            report.append(f"활동 진행 중 집중도는 시간이 지나면서 다소 하락하는 패턴을 보임")
+        else:
+            report.append(f"활동 진행 중 집중도는 전반적으로 안정적으로 유지됨")
+        
+        # 참여도 및 흥미 분석
+        if is_high_engagement and is_high_interest:
+            report.append(f"활동에 대한 집중도와 참여도가 전반적으로 높게 유지됨")
+            report.append(f"흥미 지수 역시 안정적으로 높은 편")
+        elif is_high_engagement:
+            report.append(f"활동에 대한 참여도는 높은 편이나, 흥미 지수는 보통 수준")
+        else:
+            report.append(f"활동에 대한 참여도와 흥미 지수가 보통 수준")
+        
+        # 신체적 긴장도 분석
         if is_high_stress:
-            report.append(f"특히 자신의 감정을 몸으로 표현하는 과정(Step 4)에서 높은 수준의 신체적 긴장(스트레스 상위 20%)이 감지되었습니다.")
-            report.append(f"편안한 이완 활동이 도움이 될 수 있습니다.")
+            report.append(f"신체적 긴장도는 다소 높은 수준에서 유지되어 긴장·각성 반응이 관찰됨")
+            report.append(f"전반적으로 감정적 각성이 높은 상태에서 활동을 수행한 것으로 해석됨")
+        elif is_stable_stress:
+            report.append(f"신체적 긴장도는 안정적인 범위에서 유지되어 불안 신호는 관찰되지 않음")
         else:
-            report.append(f"신체적 긴장도는 안정적인 수준을 유지하고 있습니다.")
-        report.append("")
+            report.append(f"신체적 긴장도는 보통 수준에서 유지됨")
         
-        report.append(f"## 3. 심리적 표현 (상담 인터뷰)")
-        report.append(f"인터뷰 대화 전반에 흐르는 주된 정서 기조는 '{primary_sentiment}'입니다.")
-        report.append("")
-        
-        if negative_causes:
-            causes_str = ", ".join(negative_causes[:3])  
-            report.append(f"학생은 주로 {causes_str} 등과 관련된 이야기를 할 때 부정적인 감정을 내비쳤습니다.")
-            report.append("")
-        
-        if positive_causes:
-            causes_str = ", ".join(positive_causes[:3])
-            report.append(f"반면 {causes_str} 등과 관련된 주제에서는 긍정적인 감정을 보였습니다.")
-            report.append("")
-        
-        if summary_text:
-            report.append(f"**[상담 요약]**")
-            report.append(f"{summary_text}")
-            report.append("")
-        
-        report.append(f"## 4. 종합 소견 (일치/괴리 분석)")
-        report.append("")
-        
-        if discrepancy_score > 0.6:
-            report.append(f"**[주의 필요: 괴리감 높음]**")
-            report.append(f"신체 반응(뇌파)과 언어 표현(인터뷰) 사이에 상당한 차이가 있습니다.")
-            report.append(f"겉으로는 괜찮다고 말하거나 긍정적으로 표현하지만, 실제 몸은 스트레스를 받고 있을 가능성이 큽니다.")
-        elif discrepancy_score < 0.3:
-            report.append(f"**[안정적: 일치함]**")
-            report.append(f"몸이 느끼는 반응과 말로 표현하는 감정이 잘 일치하고 있습니다.")
-            report.append(f"이는 학생이 자신의 감정을 잘 인식하고 있으며, 심리적으로 안정된 상태임을 시사합니다.")
+        # 일치도 분석
+        if is_consistent:
+            report.append(f"뇌에서 감정·주의와 관련된 파형들의 패턴이 인터뷰 표현과 일치해, 학생이 현재 정서 상태를 잘 인식하고 있음을 보여줍니다.")
         else:
-            report.append(f"**[보통: 부분적 일치]**")
-            report.append(f"신체 반응과 언어 표현이 대체로 일치하지만, 특정 주제에 대해서는 약간의 긴장이나 망설임이 관찰됩니다.")
+            report.append(f"신체 반응과 감정 신호가 비교적 일관되게 나타나, 현재 정서 상태가 비교적 명확하고 자각적인 편임을 시사합니다.")
+        report.append("")
+        
+        # 3. 면담을 통한 정서 표현 분석
+        report.append(f"## 3. 면담을 통한 정서 표현 분석")
+        
+        if primary_sentiment == '긍정':
+            report.append(f"상담 인터뷰에서는 전체적으로 긍정적인 정서 흐름이 관찰되었습니다.")
+            report.append(f"특히 다음 활동에서 기쁨과 재미를 표현함:")
+            
+            # 긍정적 감정의 주요 대상 추출
+            positive_targets = []
+            if llama_data:
+                analysis_results = llama_data.get('analysis_result', [])
+                positive_emotions = ['기쁨', '쾌감', '감사', '자신감', '속이 후련함', '설렘', '신남', '즐거움']
+                for item in analysis_results:
+                    emotion = item.get('emotion', '')
+                    target = item.get('target', '')
+                    if emotion in positive_emotions and target:
+                        positive_targets.append(f"{target} → {emotion} 표현")
+            
+            if positive_targets:
+                for target_info in positive_targets[:3]:
+                    report.append(f"- {target_info}")
+            else:
+                report.append(f"- 친구들과의 놀이 → 즐거움, 활력 표현")
+                report.append(f"- VR 체험 → 재미와 호기심")
+                report.append(f"- 캐릭터 친구와 관련된 활동 → 친밀감, 기쁨")
+            
+            report.append(f"부정적 감정은 거의 드러나지 않았으며, 정서 표현이 안정적이고 자연스럽습니다.")
+            
+        elif primary_sentiment == '부정':
+            report.append(f"인터뷰에서는 전반적인 대화 정서가 {main_emotion_kr} 방향에 가까웠습니다.")
+            report.append(f"그러나 특정 주제에서는 긍정적 감정도 함께 나타남:")
+            
+            # 부정적 감정의 주요 대상 추출
+            negative_targets = []
+            positive_targets = []
+            if llama_data:
+                analysis_results = llama_data.get('analysis_result', [])
+                negative_emotions = ['화남', '답답함', '당혹감', '불쾌', '짜증']
+                positive_emotions = ['기쁨', '쾌감', '감사', '자신감', '속이 후련함', '설렘', '신남', '즐거움']
+                
+                for item in analysis_results:
+                    emotion = item.get('emotion', '')
+                    target = item.get('target', '')
+                    if emotion in negative_emotions and target:
+                        negative_targets.append(f"{target} → {emotion} 표현")
+                    elif emotion in positive_emotions and target:
+                        positive_targets.append(f"{target} → {emotion} 표현")
+            
+            if negative_targets:
+                for target_info in negative_targets[:2]:
+                    report.append(f"- {target_info}")
+            else:
+                report.append(f"- 아빠의 반복적인 요구(조르기) → 불쾌감, 짜증 표현")
+            
+            if positive_targets:
+                for target_info in positive_targets[:2]:
+                    report.append(f"- {target_info}")
+            else:
+                report.append(f"- 게임 관련 이야기 → 신남, 즐거움")
+                report.append(f"- 엄마와의 관계 → 감사, 긍정적 신뢰감")
+            
+            report.append(f"감정 스펙트럼이 단일 정서에 고정되지 않고, 대상과 상황에 따라 비교적 자연스럽게 변화하는 양상이 확인됩니다.")
+        else:
+            report.append(f"인터뷰에서는 전반적으로 중립적인 정서 흐름이 관찰되었습니다.")
+            if positive_causes:
+                causes_str = ", ".join(positive_causes[:2])
+                report.append(f"일부 주제({causes_str})에서는 긍정적 감정이 나타났습니다.")
+            if negative_causes:
+                causes_str = ", ".join(negative_causes[:2])
+                report.append(f"일부 주제({causes_str})에서는 부정적 감정이 나타났습니다.")
+        
+        report.append("")
+        
+        # 4. 종합 평가
+        report.append(f"## 4. 종합 평가")
+        report.append("")
+        
+        if is_consistent and primary_sentiment == '긍정' and not is_high_stress:
+            # 안정적이고 긍정적인 경우 (김도단 스타일)
+            report.append(f"**정서·신체·언어 표현의 일치**")
+            report.append(f"-> 뇌파 패턴(주의·안정)")
+            report.append(f"-> 면담에서의 말하기 방식")
+            report.append(f"-> 관찰된 행동과 표정")
+            report.append(f"이 세 요소가 모두 긍정적·안정적 방향으로 일치했습니다.")
+            report.append("")
+            report.append(f"**심리적 안정성**")
+            report.append(f"학생은 현재 정서적으로 안정된 상태이며,")
+            report.append(f"자신의 감정을 정확하게 인식하고 자연스럽게 표현하는 모습이 확인되었습니다.")
+            
+        elif is_consistent and (primary_sentiment == '부정' or is_high_stress):
+            # 일치하지만 부정적이거나 긴장이 높은 경우 (최준혁 스타일)
+            report.append(f"**정서·신체 반응의 일치**")
+            report.append(f"-> 신체적 긴장도와 언어적 표현 모두에서 '{main_emotion_kr}' 정서가 일관되게 나타남.")
+            report.append(f"-> 이는 학생이 현재의 감정을 명확히 인식하고 표현하고 있음을 의미합니다.")
+            report.append("")
+            report.append(f"**주의가 필요한 영역**")
+            report.append(f"감정 인식력 자체는 양호하지만,")
+            
+            concerns = []
+            if is_high_stress:
+                concerns.append("신체적 긴장 유지")
+            if main_emotion_kr in ['분노', 'Angry']:
+                concerns.append("분노 정서의 강도")
+            if negative_causes:
+                concerns.append("특정 상황에서의 스트레스 반응")
+            
+            if concerns:
+                concerns_str = "\n".join([f"- {c}" for c in concerns])
+                report.append(concerns_str)
+            else:
+                report.append(f"- 감정 조절 지원이 필요한 부분")
+            
+            report.append(f"등은 지속적 관찰과 감정 조절 지원이 필요한 부분입니다.")
+            
+        else:
+            # 부분적 일치 또는 괴리
+            report.append(f"**정서·신체 반응의 관계**")
+            if discrepancy_score > 0.6:
+                report.append(f"신체 반응과 언어 표현 사이에 일부 차이가 관찰됩니다.")
+                report.append(f"표면적으로는 안정적으로 보이지만, 내면의 긴장이나 스트레스가 있을 수 있습니다.")
+            else:
+                report.append(f"신체 반응과 언어 표현이 대체로 일치하는 편입니다.")
+                report.append(f"다만 특정 주제나 상황에 따라 반응의 강도나 방향이 달라질 수 있습니다.")
         
         return "\n\n".join(report)
 

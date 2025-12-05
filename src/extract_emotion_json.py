@@ -1,6 +1,7 @@
 import os
 import json
 import re
+from pathlib import Path
 from prompts import get_counseling_prompt
 from dotenv import load_dotenv
 from groq import Groq  
@@ -81,11 +82,16 @@ def analyze_file(client, filename):
         return None
     
 def main():
+    # 프로젝트 루트에서 .env 파일 로드
+    current_file = Path(__file__).resolve()
+    project_root = current_file.parent.parent
+    env_path = project_root / ".env"
+    load_dotenv(dotenv_path=env_path)
     
-    load_dotenv()
     api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
         print("⚠️ GROQ_API_KEY가 설정되지 않았습니다.")
+        print(f"   .env 파일 위치: {env_path}")
         return
     client = Groq(api_key=api_key)
     
